@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Services\Objects\Schedule;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Symfony\Component\Yaml\Yaml;
@@ -90,7 +91,7 @@ class Schedules
         // marriage_[day] will run if NOT raining, so add it as a possibility
         if ($this->schedule->has('marriage_'.$dayOfWeek)) {
             $this->setRegular('marriage_'.$dayOfWeek);
-            $this->raining[] = 'noschedule';
+            $this->raining[] = new Schedule('noschedule');
         } else {
             $this->setRegular('noschedule');
         }
@@ -112,7 +113,7 @@ class Schedules
         // Some days have alternatives if you have enough hearts with the villager
         for ($h = 13; $h > 0; $h--) {
             if ($this->schedule->has($dayOfMonth.'_'.$h)) {
-                $this->hearts[] = $dayOfMonth.'_'.$h;
+                $this->hearts[] = new Schedule($dayOfMonth.'_'.$h, 'At least '.$h.' hearts');
             }
         }
 
@@ -123,13 +124,13 @@ class Schedules
 
         // If you've unlocked the bus, this will be Pam every day...!
         if ($this->villager == 'Pam') {
-            $this->other[] = 'bus';
+            $this->other[] = new Schedule('bus', 'If the bus is unlocked');
         }
 
         // Raining will be 50/50 choice if there are two
-        $this->raining[] = 'rain';
+        $this->raining[] = new Schedule('rain');
         if ($this->schedule->has('rain2')) {
-            $this->raining[] = 'rain2';
+            $this->raining[] = new Schedule('rain2');
         }
 
         $dayOfWeek = $this->getDayOfWeek($dayOfMonth);
@@ -138,7 +139,7 @@ class Schedules
         // Pretty sure this one is never used, but it's coded...
         for ($h = 13; $h > 0; $h--) {
             if ($this->schedule->has($season.'_'.$dayOfWeek.'_'.$h)) {
-                $this->hearts[] = $season.'_'.$dayOfWeek.'_'.$h;
+                $this->hearts[] = new Schedule($season.'_'.$dayOfWeek.'_'.$h, 'At least '.$h.' hearts');
             }
         }
 
@@ -165,7 +166,7 @@ class Schedules
         // Pretty sure this one is never used, but it's coded...
         for ($h = 13; $h > 0; $h--) {
             if ($this->schedule->has('spring_'.$dayOfWeek.'_'.$h)) {
-                $this->hearts[] = 'spring_'.$dayOfWeek.'_'.$h;
+                $this->hearts[] = new Schedule('spring_'.$dayOfWeek.'_'.$h, 'At least '.$h.' hearts');
             }
         }
 
@@ -190,7 +191,12 @@ class Schedules
             $this->checkForNot($key);
             // Re-check - things might have changed with the NOT check?
             $this->checkForGoto($key, $season);
+            $this->checkLocations($key);
+
+            $this->{$key} = array_unique($this->{$key});
         }
+
+        dd($this->regular, $this->raining, $this->hearts, $this->other);
     }
 
     /**
@@ -201,12 +207,12 @@ class Schedules
      */
     private function checkForGoto(string $key, string $season)
     {
-        $scheduleKeys = [];
+        $newScheduleObjs = [];
         // Work through each possible schedule in the given list
         // Build a new array of schedules to replace it with
-        foreach($this->{$key} AS $scheduleKey) {
+        foreach($this->{$key} AS $scheduleObj) {
 
-            $schedule = $this->schedule->get($scheduleKey);
+            $schedule = $this->schedule->get($scheduleObj->schedule);
             if (substr($schedule[0], 0, 4) === 'GOTO') {
                 $goto = explode(' ', $schedule[0]);
                 if (Str::lower($goto[1]) == 'season') {
@@ -215,15 +221,15 @@ class Schedules
                 }
 
                 if ($this->schedule->has($goto[1])) {
-                    $scheduleKeys[] = $goto[1];
+                    $newScheduleObjs[] = new Schedule($goto[1], $scheduleObj->extra);
                 } else {
-                    $scheduleKeys[] = 'spring';
+                    $newScheduleObjs[] = new Schedule('spring', $scheduleObj->extra);
                 }
              } else {
-                $scheduleKeys[] = $scheduleKey;
+                $newScheduleObjs[] = $scheduleObj;
             }
         }
-        $this->{$key} = $scheduleKeys;
+        $this->{$key} = $newScheduleObjs;
     }
 
     /**
@@ -233,30 +239,86 @@ class Schedules
      */
     private function checkForNot(string $key)
     {
-        $scheduleKeys = [];
+        $newScheduleObjs = [];
         // Work through each possible schedule in the given list
         // Build a new array of schedules to replace it with
-        foreach($this->{$key} AS $scheduleKey) {
+        foreach($this->{$key} AS $scheduleObj) {
 
-            $schedule = $this->schedule->get($scheduleKey);
+            $schedule = $this->schedule->get($scheduleObj->schedule);
             if (substr($schedule[0], 0, 3) === 'NOT') {
                 $not = explode(' ', $schedule[0]);
                 if ($not[1] == 'friendship') {
                     // TODO: flag why this is an "other" schedule
-                    $this->other[] = $scheduleKey;
-                    $scheduleKeys[] = 'spring';
+                    $this->other[] = new Schedule($scheduleObj->schedule, 'Not at '.$not[3].' hearts with '.$not[2]);
+                    $newScheduleObjs[] = new Schedule('spring');
                 } else {
-                    $scheduleKeys[] = $scheduleKey;
+                    // There's no handler for anything else, yet...
+                    $newScheduleObjs[] = $scheduleObj;
                 }
 
                 // Clear the NOT from the schedule so we don't parse it again in the Other schedules list
                 array_shift($schedule);
-                $this->schedule->offsetSet($scheduleKey, $schedule);
+                $this->schedule->offsetSet($scheduleObj->schedule, $schedule);
             } else {
-                $scheduleKeys[] = $scheduleKey;
+                $newScheduleObjs[] = $scheduleObj;
             }
         }
-        $this->{$key} = $scheduleKeys;
+        $this->{$key} = $newScheduleObjs;
+    }
+
+    /**
+     * Check for inaccessable locations and replace as required
+     *
+     * @param string $key
+     */
+    private function checkLocations(string $key)
+    {
+        // We're not replacing the schedules here, just adding alternatives where required
+        foreach($this->{$key} AS $scheduleObj) {
+
+            // Get the schedule listed
+            $schedule = $this->schedule->get($scheduleObj->schedule);
+            $scheduleChanged = false;
+
+            // Step through each action of the schedule
+            foreach($schedule AS $k => $action) {
+                $actionParts = explode(' ', $action);
+
+                // Is the action taking us somewhere that might not be open yet?
+                if (in_array($actionParts[1], ['JojaMart', 'Railroad', 'CommunityCenter'])) {
+                    // Check for a [location]_Replacement in the schedule
+                    // For whatever reason, the code doesn't use CommunityCenter_Replacement even though some villagers
+                    // have it set. See NPC.cs, line 2653
+                    if (in_array($actionParts[1], ['JojaMart', 'Railroad']) && $this->schedule->has($actionParts[1].'_Replacement')) {
+                        $replaceParts = explode(' ', $this->schedule->get($actionParts[1].'_Replacement')[0]);
+
+                        // Rebuild the action with the original time, but the rest of the details from the replacement
+                        $schedule[$k] = implode(' ',
+                            array_merge([$actionParts[0]], $replaceParts)
+                        );
+
+                        // Mark the schedule as changed (with the name of the replaced location)
+                        $scheduleChanged = $actionParts[1];
+                    } else {
+                        // No replacement - the whole schedule might switch
+                        $this->other[] = new Schedule(
+                            $this->schedule->has('default') ? 'default' : 'spring',
+                            'If '.$actionParts[1].' is not available'
+                        );
+
+                        // No changes to save, and stop processing this schedule
+                        $scheduleChanged = false;
+                        break;
+                    }
+                }
+            }
+
+            if ($scheduleChanged) {
+                // Save an "alternative" schedule if required
+                $this->schedule->offsetSet($scheduleObj->schedule.'_alt', $schedule);
+                $this->other[] = new Schedule($scheduleObj->schedule.'_alt', 'If '.$scheduleChanged.' is not available');
+            }
+        }
     }
 
     /**
@@ -297,7 +359,12 @@ class Schedules
      */
     private function setRegular($schedule)
     {
-        $this->regular = [$schedule];
+        $this->regular = [new Schedule($schedule)];
+    }
+
+    private function setHearts($schedule, $villager, $hearts)
+    {
+        $this->hearts[] = [$schedule, $villager, $hearts];
     }
 
 
