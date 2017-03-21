@@ -48,11 +48,9 @@ return [
             'root' => storage_path('app'),
         ],
 
-        'public' => [
+        'schedules' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
+            'root' => storage_path('app/schedules'),
         ],
 
         's3' => [
