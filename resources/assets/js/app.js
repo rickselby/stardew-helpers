@@ -7,14 +7,64 @@
 
 require('./bootstrap');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+$( document ).ready(function() {
 
-Vue.component('example', require('./components/Example.vue'));
+    $('select').change(updateColours);
+    $('select').change(loadSchedule);
 
-const app = new Vue({
-    el: '#app'
 });
+
+function loadSchedule()
+{
+    if (
+        $('#villager').val() != ""
+        && $('#season').val() != ""
+        && $('#day').val() != ""
+    ) {
+        $.post($postURL, {
+            'villager': $('#villager').val(),
+            'season': $('#season').val(),
+            'day': $('#day').val()
+        }, function(data) {
+            showPossibilities(data);
+        }, 'json');
+    }
+}
+
+function updateColours()
+{
+    if ($(this).val() == "") {
+        $(this).parent().switchClass('has-success', 'has-error', 500);
+    } else {
+        $(this).parent().switchClass('has-error', 'has-success', 500);
+    }
+}
+
+function showPossibilities(data)
+{
+    $('#possibilities').empty();
+
+    for(possible of data.possibilities) {
+
+        var schedule = data.schedules[possible.schedule];
+        console.log(schedule)
+
+        var schedulelist = '<ul class="list-group">';
+        for (item of schedule) {
+            schedulelist += '<li class="list-group-item">'+item+'</li>';
+        }
+        schedulelist += '<ul>';
+
+        $('#possibilities').append(
+            '<div class="col-sm-3">' +
+            '<div class="panel panel-default">' +
+            '<div class="panel-heading">' +
+            possible.extra +
+            '</div>' +
+            schedulelist +
+            '</div>' +
+            '</div>'
+        );
+    }
+
+}

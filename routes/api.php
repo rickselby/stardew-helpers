@@ -13,4 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/schedule', 'ScheduleController@getSchedule');
+Route::post('/schedule', 'ScheduleController@getSchedule')->name('getSchedule');
