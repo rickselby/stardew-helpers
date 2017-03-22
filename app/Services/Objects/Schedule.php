@@ -2,7 +2,7 @@
 
 namespace App\Services\Objects;
 
-class Schedule
+class Schedule implements \JsonSerializable
 {
     /**
      * @var string
@@ -57,8 +57,8 @@ class Schedule
         return $this;
     }
 
-    public function __toString()
+    public function jsonSerialize()
     {
-        return $this->schedule.' | '.$this->priority.' | '.$this->extra;
+        return get_object_vars($this);
     }
 }

@@ -23,17 +23,4 @@ class Villagers
             return $files;
         });
     }
-
-    /**
-     * Check if the given villager name is valid
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-    public function isValid(string $name) : bool
-    {
-        return $this->getList()->contains($name);
-    }
-
 }

@@ -265,8 +265,9 @@ class Schedules
 
                     $this->incrementPriorities($possibility->priority + 1);
                     
-                    // Add a new option for spring if the NOT is not not?
+                    // Add a new option for spring if the conditional is true
                     $this->possibilities[] = new Schedule('spring', $possibility->priority + 1, $possibility->extra);
+
                     // Amend this schedule as a NOT schedule
                     $possibility->updateExtra('Not at '.$not[3].' hearts with '.$not[2]);
                 }
