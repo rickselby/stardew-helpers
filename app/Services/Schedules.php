@@ -24,6 +24,8 @@ class Schedules
     /** @var int */
     private $priority;
 
+    private $dowMap = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
     public function __construct(string $villager)
     {
         $this->villager = $villager;
@@ -43,6 +45,8 @@ class Schedules
      *
      * @param string $season
      * @param int $dayOfMonth
+     *
+     * @return array
      */
     public function getFor(string $season, int $dayOfMonth)
     {
@@ -50,10 +54,7 @@ class Schedules
 
         $this->firstPass($season, $dayOfMonth);
         $this->secondPass($season);
-
-        usort($this->possibilities, function($a, $b) {
-            return $a->priority - $b->priority;
-        });
+        $this->sortPossibilities();
 
         $schedules = [];
         foreach($this->possibilities AS $possibility) {
@@ -86,7 +87,7 @@ class Schedules
     /**
      * Get a schedule for a married villager
      *
-     * @param int        $dayOfMonth
+     * @param int $dayOfMonth
      */
     private function married(int $dayOfMonth)
     {
@@ -185,11 +186,15 @@ class Schedules
 
         // Some days have alternatives if you have enough hearts with the villager
         // Pretty sure this one is never used, but it's coded...
+        // This is how this was intended (I think), but the game is actually searching for [season]_spring_[hearts]
+        // which doesn't exist anywhere. So, remove it.
+        /*
         for ($h = 13; $h > 0; $h--) {
             if ($this->schedule->has('spring_'.$dayOfWeek.'_'.$h)) {
                 $this->addPossibility('spring_'.$dayOfWeek.'_'.$h, 'At least '.$h.' hearts with '.$this->villager);
             }
         }
+        */
 
         if ($this->schedule->has('spring')) {
             $this->setRegular('spring');
@@ -212,6 +217,9 @@ class Schedules
         $this->checkForNot();
         // Re-check - things might have changed with the NOT check?
         $this->checkForGoto($season);
+
+        $this->checkForDuplicates();
+
         $this->checkLocations();
     }
 
@@ -271,6 +279,31 @@ class Schedules
     }
 
     /**
+     * Check for duplicate schedules next to each other and combine the reasons
+     */
+    private function checkForDuplicates()
+    {
+        $this->sortPossibilities();
+        $lastPossibility = null;
+        foreach($this->possibilities AS $k => $possibility)
+        {
+            $updateLast = true;
+
+            if ($lastPossibility) {
+                if ($possibility->schedule == $lastPossibility->schedule) {
+                    $lastPossibility->updateExtra(implode(' / ', [$lastPossibility->extra, $possibility->extra]));
+                    unset($this->possibilities[$k]);
+                    $updateLast = false;
+                }
+            }
+
+            if ($updateLast) {
+                $lastPossibility = $possibility;
+            }
+        }
+    }
+
+    /**
      * Check for inaccessable locations and replace as required
      *
      * @param string $key
@@ -323,8 +356,8 @@ class Schedules
             }
 
             if ($scheduleChanged) {
+                // Save an "alternative" schedule before the current one
                 $this->incrementPriorities($possibility->priority + 1);
-                // Save an "alternative" schedule if required
                 $this->schedule->offsetSet($possibility->schedule.'_alt', $schedule);
                 $this->possibilities[] = new Schedule(
                     $possibility->schedule.'_alt',
@@ -364,8 +397,7 @@ class Schedules
      */
     private function getDayOfWeek(int $dayOfMonth): string
     {
-        $dowMap = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-        return $dowMap[$dayOfMonth % 7];
+        return $this->dowMap[$dayOfMonth % 7];
     }
 
     /**
@@ -389,6 +421,11 @@ class Schedules
         $this->addPossibility($schedule, 'Regular Schedule');
     }
 
+    /**
+     * Increment all priorities equal to or greater than the given priority
+     *
+     * @param int $priority
+     */
     private function incrementPriorities(int $priority)
     {
         foreach($this->possibilities AS $possibility) {
@@ -396,6 +433,16 @@ class Schedules
                 $possibility->incrementPriority();
             }
         }
+    }
+
+    /**
+     * Sort the possibilities by priority
+     */
+    private function sortPossibilities()
+    {
+        usort($this->possibilities, function($a, $b) {
+            return $a->priority - $b->priority;
+        });
     }
 
 }
