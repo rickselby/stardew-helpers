@@ -374,13 +374,11 @@ class Schedules
     /**
      * Read the schedule file for the given villager
      *
-     * @param string $villager
-     *
      * @return Collection
      */
-    private function readFile(string $villager)
+    public function readFile()
     {
-        $file = Yaml::parse(\Storage::disk('schedules')->get($villager.'.yaml'));
+        $file = Yaml::parse(\Storage::disk('schedules')->get($this->villager.'.yaml'));
 
         foreach($file['content'] AS $key => $value) {
             $file['content'][$key] = explode('/', $value);

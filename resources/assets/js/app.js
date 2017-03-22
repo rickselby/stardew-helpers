@@ -51,7 +51,7 @@ function showPossibilities(data)
 
         var schedulelist = '<ul class="list-group">';
         for (item of schedule) {
-            schedulelist += '<li class="list-group-item">'+item+'</li>';
+            schedulelist += '<li class="list-group-item">'+item.time + ': ' + item.location+'</li>';
         }
         schedulelist += '<ul>';
 

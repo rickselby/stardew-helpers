@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ScheduleRequest;
+use App\Services\Locations;
 use App\Services\Schedules;
 use App\Services\Seasons;
 use App\Services\Villagers;
@@ -16,9 +17,12 @@ class ScheduleController extends Controller
             ->with('seasons', $seasons->getList());
     }
 
-    public function getSchedule(ScheduleRequest $request)
+    public function getSchedule(ScheduleRequest $request, Locations $locations)
     {
-        $schedule = new Schedules($request->input('villager'));
-        return json_encode($schedule->getFor($request->input('season'), $request->input('day')));
+        $schedules = new Schedules($request->input('villager'));
+        $schedule = $schedules->getFor($request->input('season'), $request->input('day'));
+        $locations->parseLocations($schedule['schedules']);
+
+        return json_encode($schedule);
     }
 }
