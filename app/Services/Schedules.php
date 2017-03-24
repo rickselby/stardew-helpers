@@ -217,6 +217,7 @@ class Schedules
         $this->checkForNot();
         // Re-check - things might have changed with the NOT check?
         $this->checkForGoto($season);
+        $this->skipNotsAfterGoto();
 
         $this->checkForDuplicates();
 
@@ -272,6 +273,23 @@ class Schedules
                     $possibility->updateExtra('Not at '.$not[3].' hearts with '.$not[2]);
                 }
 
+                // Clear the NOT from the schedule so we don't parse it again later
+                array_shift($schedule);
+                $this->schedule->offsetSet($possibility->schedule, $schedule);
+            }
+        }
+    }
+
+    /**
+     * If there was a NOT then a GOTO, we might be at the same NOT again, so...
+     * See: Penny:23, Sam:23, Abigail:25
+     */
+    private function skipNotsAfterGoto()
+    {
+        foreach($this->possibilities AS $possibility) {
+
+            $schedule = $this->schedule->get($possibility->schedule);
+            if (substr($schedule[0], 0, 3) === 'NOT') {
                 // Clear the NOT from the schedule so we don't parse it again later
                 array_shift($schedule);
                 $this->schedule->offsetSet($possibility->schedule, $schedule);
