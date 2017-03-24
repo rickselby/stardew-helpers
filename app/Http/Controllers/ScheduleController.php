@@ -22,7 +22,7 @@ class ScheduleController extends Controller
     {
         $schedules = new Schedules($request->input('villager'));
         $schedule = $schedules->getFor($request->input('season'), $request->input('day'));
-        $locations->parseLocations($schedule['schedules']);
+        $locations->parseLocations($request->input('villager'), $schedule['schedules']);
 
         return response()->json($schedule);
     }

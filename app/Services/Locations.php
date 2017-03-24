@@ -39,11 +39,7 @@ class Locations
 
     private function setList(Collection $list)
     {
-        // We want to sort this collection by key before encoding in JSON,
-        // but we can't do that, so...
-        $listArray = $list->toArray();
-        ksort($listArray);
-        \Storage::put($this->filename, json_encode($listArray));
+        \Storage::put($this->filename, $list->toJson());
     }
 
     /**
@@ -54,6 +50,9 @@ class Locations
         $list = $this->getList();
 
         foreach($this->villagers->getList() AS $villager) {
+
+            $villagerList = $list->get($villager) ?? new Collection();
+
             $schedule = (new Schedules($villager))->readFile();
             foreach($schedule AS $possibility) {
                 foreach($possibility AS $step) {
@@ -61,20 +60,27 @@ class Locations
                     if (preg_match('/\d?\d{3}/', $steps[0])) {
                         $location = implode(' ', array_slice($steps, 1, 3));
 
-                        if (!$list->has($location)) {
-                            $list->offsetSet($location, "");
+                        if (!$villagerList->has($location)) {
+                            $villagerList->offsetSet($location, "");
                         }
                     }
                 }
             }
+
+            $list->offsetSet($villager, $villagerList);
         }
 
         $this->setList($list);
     }
 
-    public function parseLocations(&$schedules)
+    /**
+     * Parse a list of schedules and replace the locations with names
+     * @param $villager
+     * @param $schedules
+     */
+    public function parseLocations($villager, &$schedules)
     {
-        $list = $this->getList();
+        $list = new Collection($this->getList()->get($villager) ?? []);
 
         foreach($schedules AS &$schedule) {
             foreach($schedule AS &$step) {
@@ -83,7 +89,7 @@ class Locations
 
                 $step = [
                     'time' => $steps[0],
-                    'location' => $list->has($location) ? $list->get($location) : '??',
+                    'location' => $list->get($location) ?? '??',
                     'map' => $steps[1],
                     'x' => $steps[2],
                     'y' => $steps[3],

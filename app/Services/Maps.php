@@ -7,7 +7,7 @@ use Intervention\Image\Image;
 class Maps
 {
     const GRIDSIZE = 8;
-    const CROPSIZE = 200;
+    const CROPSIZE = 400;
 
     /**
      * Get a map with a marker at x,y
@@ -24,7 +24,11 @@ class Maps
             $this->makeMap($name, $x, $y);
         }
 
-        return \Image::make(\Storage::disk('maps')->get($this->getGeneratedPath($name, $x, $y)));
+        if (\Storage::disk('maps')->get($this->getGeneratedPath($name, $x, $y))) {
+            return \Image::make(\Storage::disk('maps')->get($this->getGeneratedPath($name, $x, $y)));
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -50,6 +54,10 @@ class Maps
      */
     private function makeMap(string $name, int $x, int $y)
     {
+        if (!\Storage::disk('maps')->exists($name . '.png')) {
+            return false;
+        }
+
         $img = \Image::make(\Storage::disk('maps')->get($name . '.png'));
 
         // Add some kind of marker at $x, $y (8px per square)
