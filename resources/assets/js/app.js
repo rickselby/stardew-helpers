@@ -50,7 +50,9 @@ function showPossibilities(data)
 
         $(this).empty();
 
+        var count = 0;
         for(possible of data.possibilities) {
+            ++count;
 
             var schedule = data.schedules[possible.schedule];
             console.log(schedule)
@@ -62,15 +64,26 @@ function showPossibilities(data)
             schedulelist += '<ul>';
 
             $(this).append(
-                '<div class="col-sm-3">' +
-                '<div class="panel panel-default">' +
-                '<div class="panel-heading">' +
+                '<div class="col-sm-6 col-md-4 col-lg-3 panel">' +
+                '<div class="bulletinpanel">' +
+                '<div class="panel-heading"><h4>' +
                 possible.extra +
-                '</div>' +
+                '</h4></div>' +
                 schedulelist +
                 '</div>' +
                 '</div>'
             );
+
+            if (count % 2 == 0) {
+                $(this).append('<div class="clearfix visible-sm-block"></div>')
+            }
+            if (count % 3 == 0) {
+                $(this).append('<div class="clearfix visible-md-block"></div>')
+            }
+            if (count % 4 == 0) {
+                $(this).append('<div class="clearfix visible-lg-block"></div>')
+            }
+
         }
 
         $(this).each(function() {
