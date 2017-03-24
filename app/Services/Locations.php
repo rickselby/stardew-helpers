@@ -51,10 +51,10 @@ class Locations
 
         foreach($this->villagers->getList() AS $villager) {
 
-            $villagerList = $list->get($villager) ?? new Collection();
+            $villagerList = new Collection($list->get($villager) ?? []);
 
             $schedule = (new Schedules($villager))->readFile();
-            foreach($schedule AS $possibility) {
+            foreach($schedule AS $name => $possibility) {
                 foreach($possibility AS $step) {
                     $steps = explode(' ', $step);
                     if (preg_match('/\d?\d{3}/', $steps[0])) {
@@ -63,6 +63,14 @@ class Locations
                         if (!$villagerList->has($location)) {
                             $villagerList->offsetSet($location, "");
                         }
+                    }
+                }
+                // Make sure we add the replacement locations too!
+                if (preg_match('/_Replacement/', $name)) {
+                    $steps = explode(' ', $step);
+                    $location = implode(' ', array_slice($steps, 0, 3));
+                    if (!$villagerList->has($location)) {
+                        $villagerList->offsetSet($location, "");
                     }
                 }
             }

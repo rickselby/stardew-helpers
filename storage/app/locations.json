@@ -78,7 +78,8 @@
     "Saloon 19 23": "Stardrop Saloon",
     "Blacksmith 10 4": "In his bed",
     "CommunityCenter 62 14": "Community Center: Boiler Room",
-    "Blacksmith 8 12": "Blacksmith"
+    "Blacksmith 8 12": "Blacksmith",
+    "JojaMart 27 5": "JojaMart"
   },
   "Demetrius": {
     "ScienceHouse 16 19": "Carpenter's Shop: Laboratory",
@@ -266,7 +267,8 @@
     "SamHouse 6 13": "1 Willow Lane",
     "SeedShop 38 20": "Pierre's General Store: Yoba Shrine",
     "SeedShop 2 20": "Pierre's General Store",
-    "Town 22 72": "Town Square"
+    "Town 22 72": "Town Square",
+    "SeedShop 2 22": "Pierre's General Store"
   },
   "Kent": {
     "SamHouse 8 12": "1 Willow Lane",
@@ -385,7 +387,8 @@
     "ScienceHouse 7 6": "In her room",
     "CommunityCenter 15 27": "Community Center: Crafts Room",
     "Mountain 55 31": "South of Mountain Lake",
-    "Mountain 8 23": "Outside Carpenter's Shop"
+    "Mountain 8 23": "Outside Carpenter's Shop",
+    "ScienceHouse 5 19": "Carpenter's Shop"
   },
   "Pam": {
     "Trailer 15 4": "Trailer",
@@ -393,7 +396,8 @@
     "Hospital 4 6": "Harvey's Clinic",
     "Saloon 7 18": "Stardrop Saloon",
     "BusStop 11 10": "At the bus",
-    "JojaMart 6 19": "JojaMart"
+    "JojaMart 6 19": "JojaMart",
+    "SeedShop 2 24": "Pierre's General Store"
   },
   "Penny": {
     "Trailer 1 8": "In her room",
@@ -426,7 +430,8 @@
     "SeedShop 2 26": "Pierre's General Store",
     "SeedShop 5 19": "Pierre's General Store",
     "Town 35 89": "East of 2 Willow Lane",
-    "Town 44 77": "South of Stardrop Saloon"
+    "Town 44 77": "South of Stardrop Saloon",
+    "ArchaeologyHouse 16 10": "Museum"
   },
   "Pierre": {
     "SeedShop 10 20": "Pierre's General Store",
@@ -480,7 +485,8 @@
     "Town 12 94": "South of 1 Willow Lane",
     "JojaMart 16 5": "JojaMart",
     "Town 14 90": "South of 1 Willow Lane",
-    "Town 71 99": "South of Mayor's Manor"
+    "Town 71 99": "South of Mayor's Manor",
+    "ArchaeologyHouse 40 4": "Museum"
   },
   "Sebastian": {
     "SebastianRoom 9 4": "At his computer",
