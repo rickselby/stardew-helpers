@@ -42,29 +42,41 @@ function updateColours()
 
 function showPossibilities(data)
 {
-    $('#possibilities').empty();
+    $('#possibilities').each(function() {
+        $(this).fadeTo(300, 0);
+    });
 
-    for(possible of data.possibilities) {
+    $('#possibilities').promise().done(function() {
 
-        var schedule = data.schedules[possible.schedule];
-        console.log(schedule)
+        $(this).empty();
 
-        var schedulelist = '<ul class="list-group">';
-        for (item of schedule) {
-            schedulelist += '<li class="list-group-item">'+item.time + ': ' + item.location+'</li>';
+        for(possible of data.possibilities) {
+
+            var schedule = data.schedules[possible.schedule];
+            console.log(schedule)
+
+            var schedulelist = '<ul class="list-group">';
+            for (item of schedule) {
+                schedulelist += '<li class="list-group-item">'+item.time + ': ' + item.location+'</li>';
+            }
+            schedulelist += '<ul>';
+
+            $(this).append(
+                '<div class="col-sm-3">' +
+                '<div class="panel panel-default">' +
+                '<div class="panel-heading">' +
+                possible.extra +
+                '</div>' +
+                schedulelist +
+                '</div>' +
+                '</div>'
+            );
         }
-        schedulelist += '<ul>';
 
-        $('#possibilities').append(
-            '<div class="col-sm-3">' +
-            '<div class="panel panel-default">' +
-            '<div class="panel-heading">' +
-            possible.extra +
-            '</div>' +
-            schedulelist +
-            '</div>' +
-            '</div>'
-        );
-    }
+        $(this).each(function() {
+            $(this).fadeTo(300, 1);
+        });
+    });
+
 
 }

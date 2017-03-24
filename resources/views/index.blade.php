@@ -37,7 +37,32 @@
 
     <div class="col-sm-12" style="height:30px;">&nbsp;</div>
 
-    <div class="row" id="possibilities"></div>
+    <div class="row" id="possibilities" style="border: 1px solid white;"></div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            How to read the information
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item">
+                Read the panels from left to right. The first panel that applies should be the
+                villager's schedule for the day. There many be alternatives for rain, for buildings
+                being unavailable, or based on friendship that will override the regular schedule for
+                a day.
+            </li>
+            <li class="list-group-item">
+                If there are two panels for rain, there is an equal, random chance of either being picked.
+            </li>
+            <li class="list-group-item">
+                The times shown are when the villager will leave their previous location and head
+                to the listed location.
+            </li>
+            <li class="list-group-item">
+                If a villager has a location listed multiple times in a row, this normally means they're
+                moving around in a room / house.
+            </li>
+        </ul>
+    </div>
 
     <script type="text/javascript">
         var $postURL = "{{ route('getSchedule') }}";
