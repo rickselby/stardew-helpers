@@ -81,12 +81,15 @@ class Locations
                 $steps = explode(' ', $step);
                 $location = implode(' ', array_slice($steps, 1, 3));
 
-                if ($list->has($location)) {
-                    $step = [
-                        'time' => $steps[0],
-                        'location' => $list->get($location),
-                    ];
-                }
+                $step = [
+                    'time' => $steps[0],
+                    'location' => $list->has($location) ? $list->get($location) : '??',
+                    'map' => $steps[1],
+                    'x' => $steps[2],
+                    'y' => $steps[3],
+                    'facing' => $steps[4],
+                    'sprite' => $steps[5] ?? '',
+                ];
             }
         }
     }

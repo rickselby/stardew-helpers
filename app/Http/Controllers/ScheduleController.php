@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ScheduleRequest;
 use App\Services\Locations;
+use App\Services\Maps;
 use App\Services\Schedules;
 use App\Services\Seasons;
 use App\Services\Villagers;
@@ -23,6 +24,16 @@ class ScheduleController extends Controller
         $schedule = $schedules->getFor($request->input('season'), $request->input('day'));
         $locations->parseLocations($schedule['schedules']);
 
-        return json_encode($schedule);
+        return response()->json($schedule);
+    }
+
+    public function map($name, $x, $y, Maps $maps)
+    {
+        $map = $maps->getMap($name, $x, $y);
+        if ($map) {
+            return $map->response();
+        } else {
+            abort(404);
+        }
     }
 }
