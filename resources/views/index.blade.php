@@ -1,6 +1,7 @@
 @extends('outline')
 
 @section('body')
+
     <div class="row center-block">
         <div class="col-md-12 col-sm-12 panel">
             <div class="interiorpanel">
@@ -18,47 +19,16 @@
         </div>
     </div>
 
-    <div class="row center-block panel">
-        <div class="interiorpanel">
-            <div class="row row-grid">
-                <div class="col-sm-4 has-error">
-                    <select id="villager" name="villager" class="form-control">
-                        <option value="">Select a villager...</option>
-                        @foreach($villagers AS $villager)
-                            <option value="{{ $villager }}">{{ $villager }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-sm-4 has-error">
-                    <select id="season" name="season" class="form-control">
-                        <option value="">Select a season...</option>
-                        @foreach($seasons AS $season)
-                            <option value="{{ $season }}">{{ \Illuminate\Support\Str::ucfirst($season) }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-sm-4 has-error">
-                    <select id="day" name="day" class="form-control">
-                        <option value="">Select a day...</option>
-                        @for($day = 1; $day <= 28; $day++)
-                            <option value="{{ $day }}">{{ $day }}</option>
-                        @endfor
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
+    <script type="text/javascript">
+        var postURL = "{{ route('getSchedule') }}";
+        var villagers = {!! $villagers->toJson() !!};
+        var seasons = {!! $seasons->toJson() !!};
+        var days = {!! $days->toJson() !!};
+    </script>
 
-    <div class="row center-block panel">
-        <div class="interiorpanel">
-            <div class="row row-grid" id="possibilities">
-                <div class="col-xs-12">
-                    Select a villager and a date, and their possible schedules will appear here.
-                </div>
-            </div>
-        </div>
+    <div id="app">
+        <schedules></schedules>
     </div>
-
 
     <div class="row center-block panel">
         <div class="interiorpanel">
@@ -99,8 +69,5 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        var $postURL = "{{ route('getSchedule') }}";
-    </script>
 
 @endsection

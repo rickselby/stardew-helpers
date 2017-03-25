@@ -7,13 +7,21 @@
 
 require('./bootstrap');
 
+Vue.component('schedules', require('./components/Schedules.vue'));
+
+window.addEventListener('load', function () {
+    const app = new Vue({
+        el: '#app'
+    });
+});
+
 $( document ).ready(function() {
 
     $('select').change(updateColours);
-    $('select').change(loadSchedule);
 
 });
 
+/*
 function loadSchedule()
 {
     if (
@@ -30,6 +38,7 @@ function loadSchedule()
         }, 'json');
     }
 }
+*/
 
 function updateColours()
 {
@@ -40,6 +49,7 @@ function updateColours()
     }
 }
 
+/*
 function showPossibilities(data)
 {
     $('#possibilities').each(function() {
@@ -93,3 +103,5 @@ function showPossibilities(data)
 
 
 }
+
+*/

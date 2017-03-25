@@ -5,13 +5,12 @@ body {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-attachment: fixed;
     padding-top: 20px;
     line-height: 2em;
 }
 
 h1, h2, h3, h4 {
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 @media (max-width: $screen-xs-max) {
@@ -40,31 +39,26 @@ h1, h2, h3, h4 {
 
 .panel {
     padding:5px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     box-shadow: none;
 }
 
 .interiorpanel {
-    border-style: solid;
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
-    border-width: 16px;
+    border: 16px solid;
     border-image: url(../img/textBox.png) 33 fill stretch;
     box-shadow: -5px 5px 10px 5px rgba(0,0,0,0.2);
-    padding-bottom: 15px;
     overflow:hidden;
     padding: 15px;
     border-radius: 30px;
 }
 
 .bulletinpanel {
-    border-style: solid;
-    border-width: 16px;
+    border: 16px solid;
     border-image: url(../img/paper.png) 16 fill stretch;
-    box-shadow: -5px 5px 10px 5px rgba(0,0,0,0.2);
-    padding-bottom: 15px;
     overflow:hidden;
-    padding: 0px;
+    padding: 0;
     /*border-radius: 30px;*/
 }
 
