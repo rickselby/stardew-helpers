@@ -31,18 +31,25 @@
                     <div class="col-xs-12" v-if="possibilities.length == 0">
                         Select a villager and a date, and their possible schedules will appear here.
                     </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3 panel" v-for="poss in possibilities">
-                        <div class="bulletinpanel">
-                            <div class="panel-heading">
-                                <h4>{{ poss.extra }}</h4>
+                    <div v-for="(poss, index) in possibilities">
+                        <div class="col-sm-6 col-md-4 col-lg-3 panel">
+                            <div class="bulletinpanel">
+                                <div class="panel-heading">
+                                    <h4>{{ poss.extra }}</h4>
+                                </div>
+                                <ul class="list-group">
+                                    <div v-for="step in filterSteps(schedules[poss.schedule])">
+                                        <li class="list-group-item">
+                                            {{ formatTime(step.time) }}:
+                                            {{ step.location }}
+                                        </li>
+                                    </div>
+                                </ul>
                             </div>
-                            <ul class="list-group">
-                                <li class="list-group-item" v-for="step in filterSteps(schedules[poss.schedule])">
-                                    {{ formatTime(step.time) }}:
-                                    {{ step.location }}
-                                </li>
-                            </ul>
                         </div>
+                        <div class="clearfix visible-sm-block" v-if="((index + 1) % 2) === 0"></div>
+                        <div class="clearfix visible-md-block" v-if="((index + 1) % 3) === 0"></div>
+                        <div class="clearfix visible-lg-block" v-if="((index + 1) % 4) === 0"></div>
                     </div>
                 </div>
             </div>
