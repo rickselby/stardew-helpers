@@ -8,6 +8,7 @@ use App\Services\Maps;
 use App\Services\Schedules;
 use App\Services\Seasons;
 use App\Services\Villagers;
+use Illuminate\Support\Collection;
 
 class ScheduleController extends Controller
 {
@@ -15,7 +16,8 @@ class ScheduleController extends Controller
     {
         return view('index')
             ->with('villagers', $villagers->getList()->sort())
-            ->with('seasons', $seasons->getList());
+            ->with('seasons', $seasons->getList())
+            ->with('days', new Collection(range(1, 28)));
     }
 
     public function getSchedule(ScheduleRequest $request, Locations $locations)
