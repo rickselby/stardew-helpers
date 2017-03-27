@@ -32,28 +32,35 @@
 
     <div class="row center-block panel">
         <div class="interiorpanel">
-            <div class="panel-heading">
-                <h3>How to read the schedules</h3>
-            </div>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    Read the panels from left to right. The first panel that applies should be the
-                    villager's schedule for the day. There many be alternatives for rain, for buildings
-                    being unavailable, or based on friendship that will override the regular schedule for
-                    a day.
-                </li>
-                <li class="list-group-item">
-                    If there are two panels for rain, there is an equal, random chance of either being picked.
-                </li>
-                <li class="list-group-item">
-                    The times shown are when the villager will leave their previous location and head
-                    to the listed location.
-                </li>
-                <li class="list-group-item">
-                    If a villager has a location listed multiple times in a row, this normally means they're
-                    moving around in a room / house.
-                </li>
+            <h3>How to read the schedules</h3>
+            <p>
+                Read the panels from left to right. The first panel that applies should be the
+                villager's schedule for the day. There many be alternatives for rain, for buildings
+                being unavailable, or based on friendship that will override the regular schedule for
+                a day.
+            </p>
+            <p>
+                If there are two panels for rain, there is an equal, random chance of either being picked.
+            </p>
+            <p>
+                The times shown are when the villager will leave their previous location and head
+                to the listed location.
+            </p>
             </ul>
+        </div>
+    </div>
+
+    <div class="row center-block panel">
+        <div class="interiorpanel">
+            <h3>About this app</h3>
+            <p>
+                This app reads the schedule files from the game, and parses them in the same way the game does, to decide
+                which schedule a villager should take on a given day.
+            </p>
+            <p>
+                I dug through the game source code and interpreted it as best I could, but there could still be some
+                nuances that I missed.
+            </p>
         </div>
     </div>
 
@@ -61,8 +68,6 @@
         <div class="interiorpanel">
             <p class="text-muted">
                 Huge thanks to <a href="http://upload.farm">upload.farm</a> for allowing me to use their bootstrap theme
-                <br />
-                Source at [github link to follow]
                 <br />
                 All Stardew Valley assets copyright <a href="http://twitter.com/concernedape">Concerned Ape</a>
             </p>
