@@ -27,6 +27,9 @@
 
         <div class="row center-block panel">
             <div class="interiorpanel">
+                <div class="loading text-muted" id="loading">
+                    <span class="glyphicon glyphicon-refresh glyphicon-animate"></span>
+                </div>
                 <div class="row row-grid" id="possibilities">
                     <div class="col-xs-12" v-if="possibilities.length == 0">
                         Select a villager and a date, and their possible schedules will appear here.
@@ -79,6 +82,12 @@
         methods: {
             loadSchedules: function() {
                 var vm = this;
+
+                $('#possibilities').each(function() {
+                    $(this).fadeTo(300, 0);
+                });
+                $('#loading').show();
+
                 $.ajax({
                     url: postURL,
                     data: {
@@ -89,15 +98,22 @@
                     dataType: 'json',
                     type: 'post',
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        vm.schedules = [];
-                        vm.possibilities = [];
+
+                        $('#loading').hide();
+                        $('#possibilities').promise().done(function() {
+
+                            vm.schedules = [];
+                            vm.possibilities = [];
+
+                            $('#possibilities').each(function () {
+                                $(this).fadeTo(300, 1);
+                            });
+
+                        });
                     },
                     success: function (data) {
 
-                        $('#possibilities').each(function() {
-                            $(this).fadeTo(300, 0);
-                        });
-
+                        $('#loading').hide();
                         $('#possibilities').promise().done(function() {
 
                             vm.schedules = data.schedules;
