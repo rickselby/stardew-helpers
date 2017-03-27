@@ -3,19 +3,19 @@
         <div class="row center-block panel">
             <div class="interiorpanel">
                 <div class="row row-grid">
-                    <div class="col-sm-4 has-error">
+                    <div class="col-sm-4">
                         <select id="villager" name="villager" class="form-control" v-on:change="loadSchedules">
                             <option value="">Select a villager...</option>
                             <option v-for="villager in villagers" v-bind:value="villager">{{ villager }}</option>
                         </select>
                     </div>
-                    <div class="col-sm-4 has-error">
+                    <div class="col-sm-4">
                         <select id="season" name="season" class="form-control" v-on:change="loadSchedules">
                             <option value="">Select a season...</option>
-                            <option v-for="season in seasons" v-bind:value="season">{{ season }}</option>
+                            <option v-for="season in seasons" v-bind:value="season">{{ capitalizeFirstLetter(season) }}</option>
                         </select>
                     </div>
-                    <div class="col-sm-4 has-error">
+                    <div class="col-sm-4">
                         <select id="day" name="day" class="form-control" v-on:change="loadSchedules">
                             <option value="">Select a day...</option>
                             <option v-for="day in days" v-bind:value="day">{{ day }}</option>
@@ -37,8 +37,8 @@
                                 <h4>{{ poss.extra }}</h4>
                             </div>
                             <ul class="list-group">
-                                <li class="list-group-item" v-for="step in schedules[poss.schedule]">
-                                    {{ step.time }}:
+                                <li class="list-group-item" v-for="step in filterSteps(schedules[poss.schedule])">
+                                    {{ formatTime(step.time) }}:
                                     {{ step.location }}
                                 </li>
                             </ul>
@@ -80,10 +80,45 @@
                         vm.possibilities = [];
                     },
                     success: function (data) {
-                        vm.schedules = data.schedules;
-                        vm.possibilities = data.possibilities;
+
+                        $('#possibilities').each(function() {
+                            $(this).fadeTo(300, 0);
+                        });
+
+                        $('#possibilities').promise().done(function() {
+
+                            vm.schedules = data.schedules;
+                            vm.possibilities = data.possibilities;
+
+                            $('#possibilities').each(function () {
+                                $(this).fadeTo(300, 1);
+                            });
+
+                        });
                     }
                 });
+            },
+            capitalizeFirstLetter: function(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            },
+            filterSteps(steps) {
+                var stepList = [];
+                for (var step of steps) {
+                    if (stepList.length === 0) {
+                        stepList.push(step);
+                    } else {
+                        if (stepList[stepList.length - 1].location !== step.location) {
+                            stepList.push(step);
+                        }
+                    }
+                }
+                return stepList;
+            },
+            formatTime(time) {
+                // Pad left with a zero, if necessary
+                time = ('0' + time).slice(-4);
+                console.log(time)
+                return time.slice(0,2) + ':' + time.slice(-2);
             }
         }
     }
