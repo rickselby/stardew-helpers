@@ -13,4 +13,5 @@
 
 Route::get('/', 'ScheduleController@mainPage');
 
-Route::get('/map/{name}/{x}/{y}', 'ScheduleController@map');
+Route::post('/schedule', 'ScheduleController@getSchedule')->name('getSchedule');
+Route::get('/map/{name}/{x}/{y}', 'ScheduleController@map')->name('getMap');

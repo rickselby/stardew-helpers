@@ -128,7 +128,6 @@
                         possList.push(poss);
                     } else {
                         if (poss.rain && possList[possList.length - 1].rain) {
-                            console.log('DBOULE RAIN!');
                             possList[possList.length - 1].doubleRain = true;
                             possList[possList.length - 1].doubleRainSchedule = poss.schedule;
                         } else {
