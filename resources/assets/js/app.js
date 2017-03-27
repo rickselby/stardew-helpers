@@ -7,7 +7,8 @@
 
 require('./bootstrap');
 
-Vue.component('schedules', require('./components/Schedules.vue'));
+Vue.component('possibilities', require('./components/Possibilities.vue'));
+Vue.component('schedule', require('./components/Schedule.vue'));
 
 window.addEventListener('load', function () {
     const app = new Vue({

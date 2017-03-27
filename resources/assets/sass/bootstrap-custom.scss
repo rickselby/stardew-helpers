@@ -37,6 +37,10 @@ h1, h2, h3, h4 {
     }
 }
 
+.row.row-grid [class*="col-xs-"] + [class*="col-xs-"] {
+  margin-top: 0;
+}
+
 .panel {
     padding:5px;
     margin-bottom: 0;

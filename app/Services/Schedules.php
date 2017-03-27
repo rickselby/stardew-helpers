@@ -147,11 +147,11 @@ class Schedules
         }
 
         // Raining will be 50/50 choice if there are two
-        $this->addPossibility('rain', 'If Raining');
+        $this->addPossibility('rain', 'If Raining', true);
         if ($this->schedule->has('rain2')) {
             // Same priority as the other rain one
             $this->priority--;
-            $this->addPossibility('rain2', 'If Raining');
+            $this->addPossibility('rain2', 'If Raining', true);
         }
 
         $dayOfWeek = $this->getDayOfWeek($dayOfMonth);
@@ -422,10 +422,11 @@ class Schedules
      *
      * @param string $schedule
      * @param string $extra
+     * @param bool $rain
      */
-    private function addPossibility(string $schedule, string $extra)
+    private function addPossibility(string $schedule, string $extra, bool $rain = false)
     {
-        $this->possibilities[] = new Schedule($schedule, $this->priority++, $extra);
+        $this->possibilities[] = new Schedule($schedule, $this->priority++, $extra, $rain);
     }
 
     /**

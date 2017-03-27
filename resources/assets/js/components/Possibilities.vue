@@ -31,26 +31,32 @@
                     <div class="col-xs-12" v-if="possibilities.length == 0">
                         Select a villager and a date, and their possible schedules will appear here.
                     </div>
-                    <div v-for="(poss, index) in possibilities">
-                        <div class="col-sm-6 col-md-4 col-lg-3 panel">
+                    <template v-for="(poss, index) in filterPossibilities(possibilities)">
+                        <div class="panel" v-bind:class="getPossClasses(poss)">
                             <div class="bulletinpanel">
                                 <div class="panel-heading">
-                                    <h4>{{ poss.extra }}</h4>
+                                    <h4>
+                                        {{ poss.extra }}
+                                        {{ poss.doubleRain ? '(equal chance of either)' : '' }}
+                                    </h4>
                                 </div>
-                                <ul class="list-group">
-                                    <div v-for="step in filterSteps(schedules[poss.schedule])">
-                                        <li class="list-group-item">
-                                            {{ formatTime(step.time) }}:
-                                            {{ step.location }}
-                                        </li>
+                                <template v-if="poss.doubleRain">
+                                    <div class="col-xs-6" style="border-right: 1px solid black">
+                                        <schedule v-bind:schedule="schedules[poss.schedule]"></schedule>
                                     </div>
-                                </ul>
+                                    <div class="col-xs-6">
+                                        <schedule v-bind:schedule="schedules[poss.doubleRainSchedule]"></schedule>
+                                    </div>
+                                </template>
+                                <template v-else>
+                                    <schedule v-bind:schedule="schedules[poss.schedule]"></schedule>
+                                </template>
                             </div>
                         </div>
                         <div class="clearfix visible-sm-block" v-if="((index + 1) % 2) === 0"></div>
                         <div class="clearfix visible-md-block" v-if="((index + 1) % 3) === 0"></div>
                         <div class="clearfix visible-lg-block" v-if="((index + 1) % 4) === 0"></div>
-                    </div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -105,27 +111,32 @@
                     }
                 });
             },
+            getPossClasses: function(poss) {
+                if (poss.doubleRain) {
+                    return ['col-lg-6', 'col-md-8', 'col-sm-12'];
+                } else {
+                    return ['col-lg-3', 'col-md-4', 'col-sm-6'];
+                }
+            },
             capitalizeFirstLetter: function(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);
             },
-            filterSteps(steps) {
-                var stepList = [];
-                for (var step of steps) {
-                    if (stepList.length === 0) {
-                        stepList.push(step);
+            filterPossibilities(possibilities) {
+                var possList = [];
+                for (var poss of possibilities) {
+                    if (possList.length === 0) {
+                        possList.push(poss);
                     } else {
-                        if (stepList[stepList.length - 1].location !== step.location) {
-                            stepList.push(step);
+                        if (poss.rain && possList[possList.length - 1].rain) {
+                            console.log('DBOULE RAIN!');
+                            possList[possList.length - 1].doubleRain = true;
+                            possList[possList.length - 1].doubleRainSchedule = poss.schedule;
+                        } else {
+                            possList.push(poss);
                         }
                     }
                 }
-                return stepList;
-            },
-            formatTime(time) {
-                // Pad left with a zero, if necessary
-                time = ('0' + time).slice(-4);
-                console.log(time)
-                return time.slice(0,2) + ':' + time.slice(-2);
+                return possList;
             }
         }
     }

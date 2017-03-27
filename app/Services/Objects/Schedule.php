@@ -4,24 +4,21 @@ namespace App\Services\Objects;
 
 class Schedule implements \JsonSerializable
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $schedule;
-    /**
-     * @var string
-     */
+    /** @var string */
     private $extra;
-    /**
-     * @var int
-     */
+    /** @var int */
     private $priority;
+    /** @var bool */
+    private $rain;
 
-    public function __construct(string $schedule, int $priority, string $extra = '')
+    public function __construct(string $schedule, int $priority, string $extra = '', bool $rain = false)
     {
         $this->schedule = $schedule;
         $this->extra = $extra;
         $this->priority = $priority;
+        $this->rain = $rain;
     }
 
     public function __get($property)
