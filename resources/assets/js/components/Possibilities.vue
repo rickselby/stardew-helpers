@@ -2,25 +2,27 @@
     <div>
         <div class="row center-block panel">
             <div class="interiorpanel">
-                <div class="row row-grid">
-                    <div class="col-sm-4">
-                        <select id="villager" name="villager" class="form-control" v-on:change="loadSchedules">
-                            <option value="">Select a villager...</option>
-                            <option v-for="villager in villagers" v-bind:value="villager">{{ villager }}</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4">
-                        <select id="season" name="season" class="form-control" v-on:change="loadSchedules">
-                            <option value="">Select a season...</option>
-                            <option v-for="season in seasons" v-bind:value="season">{{ capitalizeFirstLetter(season) }}</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4">
-                        <select id="day" name="day" class="form-control" v-on:change="loadSchedules">
-                            <option value="">Select a day...</option>
-                            <option v-for="day in days" v-bind:value="day">{{ day }}</option>
-                        </select>
-                    </div>
+                <div class="text-center">
+                    <img v-for="name in villagers" class="portrait" :src="'portrait/'+name" :alt="name" :title="name"
+                         v-on:click="villager=name"
+                         v-bind:class="villager===name ? 'portrait-active' : ''" />
+                </div>
+                <div class="text-center" id="calendars">
+                    <template v-for="season in seasons">
+                        <div class="col-xs-12 col-sm-6 col-lg-3 calendar-container">
+                            <h4>{{ capitalizeFirstLetter(season) }}</h4>
+                            <span v-bind:id="season" class="calendar">
+                                <img src="calendar.png" v-bind:usemap="'#'+season+'Map'" />
+                                <div class="calendar-marker"></div>
+                            </span>
+                            <map v-bind:name="season+'Map'">
+                                <area shape="rect" v-for="day in days"
+                                      v-bind:coords="getCoords(day)"
+                                      @click="setDay(day, season)"
+                                      :alt="day" :title="day" />
+                            </map>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -34,6 +36,9 @@
                     <div class="col-xs-12" v-if="possibilities.length == 0">
                         Select a villager and a date, and their possible schedules will appear here.
                     </div>
+                    <h4 class="col-xs-12 text-center" v-if="possibilities.length !== 0">
+                        {{ selectedString }}
+                    </h4>
                     <template v-for="(poss, index) in filterPossibilities(possibilities)">
                         <div class="panel" v-bind:class="getPossClasses(poss)">
                             <div class="bulletinpanel">
@@ -77,9 +82,43 @@
                 days: days,
                 schedules: [],
                 possibilities: [],
+                villager: '',
+                season: '',
+                day: '',
+                selectedString: '',
+            }
+        },
+        watch: {
+            villager: function() {
+                this.loadSchedules();
+            },
+            season: function() {
+                this.loadSchedules();
+            },
+            day: function() {
+                this.loadSchedules();
             }
         },
         methods: {
+            getCoords: function(day) {
+                var dayOfWeek = ((day - 1) % 7);
+                var row = Math.floor((day - 1) / 7);
+                return '' + ((dayOfWeek * 32) + 9) + ',' +
+                    ((row * 32) + 39) + ',' +
+                    ((dayOfWeek * 32) + 41) + ',' +
+                    ((row * 32) + 71);
+            },
+            setVillager: function(villager) {
+                this.villager=villager;
+            },
+            setDay: function(day, season) {
+                this.season = season;
+                this.day = day;
+                $('.calendar-marker').hide();
+                $('#'+season+' .calendar-marker').show()
+                    .css('left', (7 + (((day - 1) % 7) * 32)))
+                    .css('top', (37 + (Math.floor((day - 1) / 7) * 32)));
+            },
             loadSchedules: function() {
                 var vm = this;
 
@@ -91,9 +130,9 @@
                 $.ajax({
                     url: postURL,
                     data: {
-                        'villager': $('#villager').val(),
-                        'season': $('#season').val(),
-                        'day': $('#day').val()
+                        'villager': this.villager,
+                        'season': this.season,
+                        'day': this.day
                     },
                     dataType: 'json',
                     type: 'post',
@@ -116,6 +155,10 @@
                         $('#loading').hide();
                         $('#possibilities').promise().done(function() {
 
+                            vm.selectedString = vm.villager + ': '
+                                + vm.ordinalSuffix(vm.day) + ' of '
+                                + vm.capitalizeFirstLetter(vm.season);
+
                             vm.schedules = data.schedules;
                             vm.possibilities = data.possibilities;
 
@@ -137,7 +180,7 @@
             capitalizeFirstLetter: function(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);
             },
-            filterPossibilities(possibilities) {
+            filterPossibilities: function(possibilities) {
                 var possList = [];
                 for (var poss of possibilities) {
                     if (possList.length === 0) {
@@ -152,6 +195,20 @@
                     }
                 }
                 return possList;
+            },
+            ordinalSuffix: function(val) {
+                var j = val % 10,
+                    k = val % 100;
+                if (j == 1 && k != 11) {
+                    return val + "st";
+                }
+                if (j == 2 && k != 12) {
+                    return val + "nd";
+                }
+                if (j == 3 && k != 13) {
+                    return val + "rd";
+                }
+                return val + "th";
             }
         }
     }

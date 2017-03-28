@@ -23,4 +23,20 @@ class Villagers
             return $files;
         });
     }
+
+    /**
+     * Get the portrait for this villager
+     *
+     * @param string $villager
+     *
+     * @return bool|\Intervention\Image\Image
+     */
+    public function getPortrait(string $villager)
+    {
+        if (\Storage::disk('portraits')->get($villager.'.png')) {
+            return \Image::make(\Storage::disk('portraits')->get($villager . '.png'));
+        } else {
+            return false;
+        }
+    }
 }
