@@ -58,6 +58,11 @@ return [
             'root' => storage_path('app/maps'),
         ],
 
+        'portraits' => [
+            'driver' => 'local',
+            'root' => storage_path('app/portraits'),
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_KEY'),

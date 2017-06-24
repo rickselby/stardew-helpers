@@ -16,7 +16,7 @@ class Maps
      * @param int $x
      * @param int $y
      *
-     * @return Image
+     * @return bool|Image
      */
     public function getMap(string $name, int $x, int $y)
     {

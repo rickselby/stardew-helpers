@@ -38,4 +38,14 @@ class ScheduleController extends Controller
             abort(404);
         }
     }
+
+    public function portrait($name, Villagers $villagers)
+    {
+        $portrait = $villagers->getPortrait($name);
+        if ($portrait) {
+            return $portrait->response();
+        } else {
+            abort(404);
+        }
+    }
 }

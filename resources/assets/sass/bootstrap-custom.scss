@@ -31,33 +31,10 @@ h1, h2, h3, h4 {
     h1{font-size: 50px;}
 }
 
-.row.row-grid [class*="col-"] + [class*="col-"] {
-    margin-top: 15px;
-}
-
-@media (min-width: $screen-md-max) {
-    .row.row-grid [class*="col-lg-"] + [class*="col-lg-"] {
-        margin-top: 0;
-    }
-}
-@media (min-width: $screen-sm-max) {
-    .row.row-grid [class*="col-md-"] + [class*="col-md-"] {
-        margin-top: 0;
-    }
-}
-@media (min-width: $screen-xs-max) {
-    .row.row-grid [class*="col-sm-"] + [class*="col-sm-"] {
-        margin-top: 0;
-    }
-}
-
-.row.row-grid [class*="col-xs-"] + [class*="col-xs-"] {
-  margin-top: 0;
-}
-
 .panel {
     padding:5px;
     margin-bottom: 0;
+    margin-top: 0px;
     box-shadow: none;
 }
 
@@ -90,4 +67,40 @@ h1, h2, h3, h4 {
   left: 50%;
   margin-left: -0.5em;
   display: none;
+}
+
+.portrait {
+  border: 3px solid transparent;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+}
+
+.portrait-active {
+  border: 3px solid red;
+}
+
+#calendars h4 {
+  margin-bottom: 0px;
+}
+
+#calendars div.calendar-container {
+  margin-bottom: 0.5em;
+}
+
+#calendars .calendar {
+  display: inline-block;
+  position: relative;
+  width: auto;
+  height: auto;
+}
+
+#calendars .calendar-marker {
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 37px;
+  border: 3px solid red;
+  width: 35px;
+  height: 35px;
 }
