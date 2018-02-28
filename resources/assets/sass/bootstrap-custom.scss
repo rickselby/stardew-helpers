@@ -52,6 +52,15 @@ h1, h2, h3, h4 {
   border-radius: 30px;
 }
 
+a.interiorpanel {
+  display: block;
+  color: #000;
+}
+
+a.interiorpanel:hover {
+  text-decoration: none;
+}
+
 .bulletinpanel {
     border: 16px solid;
     border-image: url(../img/paper.png) 16 fill stretch;

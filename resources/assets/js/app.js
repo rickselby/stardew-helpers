@@ -15,3 +15,5 @@ window.addEventListener('load', function () {
         el: '#app'
     });
 });
+
+require('./artifacts');
