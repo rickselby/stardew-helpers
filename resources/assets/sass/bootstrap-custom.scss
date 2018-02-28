@@ -31,22 +31,25 @@ h1, h2, h3, h4 {
     h1{font-size: 50px;}
 }
 
-.panel {
+.panel, .modal-variable {
     padding:5px;
     margin-bottom: 0;
     margin-top: 0px;
     box-shadow: none;
 }
 
-.interiorpanel {
+.interiorpanel, .modal-variable .modal-content {
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     border: 16px solid;
     border-image: url(../img/textBox.png) 33 fill stretch;
     box-shadow: -5px 5px 10px 5px rgba(0,0,0,0.2);
     overflow:hidden;
-    padding: 15px;
-    border-radius: 30px;
+}
+
+.interiorpanel {
+  padding: 15px;
+  border-radius: 30px;
 }
 
 .bulletinpanel {
@@ -106,9 +109,13 @@ h1, h2, h3, h4 {
 }
 
 .modal-variable {
-  text-align:center;
+  text-align: center;
 }
 
 .modal-variable .modal-content {
-  display:inline-block;
+  display: inline-block;
+}
+
+.modal-variable .modal-body {
+  padding: 0;
 }
