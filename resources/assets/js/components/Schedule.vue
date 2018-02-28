@@ -3,7 +3,9 @@
         <div v-for="step in filterSteps(schedule)">
             <li class="list-group-item">
                 {{ formatTime(step.time) }}:
-                {{ step.location }}
+                <a href="#mapModal" data-toggle="modal" data-target="#mapModal" v-bind:data-map="getMap(step)">
+                    {{ step.location }}
+                </a>
             </li>
         </div>
     </ul>
@@ -27,6 +29,9 @@
                     }
                 }
                 return stepList;
+            },
+            getMap(step) {
+                return step.map + '/' + step.x + '/' + step.y;
             },
             formatTime(time) {
                 // Pad left with a zero, if necessary

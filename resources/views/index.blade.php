@@ -30,6 +30,16 @@
         <possibilities></possibilities>
     </div>
 
+    <div class="modal fade" tabindex="-1" role="dialog" id="mapModal" aria-labelledby="mapModal" >
+        <div class="modal-dialog modal-variable" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="" />
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
     <div class="row center-block panel">
         <div class="interiorpanel">
             <h3>How to read the schedules</h3>
