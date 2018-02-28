@@ -34,7 +34,7 @@
         <div class="modal-dialog modal-variable" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <img />
+                    <img src="" />
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

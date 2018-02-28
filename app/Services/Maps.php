@@ -6,7 +6,11 @@ use Intervention\Image\Image;
 
 class Maps
 {
+    // Size of pixel grid on original maps
     const GRIDSIZE = 8;
+    // Scale image before showing?
+    const SCALE = 2;
+    // Crop the image to the given size
     const CROPSIZE = 400;
 
     /**
@@ -58,14 +62,15 @@ class Maps
             return false;
         }
 
-        $img = \Image::make(\Storage::disk('maps')->get($name . '.png'));
+        $img = \Image::make(\Storage::disk('maps')->getDriver()->getAdapter()->applyPathPrefix($name . '.png'));
 
         // Add some kind of marker at $x, $y (8px per square)
         $this->addMarker($img, $x, $y);
+        $this->scale($img);
         $this->crop($img, $x, $y);
 
         // Save to the generated path
-        \Storage::disk('maps')->put($this->getGeneratedPath($name, $x, $y), $img->encode());
+        \Storage::disk('maps')->put($this->getGeneratedPath($name, $x, $y), $img->encode('png'));
 
     }
 
@@ -86,6 +91,16 @@ class Maps
     }
 
     /**
+     * Scale the image as appropriate
+     *
+     * @param Image $image
+     */
+    private function scale(Image $image)
+    {
+        $image->heighten($image->height() * self::SCALE);
+    }
+
+    /**
      * Crop the image to the right size
      *
      * @param Image $image
@@ -94,7 +109,14 @@ class Maps
      */
     private function crop(Image $image, int $x, int $y)
     {
-        $image->crop(self::CROPSIZE, self::CROPSIZE, $this->getCropOffset($x), $this->getCropOffset($y));
+        // Expanding the image first will give us a transparent background all around
+        $image->resizeCanvas(self::CROPSIZE, self::CROPSIZE, 'center', true);
+        $image->crop(
+            self::CROPSIZE,
+            self::CROPSIZE,
+            $this->getCropOffset($x) + (self::CROPSIZE / 2),
+            $this->getCropOffset($y) + (self::CROPSIZE / 2)
+        );
     }
 
     /**
@@ -106,6 +128,6 @@ class Maps
      */
     private function getCropOffset(int $tile): int
     {
-        return (($tile + 0.5) * self::GRIDSIZE) - (self::CROPSIZE / 2);
+        return (($tile + 0.5) * self::GRIDSIZE * self::SCALE) - (self::CROPSIZE / 2);
     }
 }
