@@ -28,39 +28,52 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: $screen-xs-max) {
-    h1{font-size: 50px;}
+    h1 {
+      font-size: 50px;
+    }
 }
 
-.panel, .modal-variable {
-    padding:5px;
-    margin-bottom: 0;
-    margin-top: 0px;
-    box-shadow: none;
+@mixin borderOuter {
+  padding: 5px;
+  margin-bottom: 0;
+  margin-top: 0px;
+  box-shadow: none;
 }
 
-.interiorpanel, .modal-variable .modal-content {
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    border: 16px solid;
-    border-image: url(../img/textBox.png) 33 fill stretch;
-    box-shadow: -5px 5px 10px 5px rgba(0,0,0,0.2);
-    overflow:hidden;
-}
-
-.interiorpanel {
-  padding: 15px;
+@mixin borderInner {
+  border: 16px solid;
+  overflow: hidden;
   border-radius: 30px;
 }
 
-.bulletinpanel {
-    border: 16px solid;
-    border-image: url(../img/paper.png) 16 fill stretch;
-    overflow:hidden;
-    padding: 0;
-    /*border-radius: 30px;*/
+@mixin woodBorderInterior {
+  @include borderInner;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  border-image: url(../img/textBox.png) 33 fill stretch;
+  box-shadow: -5px 5px 10px 5px rgba(0,0,0,0.2);
 }
 
-.list-group-item {
+@mixin bulletinInterior {
+  @include borderInner;
+  border-image: url(../img/paper.png) 16 fill stretch;
+  padding: 0;
+}
+
+.panel {
+  @include borderOuter;
+
+  > div.wood-border {
+    @include woodBorderInterior;
+    padding: 15px;
+  }
+
+  > div.bulletin {
+    @include bulletinInterior;
+  }
+}
+
+#possibilities .list-group-item {
   padding: 5px 10px;
   border:none;
 }
@@ -77,45 +90,91 @@ h1, h2, h3, h4 {
   width: 64px;
   height: 64px;
   cursor: pointer;
+
+  &.portrait-active {
+    border: 3px solid red;
+  }
 }
 
-.portrait-active {
-  border: 3px solid red;
+code {
+  background-color: inherit;
 }
 
-#calendars h4 {
-  margin-bottom: 0px;
+#calendars {
+  h4 {
+    margin-bottom: 0;
+  }
+
+  .calendar-container {
+    margin-bottom: 0.5em;
+    @extend .col-xs-12;
+    @extend .col-sm-6;
+    @extend .col-lg-3;
+  }
+
+  .calendar {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    height: auto;
+  }
+
+  .calendar-marker {
+    position: absolute;
+    display: none;
+    border: 3px solid red;
+    width: 35px;
+    height: 35px;
+  }
 }
 
-#calendars div.calendar-container {
-  margin-bottom: 0.5em;
-}
-
-#calendars .calendar {
-  display: inline-block;
-  position: relative;
-  width: auto;
-  height: auto;
-}
-
-#calendars .calendar-marker {
-  position: absolute;
-  display: none;
-  left: 7px;
-  top: 37px;
-  border: 3px solid red;
-  width: 35px;
-  height: 35px;
-}
+/** Modals **/
 
 .modal-variable {
+  @include borderOuter;
   text-align: center;
+
+  .modal-content {
+    @include woodBorderInterior;
+    display: inline-block;
+    border-radius: 0;
+  }
+
+  .modal-body {
+    padding: 0;
+  }
 }
 
-.modal-variable .modal-content {
-  display: inline-block;
+#artifact-maps {
+  .artifactMap {
+    @include borderOuter;
+    display: inline-block;
+
+    > img {
+      @include bulletinInterior;
+      border-radius: 0;
+    }
+  }
 }
 
-.modal-variable .modal-body {
-  padding: 0;
+/** navigation **/
+
+#navigation {
+  border-bottom: none;
+
+  li {
+    @include borderOuter;
+
+    a {
+      @include woodBorderInterior;
+      text-align: center;
+      @extend h3;
+    }
+  }
+
+  li.active {
+    a {
+      font-weight: 800;
+    }
+  }
 }
