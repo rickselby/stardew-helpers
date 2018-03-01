@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row center-block panel">
-            <div class="interiorpanel">
+            <div class="wood-border">
                 <div class="text-center">
                     <img v-for="name in villagers" class="portrait" :src="'portrait/'+name" :alt="name" :title="name"
                          v-on:click="villager=name"
@@ -9,7 +9,7 @@
                 </div>
                 <div class="text-center" id="calendars">
                     <template v-for="season in seasons">
-                        <div class="col-xs-12 col-sm-6 col-lg-3 calendar-container">
+                        <div class="calendar-container">
                             <h4>{{ capitalizeFirstLetter(season) }}</h4>
                             <span v-bind:id="season" class="calendar">
                                 <img src="calendar.png" v-bind:usemap="'#'+season+'Map'" />
@@ -28,7 +28,7 @@
         </div>
 
         <div class="row center-block panel">
-            <div class="interiorpanel">
+            <div class="wood-border">
                 <div class="loading text-muted" id="loading">
                     <span class="glyphicon glyphicon-refresh glyphicon-animate"></span>
                 </div>
@@ -41,7 +41,7 @@
                     </h4>
                     <template v-for="(poss, index) in filterPossibilities(possibilities)">
                         <div class="panel" v-bind:class="getPossClasses(poss)">
-                            <div class="bulletinpanel">
+                            <div class="bulletin">
                                 <div class="panel-heading">
                                     <h4>
                                         {{ poss.extra }}

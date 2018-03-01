@@ -15,7 +15,7 @@ $(document).ready(function() {
         var file = $(this)[0].files[0],
             reader = new FileReader();
 
-        $('#output-container').hide();
+        $('#artifact-maps').hide();
 
         reader.onload = function (e) {
             var output = "",
@@ -26,7 +26,8 @@ $(document).ready(function() {
 
             $('#out').html(output);
 
-            $('#output-container').show();
+            $('#artifact-maps').show();
+            $('#input-advice').hide();
         };
 
         reader.readAsText(file);

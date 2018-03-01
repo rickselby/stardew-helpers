@@ -21,7 +21,7 @@
 </div><!-- /.modal -->
 
 <div class="row center-block panel">
-    <div class="interiorpanel">
+    <div class="wood-border">
         <h3>How to read the schedules</h3>
         <p>
             Read the panels from left to right. The first panel that applies should be the
@@ -38,7 +38,7 @@
 </div>
 
 <div class="row center-block panel">
-    <div class="interiorpanel">
+    <div class="wood-border">
         <h3>About this app</h3>
         <p>
             This app reads the schedule files from the game, and parses them in the same way the game does, to decide
@@ -51,12 +51,3 @@
     </div>
 </div>
 
-<div class="row center-block panel text-center">
-    <div class="interiorpanel">
-        <p class="text-muted">
-            Huge thanks to <a href="http://upload.farm">upload.farm</a> for allowing me to use their bootstrap theme
-            <br />
-            All Stardew Valley assets copyright <a href="http://twitter.com/concernedape">Concerned Ape</a>
-        </p>
-    </div>
-</div>
