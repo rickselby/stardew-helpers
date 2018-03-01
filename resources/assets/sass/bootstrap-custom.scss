@@ -61,12 +61,20 @@ a.interiorpanel:hover {
   text-decoration: none;
 }
 
-.bulletinpanel {
+.bulletinpanel, .artifactMap {
     border: 16px solid;
     border-image: url(../img/paper.png) 16 fill stretch;
     overflow:hidden;
     padding: 0;
-    /*border-radius: 30px;*/
+}
+
+.bulletinpanel {
+  border-radius: 30px;
+}
+
+.artifactMap {
+  display: inline-block;
+  margin-right: 1em;
 }
 
 .list-group-item {

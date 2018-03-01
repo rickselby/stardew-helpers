@@ -60,7 +60,7 @@ $(document).ready(function() {
         $.each(locations, function(id, location) {
             output += '<h3>' + location.map + '</h3>';
             $.each(location.spots, function(id, spot) {
-                output += '<img class="artifactMap" src="/map/' + location.map + '/' + spot.x + '/' + spot.y + '" />';
+                output += '<span class="artifactMap"><img src="map/' + location.map + '/' + spot.x + '/' + spot.y + '" /></span>';
             });
         });
         return output;
