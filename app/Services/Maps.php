@@ -7,9 +7,9 @@ use Intervention\Image\Image;
 class Maps
 {
     // Size of pixel grid on original maps
-    const GRIDSIZE = 8;
+    const GRIDSIZE = 16;
     // Scale image before showing?
-    const SCALE = 2;
+    const SCALE = 1;
     // Crop the image to the given size
     const CROPSIZE = 400;
 
@@ -59,19 +59,20 @@ class Maps
     private function makeMap(string $name, int $x, int $y)
     {
         if (!\Storage::disk('maps')->exists($name . '.png')) {
-            return false;
+            return;
         }
 
         $img = \Image::make(\Storage::disk('maps')->getDriver()->getAdapter()->applyPathPrefix($name . '.png'));
 
         // Add some kind of marker at $x, $y (8px per square)
         $this->addMarker($img, $x, $y);
-        $this->scale($img);
+        if (env('MAP_SCALE') != 1) {
+            $this->scale($img);
+        }
         $this->crop($img, $x, $y);
 
         // Save to the generated path
         \Storage::disk('maps')->put($this->getGeneratedPath($name, $x, $y), $img->encode('png'));
-
     }
 
     /**
@@ -83,11 +84,13 @@ class Maps
      */
     private function addMarker(Image $image, int $x, int $y)
     {
+        $mapGrid = env('MAP_GRID');
+
         $marker = \Image::make(\Storage::get('marker.png'));
 
-        $xOffset = ($marker->width() - self::GRIDSIZE) / 2;
-        $yOffset = ($marker->height() - self::GRIDSIZE) / 2;
-        $image->insert($marker, 'top-left', ($x * self::GRIDSIZE) - $xOffset, ($y * self::GRIDSIZE) - $yOffset);
+        $xOffset = ($marker->width() - $mapGrid) / 2;
+        $yOffset = ($marker->height() - $mapGrid) / 2;
+        $image->insert($marker, 'top-left', ($x * $mapGrid) - $xOffset, ($y * $mapGrid) - $yOffset);
     }
 
     /**
@@ -97,7 +100,7 @@ class Maps
      */
     private function scale(Image $image)
     {
-        $image->heighten($image->height() * self::SCALE);
+        $image->heighten($image->height() * env('MAP_SCALE'));
     }
 
     /**
@@ -109,13 +112,14 @@ class Maps
      */
     private function crop(Image $image, int $x, int $y)
     {
+        $mapSize = env('MAP_SIZE');
         // Expanding the image first will give us a transparent background all around
-        $image->resizeCanvas(self::CROPSIZE, self::CROPSIZE, 'center', true);
+        $image->resizeCanvas($mapSize, $mapSize, 'center', true);
         $image->crop(
-            self::CROPSIZE,
-            self::CROPSIZE,
-            $this->getCropOffset($x) + (self::CROPSIZE / 2),
-            $this->getCropOffset($y) + (self::CROPSIZE / 2)
+            $mapSize,
+            $mapSize,
+            $this->getCropOffset($x) + ($mapSize / 2),
+            $this->getCropOffset($y) + ($mapSize / 2)
         );
     }
 
@@ -128,6 +132,6 @@ class Maps
      */
     private function getCropOffset(int $tile): int
     {
-        return (($tile + 0.5) * self::GRIDSIZE * self::SCALE) - (self::CROPSIZE / 2);
+        return (($tile + 0.5) * env('MAP_GRID') * env('MAP_SCALE')) - (env('MAP_SIZE') / 2);
     }
 }

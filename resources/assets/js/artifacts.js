@@ -37,7 +37,7 @@ $(document).ready(function() {
         var locations = [];
         $(xmlDoc).find('locations > GameLocation').each(function () {
             var location = {
-                'map': $(this).attr('xsi:type'),
+                'map': $(this).children('name').text(),
                 'spots': []
             };
             $(this).find('objects > item').each(function () {
