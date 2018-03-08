@@ -12,12 +12,12 @@
 
     <div class="row center-block">
         <ul class="nav nav-tabs" role="tablist" id="navigation">
-            <li class="col-sm-6 active">
+            <li class="col-xs-12 col-sm-6 active">
                 <a href="#calendar" data-toggle="tab">
                     Villager Calendar
                 </a>
             </li>
-            <li class="col-sm-6">
+            <li class="col-xs-12 col-sm-6">
                 <a href="#artifact" data-toggle="tab">
                     Artifact Finder
                 </a>

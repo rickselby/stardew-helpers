@@ -7,6 +7,8 @@
 
 require('./bootstrap');
 
+window.Vue = require('vue');
+
 Vue.component('possibilities', require('./components/Possibilities.vue'));
 Vue.component('schedule', require('./components/Schedule.vue'));
 
@@ -17,3 +19,9 @@ window.addEventListener('load', function () {
 });
 
 require('./artifacts');
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr("content"),
+    }
+});

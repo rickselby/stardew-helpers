@@ -10,44 +10,63 @@ $(document).ready(function() {
         return;
     }
 
-    // Show input field immediately
+    // Show input field once we know we have File API support
     $('#input-container').show();
 
+    /**
+     * When a file is selected...
+     */
     $('#file_select').change(function() {
         var file = $(this)[0].files[0],
             reader = new FileReader();
 
+        // Hide any shown maps
         $('#artifact-maps').hide();
 
         reader.onload = function (e) {
             var xmlDoc = $.parseXML(e.target.result),
                 farmType = $(xmlDoc).find('whichFarm').text();
 
+            // Set the contents of the output div
             $('#out').html(
                 showLocations(getArtifactSpots(xmlDoc), farmType, xmlDoc)
             );
 
+            // Show the artifact maps again
             $('#artifact-maps').show();
+
+            // Hide the input advice after the first file load
             $('#input-advice').hide();
         };
 
         reader.readAsText(file);
     });
 
+    /**
+     * Get a list of artifact spots from the save file
+     *
+     * @param xmlDoc
+     * @returns {Array}
+     */
     function getArtifactSpots(xmlDoc) {
         var locations = [];
 
+        // Step through each location in the game
         $(xmlDoc).find('locations > GameLocation').each(function () {
             var map = $(this).children('name').text(),
                 location = {
                     'map': map,
                     'spots': []
                 };
+
+            // Step through each object in each location...
             $(this).find('objects > item').each(function () {
+                // Add any Artifact Spots to the list of spots for this location
                 if ($(this).find('DisplayName').text() === "Artifact Spot") {
                     location.spots.push({
                         'x': $(this).find('tileLocation > X').text(),
                         'y': $(this).find('tileLocation > Y').text(),
+                        // Find out which artifact is in this location
                         'artifact': findArtifact(
                             $(this).find('tileLocation > X').text(),
                             $(this).find('tileLocation > Y').text(),
@@ -57,13 +76,24 @@ $(document).ready(function() {
                     });
                 }
             });
+
+            // If we found artifact spots in this location, add the location to the list
             if (location.spots.length > 0) {
                 locations.push(location);
             }
         });
+
         return locations;
     }
 
+    /**
+     * Take a list of locations and generate HTML to show them
+     *
+     * @param locations
+     * @param farmType
+     * @param xmlDoc
+     * @returns {jQuery|HTMLElement}
+     */
     function showLocations(locations, farmType, xmlDoc) {
         var output = $('<div>');
         $.each(locations, function(id, location) {
@@ -96,6 +126,12 @@ $(document).ready(function() {
         return output;
     }
 
+    /**
+     * Get the map name for display
+     *
+     * @param map
+     * @returns {*}
+     */
     function getMapName(map) {
         var artifactMaps = {
             BusStop: 'Bus Stop',
@@ -109,6 +145,13 @@ $(document).ready(function() {
         }
     }
 
+    /**
+     * Get the correct map for the farm for the current save
+     *
+     * @param map
+     * @param farmType
+     * @returns {*}
+     */
     function getMapReference(map, farmType) {
         if (map === 'Farm') {
             switch(farmType) {
@@ -130,6 +173,17 @@ $(document).ready(function() {
         }
     }
 
+    /**
+     * Find which artifact will be found in a given spot
+     *
+     * (GameLocation.cs; digUpArtifactSpot(), approx. line 7618)
+     *
+     * @param x
+     * @param y
+     * @param map
+     * @param xmlDoc
+     * @returns {*}
+     */
     function findArtifact(x, y, map, xmlDoc) {
         var uniqueID = $(xmlDoc).find('uniqueIDForThisGame').text(),
             daysPlayed = $(xmlDoc).find('DaysPlayed').text(),
@@ -184,6 +238,13 @@ $(document).ready(function() {
         return objectInformation[objectIndex];
     }
 
+    /**
+     * Get the number of a specific artifact found
+     *
+     * @param artifactID
+     * @param xmlDoc
+     * @returns {number}
+     */
     function artifactsFound(artifactID, xmlDoc) {
         return parseInt(
             $(xmlDoc).find('player > archaeologyFound key').filter(function () {
@@ -192,6 +253,9 @@ $(document).ready(function() {
         );
     }
 
+    /**
+     * List of objects that can be found under artifact spots, and their locations and chances
+     */
     const objectInformation = {
         96: {id: 96, name: "Dwarf Scroll I", type: "Arch", locations: {}},
         97: {id: 97, name: "Dwarf Scroll II", type: "Arch", locations: {}},
@@ -276,6 +340,9 @@ $(document).ready(function() {
         770: {id: 770, name: "Mixed Seeds", type: "Seeds -74", locations: {}}
     };
 
+    /**
+     * List of locations where artifacts can be found, and  the artifacts and chances
+     */
     const locations = {
         Farm: [{id: 382, chance: .05}, {id: 770, chance: .1}, {id: 390, chance: .25}, {id: 330, chance:  1}],
         Desert: [{id: 390, chance: .25}, {id: 330, chance:  1}],

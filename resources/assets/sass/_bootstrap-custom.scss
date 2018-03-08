@@ -145,6 +145,8 @@ code {
   }
 }
 
+/** Artifact Maps **/
+
 #artifact-maps {
   .artifactMap {
     @include borderOuter;
@@ -165,7 +167,7 @@ code {
   }
 }
 
-/** navigation **/
+/** Navigation **/
 
 #navigation {
   border-bottom: none;
