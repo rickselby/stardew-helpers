@@ -1,4 +1,18 @@
 
+<div id="artifact-maps" class="row center-block panel" style="display:none;">
+    <div class="wood-border">
+        <h2>Results</h2>
+        <p>
+            <strong>Note:</strong>
+            The farm maps aren't going to be very useful; they are blank, and won't have your own layout.
+            The brains behind <a href="//upload.farm">upload.farm</a> have spent a lot of time working out how to
+            generate your actual farm layout, and I'm not about to pick off their work here. It should give you some
+            indication of where the artifact spots are.
+        </p>
+        <div id="out"></div>
+    </div>
+</div>
+
 <div id="input-container" class="row center-block panel" style="display:none;">
     <div class="wood-border">
         <h2>Save File</h2>
@@ -23,20 +37,6 @@
                 We do not upload your file; all processing is done on your own machine.
             </p>
         </div>
-    </div>
-</div>
-
-<div id="artifact-maps" class="row center-block panel" style="display:none;">
-    <div class="wood-border">
-        <h2>Results</h2>
-        <p>
-            <strong>Note:</strong>
-            The farm maps aren't going to be very useful; they are blank, and won't have your own layout.
-            The brains behind <a href="//upload.farm">upload.farm</a> have spent a lot of time working out how to
-            generate your actual farm layout, and I'm not about to pick off their work here. It should give you some
-            indication of where the artifact spots are.
-        </p>
-        <div id="out"></div>
     </div>
 </div>
 
