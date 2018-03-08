@@ -19,6 +19,7 @@ window.addEventListener('load', function () {
 });
 
 require('./artifacts');
+require('./locations');
 
 $.ajaxSetup({
     headers: {
