@@ -1,0 +1,103 @@
+
+body {
+  background: #84a4f0 url(../img/bg.png) no-repeat fixed center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  padding-top: 20px;
+  line-height: 2em;
+}
+
+h1, h2, h3, h4 {
+  margin-top: 0;
+}
+
+@media (max-width: $screen-xs-max) {
+  h1 {
+    font-size: 50px;
+  }
+}
+
+@mixin borderOuter {
+  padding: 5px;
+  margin-bottom: 0;
+  margin-top: 0px;
+  box-shadow: none;
+}
+
+@mixin borderInner {
+  border: 16px solid;
+  overflow: hidden;
+  border-radius: 30px;
+}
+
+@mixin woodBorderInterior {
+  @include borderInner;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  border-image: url(../img/textBox.png) 33 fill stretch;
+  box-shadow: -5px 5px 10px 5px rgba(0,0,0,0.2);
+}
+
+@mixin bulletinInterior {
+  @include borderInner;
+  border-image: url(../img/paper.png) 16 fill stretch;
+  padding: 0;
+}
+
+.panel {
+  @include borderOuter;
+
+  > div.wood-border {
+    @include woodBorderInterior;
+    padding: 15px;
+  }
+
+  > div.bulletin {
+    @include bulletinInterior;
+  }
+}
+
+code {
+  background-color: inherit;
+}
+
+/** Modals **/
+
+.modal-variable {
+  @include borderOuter;
+  text-align: center;
+
+  .modal-content {
+    @include woodBorderInterior;
+    display: inline-block;
+    border-radius: 0;
+  }
+
+  .modal-body {
+    padding: 0;
+  }
+}
+
+/** Navigation **/
+
+#navigation {
+  border-bottom: none;
+
+  li {
+    @include borderOuter;
+
+    a {
+      @include woodBorderInterior;
+      text-align: center;
+      @extend h3;
+    }
+  }
+
+  li.active {
+    a {
+      font-weight: 800;
+    }
+  }
+}

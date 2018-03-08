@@ -95,12 +95,10 @@ $(document).ready(function() {
      * @returns {jQuery|HTMLElement}
      */
     function showLocations(locations, farmType, xmlDoc) {
-        var output = $('<div>');
+        var output = [];
         $.each(locations, function(id, location) {
 
-            output.append(
-                $('<h3>').text(getMapName(location.map))
-            );
+            output.push($('<h3>').text(getMapName(location.map)));
 
             $.each(location.spots, function(id, spot) {
 
@@ -109,14 +107,15 @@ $(document).ready(function() {
                     artifact.addClass('artifact-needed');
                 }
 
-                output.append(
+                output.push(
                     $('<div>')
                         .addClass('artifactMap')
                         .append(
                             $('<div>')
-                                .append(artifact)
                                 .append(
-                                    $('<img>').attr('src', 'map/' + getMapReference(location.map, farmType) + '/' + spot.x + '/' + spot.y)
+                                    artifact,
+                                    $('<img>')
+                                        .attr('src', 'map/' + getMapReference(location.map, farmType) + '/' + spot.x + '/' + spot.y)
                                 )
                         )
                 );

@@ -6,8 +6,25 @@
     var days = {!! $days->toJson() !!};
 </script>
 
-<div id="app">
-    <possibilities></possibilities>
+<div class="row center-block panel">
+    <div class="wood-border">
+        <div class="text-center" id="villagers"></div>
+        <div class="text-center" id="calendars"></div>
+    </div>
+</div>
+
+<div class="row center-block panel">
+    <div class="wood-border">
+        <div class="loading text-muted" id="loading">
+            <span class="glyphicon glyphicon-refresh glyphicon-animate"></span>
+        </div>
+        <div class="row row-grid" id="possibilities">
+            <div class="col-xs-12" id="possibilities-none">
+                Select a villager and a date, and their possible schedules will appear here.
+            </div>
+            <div id="possibilities-some"></div>
+        </div>
+    </div>
 </div>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="mapModal" aria-labelledby="mapModal" >

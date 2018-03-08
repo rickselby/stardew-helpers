@@ -1,0 +1,22 @@
+
+/** Artifact Maps **/
+
+#artifact-maps {
+  .artifactMap {
+    @include borderOuter;
+    display: inline-block;
+
+    > div {
+      @include bulletinInterior;
+      border-radius: 0;
+
+      > h4 {
+        text-align: center;
+
+        &.artifact-needed {
+          font-weight: 800;
+        }
+      }
+    }
+  }
+}

@@ -7,19 +7,8 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
-
-Vue.component('possibilities', require('./components/Possibilities.vue'));
-Vue.component('schedule', require('./components/Schedule.vue'));
-
-window.addEventListener('load', function () {
-    const app = new Vue({
-        el: '#app'
-    });
-});
-
-require('./artifacts');
 require('./locations');
+require('./artifacts');
 
 $.ajaxSetup({
     headers: {
