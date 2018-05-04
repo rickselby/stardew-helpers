@@ -1,8 +1,8 @@
 
 /** Artifact Maps **/
 
-#artifact-maps {
-  .artifactMap {
+.maps {
+  .map {
     @include borderOuter;
     display: inline-block;
 

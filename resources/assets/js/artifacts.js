@@ -6,37 +6,37 @@ $(document).ready(function() {
 
     // Check for required File API support.
     if (!(window.File && window.FileReader)) {
-        document.getElementById('out').innerHTML = '<span class="error">Fatal Error: Could not load the File & FileReader APIs</span>';
+        document.getElementById('artifact-out').innerHTML = '<span class="error">Fatal Error: Could not load the File & FileReader APIs</span>';
         return;
     }
 
     // Show input field once we know we have File API support
-    $('#input-container').show();
+    $('#artifact-input-container').show();
 
     /**
      * When a file is selected...
      */
-    $('#file_select').change(function() {
-        var file = $(this)[0].files[0],
+    $('#artifact_file_select').change(function() {
+        let file = $(this)[0].files[0],
             reader = new FileReader();
 
         // Hide any shown maps
         $('#artifact-maps').hide();
 
         reader.onload = function (e) {
-            var xmlDoc = $.parseXML(e.target.result),
+            let xmlDoc = $.parseXML(e.target.result),
                 farmType = $(xmlDoc).find('whichFarm').text();
 
             // Set the contents of the output div
-            $('#out').html(
-                showLocations(getArtifactSpots(xmlDoc), farmType, xmlDoc)
+            $('#artifact-out').html(
+                showArtifactLocations(getArtifactSpots(xmlDoc), farmType, xmlDoc)
             );
 
             // Show the artifact maps again
             $('#artifact-maps').show();
 
             // Hide the input advice after the first file load
-            $('#input-advice').hide();
+            $('#artifact-input-advice').hide();
         };
 
         reader.readAsText(file);
@@ -49,11 +49,11 @@ $(document).ready(function() {
      * @returns {Array}
      */
     function getArtifactSpots(xmlDoc) {
-        var locations = [];
+        let locations = [];
 
         // Step through each location in the game
         $(xmlDoc).find('locations > GameLocation').each(function () {
-            var map = $(this).children('name').text(),
+            let map = $(this).children('name').text(),
                 location = {
                     'map': map,
                     'spots': []
@@ -94,22 +94,22 @@ $(document).ready(function() {
      * @param xmlDoc
      * @returns {jQuery|HTMLElement}
      */
-    function showLocations(locations, farmType, xmlDoc) {
-        var output = [];
+    function showArtifactLocations(locations, farmType, xmlDoc) {
+        let output = [];
         $.each(locations, function(id, location) {
 
             output.push($('<h3>').text(getMapName(location.map)));
 
             $.each(location.spots, function(id, spot) {
 
-                var artifact = $('<h4>').text(spot.artifact.name);
+                let artifact = $('<h4>').text(spot.artifact.name);
                 if (spot.artifact.type === 'Arch' && !artifactsFound(spot.artifact.id, xmlDoc)) {
                     artifact.addClass('artifact-needed');
                 }
 
                 output.push(
                     $('<div>')
-                        .addClass('artifactMap')
+                        .addClass('artifactMap map')
                         .append(
                             $('<div>')
                                 .append(
@@ -132,10 +132,10 @@ $(document).ready(function() {
      * @returns {*}
      */
     function getMapName(map) {
-        var artifactMaps = {
+        let artifactMaps = {
             BusStop: 'Bus Stop',
             Woods: 'Hidden Forest'
-        }
+        };
 
         if (artifactMaps.hasOwnProperty(map)) {
             return artifactMaps[map];
@@ -184,7 +184,7 @@ $(document).ready(function() {
      * @returns {*}
      */
     function findArtifact(x, y, map, xmlDoc) {
-        var uniqueID = $(xmlDoc).find('uniqueIDForThisGame').text(),
+        let uniqueID = $(xmlDoc).find('uniqueIDForThisGame').text(),
             daysPlayed = $(xmlDoc).find('DaysPlayed').text(),
             rng = new CSRandom((parseInt(x) * 2000) + parseInt(y) + parseInt(uniqueID / 2) + parseInt(daysPlayed)),
             objectIndex = -1;
@@ -222,7 +222,7 @@ $(document).ready(function() {
         } else {
             if (map in locations) {
                 $.each(locations[map], function(k, item) {
-                    var nextRNG = rng.NextDouble();
+                    let nextRNG = rng.NextDouble();
                     if (nextRNG <= item.chance) {
                         objectIndex = item.id;
                         if ((item.id === 102) && (artifactsFound(102, xmlDoc) >= 21)) {

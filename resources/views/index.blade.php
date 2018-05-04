@@ -12,14 +12,19 @@
 
     <div class="row center-block">
         <ul class="nav nav-tabs" role="tablist" id="navigation">
-            <li class="col-xs-12 col-sm-6 active">
+            <li class="col-xs-12 col-sm-4 active">
                 <a href="#calendar" data-toggle="tab">
                     Villager Calendar
                 </a>
             </li>
-            <li class="col-xs-12 col-sm-6">
+            <li class="col-xs-12 col-sm-4">
                 <a href="#artifact" data-toggle="tab">
                     Artifact Finder
+                </a>
+            </li>
+            <li class="col-xs-12 col-sm-4">
+                <a href="#forage" data-toggle="tab">
+                    Forage Finder
                 </a>
             </li>
         </ul>
@@ -31,6 +36,9 @@
         </div>
         <div role="tabpanel" class="tab-pane" id="artifact">
             @include('artifact')
+        </div>
+        <div role="tabpanel" class="tab-pane" id="forage">
+            @include('forage')
         </div>
     </div>
 

@@ -9,6 +9,7 @@ require('./bootstrap');
 
 require('./locations');
 require('./artifacts');
+require('./forage');
 
 $.ajaxSetup({
     headers: {

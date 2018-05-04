@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-    var locationSelected = {
+    let locationSelected = {
         villager: '',
         season: '',
         day: ''
@@ -37,7 +37,7 @@ $(document).ready(function() {
 
     $.each(seasons, function(key, season) {
 
-        var mapName = season + 'Map',
+        let mapName = season + 'Map',
             map = $('<map>').attr('name', mapName);
 
         $.each(days, function(dayKey, day) {
@@ -181,7 +181,7 @@ $(document).ready(function() {
      */
     function getSchedule(schedule)
     {
-        var list = $('<ul>').addClass('list-group')
+        let list = $('<ul>').addClass('list-group');
 
         $.each(filterSteps(schedule), function(key, step) {
             list.append(
@@ -207,7 +207,7 @@ $(document).ready(function() {
      * @returns {Array}
      */
     function filterPossibilities(possibilities) {
-        var possList = [];
+        let possList = [];
         $.each(possibilities, function(key, possibility) {
             if (possList.length === 0) {
                 possList.push(possibility);
@@ -244,7 +244,7 @@ $(document).ready(function() {
      * @returns {Array}
      */
     function filterSteps(steps) {
-        var stepList = [];
+        let stepList = [];
         $.each(steps, function(key, step) {
             if (stepList.length === 0) {
                 stepList.push(step);
@@ -276,7 +276,7 @@ $(document).ready(function() {
     $('#mapModal').on('show.bs.modal', function (event) {
         // Using .data() to get the data-map attribute seems to cache the information, so when the vue app changes
         // the links, we get the old images... Using .attr() doesn't cache anything, so we use that.
-        var map = $(event.relatedTarget).attr('data-map');
+        let map = $(event.relatedTarget).attr('data-map');
         $(this).find('IMG').attr('src', 'map/' + map);
     });
 
@@ -291,8 +291,8 @@ $(document).ready(function() {
      * @returns {string}
      */
     function getCoords(day) {
-        var dayOfWeek = ((day - 1) % 7); // 0 (Monday) - 6 (Sunday)
-        var row = Math.floor((day - 1) / 7); // 0 - 3
+        let dayOfWeek = ((day - 1) % 7); // 0 (Monday) - 6 (Sunday)
+        let row = Math.floor((day - 1) / 7); // 0 - 3
 
         // Each area is 32px square; x offset is 9, y offset is 39
         return '' + ((dayOfWeek * 32) + 9) + ',' +
@@ -318,7 +318,7 @@ $(document).ready(function() {
      * @returns {string}
      */
     function ordinalSuffix(val) {
-        var j = val % 10,
+        let j = val % 10,
             k = val % 100;
         if (j == 1 && k != 11) {
             return val + "st";

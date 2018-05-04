@@ -61,7 +61,7 @@ CSRandom.prototype.Sample = function() {
 
 CSRandom.prototype.InternalSample = function() {
     "use strict";
-    var retVal,
+    let retVal,
         locINext = this.inext,
         locINextp = this.inextp;
 
@@ -87,7 +87,7 @@ CSRandom.prototype.InternalSample = function() {
 CSRandom.prototype.GetSampleForLargeRange = function() {
     "use strict";
     // This might require special large integer handling
-    var result = this.InternalSample(),
+    let result = this.InternalSample(),
         d;
 
     if (this.InternalSample() %2 === 0) {
@@ -104,7 +104,7 @@ CSRandom.prototype.Next = function(a, b) {
     // Next() gives range of [0..INT_MAX)
     // Next(a) gives range of [0..a)
     // Next(a,b) gives range of [a..b)
-    var min = 0,
+    let min = 0,
         max = INT_MAX,
         range;
 
