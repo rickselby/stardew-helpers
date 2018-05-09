@@ -69,7 +69,6 @@ $(document).ready(function() {
             396, // Spice Berry
             397, // Sea Urchin
             398, // Grape
-            399, // Spring Onion
             402, // Sweet Pea
             404, // Common Mushroom
             406, // Wild Plum
@@ -100,6 +99,16 @@ $(document).ready(function() {
                         'y': $(this).find('tileLocation > Y').text(),
                         // Find out which forage is in this location
                         'name': $(this).find('DisplayName').text(),
+                    });
+                }
+            });
+
+            $(this).find('terrainFeatures > item').each(function () {
+                if ($(this).find('whichForageCrop').text() === '1') {
+                    location.spots.push({
+                        'x': $(this).find('tileLocation > X').text(),
+                        'y': $(this).find('tileLocation > Y').text(),
+                        'name': 'Spring Onion',
                     });
                 }
             });
