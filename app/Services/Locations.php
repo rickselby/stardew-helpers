@@ -12,10 +12,6 @@ class Locations
      * @var Villagers
      */
     private $villagers;
-    /**
-     * @var Schedules
-     */
-    private $schedules;
 
     public function __construct(Villagers $villagers)
     {
@@ -49,13 +45,12 @@ class Locations
     {
         $list = $this->getList();
 
-        foreach($this->villagers->getList() AS $villager) {
-
+        foreach ($this->villagers->getList() as $villager) {
             $villagerList = new Collection($list->get($villager) ?? []);
 
             $schedule = (new Schedules($villager))->readFile();
-            foreach($schedule AS $name => $possibility) {
-                foreach($possibility AS $step) {
+            foreach ($schedule as $name => $possibility) {
+                foreach ($possibility as $step) {
                     $steps = explode(' ', $step);
                     if (preg_match('/\d?\d{3}/', $steps[0])) {
                         $location = implode(' ', array_slice($steps, 1, 3));
@@ -90,8 +85,8 @@ class Locations
     {
         $list = new Collection($this->getList()->get($villager) ?? []);
 
-        foreach($schedules AS &$schedule) {
-            foreach($schedule AS $id => &$step) {
+        foreach ($schedules as &$schedule) {
+            foreach ($schedule as $id => &$step) {
                 $steps = explode(' ', $step);
                 $location = implode(' ', array_slice($steps, 1, 3));
 
@@ -113,5 +108,4 @@ class Locations
             }
         }
     }
-
 }

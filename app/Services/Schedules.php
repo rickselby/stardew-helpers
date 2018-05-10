@@ -57,7 +57,7 @@ class Schedules
         $this->sortPossibilities();
 
         $schedules = [];
-        foreach($this->possibilities AS $possibility) {
+        foreach ($this->possibilities as $possibility) {
             $schedules[$possibility->schedule] = $this->schedule->get($possibility->schedule);
         }
 
@@ -81,7 +81,6 @@ class Schedules
         } else {
             $this->unmarried($season, $dayOfMonth);
         }
-
     }
 
     /**
@@ -98,8 +97,7 @@ class Schedules
          * || (this.name.Equals("Maru") && (str.Equals("Tue") || str.Equals("Thu"))
          * || this.name.Equals("Harvey") && (str.Equals("Tue") || str.Equals("Thu"))))
          */
-        if (
-            ($this->villager == 'Penny'  && ($dayOfWeek == 'Tue' || $dayOfWeek == 'Wed' || $dayOfWeek == 'Fri'))
+        if (($this->villager == 'Penny'  && ($dayOfWeek == 'Tue' || $dayOfWeek == 'Wed' || $dayOfWeek == 'Fri'))
             || ($this->villager == 'Maru'   && ($dayOfWeek == 'Tue' || $dayOfWeek == 'Thu'))
             || ($this->villager == 'Harvey' && ($dayOfWeek == 'Tue' || $dayOfWeek == 'Thu'))
         ) {
@@ -231,8 +229,7 @@ class Schedules
      */
     private function checkForGoto(string $season)
     {
-        foreach($this->possibilities AS $possibility) {
-
+        foreach ($this->possibilities as $possibility) {
             $schedule = $this->schedule->get($possibility->schedule);
             if (substr($schedule[0], 0, 4) === 'GOTO') {
                 $goto = explode(' ', $schedule[0]);
@@ -257,13 +254,11 @@ class Schedules
      */
     private function checkForNot()
     {
-        foreach($this->possibilities AS $possibility) {
-
+        foreach ($this->possibilities as $possibility) {
             $schedule = $this->schedule->get($possibility->schedule);
             if (substr($schedule[0], 0, 3) === 'NOT') {
                 $not = explode(' ', $schedule[0]);
                 if ($not[1] == 'friendship') {
-
                     $this->incrementPriorities($possibility->priority + 1);
                     
                     // Add a new option for spring if the conditional is true
@@ -286,8 +281,7 @@ class Schedules
      */
     private function skipNotsAfterGoto()
     {
-        foreach($this->possibilities AS $possibility) {
-
+        foreach ($this->possibilities as $possibility) {
             $schedule = $this->schedule->get($possibility->schedule);
             if (substr($schedule[0], 0, 3) === 'NOT') {
                 // Clear the NOT from the schedule so we don't parse it again later
@@ -304,8 +298,7 @@ class Schedules
     {
         $this->sortPossibilities();
         $lastPossibility = null;
-        foreach($this->possibilities AS $k => $possibility)
-        {
+        foreach ($this->possibilities as $k => $possibility) {
             $updateLast = true;
 
             if ($lastPossibility) {
@@ -330,14 +323,13 @@ class Schedules
     private function checkLocations()
     {
         // We're not replacing the schedules here, just adding alternatives where required
-        foreach($this->possibilities AS $possibility) {
-
+        foreach ($this->possibilities as $possibility) {
             // Get the schedule listed
             $schedule = $this->schedule->get($possibility->schedule);
             $scheduleChanged = false;
 
             // Step through each action of the schedule
-            foreach($schedule AS $k => $action) {
+            foreach ($schedule as $k => $action) {
                 $actionParts = explode(' ', $action);
 
                 // Is the action taking us somewhere that might not be open yet?
@@ -345,11 +337,14 @@ class Schedules
                     // Check for a [location]_Replacement in the schedule
                     // For whatever reason, the code doesn't use CommunityCenter_Replacement even though some villagers
                     // have it set. See NPC.cs, line 2653
-                    if (in_array($actionParts[1], ['JojaMart', 'Railroad']) && $this->schedule->has($actionParts[1].'_Replacement')) {
+                    if (in_array($actionParts[1], ['JojaMart', 'Railroad'])
+                        && $this->schedule->has($actionParts[1].'_Replacement')
+                    ) {
                         $replaceParts = explode(' ', $this->schedule->get($actionParts[1].'_Replacement')[0]);
 
                         // Rebuild the action with the original time, but the rest of the details from the replacement
-                        $schedule[$k] = implode(' ',
+                        $schedule[$k] = implode(
+                            ' ',
                             array_merge([$actionParts[0]], $replaceParts)
                         );
 
@@ -384,7 +379,6 @@ class Schedules
                     'If '.$scheduleChanged.' is not available'
                 );
                 $possibility->incrementPriority();
-
             }
         }
     }
@@ -398,7 +392,7 @@ class Schedules
     {
         $file = Yaml::parse(\Storage::disk('schedules')->get($this->villager.'.yaml'));
 
-        foreach($file['content'] AS $key => $value) {
+        foreach ($file['content'] as $key => $value) {
             $file['content'][$key] = explode('/', $value);
         }
 
@@ -446,7 +440,7 @@ class Schedules
      */
     private function incrementPriorities(int $priority)
     {
-        foreach($this->possibilities AS $possibility) {
+        foreach ($this->possibilities as $possibility) {
             if ($possibility->priority >= $priority) {
                 $possibility->incrementPriority();
             }
@@ -458,9 +452,8 @@ class Schedules
      */
     private function sortPossibilities()
     {
-        usort($this->possibilities, function($a, $b) {
+        usort($this->possibilities, function ($a, $b) {
             return $a->priority - $b->priority;
         });
     }
-
 }

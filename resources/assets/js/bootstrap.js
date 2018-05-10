@@ -10,4 +10,3 @@ window.$ = window.jQuery = require('jquery');
 // require("jquery-ui/ui/effect");
 
 require('bootstrap-sass');
-

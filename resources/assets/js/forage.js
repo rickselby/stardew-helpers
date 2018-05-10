@@ -1,6 +1,6 @@
 // Inspired by the brilliant https://github.com/MouseyPounds/stardew-checkup
 
-import { CSRandom } from './cs-random';
+import { getMapName, getMapReference, getMarkerPositionStyle } from './maps.js';
 
 $(document).ready(function() {
 
@@ -94,20 +94,23 @@ $(document).ready(function() {
             $(this).find('objects > item').each(function () {
                 // Is this something we want to look for?
                 if (lookFor.includes(parseInt($(this).find('parentSheetIndex').text()))) {
-                    location.spots.push({
-                        'x': $(this).find('tileLocation > X').text(),
-                        'y': $(this).find('tileLocation > Y').text(),
-                        // Find out which forage is in this location
-                        'name': $(this).find('DisplayName').text(),
-                    });
+                    if ($(this).find('bigCraftable').text() !== 'true') {
+                        location.spots.push({
+                            'x': $(this).find('tileLocation > X').text(),
+                            'y': $(this).find('tileLocation > Y').text(),
+                            // Find out which forage is in this location
+                            'name': $(this).find('DisplayName').text(),
+                        });
+                    }
                 }
             });
 
             $(this).find('terrainFeatures > item').each(function () {
                 if ($(this).find('whichForageCrop').text() === '1') {
+                    console.log($(this).find('key X').text());
                     location.spots.push({
-                        'x': $(this).find('tileLocation > X').text(),
-                        'y': $(this).find('tileLocation > Y').text(),
+                        'x': $(this).find('key X').text(),
+                        'y': $(this).find('key Y').text(),
                         'name': 'Spring Onion',
                     });
                 }
@@ -136,71 +139,36 @@ $(document).ready(function() {
 
             output.push($('<h3>').text(getMapName(location.map)));
 
+            let forageList = $('<ul>');
+            let fullMap = $('<div>').addClass('fullMap');
+
+            fullMap.append(
+                $('<img>')
+                    .addClass('base')
+                    .attr('src', 'map/' + getMapReference(location.map, farmType))
+            );
+
             $.each(location.spots, function(id, spot) {
 
-                output.push(
-                    $('<div>')
-                        .addClass('forageMap map')
-                        .append(
-                            $('<div>')
-                                .append(
-                                    $('<h4>').text(spot.name),
-                                    $('<img>')
-                                        .attr('src', 'map/' + getMapReference(location.map, farmType) + '/' + spot.x + '/' + spot.y)
-                                )
-                        )
+                let name = '(' + spot.x + ', ' + spot.y + '): ' + spot.name;
+
+                fullMap.append(
+                    $('<img>')
+                        .attr('src', 'images/marker.png')
+                        .attr('style', getMarkerPositionStyle(location.map, spot.x, spot.y))
+                        .attr('data-toggle', 'tooltip')
+                        .attr('title', name)
                 );
+
+                forageList.append($('<li>').text(name));
             });
+
+            output.push(forageList);
+
+            output.push(fullMap);
         });
 
-        return output;
-    }
-
-    /**
-     * Get the map name for display
-     *
-     * @param map
-     * @returns {*}
-     */
-    function getMapName(map) {
-        let maps = {
-            BusStop: 'Bus Stop',
-            Woods: 'Hidden Forest'
-        };
-
-        if (maps.hasOwnProperty(map)) {
-            return maps[map];
-        } else {
-            return map;
-        }
-    }
-
-    /**
-     * Get the correct map for the farm for the current save
-     *
-     * @param map
-     * @param farmType
-     * @returns {*}
-     */
-    function getMapReference(map, farmType) {
-        if (map === 'Farm') {
-            switch (farmType) {
-                case '0':
-                    return 'Farm';
-                case '1':
-                    return 'FarmFishing';
-                case '2':
-                    return 'FarmForage';
-                case '3':
-                    return 'FarmMining';
-                case '4':
-                    return 'FarmCombat';
-                default:
-                    return 'WHAT';
-            }
-        } else {
-            return map;
-        }
+        return output;        
     }
 
 });

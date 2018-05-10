@@ -17,6 +17,10 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script>
+        let mapSizes = {!! $mapSizes !!};
+    </script>
+
     <script src="{{ url(mix('js/app.js')) }}"></script>
 </head>
 

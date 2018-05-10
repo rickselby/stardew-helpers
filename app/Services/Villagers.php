@@ -13,9 +13,9 @@ class Villagers
      */
     public function getList()
     {
-        return \Cache::rememberForever('villagers-list', function() {
+        return \Cache::rememberForever('villagers-list', function () {
             $files = new Collection();
-            foreach(\Storage::disk('schedules')->files() AS $file) {
+            foreach (\Storage::disk('schedules')->files() as $file) {
                 if (\File::extension($file) == 'yaml') {
                     $files->push(\File::name($file));
                 }

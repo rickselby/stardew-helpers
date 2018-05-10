@@ -2,6 +2,8 @@
 
 import { CSRandom } from './cs-random';
 
+import { getMapName, getMapReference, getMarkerPositionStyle } from './maps.js';
+
 $(document).ready(function() {
 
     // Check for required File API support.
@@ -31,6 +33,8 @@ $(document).ready(function() {
             $('#artifact-out').html(
                 showArtifactLocations(getArtifactSpots(xmlDoc), farmType, xmlDoc)
             );
+
+            $('#artifact-out [data-toggle="tooltip"]').tooltip();
 
             // Show the artifact maps again
             $('#artifact-maps').show();
@@ -100,76 +104,41 @@ $(document).ready(function() {
 
             output.push($('<h3>').text(getMapName(location.map)));
 
+            let artifactList = $('<ul>');
+            let fullMap = $('<div>').addClass('fullMap');
+
+            fullMap.append(
+                $('<img>')
+                    .addClass('base')
+                    .attr('src', 'map/' + getMapReference(location.map, farmType))
+            );
+
             $.each(location.spots, function(id, spot) {
 
-                let artifact = $('<h4>').text(spot.artifact.name);
+                let name = '(' + spot.x + ', ' + spot.y + '): ' + spot.artifact.name;
+
+                fullMap.append(
+                    $('<img>')
+                        .attr('src', 'images/marker.png')
+                        .attr('style', getMarkerPositionStyle(location.map, spot.x, spot.y))
+                        .attr('data-toggle', 'tooltip')
+                        .attr('title', name)
+                );
+
+                let artifact = $('<li>').text(name);
                 if (spot.artifact.type === 'Arch' && !artifactsFound(spot.artifact.id, xmlDoc)) {
                     artifact.addClass('artifact-needed');
                 }
 
-                output.push(
-                    $('<div>')
-                        .addClass('artifactMap map')
-                        .append(
-                            $('<div>')
-                                .append(
-                                    artifact,
-                                    $('<img>')
-                                        .attr('src', 'map/' + getMapReference(location.map, farmType) + '/' + spot.x + '/' + spot.y)
-                                )
-                        )
-                );
+                artifactList.append(artifact);
             });
+
+            output.push(artifactList);
+
+            output.push(fullMap);
         });
 
         return output;
-    }
-
-    /**
-     * Get the map name for display
-     *
-     * @param map
-     * @returns {*}
-     */
-    function getMapName(map) {
-        let artifactMaps = {
-            BusStop: 'Bus Stop',
-            Woods: 'Hidden Forest'
-        };
-
-        if (artifactMaps.hasOwnProperty(map)) {
-            return artifactMaps[map];
-        } else {
-            return map;
-        }
-    }
-
-    /**
-     * Get the correct map for the farm for the current save
-     *
-     * @param map
-     * @param farmType
-     * @returns {*}
-     */
-    function getMapReference(map, farmType) {
-        if (map === 'Farm') {
-            switch(farmType) {
-                case '0':
-                    return 'Farm';
-                case '1':
-                    return 'FarmFishing';
-                case '2':
-                    return 'FarmForage';
-                case '3':
-                    return 'FarmMining';
-                case '4':
-                    return 'FarmCombat';
-                default:
-                    return 'WHAT';
-            }
-        } else {
-            return map;
-        }
     }
 
     /**
