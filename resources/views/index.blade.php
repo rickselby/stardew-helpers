@@ -6,6 +6,7 @@
         <div class="col-xs-12 panel">
             <div class="wood-border">
                 <h1 class="text-center">Stardew Valley Helpers</h1>
+                <h4 class="text-center">For Stardew Valley v1.2</h4>
             </div>
         </div>
     </div>
@@ -44,6 +45,9 @@
 
     <div class="row center-block panel text-center">
         <div class="wood-border text-muted">
+            Currently working for Stardew Valley v1.2 (the currently released version at time of writing). v1.3 update
+            will come when it is released.
+            <br />
             Huge thanks to <a href="http://upload.farm">upload.farm</a> for allowing me to use their bootstrap theme
             <br />
             All Stardew Valley assets copyright <a href="http://twitter.com/concernedape">Concerned Ape</a>
