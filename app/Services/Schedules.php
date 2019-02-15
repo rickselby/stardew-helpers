@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Services\Objects\Schedule;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Symfony\Component\Yaml\Yaml;
 
 class Schedules
 {
@@ -390,7 +389,7 @@ class Schedules
      */
     public function readFile()
     {
-        $file = Yaml::parse(\Storage::disk('schedules')->get($this->villager.'.yaml'));
+        $file = json_decode(\Storage::disk('schedules')->get($this->villager.'.json'));
 
         foreach ($file['content'] as $key => $value) {
             $file['content'][$key] = explode('/', $value);

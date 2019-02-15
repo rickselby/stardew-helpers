@@ -16,7 +16,7 @@ class Villagers
         return \Cache::rememberForever('villagers-list', function () {
             $files = new Collection();
             foreach (\Storage::disk('schedules')->files() as $file) {
-                if (\File::extension($file) == 'yaml') {
+                if (\File::extension($file) == 'json') {
                     $files->push(\File::name($file));
                 }
             }
