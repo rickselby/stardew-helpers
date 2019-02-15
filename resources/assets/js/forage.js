@@ -99,7 +99,7 @@ $(document).ready(function() {
                             'x': $(this).find('tileLocation > X').text(),
                             'y': $(this).find('tileLocation > Y').text(),
                             // Find out which forage is in this location
-                            'name': $(this).find('DisplayName').text(),
+                            'name': $(this).find('Name').text(),
                         });
                     }
                 }

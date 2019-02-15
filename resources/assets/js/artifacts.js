@@ -66,7 +66,7 @@ $(document).ready(function() {
             // Step through each object in each location...
             $(this).find('objects > item').each(function () {
                 // Add any Artifact Spots to the list of spots for this location
-                if ($(this).find('DisplayName').text() === "Artifact Spot") {
+                if ($(this).find('Name').text() === "Artifact Spot") {
                     location.spots.push({
                         'x': $(this).find('tileLocation > X').text(),
                         'y': $(this).find('tileLocation > Y').text(),
