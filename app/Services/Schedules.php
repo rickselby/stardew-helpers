@@ -389,7 +389,7 @@ class Schedules
      */
     public function readFile()
     {
-        $file = json_decode(\Storage::disk('schedules')->get($this->villager.'.json'));
+        $file = json_decode(\Storage::disk('schedules')->get($this->villager.'.json'), true);
 
         foreach ($file['content'] as $key => $value) {
             $file['content'][$key] = explode('/', $value);
