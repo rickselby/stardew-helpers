@@ -9,6 +9,16 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
      * Bootstrap any application services.
      *
      * @return void
@@ -18,15 +28,5 @@ class AppServiceProvider extends ServiceProvider
         View::composer('outline', function ($view) {
             $view->with('mapSizes', app()->make(Maps::class)->mapSizes());
         });
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        #
     }
 }
