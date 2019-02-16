@@ -1,0 +1,38 @@
+version: '2.4'
+services:
+  app:
+    container_name: stardew-helpers-php
+    build:
+      context: .
+      dockerfile: resources/docker/Dockerfile
+      target: with-composer
+    image: stardew-helpers-php
+    volumes:
+      - .:/code
+    tmpfs:
+      - /opt/home:uid=${UID},gid=${GID}
+      - /code/storage/framework/testing:uid=${UID},gid=${GID}
+    environment:
+      HOME: '/opt/home'
+      CONTAINER_ROLE: app
+    user: "${UID}:${GID}"
+    working_dir: /code
+  web:
+    container_name: stardew-helpers-web
+    build:
+      context: .
+      dockerfile: resources/docker/Dockerfile
+      target: nginx
+    depends_on:
+      - app
+    image: stardew-helpers-web
+    volumes:
+      - ./public:/code/public
+    ports:
+      - "80:80"
+
+networks:
+  default:
+    ipam:
+      config:
+      - subnet: 192.168.202.1/24

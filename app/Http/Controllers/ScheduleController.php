@@ -29,6 +29,16 @@ class ScheduleController extends Controller
         return response()->json($schedule);
     }
 
+    public function map($name, $x, $y, Maps $maps)
+    {
+        $map = $maps->getMap($name, $x, $y);
+        if ($map) {
+            return $map->response();
+        } else {
+            abort(404);
+        }
+    }
+
     public function fullMap($name, Maps $maps)
     {
         $map = $maps->getFullMap($name);

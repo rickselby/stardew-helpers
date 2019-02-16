@@ -15,5 +15,6 @@ Route::get('/', 'ScheduleController@mainPage');
 
 Route::post('/schedule', 'ScheduleController@getSchedule')->name('getSchedule');
 Route::get('/map/{name}', 'ScheduleController@fullMap')->name('getFullMap');
+Route::get('/map/{name}/{x}/{y}', 'ScheduleController@map')->name('getMap');
 Route::get('/map-sizes/', 'ScheduleController@mapSizes')->name('mapSizes');
 Route::get('/portrait/{name}', 'ScheduleController@portrait')->name('getPortrait');
