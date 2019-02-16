@@ -2,7 +2,7 @@ version: '2'
 services:
   node:
     container_name: stardew-helpers-node-dev
-    image: node:10
+    image: node:11
     volumes:
       - .:/code
     tmpfs:
