@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Stardew Valley Helpers</title>
 
-    <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}" />
+    <link rel="stylesheet" href="{{ url(mix_except_in_tests('css/app.css')) }}" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,7 +21,7 @@
         let mapSizes = {!! $mapSizes !!};
     </script>
 
-    <script src="{{ url(mix('js/app.js')) }}"></script>
+    <script src="{{ url(mix_except_in_tests('js/app.js')) }}"></script>
 </head>
 
 <body>

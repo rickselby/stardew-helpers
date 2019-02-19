@@ -1,4 +1,8 @@
 ###############################################################################
+FROM node:11 as node
+# Do nothing. This is here to fix the node version.
+
+###############################################################################
 FROM nginx:alpine AS nginx
 
 WORKDIR /code/public
@@ -6,7 +10,7 @@ WORKDIR /code/public
 ADD resources/docker/nginx/laravel-vhost.conf /etc/nginx/conf.d/default.conf
 
 ###############################################################################
-FROM php:7.2-fpm-alpine AS with-extensions
+FROM php:7.3-fpm-alpine AS with-extensions
 
 RUN apk --no-cache add libpng-dev
 RUN docker-php-ext-install json gd
@@ -14,7 +18,7 @@ RUN docker-php-ext-install json gd
 ###############################################################################
 FROM with-extensions AS with-configuration
 
-COPY resources/docker/php/php.ini /usr/local/etc/php/conf.d/laravel-php.ini
+#COPY resources/docker/php/php.ini /usr/local/etc/php/conf.d/laravel-php.ini
 COPY resources/docker/php/fpm.conf /usr/local/etc/php-fpm.d/laravel-fpm.conf
 
 ###############################################################################
@@ -56,17 +60,16 @@ RUN composer install --no-dev --no-scripts --no-autoloader --no-progress --no-su
     && composer clear-cache
 
 ###############################################################################
-FROM node:9 AS npm-production
+FROM node AS npm-production
 
 WORKDIR /code
 
+# Copy artisan so laravel mix knows it's a laravel app
+COPY artisan /code/
 COPY package.json package-lock.json webpack.mix.js /code/
-COPY resources/assets /code/resources/assets
+COPY resources /code/resources
 
-RUN npm install \
-    && npm run production \
-    && npm cache clean --force \
-    && rm -rf /code/node_modules
+RUN npm install && npm run production
 
 ###############################################################################
 FROM with-composer AS dump-autoload

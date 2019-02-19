@@ -2,7 +2,11 @@ version: '2'
 services:
   node:
     container_name: stardew-helpers-node-dev
-    image: node:11
+    build:
+      context: .
+      dockerfile: resources/docker/Dockerfile
+      target: node
+    image: stardew-node
     volumes:
       - .:/code
     tmpfs:
