@@ -11,10 +11,10 @@ vendor
 
 .dockerignore
 .env.example
+.env.testing
 .git
 .gitattributes
 .gitignore
-Dockerfile
 docker-compose.node.yml
 docker-compose.yml
 npm

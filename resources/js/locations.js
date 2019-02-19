@@ -62,7 +62,7 @@ $(document).ready(function() {
                         .attr('id', season)
                         .append(
                             $('<img>')
-                                .attr('src', 'calendar.png')
+                                .attr('src', 'images/calendar.png')
                                 .attr('usemap', '#' + mapName),
                             $('<div>').addClass('calendar-marker')
                         ),
