@@ -32,21 +32,21 @@ class ScheduleController extends Controller
     public function map($name, $x, $y, Maps $maps)
     {
         $map = $maps->getMap($name, $x, $y);
-        if ($map) {
-            return $map->response();
-        } else {
+        if (!$map) {
             abort(404);
         }
+
+        return $map->response();
     }
 
     public function fullMap($name, Maps $maps)
     {
         $map = $maps->getFullMap($name);
-        if ($map) {
-            return $map->response();
-        } else {
+        if (!$map) {
             abort(404);
         }
+
+        return $map->response();
     }
 
     public function mapSizes(Maps $maps)
@@ -57,10 +57,10 @@ class ScheduleController extends Controller
     public function portrait($name, Villagers $villagers)
     {
         $portrait = $villagers->getPortrait($name);
-        if ($portrait) {
-            return $portrait->response();
-        } else {
+        if (!$portrait) {
             abort(404);
         }
+
+        return $portrait->response();
     }
 }

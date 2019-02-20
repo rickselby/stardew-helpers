@@ -2,7 +2,7 @@
 
 namespace App\Services\Objects;
 
-class Schedule implements \JsonSerializable
+final class Schedule implements \JsonSerializable
 {
     /** @var string */
     private $schedule;
@@ -28,33 +28,25 @@ class Schedule implements \JsonSerializable
         }
     }
 
-    /**
-     * @param $priority
-     * @return $this
-     */
-    public function updateSchedule(string $schedule)
+    public function updateSchedule(string $schedule): Schedule
     {
         $this->schedule = $schedule;
         return $this;
     }
 
-    /**
-     * @param $priority
-     * @return $this
-     */
-    public function incrementPriority()
+    public function incrementPriority(): Schedule
     {
         $this->priority++;
         return $this;
     }
 
-    public function updateExtra(string $extra)
+    public function updateExtra(string $extra): Schedule
     {
         $this->extra = $extra;
         return $this;
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return get_object_vars($this);
     }

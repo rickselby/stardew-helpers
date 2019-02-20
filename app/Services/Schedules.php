@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Services\Objects\Schedule;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Schedules
@@ -28,26 +29,21 @@ class Schedules
     public function __construct(string $villager)
     {
         $this->villager = $villager;
-        $this->schedule = $this->readFile($villager);
+        $this->schedule = $this->readFile();
     }
 
     /**
      * Set this villager as married to the player
      */
-    public function setMarried()
+    public function setMarried(): void
     {
         $this->isMarried = true;
     }
 
     /**
      * Get the schedule possibilities for a given date
-     *
-     * @param string $season
-     * @param int $dayOfMonth
-     *
-     * @return array
      */
-    public function getFor(string $season, int $dayOfMonth)
+    public function getFor(string $season, int $dayOfMonth): array
     {
         $this->possibilities = [];
 
@@ -68,11 +64,8 @@ class Schedules
 
     /**
      * First pass - get the possible schedule names
-     *
-     * @param string $season
-     * @param int $dayOfMonth
      */
-    private function firstPass(string $season, int $dayOfMonth)
+    private function firstPass(string $season, int $dayOfMonth): void
     {
         $this->priority = 1;
         if ($this->isMarried) {
@@ -84,10 +77,8 @@ class Schedules
 
     /**
      * Get a schedule for a married villager
-     *
-     * @param int $dayOfMonth
      */
-    private function married(int $dayOfMonth)
+    private function married(int $dayOfMonth): void
     {
         $dayOfWeek = $this->getDayOfWeek($dayOfMonth);
         /**
@@ -115,11 +106,8 @@ class Schedules
 
     /**
      * Get a schedule for an unmarried villager
-     *
-     * @param string $season
-     * @param int $dayOfMonth
      */
-    private function unmarried(string $season, int $dayOfMonth)
+    private function unmarried(string $season, int $dayOfMonth): void
     {
         if ($this->schedule->has($season.'_'.$dayOfMonth)) {
             $this->setRegular($season.'_'.$dayOfMonth);
@@ -204,12 +192,9 @@ class Schedules
 
     /**
      * Second pass on the schedules, handle changes in-schedule
-     *
-     * @param string $season
      */
-    private function secondPass(string $season)
+    private function secondPass(string $season): void
     {
-
         $this->checkForGoto($season);
         $this->checkForNot();
         // Re-check - things might have changed with the NOT check?
@@ -223,10 +208,8 @@ class Schedules
 
     /**
      * Check the schedules for a GOTO keyword
-     *
-     * @param string $season
      */
-    private function checkForGoto(string $season)
+    private function checkForGoto(string $season): void
     {
         foreach ($this->possibilities as $possibility) {
             $schedule = $this->schedule->get($possibility->schedule);
@@ -248,10 +231,8 @@ class Schedules
 
     /**
      * Check the schedules for a NOT keyword
-     *
-     * @param string $key
      */
-    private function checkForNot()
+    private function checkForNot(): void
     {
         foreach ($this->possibilities as $possibility) {
             $schedule = $this->schedule->get($possibility->schedule);
@@ -278,7 +259,7 @@ class Schedules
      * If there was a NOT then a GOTO, we might be at the same NOT again, so...
      * See: Penny:23, Sam:23, Abigail:25
      */
-    private function skipNotsAfterGoto()
+    private function skipNotsAfterGoto(): void
     {
         foreach ($this->possibilities as $possibility) {
             $schedule = $this->schedule->get($possibility->schedule);
@@ -293,7 +274,7 @@ class Schedules
     /**
      * Check for duplicate schedules next to each other and combine the reasons
      */
-    private function checkForDuplicates()
+    private function checkForDuplicates(): void
     {
         $this->sortPossibilities();
         $lastPossibility = null;
@@ -316,10 +297,8 @@ class Schedules
 
     /**
      * Check for inaccessable locations and replace as required
-     *
-     * @param string $key
      */
-    private function checkLocations()
+    private function checkLocations(): void
     {
         // We're not replacing the schedules here, just adding alternatives where required
         foreach ($this->possibilities as $possibility) {
@@ -384,12 +363,10 @@ class Schedules
 
     /**
      * Read the schedule file for the given villager
-     *
-     * @return Collection
      */
-    public function readFile()
+    public function readFile(): Collection
     {
-        $file = json_decode(\Storage::disk('schedules')->get($this->villager.'.json'), true);
+        $file = json_decode(Storage::disk('schedules')->get($this->villager.'.json'), true);
 
         foreach ($file['content'] as $key => $value) {
             $file['content'][$key] = explode('/', $value);
@@ -400,10 +377,6 @@ class Schedules
 
     /**
      * Get a day of week string from the day of the month
-     *
-     * @param int $dayOfMonth
-     *
-     * @return string
      */
     private function getDayOfWeek(int $dayOfMonth): string
     {
@@ -412,32 +385,24 @@ class Schedules
 
     /**
      * Add a possible schedule to the list
-     *
-     * @param string $schedule
-     * @param string $extra
-     * @param bool $rain
      */
-    private function addPossibility(string $schedule, string $extra, bool $rain = false)
+    private function addPossibility(string $schedule, string $extra, bool $rain = false): void
     {
         $this->possibilities[] = new Schedule($schedule, $this->priority++, $extra, $rain);
     }
 
     /**
      * Set text for the regular schedule
-     *
-     * @param string $schedule
      */
-    private function setRegular(string $schedule)
+    private function setRegular(string $schedule): void
     {
         $this->addPossibility($schedule, 'Regular Schedule');
     }
 
     /**
      * Increment all priorities equal to or greater than the given priority
-     *
-     * @param int $priority
      */
-    private function incrementPriorities(int $priority)
+    private function incrementPriorities(int $priority): void
     {
         foreach ($this->possibilities as $possibility) {
             if ($possibility->priority >= $priority) {
@@ -449,7 +414,7 @@ class Schedules
     /**
      * Sort the possibilities by priority
      */
-    private function sortPossibilities()
+    private function sortPossibilities(): void
     {
         usort($this->possibilities, function ($a, $b) {
             return $a->priority - $b->priority;

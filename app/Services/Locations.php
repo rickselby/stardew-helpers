@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
 
 class Locations
 {
@@ -20,28 +21,26 @@ class Locations
 
     /**
      * Get a list of valid locations
-     *
-     * @return Collection
      */
-    public function getList()
+    public function getList(): Collection
     {
         try {
-            $file = \Storage::get($this->filename);
+            $file = Storage::get($this->filename);
             return new Collection(json_decode($file));
         } catch (FileNotFoundException $e) {
             return new Collection();
         }
     }
 
-    private function setList(Collection $list)
+    private function setList(Collection $list): void
     {
-        \Storage::put($this->filename, $list->toJson());
+        Storage::put($this->filename, $list->toJson());
     }
 
     /**
      * (Re-)build the locations file with all possible locations
      */
-    public function buildFile()
+    public function buildFile(): void
     {
         $list = $this->getList();
 
@@ -81,7 +80,7 @@ class Locations
      * @param $villager
      * @param $schedules
      */
-    public function parseLocations($villager, &$schedules)
+    public function parseLocations($villager, &$schedules): void
     {
         $list = new Collection($this->getList()->get($villager) ?? []);
 

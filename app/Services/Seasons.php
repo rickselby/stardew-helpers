@@ -8,10 +8,8 @@ class Seasons
 {
     /**
      * Get a list of valid villagers
-     *
-     * @return Collection
      */
-    public function getList()
+    public function getList(): Collection
     {
         return new Collection(['spring', 'summer', 'fall', 'winter']);
     }
