@@ -58,6 +58,7 @@ deploy:
   variables:
     DOCKER_TLS_VERIFY: "1"
     DOCKER_CERT_PATH: "certs"
+    STACK_NAME: "stardew-helpers"
   before_script:
     - mkdir $DOCKER_CERT_PATH
     - export DOCKER_HOST=$REMOTE_DOCKER_HOST
@@ -66,12 +67,13 @@ deploy:
     - echo "$CLIENT_KEY" > $DOCKER_CERT_PATH/key.pem
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" "$CI_REGISTRY" --password-stdin
   script:
-    - docker-compose -f resources/docker/production.yml -p stardew-helpers pull
-    - docker-compose -f resources/docker/production.yml -p stardew-helpers up -d --force-recreate
+    - docker-compose -f resources/docker/production.yml -p $STACK_NAME pull
+    - docker-compose -f resources/docker/production.yml -p $STACK_NAME down
+    - docker-compose -f resources/docker/production.yml -p $STACK_NAME up -d --force-recreate
     # If nginx-proxy is already on the network, don't try to add it again - it'll fail.
     # And we must restart the containers for nginx-proxy to pick up the network.
-    - docker network inspect stardew-helpers -f "{{json .Containers }}" | grep nginx-proxy
-      || (docker network connect stardew-helpers nginx-proxy && docker-compose -f resources/docker/production.yml -p stardew-helpers restart)
+    - docker network inspect $STACK_NAME -f "{{json .Containers }}" | grep nginx-proxy
+      || (docker network connect $STACK_NAME nginx-proxy && docker-compose -f resources/docker/production.yml -p $STACK_NAME restart)
   after_script:
     - rm -rf $DOCKER_CERT_PATH
   only:

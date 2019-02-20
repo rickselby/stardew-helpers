@@ -11,9 +11,6 @@ services:
       CONTAINER_ROLE: app
       APP_URL: https://stardew.djomp.co.uk
       APP_KEY: base64:JIHbDuraVKZHqOLhAR9HBhdvRI9EIq1v8B81BlYlBgY=
-      MAP_GRID: 16
-      MAP_SCALE: 1
-      MAP_SIZE: 400
     networks:
       - stardew-helpers
   web:

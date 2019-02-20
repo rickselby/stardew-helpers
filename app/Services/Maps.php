@@ -100,7 +100,8 @@ class Maps
 
         // Add some kind of marker at $x, $y (8px per square)
         $this->addMarker($img, $x, $y);
-        if (env('MAP_SCALE') != 1) {
+
+        if (config('map.scale') != 1) {
             $this->scale($img);
         }
         $this->crop($img, $x, $y);
@@ -118,7 +119,7 @@ class Maps
      */
     private function addMarker(Image $image, int $x, int $y)
     {
-        $mapGrid = env('MAP_GRID');
+        $mapGrid = config('map.grid');
 
         $marker = \Image::make(\Storage::get('marker.png'));
 
@@ -134,7 +135,7 @@ class Maps
      */
     private function scale(Image $image)
     {
-        $image->heighten($image->height() * env('MAP_SCALE'));
+        $image->heighten($image->height() * config('map.scale'));
     }
 
     /**
@@ -146,7 +147,7 @@ class Maps
      */
     private function crop(Image $image, int $x, int $y)
     {
-        $mapSize = env('MAP_SIZE');
+        $mapSize = config('map.size');
         // Expanding the image first will give us a transparent background all around
         $image->resizeCanvas($mapSize, $mapSize, 'center', true);
         $image->crop(
@@ -166,6 +167,6 @@ class Maps
      */
     private function getCropOffset(int $tile): int
     {
-        return (($tile + 0.5) * env('MAP_GRID') * env('MAP_SCALE')) - (env('MAP_SIZE') / 2);
+        return (($tile + 0.5) * config('map.grid') * config('map.scale')) - (config('map.size') / 2);
     }
 }

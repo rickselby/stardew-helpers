@@ -3,7 +3,7 @@ FROM node:11 as node
 # Do nothing. This is here to fix the node version.
 
 ###############################################################################
-FROM nginx:alpine AS nginx
+FROM nginx:1-alpine AS nginx
 
 WORKDIR /code/public
 
@@ -18,7 +18,6 @@ RUN docker-php-ext-install json gd
 ###############################################################################
 FROM with-extensions AS with-configuration
 
-#COPY resources/docker/php/php.ini /usr/local/etc/php/conf.d/laravel-php.ini
 COPY resources/docker/php/fpm.conf /usr/local/etc/php-fpm.d/laravel-fpm.conf
 
 ###############################################################################
