@@ -46,7 +46,7 @@ RUN composer global require --no-progress --no-suggest -n \
 FROM with-composer AS with-xdebug
 
 RUN apk --no-cache add $PHPIZE_DEPS \
-    && pecl install xdebug-2.6.1 \
+    && pecl install xdebug-2.7.0RC2 \
     && docker-php-ext-enable xdebug
 
 ###############################################################################
@@ -99,4 +99,4 @@ CMD ["/usr/local/bin/start"]
 FROM nginx AS web-production
 
 COPY --from=npm-production /code/public /code/public
-COPY public/robots.txt public/favicon.ico /code/public/
+COPY public/index.php public/robots.txt public/favicon.ico /code/public/

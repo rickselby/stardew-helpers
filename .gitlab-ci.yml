@@ -1,7 +1,7 @@
 stages:
-  - build-ci
+  - build
   - run-ci
-  - build-production
+  - deploy
 
 variables:
   CONTAINER_PHP_CI: $CI_REGISTRY_IMAGE/php-ci:$CI_COMMIT_SHA
@@ -10,43 +10,72 @@ variables:
 # Settings for building docker images - for tests and deployments
 #################################################################
 
-.docker-in-docker-template: &docker-in-docker
+.build-template: &build-template
   image: docker:latest
   services:
     - docker:dind
   before_script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" "$CI_REGISTRY" --password-stdin
+  stage: build
 
-build-php-ci:
-  <<: *docker-in-docker
-  stage: build-ci
+build-ci-only:
+  <<: *build-template
   script:
-      #  If the build exists for this commit, don't build it again - exit (happily)
-    - docker pull $CONTAINER_PHP_CI && exit 0
     - DOCKER_BUILDKIT=1 docker build --progress=plain --pull --target with-composer -t $CONTAINER_PHP_CI -f resources/docker/Dockerfile .
     - docker push $CONTAINER_PHP_CI
+  except:
+    - master
 
 build-prod:
-  <<: *docker-in-docker
-  stage: build-production
+  <<: *build-template
   variables:
-    CONTAINER_PHP_PROD: $CI_REGISTRY_IMAGE/php:$CI_COMMIT_TAG
+    CONTAINER_PHP_PROD: $CI_REGISTRY_IMAGE/php:$CI_COMMIT_SHA
     CONTAINER_PHP_PROD_LATEST: $CI_REGISTRY_IMAGE/php:latest
-    CONTAINER_FRONTEND_PROD: $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_TAG
+    CONTAINER_FRONTEND_PROD: $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA
     CONTAINER_FRONTEND_PROD_LATEST: $CI_REGISTRY_IMAGE/frontend:latest
   script:
-    - docker pull $CONTAINER_PHP_CI
-    - DOCKER_BUILDKIT=1 docker build --progress=plain --pull --target web-production --cache-from $CONTAINER_PHP_CI -t $CONTAINER_FRONTEND_PROD
-        -f resources/docker/Dockerfile .
+    - DOCKER_BUILDKIT=1 docker build --progress=plain --pull --target with-composer -t $CONTAINER_PHP_CI -f resources/docker/Dockerfile .
+    - docker push $CONTAINER_PHP_CI
+    - DOCKER_BUILDKIT=1 docker build --progress=plain --pull --target web-production -t $CONTAINER_FRONTEND_PROD -f resources/docker/Dockerfile .
     - docker push $CONTAINER_FRONTEND_PROD
     - docker tag $CONTAINER_FRONTEND_PROD $CONTAINER_FRONTEND_PROD_LATEST
     - docker push $CONTAINER_FRONTEND_PROD_LATEST
-    - DOCKER_BUILDKIT=1 docker build --progress=plain --pull --target php-production -t $CONTAINER_PHP_PROD -f resources/docker/Dockerfile .
+    # No pull for php-production - all images loaded by CI and Frontend images, so don't get newer versions...
+    - DOCKER_BUILDKIT=1 docker build --progress=plain --target php-production -t $CONTAINER_PHP_PROD -f resources/docker/Dockerfile .
     - docker push $CONTAINER_PHP_PROD
     - docker tag $CONTAINER_PHP_PROD $CONTAINER_PHP_PROD_LATEST
     - docker push $CONTAINER_PHP_PROD_LATEST
   only:
-    - tags
+    - master
+
+deploy:
+  image:
+    name: docker/compose:1.23.2
+    entrypoint: ["/bin/sh", "-c"]
+  services:
+    - docker:dind
+  stage: deploy
+  variables:
+    DOCKER_TLS_VERIFY: "1"
+    DOCKER_CERT_PATH: "certs"
+  before_script:
+    - mkdir $DOCKER_CERT_PATH
+    - export DOCKER_HOST=$REMOTE_DOCKER_HOST
+    - echo "$CA" > $DOCKER_CERT_PATH/ca.pem
+    - echo "$CLIENT_CERT" > $DOCKER_CERT_PATH/cert.pem
+    - echo "$CLIENT_KEY" > $DOCKER_CERT_PATH/key.pem
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" "$CI_REGISTRY" --password-stdin
+  script:
+    - docker-compose -f resources/docker/production.yml -p stardew-helpers pull
+    - docker-compose -f resources/docker/production.yml -p stardew-helpers up -d --force-recreate
+    # If nginx-proxy is already on the network, don't try to add it again - it'll fail.
+    # And we must restart the containers for nginx-proxy to pick up the network.
+    - docker network inspect stardew-helpers -f "{{json .Containers }}" | grep nginx-proxy
+      || (docker network connect stardew-helpers nginx-proxy && docker-compose -f resources/docker/production.yml -p stardew-helpers restart)
+  after_script:
+    - rm -rf $DOCKER_CERT_PATH
+  only:
+    - master
 
 #################################################################
 # Settings for running the tests
