@@ -66,14 +66,16 @@ deploy:
     - echo "$CLIENT_CERT" > $DOCKER_CERT_PATH/cert.pem
     - echo "$CLIENT_KEY" > $DOCKER_CERT_PATH/key.pem
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" "$CI_REGISTRY" --password-stdin
+    - export COMPOSE_COMMAND="docker-compose -f resources/docker/production.yml -p $STACK_NAME"
   script:
-    - docker-compose -f resources/docker/production.yml -p $STACK_NAME pull
-    - docker-compose -f resources/docker/production.yml -p $STACK_NAME down
-    - docker-compose -f resources/docker/production.yml -p $STACK_NAME up -d --force-recreate
-    # If nginx-proxy is already on the network, don't try to add it again - it'll fail.
-    # And we must restart the containers for nginx-proxy to pick up the network.
-    - docker network inspect $STACK_NAME -f "{{json .Containers }}" | grep nginx-proxy
-      || (docker network connect $STACK_NAME nginx-proxy && docker-compose -f resources/docker/production.yml -p $STACK_NAME restart)
+    - eval $COMPOSE_COMMAND pull
+    # If nginx-proxy is on the network, remove it before calling `down`
+    - ((docker network inspect $STACK_NAME -f "{{json .Containers }}" | grep nginx-proxy) && docker network disconnect $STACK_NAME nginx-proxy
+      || echo 'Not on network')
+    - eval $COMPOSE_COMMAND down
+    - eval $COMPOSE_COMMAND up -d
+    - docker network connect $STACK_NAME nginx-proxy
+    - eval $COMPOSE_COMMAND restart
   after_script:
     - rm -rf $DOCKER_CERT_PATH
   only:
