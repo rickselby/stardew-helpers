@@ -3,27 +3,25 @@ version: '2.4'
 services:
   app:
     container_name: stardew-app
-    image: registry.gitlab.com/rickselby-hosted-websites/stardew-helpers/php:latest
+    image: $CONTAINER_PHP_PROD
     restart: always
     tmpfs:
       - /code/storage/framework/views
     environment:
-      CONTAINER_ROLE: app
       APP_URL: https://stardew.djomp.co.uk
       APP_KEY: base64:JIHbDuraVKZHqOLhAR9HBhdvRI9EIq1v8B81BlYlBgY=
-    networks:
-      - stardew-helpers
   web:
     container_name: stardew-web
-    image: registry.gitlab.com/rickselby-hosted-websites/stardew-helpers/frontend:latest
+    image: $CONTAINER_FRONTEND_PROD
     restart: always
     environment:
-      VIRTUAL_HOST: stardew.djomp.co.uk
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      LETSENCRYPT_HOST: ${VIRTUAL_HOST}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
     depends_on:
       - app
-    networks:
-      - stardew-helpers
 
 networks:
-  stardew-helpers:
-    name: stardew-helpers
+  default:
+    external:
+      name: stardew-helpers
