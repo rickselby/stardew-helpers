@@ -6,7 +6,6 @@
         <div class="col-xs-12 panel">
             <div class="wood-border">
                 <h1 class="text-center">Stardew Valley Helpers</h1>
-                <h4 class="text-center">For Stardew Valley v1.2</h4>
             </div>
         </div>
     </div>
@@ -20,7 +19,7 @@
             </li>
             <li class="col-xs-12 col-sm-4">
                 <a href="#artifact" data-toggle="tab">
-                    Artifact Finder
+                    Artifact Spot Finder
                 </a>
             </li>
             <li class="col-xs-12 col-sm-4">
@@ -45,8 +44,7 @@
 
     <div class="row center-block panel text-center">
         <div class="wood-border text-muted">
-            Currently working for Stardew Valley v1.2 (the currently released version at time of writing). v1.3 update
-            will come when it is released.
+            Currently working for Stardew Valley v1.4
             <br />
             Huge thanks to <a href="http://upload.farm">upload.farm</a> for allowing me to use their bootstrap theme
             <br />

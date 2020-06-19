@@ -46,7 +46,6 @@
         <p>
             Your save file contains the locations of artifact spots for the next day.
             This app reads those artifact spots and displays them.
-            It even works out what you'll find under each spot.
         </p>
     </div>
 </div>

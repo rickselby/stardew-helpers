@@ -71,12 +71,12 @@ $(document).ready(function() {
                         'x': $(this).find('tileLocation > X').text(),
                         'y': $(this).find('tileLocation > Y').text(),
                         // Find out which artifact is in this location
-                        'artifact': findArtifact(
-                            $(this).find('tileLocation > X').text(),
-                            $(this).find('tileLocation > Y').text(),
-                            map,
-                            xmlDoc
-                        )
+                        // 'artifact': findArtifact(
+                        //     $(this).find('tileLocation > X').text(),
+                        //     $(this).find('tileLocation > Y').text(),
+                        //     map,
+                        //     xmlDoc
+                        // )
                     });
                 }
             });
@@ -115,7 +115,8 @@ $(document).ready(function() {
 
             $.each(location.spots, function(id, spot) {
 
-                let name = '(' + spot.x + ', ' + spot.y + '): ' + spot.artifact.name;
+                // let name = '(' + spot.x + ', ' + spot.y + '): ' + spot.artifact.name;
+                let name = '(' + spot.x + ', ' + spot.y + ')';
 
                 fullMap.append(
                     $('<img>')
@@ -126,9 +127,9 @@ $(document).ready(function() {
                 );
 
                 let artifact = $('<li>').text(name);
-                if (spot.artifact.type === 'Arch' && !artifactsFound(spot.artifact.id, xmlDoc)) {
-                    artifact.addClass('artifact-needed');
-                }
+                // if (spot.artifact.type === 'Arch' && !artifactsFound(spot.artifact.id, xmlDoc)) {
+                //     artifact.addClass('artifact-needed');
+                // }
 
                 artifactList.append(artifact);
             });
