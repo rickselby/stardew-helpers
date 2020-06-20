@@ -153,11 +153,10 @@ $(document).ready(function() {
      * @returns {*}
      */
     function findArtifact(x, y, map, xmlDoc) {
-
         // Random random = new Random(xLocation * 2000 + yLocation + (int) Game1.uniqueIDForThisGame / 2 + (int) Game1.stats.DaysPlayed);
         // int objectIndex = -1;
         let uniqueID = $(xmlDoc).find('uniqueIDForThisGame').text(),
-            daysPlayed = $(xmlDoc).find('DaysPlayed').text(),
+            daysPlayed = $(xmlDoc).find('player > stats > DaysPlayed').text(),
             rng = new CSRandom((parseInt(x) * 2000) + parseInt(y) + parseInt(uniqueID / 2) + parseInt(daysPlayed)),
             objectIndex = -1,
             secretNoteChance = 0;
@@ -185,6 +184,10 @@ $(document).ready(function() {
                 }
             }
         });
+
+        if (objectIndex !== -1) {
+            console.log(objectIndex);
+        }
 
         // if (random.NextDouble() < 0.2 && !(this is Farm))
         //     objectIndex = 102;
