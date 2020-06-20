@@ -49,6 +49,8 @@
             Huge thanks to <a href="http://upload.farm">upload.farm</a> for allowing me to use their bootstrap theme
             <br />
             All Stardew Valley assets copyright <a href="http://twitter.com/concernedape">Concerned Ape</a>
+            <br />
+            Source code is <a href="https://github.com/rickselby/stardew-helpers">in GitHub</a>; please raise any issues there.
         </div>
     </div>
 
