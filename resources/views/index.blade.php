@@ -19,7 +19,7 @@
             </li>
             <li class="col-xs-12 col-sm-4">
                 <a href="#artifact" data-toggle="tab">
-                    Artifact Spot Finder
+                    Artifact Finder
                 </a>
             </li>
             <li class="col-xs-12 col-sm-4">
