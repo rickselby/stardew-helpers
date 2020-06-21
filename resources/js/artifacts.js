@@ -259,7 +259,7 @@ $(document).ready(function() {
                         }
 
                         // if (index2 == 330 && who.hasMagnifyingGlass && Game1.random.NextDouble() < 0.11)
-                        if ((item.id === 330) && ($(xmlDoc).find('player > hasMagnifyingGlass').text() === "true") && rng.NextDouble() < 0.11) {
+                        if ((item.id === 330) && ($(xmlDoc).find('player > hasMagnifyingGlass').text() === "true")) {
 
                             // Object unseenSecretNote = this.tryToCreateUnseenSecretNote(who);
                             // if (unseenSecretNote != null)
@@ -281,7 +281,7 @@ $(document).ready(function() {
                             // SO, we need to flag that this *might* be a secret note.
 
                             let fractionOfNotesRemaining = (secretNoteCount - 1 - notesSeenCount) / Math.max(1, secretNoteCount - 1);
-                            secretNoteChance = 0.12 + (0.8 - 0.12) * fractionOfNotesRemaining;
+                            secretNoteChance = 0.12 + (0.8 - 0.12) * fractionOfNotesRemaining * 0.11;
 
                             return false;
                         }
