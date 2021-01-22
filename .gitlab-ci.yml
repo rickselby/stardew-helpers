@@ -1,3 +1,0 @@
-include:
-  - project: 'rickselby-linode-setup/gitlab-ci-templates'
-    file: 'laravel-template.yml'

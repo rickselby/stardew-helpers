@@ -1,5 +1,14 @@
 
+# These helpers have been archived
+
+The last update was for 1.4. Despite the infrequency of updates to Stardew, I don't have the time any more to keep up
+with the changes to the code.
+
+I'll leave the code available, if anyone wishes to pick it up and improve / take it over.
+
 # Stardew Valley Helpers 
+
+
 
 Three apps:
 
