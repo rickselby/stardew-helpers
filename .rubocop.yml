@@ -1,0 +1,15 @@
+---
+require:
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
+
+# Show URLs for each cop
+AllCops:
+  DisplayStyleGuide: true
+  NewCops: enable
+
+# Disable block-length checks for rspec
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
