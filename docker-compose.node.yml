@@ -1,0 +1,16 @@
+version: '2.4'
+services:
+  node:
+    container_name: stardew-helpers-node-dev
+    build:
+      context: .
+      target: node
+    image: stardew-node
+    volumes:
+      - .:/code
+    tmpfs:
+      - /opt/home
+    environment:
+      HOME: '/opt/home'
+    working_dir: /code
+    user: "${UID}:${GID}"
