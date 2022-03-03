@@ -1,0 +1,24 @@
+
+.fullMap {
+  position: relative;
+  display: inline-block;
+  top: 0;
+  left: 0;
+  background-color: white;
+
+  > .base {
+    position: relative;
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.25;
+  }
+
+  > img {
+    position: absolute;
+  }
+}
+
+.artifact-needed {
+  font-weight: 800;
+}
