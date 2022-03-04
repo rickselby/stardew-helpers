@@ -38,6 +38,8 @@
 }
 
 #calendars {
+  @extend .row;
+
   h4 {
     margin-bottom: 0;
   }
@@ -46,7 +48,7 @@
     margin-bottom: 0.5em;
     @extend .col-12;
     @extend .col-sm-6;
-    @extend .col-lg-3;
+    @extend .col-xl-3;
   }
 
   .calendar {
@@ -58,7 +60,6 @@
 
   .calendar-marker {
     position: absolute;
-    display: none;
     border: 3px solid red;
     width: 35px;
     height: 35px;
