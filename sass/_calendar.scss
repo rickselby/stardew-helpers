@@ -4,28 +4,6 @@
   border:none;
 }
 
-#loading {
-  position: absolute;
-  left: 50%;
-  margin-left: -0.5em;
-  display: none;
-}
-
-.glyphicon-animate {
-  -animation: spin .7s infinite linear;
-  -webkit-animation: spin2 .7s infinite linear;
-}
-
-@-webkit-keyframes spin2 {
-  from { -webkit-transform: rotate(0deg);}
-  to { -webkit-transform: rotate(360deg);}
-}
-
-@keyframes spin {
-  from { transform: scale(1) rotate(0deg);}
-  to { transform: scale(1) rotate(360deg);}
-}
-
 .portrait {
   border: 3px solid transparent;
   width: 64px;
