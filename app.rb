@@ -33,12 +33,19 @@ get '/' do
   erb :index
 end
 
+def valid_schedule
+  Dir['data/schedules/*'].map { |f| File.basename(f, '.json') }
+end
+
 get '/api/people' do
-  Dir['data/schedules/*'].map { |f| File.basename(f, '.json') }.sort.to_json
+  valid_schedule.sort.to_json
 end
 
 post '/api/schedules' do
-  Dir['data/schedules/*'].map { |f| File.basename(f, '.json') }.sort.to_json
+  halt 400 unless valid_schedule.include? params[:person]
+  schedule = Stardew::Schedules.new(params[:person])
+  # TODO: Sanitise
+  schedule.schedule(params[:season], params[:day]).to_json
 end
 
 def valid_portraits

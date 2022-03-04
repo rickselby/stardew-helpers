@@ -34,7 +34,7 @@ namespace :check do
       schedules = Stardew::Schedules.new(person)
       %w[spring summer fall winter].each do |season|
         (1..28).each do |day|
-          schedules.schedule season, day
+          schedules.check season, day
         end
       end
     end
