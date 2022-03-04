@@ -22,5 +22,5 @@ end
 
 desc 'Bring up app'
 task :up do
-  system 'ruby app.rb -p 8080'
+  system 'rerun --background --no-notify -- ruby app.rb -p 8080'
 end
