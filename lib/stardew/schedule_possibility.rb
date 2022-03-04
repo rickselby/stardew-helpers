@@ -12,26 +12,15 @@ module Stardew
       @routes = routes
     end
 
-    def goto?
-      first_route_word == 'GOTO'
+    def first_route_word?(test)
+      @routes.first.definition[0] == test
     end
 
-    def not?
-      first_route_word == 'NOT'
-    end
-
-    def mail?
-      first_route_word == 'MAIL'
-    end
-
-    def goto
+    def second_route_word
       @routes.first.definition[1]
     end
-    alias_method :not, :goto
-    alias_method :mail, :goto
 
-
-    def not_notes
+    def friendship_notes
       notes = "Not at #{@routes.first.definition[3]} hearts with #{@routes.first.definition[2]}"
       if @routes.first.definition.length == 6
         notes = "#{notes} or #{@routes.first.definition[5]} hearts with #{@routes.first.definition[4]}"
@@ -48,13 +37,7 @@ module Stardew
     end
 
     def skip_nots
-      remove_routes(1) if not?
-    end
-
-    private
-
-    def first_route_word
-      @routes.first.definition[0]
+      remove_routes(1) if first_route_word? 'NOT'
     end
   end
 end
