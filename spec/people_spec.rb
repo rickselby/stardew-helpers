@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe 'GET /api/schedules' do
-  let(:url) { '/api/schedules' }
+RSpec.describe 'GET /api/people' do
+  let(:url) { '/api/people' }
 
   before { allow(Dir).to receive(:[]).and_return(['path/to/file.json']) }
 

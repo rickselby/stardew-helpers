@@ -1,6 +1,9 @@
 
 require('bootstrap');
 
+import axios from 'axios';
+window.axios = axios;
+
 import Vue from 'vue';
 window.Vue = Vue;
 
