@@ -43,8 +43,10 @@ end
 
 post '/api/schedules' do
   halt 400 unless valid_schedule.include? params[:person]
+  halt 400 unless %w[spring summer fall winter].include? params[:season]
+  halt 400 unless (1..28).map(&:to_s).include? params[:day]
+
   schedule = Stardew::Schedules.new(params[:person])
-  # TODO: Sanitise
   schedule.schedule(params[:season], params[:day]).to_json
 end
 
