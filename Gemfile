@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 group :test, :development do
   gem 'rack-test'
   gem 'rake'
+  gem 'rerun'
 end
 
 group :test do

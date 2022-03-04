@@ -1,0 +1,7 @@
+--ignore 'data/*'
+--ignore 'images/*'
+--ignore 'public/*'
+--ignore 'sass/*'
+--ignore 'spec/*'
+--ignore 'views/*'
+--ignore 'vue/*'
