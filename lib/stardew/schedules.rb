@@ -25,6 +25,7 @@ module Stardew
       skip_nots_after_goto
 
       check_for_inaccessible_locations
+      fix_goto(season)
 
       @possibilities.sort_by(&:priority)
     end
@@ -51,32 +52,36 @@ module Stardew
     def check_for_inaccessible_locations
       @possibilities.map do |possibility|
         possibility.routes.each do |r|
-          # case r.definition[1]
-          # when 'JojaMart', 'Railroad'
-          #   if @schedules.key? "#{r.definition[1]}_Replacement"
-          #     # TODO: create an alternative
-          #     [r.definition[0]].concat(@schedules["#{r.definition[1]}_Replacement"].routes)
-          #     new_schedule = 'sth'
-          #   else
-          #     new_schedule = @schedules.key?('default') ? 'default' : 'spring'
-          #   end
-          #   increment_priorities possibility.priority
-          #   add_possibility new_schedule, "If #{r.definition[1]} is not available", priority: possibility.priority
-          # when 'CommunityCenter'
-          #   new_schedule = @schedules.key?('default') ? 'default' : 'spring'
-          #   increment_priorities possibility.priority
-          #   add_possibility new_schedule, "If Community Center is not available", priority: possibility.priority
-          # end
+          case r.definition[1]
+          when 'JojaMart', 'Railroad'
+            increment_priorities possibility.priority
+            if @schedules.key? "#{r.definition[1]}_Replacement"
+              alt_definition = @schedules["#{r.definition[1]}_Replacement"].routes.first.definition.join ' '
+              alt_routes = possibility.routes.map do |r2|
+                return r2 unless r2.definition[1] == r.definition[1]
+
+                Route.new "#{r2.definition[0]} #{alt_definition}"
+              end
+              @possibilities.push SchedulePossibility.new(alt_routes, "If #{r.definition[1]} is not available", priority: possibility.priority)
+            else
+              new_schedule = @schedules.key?('default') ? 'default' : 'spring'
+              add_possibility new_schedule, "If #{r.definition[1]} is not available", priority: possibility.priority
+            end
+          when 'CommunityCenter'
+            new_schedule = @schedules.key?('default') ? 'default' : 'spring'
+            increment_priorities possibility.priority
+            add_possibility new_schedule, "If Community Center is not available", priority: possibility.priority
+          end
         end
       end
     end
 
     def check_for_mail
       @possibilities.map do |possibility|
-        if possibility.mail?
+        if possibility.first_route_word? 'MAIL'
           increment_priorities possibility.priority
           add_regular possibility.mail_alt_schedule, priority: possibility.priority
-          possibility.notes = MAIL[possibility.mail]
+          possibility.notes = MAIL[possibility.second_route_word]
           possibility.remove_routes(2)
         end
       end
@@ -84,12 +89,12 @@ module Stardew
 
     def check_for_not
       @possibilities.map do |possibility|
-        if possibility.not?
-          raise 'Unknown NOT syntax' unless possibility.not == 'friendship'
+        if possibility.first_route_word? 'NOT'
+          raise 'Unknown NOT syntax' unless possibility.second_route_word == 'friendship'
 
           increment_priorities possibility.priority + 1
           add_regular 'spring', priority: possibility.priority + 1
-          possibility.notes = possibility.not_notes
+          possibility.notes = possibility.friendship_notes
           possibility.remove_routes(1)
         end
       end
@@ -139,8 +144,8 @@ module Stardew
 
     def fix_goto(season)
       @possibilities.map do |possibility|
-        if possibility.goto?
-          season = possibility.goto == 'season' ? season : possibility.goto
+        if possibility.first_route_word? 'GOTO'
+          season = possibility.second_route_word == 'season' ? season : possibility.second_route_word
           schedule = @schedules.key?(season) ? season : 'spring'
           possibility.routes = @schedules[schedule].routes
         end
