@@ -25,6 +25,8 @@ module Stardew
       fix_goto(season)
       skip_nots_after_goto
 
+      check_for_inaccessible_locations
+
       # TODO: Check for possibly inaccessible locations (Joja, Railroad, Community Centre)
 
       @possibilities.sort_by { |p| p[:priority] }.map { |p| p.merge schedule: @schedules[p[:schedule_name]] }
@@ -49,12 +51,35 @@ module Stardew
       add_possibility schedule, 'Regular Schedule', priority: priority
     end
 
+    def check_for_inaccessible_locations
+      @possibilities.map do |p|
+        @schedules[p[:schedule_name]].each do |s|
+          case s[1]
+          when 'JojaMart', 'Railroad'
+            if @schedules.key? "#{s[1]}_Replacement"
+              # TODO: create an alternative
+              [s[0]].concat(@schedules["#{s[1]}_Replacement"][0])
+              new_schedule = 'sth'
+            else
+              new_schedule = @schedules.key? 'default' ? 'default' : 'spring'
+            end
+            increment_priorities p[:priority]
+            add_possibility new_schedule, "If #{s[1]} is not available", priority: p[:priority]
+          when 'CommunityCenter'
+            new_schedule = @schedules.key? 'default' ? 'default' : 'spring'
+            increment_priorities p[:priority]
+            add_possibility new_schedule, "If #{s[1]} is not available", priority: p[:priority]
+          end
+        end
+      end
+    end
+
     def check_for_mail
       @possibilities.map do |p|
         schedule = @schedules[p[:schedule_name]]
         if schedule[0][0] == 'MAIL'
-          increment_priorities p[:priority] + 1
-          add_regular schedule[1][1], priority: p[:priority] + 1
+          increment_priorities p[:priority]
+          add_regular schedule[1][1], priority: p[:priority]
           p[:notes] = MAIL[schedule[0][1]]
           @schedules[p[:schedule_name]].shift 2
         end
