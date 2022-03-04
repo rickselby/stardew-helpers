@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Stardew::Schedules do
-  subject { described_class.new(person) }
+  subject(:schedule) { described_class.new(person) }
 
   before { allow(JSON).to receive(:load).and_return({ foo: :bar }) }
 
@@ -9,5 +9,5 @@ RSpec.describe Stardew::Schedules do
   let(:person) { 'Person' }
   let(:season) { 'spring' }
 
-  example { expect(subject.foo).to eq 'foo' }
+  example { expect(schedule.foo).to eq 'foo' }
 end

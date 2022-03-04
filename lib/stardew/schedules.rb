@@ -4,8 +4,8 @@ module Stardew
   # Manage the retrieval of schedules
   class Schedules
     def initialize(person)
-      @schedules = JSON::load(File.new("data/schedules/#{person}.json"))
-                     .to_h { |k, v| [k.to_s, Schedule.new(k, v)] }
+      @schedules = JSON.parse(File.new("data/schedules/#{person}.json"))
+                       .to_h { |k, v| [k.to_s, Schedule.new(k, v)] }
       @person = person
     end
 
@@ -40,9 +40,10 @@ module Stardew
 
     private
 
-    def add_possibility(schedule, notes, rain = false, increment: true, priority: nil)
+    def add_possibility(schedule, notes, rain: false, increment: true, priority: nil)
       @priority += 1 if increment && priority.nil?
-      @possibilities.push SchedulePossibility.new(@schedules[schedule].routes, notes, priority: priority || @priority, rain: rain)
+      @possibilities.push SchedulePossibility.new(@schedules[schedule].routes, notes, priority: priority || @priority,
+                                                                                      rain: rain)
     end
 
     def add_regular(schedule, priority: nil)
@@ -62,7 +63,8 @@ module Stardew
 
                 Route.new "#{r2.definition[0]} #{alt_definition}"
               end
-              @possibilities.push SchedulePossibility.new(alt_routes, "If #{r.definition[1]} is not available", priority: possibility.priority)
+              @possibilities.push SchedulePossibility.new(alt_routes, "If #{r.definition[1]} is not available",
+                                                          priority: possibility.priority)
             else
               new_schedule = @schedules.key?('default') ? 'default' : 'spring'
               add_possibility new_schedule, "If #{r.definition[1]} is not available", priority: possibility.priority
@@ -70,7 +72,7 @@ module Stardew
           when 'CommunityCenter'
             new_schedule = @schedules.key?('default') ? 'default' : 'spring'
             increment_priorities possibility.priority
-            add_possibility new_schedule, "If Community Center is not available", priority: possibility.priority
+            add_possibility new_schedule, 'If Community Center is not available', priority: possibility.priority
           end
         end
       end
@@ -78,32 +80,31 @@ module Stardew
 
     def check_for_mail
       @possibilities.map do |possibility|
-        if possibility.first_route_word? 'MAIL'
-          increment_priorities possibility.priority
-          add_regular possibility.mail_alt_schedule, priority: possibility.priority
-          possibility.notes = MAIL[possibility.second_route_word]
-          possibility.remove_routes(2)
-        end
+        next unless possibility.first_route_word? 'MAIL'
+
+        increment_priorities possibility.priority
+        add_regular possibility.mail_alt_schedule, priority: possibility.priority
+        possibility.notes = MAIL[possibility.second_route_word]
+        possibility.remove_routes(2)
       end
     end
 
     def check_for_not
       @possibilities.map do |possibility|
-        if possibility.first_route_word? 'NOT'
-          raise 'Unknown NOT syntax' unless possibility.second_route_word == 'friendship'
+        next unless possibility.first_route_word? 'NOT'
+        raise 'Unknown NOT syntax' unless possibility.second_route_word == 'friendship'
 
-          increment_priorities possibility.priority + 1
-          add_regular 'spring', priority: possibility.priority + 1
-          possibility.notes = possibility.friendship_notes
-          possibility.remove_routes(1)
-        end
+        increment_priorities possibility.priority + 1
+        add_regular 'spring', priority: possibility.priority + 1
+        possibility.notes = possibility.friendship_notes
+        possibility.remove_routes(1)
       end
     end
 
     def check_for_unknowns
       @possibilities.each do |possibility|
         possibility.routes.each do |r|
-          raise "Unknown value: #{r.definition[0]}" unless r.definition[0] =~ /^a?\d+$/
+          raise "Unknown value: #{r.definition[0]}" unless /^a?\d+$/.match?(r.definition[0])
         end
       end
     end
@@ -125,8 +126,8 @@ module Stardew
 
       add_possibility 'bus', MAIL['ccVault'] if @person == 'Pam'
 
-      add_possibility 'rain', 'If raining', true if @schedules.key? 'rain'
-      add_possibility 'rain2', 'If raining', true, increment: false if @schedules.key? 'rain2'
+      add_possibility 'rain', 'If raining', rain: true if @schedules.key? 'rain'
+      add_possibility 'rain2', 'If raining', rain: true, increment: false if @schedules.key? 'rain2'
 
       (13..1).each do |hearts|
         if @schedules.key? "#{season}_#{day_of_week(day)}_#{hearts}"
@@ -135,20 +136,20 @@ module Stardew
       end
 
       return add_regular "#{season}_#{day_of_week(day)}" if @schedules.key? "#{season}_#{day_of_week(day)}"
-      return add_regular "#{day_of_week(day)}" if @schedules.key? "#{day_of_week(day)}"
-      return add_regular "#{season}" if @schedules.key? "#{season}"
-      return add_regular "spring" if @schedules.key? "spring"
+      return add_regular day_of_week(day).to_s if @schedules.key? day_of_week(day).to_s
+      return add_regular season.to_s if @schedules.key? season.to_s
+      return add_regular 'spring' if @schedules.key? 'spring'
 
       add_regular 'noschedule'
     end
 
     def fix_goto(season)
       @possibilities.map do |possibility|
-        if possibility.first_route_word? 'GOTO'
-          season = possibility.second_route_word == 'season' ? season : possibility.second_route_word
-          schedule = @schedules.key?(season) ? season : 'spring'
-          possibility.routes = @schedules[schedule].routes
-        end
+        next unless possibility.first_route_word? 'GOTO'
+
+        season = possibility.second_route_word == 'season' ? season : possibility.second_route_word
+        schedule = @schedules.key?(season) ? season : 'spring'
+        possibility.routes = @schedules[schedule].routes
       end
     end
 
@@ -157,7 +158,7 @@ module Stardew
     end
 
     def parse_schedule(schedule)
-      schedule.split('/').map { |s| s.split ' ' }
+      schedule.split('/').map(&:split)
     end
 
     def skip_nots_after_goto
