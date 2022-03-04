@@ -4,8 +4,9 @@ module Stardew
   # A single step in a schedule
   class Route
     attr_reader :definition
+
     def initialize(definition)
-      @definition = definition.split ' '
+      @definition = definition.split
     end
   end
 end
