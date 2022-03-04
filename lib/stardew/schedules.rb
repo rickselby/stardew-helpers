@@ -5,8 +5,7 @@ module Stardew
   class Schedules
     def initialize(person)
       @schedules = JSON::load(File.new("data/schedules/#{person}.json"))
-                     .transform_keys(&:to_s)
-                     .transform_values(&method(:parse_schedule))
+                     .to_h { |k, v| [k.to_s, Schedule.new(k, v)] }
       @person = person
     end
 
@@ -27,9 +26,7 @@ module Stardew
 
       check_for_inaccessible_locations
 
-      # TODO: Check for possibly inaccessible locations (Joja, Railroad, Community Centre)
-
-      @possibilities.sort_by { |p| p[:priority] }.map { |p| p.merge schedule: @schedules[p[:schedule_name]] }
+      @possibilities.sort_by(&:priority)
     end
 
     DAYS_OF_WEEK = %w[Sun Mon Tue Wed Thu Fri Sat].freeze
@@ -44,7 +41,7 @@ module Stardew
 
     def add_possibility(schedule, notes, rain = false, increment: true, priority: nil)
       @priority += 1 if increment && priority.nil?
-      @possibilities.push({ schedule_name: schedule, notes: notes, rain: rain, priority: priority || @priority })
+      @possibilities.push SchedulePossibility.new(@schedules[schedule].routes, notes, priority: priority || @priority, rain: rain)
     end
 
     def add_regular(schedule, priority: nil)
@@ -52,59 +49,56 @@ module Stardew
     end
 
     def check_for_inaccessible_locations
-      @possibilities.map do |p|
-        @schedules[p[:schedule_name]].each do |s|
-          case s[1]
-          when 'JojaMart', 'Railroad'
-            if @schedules.key? "#{s[1]}_Replacement"
-              # TODO: create an alternative
-              [s[0]].concat(@schedules["#{s[1]}_Replacement"][0])
-              new_schedule = 'sth'
-            else
-              new_schedule = @schedules.key? 'default' ? 'default' : 'spring'
-            end
-            increment_priorities p[:priority]
-            add_possibility new_schedule, "If #{s[1]} is not available", priority: p[:priority]
-          when 'CommunityCenter'
-            new_schedule = @schedules.key? 'default' ? 'default' : 'spring'
-            increment_priorities p[:priority]
-            add_possibility new_schedule, "If #{s[1]} is not available", priority: p[:priority]
-          end
+      @possibilities.map do |possibility|
+        possibility.routes.each do |r|
+          # case r.definition[1]
+          # when 'JojaMart', 'Railroad'
+          #   if @schedules.key? "#{r.definition[1]}_Replacement"
+          #     # TODO: create an alternative
+          #     [r.definition[0]].concat(@schedules["#{r.definition[1]}_Replacement"].routes)
+          #     new_schedule = 'sth'
+          #   else
+          #     new_schedule = @schedules.key?('default') ? 'default' : 'spring'
+          #   end
+          #   increment_priorities possibility.priority
+          #   add_possibility new_schedule, "If #{r.definition[1]} is not available", priority: possibility.priority
+          # when 'CommunityCenter'
+          #   new_schedule = @schedules.key?('default') ? 'default' : 'spring'
+          #   increment_priorities possibility.priority
+          #   add_possibility new_schedule, "If Community Center is not available", priority: possibility.priority
+          # end
         end
       end
     end
 
     def check_for_mail
-      @possibilities.map do |p|
-        schedule = @schedules[p[:schedule_name]]
-        if schedule[0][0] == 'MAIL'
-          increment_priorities p[:priority]
-          add_regular schedule[1][1], priority: p[:priority]
-          p[:notes] = MAIL[schedule[0][1]]
-          @schedules[p[:schedule_name]].shift 2
+      @possibilities.map do |possibility|
+        if possibility.mail?
+          increment_priorities possibility.priority
+          add_regular possibility.mail_alt_schedule, priority: possibility.priority
+          possibility.notes = MAIL[possibility.mail]
+          possibility.remove_routes(2)
         end
       end
     end
 
     def check_for_not
-      @possibilities.map do |p|
-        schedule = @schedules[p[:schedule_name]][0]
-        if schedule[0] == 'NOT'
-          raise 'Unknown NOT syntax' if schedule[1] != 'friendship'
+      @possibilities.map do |possibility|
+        if possibility.not?
+          raise 'Unknown NOT syntax' unless possibility.not == 'friendship'
 
-          increment_priorities p[:priority] + 1
-          add_regular 'spring', priority: p[:priority] + 1
-          p[:notes] = "Not at #{schedule[3]} hearts with #{schedule[2]}"
-          p[:notes] = "#{p[:notes]} or #{schedule[5]} hearts with #{schedule[4]}" if schedule.length == 6
-          @schedules[p[:schedule_name]].shift
+          increment_priorities possibility.priority + 1
+          add_regular 'spring', priority: possibility.priority + 1
+          possibility.notes = possibility.not_notes
+          possibility.remove_routes(1)
         end
       end
     end
 
     def check_for_unknowns
-      @possibilities.each do |p|
-        @schedules[p[:schedule_name]].each do |s|
-          raise "Unknown value: #{s[0]}" unless s[0] =~ /^a?\d+$/
+      @possibilities.each do |possibility|
+        possibility.routes.each do |r|
+          raise "Unknown value: #{r.definition[0]}" unless r.definition[0] =~ /^a?\d+$/
         end
       end
     end
@@ -144,17 +138,17 @@ module Stardew
     end
 
     def fix_goto(season)
-      @possibilities.map do |p|
-        schedule = @schedules[p[:schedule_name]][0]
-        if schedule[0] == 'GOTO'
-          season = schedule[0] == 'season' ? season : schedule[0]
-          p[:schedule_name] = @schedules.key?(season) ? season : 'spring'
+      @possibilities.map do |possibility|
+        if possibility.goto?
+          season = possibility.goto == 'season' ? season : possibility.goto
+          schedule = @schedules.key?(season) ? season : 'spring'
+          possibility.routes = @schedules[schedule].routes
         end
       end
     end
 
     def increment_priorities(priority)
-      @possibilities.map { |p| p[:priority] += 1 if p[:priority] >= priority }
+      @possibilities.map { |p| p.priority += 1 if p.priority >= priority }
     end
 
     def parse_schedule(schedule)
@@ -162,12 +156,7 @@ module Stardew
     end
 
     def skip_nots_after_goto
-      @possibilities.each do |p|
-        schedule = @schedules[p[:schedule_name]][0]
-        if schedule[0] == 'NOT'
-          @schedules[p[:schedule_name]].shift
-        end
-      end
+      @possibilities.each(&:skip_nots)
     end
   end
 end
