@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 
 group :test, :development do
+  gem 'rack-test'
   gem 'rake'
 end
 

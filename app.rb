@@ -15,6 +15,10 @@ before do
   cache_control :no_cache
 end
 
+before '/api/*' do
+  content_type :json
+end
+
 # Routes from laravel
 # Route::get('/', 'ScheduleController@mainPage');
 # Route::post('/schedule', 'ScheduleController@getSchedule')->name('getSchedule');
@@ -27,3 +31,15 @@ get '/' do
   erb :index
 end
 
+get '/api/schedules' do
+  Dir['data/schedules/*'].map { |f| File.basename(f, '.json') }.sort.to_json
+end
+
+def valid_portraits
+  Dir['data/portraits/*'].map { |f| File.basename(f, '.png') }
+end
+
+get '/portrait/:name' do
+  halt 404 unless valid_portraits.include? params[:name]
+  send_file File.expand_path("data/portraits/#{params[:name]}.png")
+end

@@ -15,6 +15,8 @@ GEM
     rack (2.2.3)
     rack-protection (2.2.0)
       rack
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     rainbow (3.1.1)
     rake (13.0.6)
     regexp_parser (2.2.1)
@@ -68,6 +70,7 @@ DEPENDENCIES
   bundler-audit
   erubi
   rack
+  rack-test
   rake
   rspec
   rubocop
