@@ -31,7 +31,7 @@ get '/' do
   erb :index
 end
 
-get '/api/schedules' do
+get '/api/people' do
   Dir['data/schedules/*'].map { |f| File.basename(f, '.json') }.sort.to_json
 end
 
