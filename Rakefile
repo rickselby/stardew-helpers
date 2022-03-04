@@ -3,6 +3,8 @@
 require 'rubygems'
 require 'bundler/setup'
 
+Dir['./lib/**/*.rb'].sort.each { |file| require file }
+
 Bundler.setup
 Bundler.require(:development, :test)
 
@@ -23,4 +25,18 @@ end
 desc 'Bring up app'
 task :up do
   system 'rerun --background --no-notify -- ruby app.rb -p 8080'
+end
+
+desc 'Check all schedules are parseable'
+namespace :check do
+  task :schedules do
+    Dir['data/schedules/*'].map { |f| File.basename(f, '.json') }.sort.each do |person|
+      schedules = Stardew::Schedules.new(person)
+      %w[spring summer fall winter].each do |season|
+        (1..28).each do |day|
+          schedules.schedule season, day
+        end
+      end
+    end
+  end
 end

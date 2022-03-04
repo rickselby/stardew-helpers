@@ -5,6 +5,8 @@ require 'bundler'
 
 Bundler.require
 
+Dir['./lib/**/*.rb'].sort.each { |file| require file }
+
 configure do
   set :erb, escape_html: true
   set :show_exceptions, :after_handler if development?
@@ -32,6 +34,10 @@ get '/' do
 end
 
 get '/api/people' do
+  Dir['data/schedules/*'].map { |f| File.basename(f, '.json') }.sort.to_json
+end
+
+post '/api/schedules' do
   Dir['data/schedules/*'].map { |f| File.basename(f, '.json') }.sort.to_json
 end
 
