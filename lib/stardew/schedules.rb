@@ -25,6 +25,8 @@ module Stardew
       fix_goto(season)
       skip_nots_after_goto
 
+      # TODO: Check for possibly inaccessible locations (Joja, Railroad, Community Centre)
+
       @possibilities.sort_by { |p| p[:priority] }.map { |p| p.merge schedule: @schedules[p[:schedule_name]] }
     end
 
@@ -97,7 +99,7 @@ module Stardew
 
       return add_regular day if @schedules.key? day
 
-      add_possibility 'bus', 'If the bus is repaired' if @person == 'Pam'
+      add_possibility 'bus', MAIL['ccVault'] if @person == 'Pam'
 
       add_possibility 'rain', 'If raining', true if @schedules.key? 'rain'
       add_possibility 'rain2', 'If raining', true, increment: false if @schedules.key? 'rain2'
