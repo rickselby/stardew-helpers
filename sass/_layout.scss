@@ -12,6 +12,7 @@ body {
 h1, h2, h3, h4 {
   margin-top: 0;
 }
+
 @include media-breakpoint-only(xs) {
   h1 {
     font-size: 50px;

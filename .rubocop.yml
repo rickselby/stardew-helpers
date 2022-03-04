@@ -13,3 +13,7 @@ AllCops:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
+
+# Don't enforce a module / class name as the first argument to the top-level describe
+RSpec/DescribeClass:
+  Enabled: false
