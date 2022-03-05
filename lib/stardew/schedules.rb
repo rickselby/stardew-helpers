@@ -10,7 +10,6 @@ module Stardew
       'saloonSportsRoom' => 'After Alex\'s 14 heart event',
       'shanePK' => 'After Shane\'s 14 heart event'
     }.freeze
-    VALID_TIME = /^a?\d+$/
 
     def initialize(person)
       @schedules = JSON.parse(File.read("data/schedules/#{person}.json"))
@@ -56,21 +55,21 @@ module Stardew
     def check_for_inaccessible_locations
       @possibilities.map do |possibility|
         possibility.routes.each do |r|
-          case r.definition[1]
+          case r.map
           when 'JojaMart', 'Railroad'
             increment_priorities possibility.priority
-            if @schedules.key? "#{r.definition[1]}_Replacement"
-              alt_definition = @schedules["#{r.definition[1]}_Replacement"].routes.first.definition.join ' '
+            if @schedules.key? "#{r.map}_Replacement"
+              alt_definition = @schedules["#{r.map}_Replacement"].routes.first.definition.join ' '
               alt_routes = possibility.routes.map do |r2|
-                next r2 unless r2.definition[1] == r.definition[1]
+                next r2 unless r2.map == r.map
 
-                Route.new "#{r2.definition[0]} #{alt_definition}"
+                Route.new "#{r2.time} #{alt_definition}"
               end
-              @possibilities.push SchedulePossibility.new("#{possibility.name}_alt", alt_routes, "If #{r.definition[1]} is not available",
+              @possibilities.push SchedulePossibility.new("#{possibility.name}_alt", alt_routes, "If #{r.map} is not available",
                                                           priority: possibility.priority - 1)
             else
               new_schedule = @schedules.key?('default') ? 'default' : 'spring'
-              add_possibility new_schedule, "If #{r.definition[1]} is not available", priority: possibility.priority - 1
+              add_possibility new_schedule, "If #{r.map} is not available", priority: possibility.priority - 1
             end
             break
           when 'CommunityCenter'
@@ -109,7 +108,7 @@ module Stardew
     def check_for_unknowns
       @possibilities.each do |possibility|
         possibility.routes.each do |r|
-          raise "Unknown value: #{r.definition[0]}" unless VALID_TIME.match?(r.definition[0])
+          raise "Unknown route: #{r.to_s}" unless r.valid?
         end
       end
     end

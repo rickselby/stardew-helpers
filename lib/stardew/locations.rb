@@ -12,11 +12,10 @@ module Stardew
         person_locations = locations.key?(person) ? locations[person] : {}
         JSON.parse(File.read("data/schedules/#{person}.json")).each do |name, definition|
           Schedule.new(name, definition).routes.each do |r|
-            next unless Stardew::Schedules::VALID_TIME.match? r.definition[0]
+            next unless r.valid?
 
-            person_locations[r.definition[1]] = {} unless person_locations.key? r.definition[1]
-            x_y_key = [r.definition[2], r.definition[3]].join ' '
-            person_locations[r.definition[1]][x_y_key] = '' unless person_locations[r.definition[1]].key? x_y_key
+            person_locations[r.map] = {} unless person_locations.key? r.map
+            person_locations[r.map][r.x_y] = '' unless person_locations[r.map].key? r.x_y
           end
         end
         person_locations.transform_values! { |v| v.sort_by { |k, _| k.split(' ').first.to_i }.to_h }
