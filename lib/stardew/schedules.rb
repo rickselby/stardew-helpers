@@ -113,6 +113,7 @@ module Stardew
       DAYS_OF_WEEK[day.to_i % 7]
     end
 
+    # NPC.cs getSchedule, ~line 5189
     def find_schedules(season, day)
       return add_regular "#{season}_#{day}" if @schedules.key? "#{season}_#{day}"
 
@@ -136,8 +137,9 @@ module Stardew
       end
 
       return add_regular "#{season}_#{day_of_week(day)}" if @schedules.key? "#{season}_#{day_of_week(day)}"
-      return add_regular day_of_week(day).to_s if @schedules.key? day_of_week(day).to_s
+      return add_regular day_of_week(day) if @schedules.key? day_of_week(day)
       return add_regular season.to_s if @schedules.key? season.to_s
+      return add_regular "spring_#{day_of_week(day)}".to_s if @schedules.key? "spring_#{day_of_week(day)}"
       return add_regular 'spring' if @schedules.key? 'spring'
 
       add_regular 'noschedule'
