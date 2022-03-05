@@ -73,7 +73,7 @@ module Stardew
           when 'CommunityCenter'
             new_schedule = @schedules.key?('default') ? 'default' : 'spring'
             increment_priorities possibility.priority
-            add_possibility new_schedule, 'If Community Center is not available', priority: possibility.priority
+            add_possibility new_schedule, 'If Community Center is not available', priority: possibility.priority - 1
             break
           end
         end
