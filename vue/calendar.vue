@@ -43,6 +43,26 @@
           <h4 class="col-12 text-center" v-if="schedules.length !== 0">
             {{ selected }}
           </h4>
+          <template v-for="schedule in schedules">
+            <div class="panel col-12 col-md-6 col-lg-4 col-xl-3">
+              <div class="bulletin">
+                <div class="panel-heading">
+                  <h4>{{ schedule.notes }}</h4>
+                </div>
+                <ul class="list-group">
+                  <div v-for="route in schedule.routes">
+                    <li class="list-group-item">
+                      {{ formatTime(route.time) }}:
+                      {{ route.map }} ({{ route.x }}, {{ route.y }})
+                      <!--                    <a href="#mapModal" data-toggle="modal" data-target="#mapModal" v-bind:data-map="getMap(step)">-->
+                      <!--                      {{ step.location }}-->
+                      <!--                    </a>-->
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </template>
         </div>
       </div>
     </div>
@@ -85,6 +105,10 @@ export default {
     capitalizeFirstLetter: function (string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
+    formatTime(time) {
+      time = ('0' + time).slice(-4);
+      return time.slice(0,2) + ':' + time.slice(-2);
+    },
     getCoords: function (day) {
       let dayOfWeek = ((day - 1) % 7),
           row = Math.floor((day - 1) / 7);
@@ -112,7 +136,7 @@ export default {
 
       axios.post('/api/schedules', form)
           .then(response => {
-            console.log(response.data);
+            this.schedules = response.data;
           })
           .catch(error => {
             // TODO: show the error
@@ -139,13 +163,13 @@ export default {
     },
   },
   watch: {
-    person: function() {
+    person: function () {
       this.loadSchedules();
     },
-    season: function() {
+    season: function () {
       this.loadSchedules();
     },
-    day: function() {
+    day: function () {
       this.loadSchedules();
     }
   },
