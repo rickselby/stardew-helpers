@@ -4,7 +4,7 @@ module Stardew
   # Manage the retrieval of schedules
   class Schedules
     def initialize(person)
-      @schedules = JSON.parse(File.new("data/schedules/#{person}.json"))
+      @schedules = JSON.parse(File.read("data/schedules/#{person}.json"))
                        .to_h { |k, v| [k.to_s, Schedule.new(k, v)] }
       @person = person
     end
@@ -122,7 +122,7 @@ module Stardew
         end
       end
 
-      return add_regular day if @schedules.key? day
+      return add_regular day.to_s if @schedules.key? day.to_s
 
       add_possibility 'bus', MAIL['ccVault'] if @person == 'Pam'
 
