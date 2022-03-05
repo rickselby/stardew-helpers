@@ -58,3 +58,30 @@ get '/portrait/:name' do
   halt 404 unless valid_portraits.include? params[:name]
   send_file File.expand_path("data/portraits/#{params[:name]}.png")
 end
+
+def valid_maps
+  Dir['data/maps/*'].map { |f| File.basename(f, '.png') }
+end
+
+MAP_GRID = 16
+MAP_SIZE = 400
+
+get '/map/:name/:x/:y' do
+  halt 404 unless valid_maps.include? params[:name]
+  x = Integer(params[:x], 10)
+  y = Integer(params[:y], 10)
+
+  map = MiniMagick::Image.open("./data/maps/#{params[:name]}.png")
+  marker = MiniMagick::Image.open('./images/marker.png')
+  result = map.composite(marker) do |c|
+    c.compose 'Over'
+    c.geometry "+#{x * MAP_GRID}+#{y * MAP_GRID}"
+  end
+  result.crop "#{MAP_SIZE}x#{MAP_SIZE}+#{get_crop_offset(x)}+#{get_crop_offset(y)}"
+
+  send_file result.path
+end
+
+def get_crop_offset(v)
+  ((v + 0.5) * MAP_GRID) - (MAP_SIZE / 2)
+end

@@ -21,5 +21,6 @@ group :development do
 end
 
 gem 'erubi'
+gem 'mini_magick'
 gem 'rack'
 gem 'sinatra'
