@@ -21,30 +21,18 @@ before '/api/*' do
   content_type :json
 end
 
-# Routes from laravel
-# Route::get('/', 'ScheduleController@mainPage');
-# Route::post('/schedule', 'ScheduleController@getSchedule')->name('getSchedule');
-# Route::get('/map/{name}', 'ScheduleController@fullMap')->name('getFullMap');
-# Route::get('/map/{name}/{x}/{y}', 'ScheduleController@map')->name('getMap');
-# Route::get('/map-sizes/', 'ScheduleController@mapSizes')->name('mapSizes');
-# Route::get('/portrait/{name}', 'ScheduleController@portrait')->name('getPortrait');
-
 get '/' do
   erb :index
 end
 
-def valid_schedule
-  Dir['data/schedules/*'].map { |f| File.basename(f, '.json') }
-end
-
 get '/api/people' do
-  valid_schedule.sort.to_json
+  Stardew::Schedules.valid_people.sort.to_json
 end
 
 post '/api/schedules' do
-  halt 400 unless valid_schedule.include? params[:person]
-  halt 400 unless %w[spring summer fall winter].include? params[:season]
-  halt 400 unless (1..28).map(&:to_s).include? params[:day]
+  halt 400 unless Stardew::Schedules.valid_people.include? params[:person]
+  halt 400 unless Stardew::SEASONS.include? params[:season]
+  halt 400 unless Stardew::DAYS.map(&:to_s).include? params[:day]
 
   schedule = Stardew::Schedules.new(params[:person])
   schedule.schedule(params[:season], params[:day]).to_json

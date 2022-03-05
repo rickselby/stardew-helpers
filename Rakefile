@@ -35,7 +35,7 @@ end
 namespace :check do
   desc 'Check all schedules are parseable'
   task :schedules do
-    Dir['data/schedules/*'].map { |f| File.basename(f, '.json') }.sort.each do |person|
+    Stardew::Schedules.each_person do |person|
       schedules = Stardew::Schedules.new(person)
       Stardew.each_day do |season, day|
         schedules.check season, day

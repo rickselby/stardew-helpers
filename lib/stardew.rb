@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Game-wide helpers for Stardew Valley
 module Stardew
   DAYS = (1..28).freeze
   SEASONS = %w[spring summer fall winter].freeze
