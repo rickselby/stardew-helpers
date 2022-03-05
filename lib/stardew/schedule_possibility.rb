@@ -6,10 +6,10 @@ module Stardew
     attr_accessor :notes, :priority, :routes
 
     def initialize(routes, notes, priority:, rain: false)
-      @notes = notes
-      @priority = priority
-      @rain = rain
-      @routes = routes
+      @notes = notes.dup
+      @priority = priority.dup
+      @rain = rain.dup
+      @routes = routes.dup
     end
 
     def first_route_word?(test)
