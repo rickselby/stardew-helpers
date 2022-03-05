@@ -3,6 +3,15 @@
 module Stardew
   # Manage the retrieval of schedules
   class Schedules
+    DAYS_OF_WEEK = %w[Sun Mon Tue Wed Thu Fri Sat].freeze
+    MAIL = {
+      'beachBridgeFixed' => 'Beach bridge fixed',
+      'ccVault' => 'Community Centre vault completed',
+      'saloonSportsRoom' => 'After Alex\'s 14 heart event',
+      'shanePK' => 'After Shane\'s 14 heart event'
+    }.freeze
+    VALID_TIME = /^a?\d+$/
+
     def initialize(person)
       @schedules = JSON.parse(File.read("data/schedules/#{person}.json"))
                        .to_h { |k, v| [k.to_s, Schedule.new(k, v)] }
@@ -31,14 +40,6 @@ module Stardew
 
       @possibilities.sort_by(&:priority)
     end
-
-    DAYS_OF_WEEK = %w[Sun Mon Tue Wed Thu Fri Sat].freeze
-    MAIL = {
-      'beachBridgeFixed' => 'Beach bridge fixed',
-      'ccVault' => 'Community Centre vault completed',
-      'saloonSportsRoom' => 'After Alex\'s 14 heart event',
-      'shanePK' => 'After Shane\'s 14 heart event'
-    }.freeze
 
     private
 
@@ -108,7 +109,7 @@ module Stardew
     def check_for_unknowns
       @possibilities.each do |possibility|
         possibility.routes.each do |r|
-          raise "Unknown value: #{r.definition[0]}" unless /^a?\d+$/.match?(r.definition[0])
+          raise "Unknown value: #{r.definition[0]}" unless VALID_TIME.match?(r.definition[0])
         end
       end
     end
