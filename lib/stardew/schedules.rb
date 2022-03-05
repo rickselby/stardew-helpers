@@ -24,6 +24,8 @@ module Stardew
       fix_goto(season)
       skip_nots_after_goto
 
+      remove_duplicates
+
       check_for_inaccessible_locations
       fix_goto(season)
 
@@ -42,8 +44,8 @@ module Stardew
 
     def add_possibility(schedule, notes, rain: false, increment: true, priority: nil)
       @priority += 1 if increment && priority.nil?
-      @possibilities.push SchedulePossibility.new(@schedules[schedule].routes, notes, priority: priority || @priority,
-                                                                                      rain: rain)
+      @possibilities.push SchedulePossibility.new(schedule, @schedules[schedule].routes, notes,
+                                                  priority: priority || @priority, rain: rain)
     end
 
     def add_regular(schedule, priority: nil)
@@ -63,7 +65,7 @@ module Stardew
 
                 Route.new "#{r2.definition[0]} #{alt_definition}"
               end
-              @possibilities.push SchedulePossibility.new(alt_routes, "If #{r.definition[1]} is not available",
+              @possibilities.push SchedulePossibility.new("#{possibility.name}_alt", alt_routes, "If #{r.definition[1]} is not available",
                                                           priority: possibility.priority - 1)
             else
               new_schedule = @schedules.key?('default') ? 'default' : 'spring'
@@ -154,6 +156,7 @@ module Stardew
         season = possibility.second_route_word == 'season' ? season : possibility.second_route_word
         schedule = @schedules.key?(season) ? season : 'spring'
         possibility.routes = @schedules[schedule].routes
+        possibility.name = schedule
       end
     end
 
@@ -163,6 +166,21 @@ module Stardew
 
     def parse_schedule(schedule)
       schedule.split('/').map(&:split)
+    end
+
+    def remove_duplicates
+      previous = nil
+      @possibilities.each_with_index do |p, i|
+        update_previous = true
+
+        if previous && (previous.name == p.name)
+          previous.notes = [previous.notes, p.notes].join ' / '
+          @possibilities.delete_at i
+          update_previous = false
+        end
+
+        previous = p if update_previous
+      end
     end
 
     def skip_nots_after_goto

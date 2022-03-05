@@ -3,9 +3,10 @@
 module Stardew
   # A single schedule
   class SchedulePossibility
-    attr_accessor :notes, :priority, :routes
+    attr_accessor :name, :notes, :priority, :routes
 
-    def initialize(routes, notes, priority:, rain: false)
+    def initialize(name, routes, notes, priority:, rain: false)
+      @name = name.dup
       @notes = notes.dup
       @priority = priority.dup
       @rain = rain.dup
