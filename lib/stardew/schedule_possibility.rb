@@ -39,5 +39,17 @@ module Stardew
     def skip_nots
       remove_routes(1) if first_route_word? 'NOT'
     end
+
+    def as_json(_options = {})
+      {
+        notes: @notes,
+        rain: @rain,
+        routes: @routes.map(&:as_json)
+      }
+    end
+
+    def to_json(*options)
+      as_json(*options).to_json(*options)
+    end
   end
 end
