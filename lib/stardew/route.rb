@@ -5,7 +5,7 @@ module Stardew
   class Route
     attr_reader :definition
 
-    VALID_TIME = /^a?\d+$/
+    VALID_TIME = /^a?\d+$/.freeze
 
     def initialize(definition)
       @definition = definition.split

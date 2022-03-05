@@ -11,6 +11,14 @@ module Stardew
       'shanePK' => 'After Shane\'s 14 heart event'
     }.freeze
 
+    def self.each_person
+      valid_people.sort.each { |person| yield person }
+    end
+
+    def self.valid_people
+      Dir['data/schedules/*'].map { |f| File.basename(f, '.json') }
+    end
+
     def initialize(person)
       @schedules = JSON.parse(File.read("data/schedules/#{person}.json"))
                        .to_h { |k, v| [k.to_s, Schedule.new(k, v)] }
@@ -65,7 +73,8 @@ module Stardew
 
                 Route.new "#{r2.time} #{alt_definition}"
               end
-              @possibilities.push SchedulePossibility.new("#{possibility.name}_alt", alt_routes, "If #{r.map} is not available",
+              @possibilities.push SchedulePossibility.new("#{possibility.name}_alt", alt_routes,
+                                                          "If #{r.map} is not available",
                                                           priority: possibility.priority - 1)
             else
               new_schedule = @schedules.key?('default') ? 'default' : 'spring'
@@ -108,7 +117,7 @@ module Stardew
     def check_for_unknowns
       @possibilities.each do |possibility|
         possibility.routes.each do |r|
-          raise "Unknown route: #{r.to_s}" unless r.valid?
+          raise "Unknown route: #{r}" unless r.valid?
         end
       end
     end
