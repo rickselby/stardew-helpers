@@ -59,20 +59,22 @@ module Stardew
             if @schedules.key? "#{r.definition[1]}_Replacement"
               alt_definition = @schedules["#{r.definition[1]}_Replacement"].routes.first.definition.join ' '
               alt_routes = possibility.routes.map do |r2|
-                return r2 unless r2.definition[1] == r.definition[1]
+                next r2 unless r2.definition[1] == r.definition[1]
 
                 Route.new "#{r2.definition[0]} #{alt_definition}"
               end
               @possibilities.push SchedulePossibility.new(alt_routes, "If #{r.definition[1]} is not available",
-                                                          priority: possibility.priority)
+                                                          priority: possibility.priority - 1)
             else
               new_schedule = @schedules.key?('default') ? 'default' : 'spring'
-              add_possibility new_schedule, "If #{r.definition[1]} is not available", priority: possibility.priority
+              add_possibility new_schedule, "If #{r.definition[1]} is not available", priority: possibility.priority - 1
             end
+            break
           when 'CommunityCenter'
             new_schedule = @schedules.key?('default') ? 'default' : 'spring'
             increment_priorities possibility.priority
             add_possibility new_schedule, 'If Community Center is not available', priority: possibility.priority
+            break
           end
         end
       end
