@@ -27,16 +27,18 @@ task :up do
   system 'rerun --background --no-notify -- ruby app.rb -p 8080'
 end
 
+desc 'Build a list of locations'
+task :build_locations do
+  Stardew::Locations.build
+end
+
 namespace :check do
   desc 'Check all schedules are parseable'
   task :schedules do
-    seasons = %w[spring summer fall winter]
     Dir['data/schedules/*'].map { |f| File.basename(f, '.json') }.sort.each do |person|
       schedules = Stardew::Schedules.new(person)
-      seasons.each do |season|
-        (1..28).each do |day|
-          schedules.check season, day
-        end
+      Stardew.each_day do |season, day|
+        schedules.check season, day
       end
     end
   end
