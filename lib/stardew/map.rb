@@ -9,7 +9,7 @@ module Stardew
     MAP_SIZE = 400
 
     def self.map_with_marker(map, x, y)
-      self.new(map).with_marker(x, y)
+      new(map).with_marker(x, y)
     end
 
     def initialize(map)
