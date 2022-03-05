@@ -70,4 +70,3 @@ get '/map/:name/:x/:y' do
 
   send_file Stardew::Map.map_with_marker(params[:name], x, y)
 end
-
