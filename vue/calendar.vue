@@ -44,25 +44,32 @@
             {{ selected }}
           </h4>
           <template v-for="schedule in schedules">
-            <div class="panel col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="panel col-12 col-md-6 col-lg-4 col-xl-3 route-panel">
               <div class="bulletin">
                 <div class="panel-heading">
                   <h4>{{ schedule.notes }}</h4>
                 </div>
-                <ul class="list-group">
-                  <div v-for="route in schedule.routes">
-                    <li class="list-group-item">
-                      {{ formatTime(route.time) }}:
-                      {{ route.map }} ({{ route.x }}, {{ route.y }})
-                      <!--                    <a href="#mapModal" data-toggle="modal" data-target="#mapModal" v-bind:data-map="getMap(step)">-->
-                      <!--                      {{ step.location }}-->
-                      <!--                    </a>-->
-                    </li>
-                  </div>
-                </ul>
+                <div class="list-group list-group-flush">
+                  <template v-for="route in schedule.routes">
+                      <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#mapModal" v-on:click="setRoute(route)">
+                        {{ formatTime(route.time) }}:
+                        {{ route.map }} ({{ route.x }}, {{ route.y }})
+                      </button>
+                  </template>
+                </div>
               </div>
             </div>
           </template>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="mapModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <img v-bind:src="mapPath" />
+          </div>
         </div>
       </div>
     </div>
@@ -80,6 +87,7 @@ export default {
       loading: false,
       person: null,
       people: [],
+      route: null,
       schedules: [],
       season: null,
       seasons: ['spring', 'summer', 'fall', 'winter'],
@@ -91,6 +99,14 @@ export default {
         left: (7 + (((this.day - 1) % 7) * 32)) + 'px',
         top: (37 + (Math.floor((this.day - 1) / 7) * 32)) + 'px',
       }
+    },
+    mapPath() {
+      console.log(this.route);
+      if (this.route === null) {
+        return '';
+      }
+
+      return '/' + [ 'map', this.route.map, this.route.x, this.route.y ].join('/')
     },
     selected() {
       return this.person + ': '
@@ -161,6 +177,9 @@ export default {
       this.season = season;
       this.day = day;
     },
+    setRoute: function (route) {
+      this.route = route;
+    }
   },
   watch: {
     person: function () {
