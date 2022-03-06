@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'mini_magick'
+
 module Stardew
   # A single step in a schedule
   class Map

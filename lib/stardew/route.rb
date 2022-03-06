@@ -36,7 +36,7 @@ module Stardew
     end
 
     def x
-      @definition[2]
+      @definition[2].to_i
     end
 
     def x_y
@@ -44,7 +44,7 @@ module Stardew
     end
 
     def y
-      definition[3]
+      definition[3].to_i
     end
   end
 end

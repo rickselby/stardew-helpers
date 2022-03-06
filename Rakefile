@@ -32,6 +32,22 @@ task :build_locations do
   Stardew::Locations.build
 end
 
+desc 'Build all maps'
+task :build_maps do
+  Stardew::Schedules.each_person do |person|
+    JSON.parse(File.read("data/schedules/#{person}.json")).each do |name, definition|
+      Stardew::Schedule.new(name, definition).routes.each do |r|
+        next unless r.valid?
+
+        p r.to_json
+        Stardew::Map.map_with_marker r.map, r.x, r.y
+      rescue Errno::ENOENT
+        # continue...
+      end
+    end
+  end
+end
+
 namespace :check do
   desc 'Check all schedules are parseable'
   task :schedules do
