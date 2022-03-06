@@ -24,20 +24,20 @@
     </table>
 
     <script>
-        const nameElement = document.querySelector('.name');
+        document.querySelectorAll('.name').forEach(item => {
+          item.addEventListener('change', (e) => {
+              let form = new FormData();
+              form.append('person', e.target.dataset.person);
+              form.append('map', e.target.dataset.map);
+              form.append('coords', e.target.dataset.coords);
+              form.append('name', e.target.value);
 
-        nameElement.addEventListener('change', (e) => {
-            let form = new FormData();
-            form.append('person', e.target.dataset.person);
-            form.append('map', e.target.dataset.map);
-            form.append('coords', e.target.dataset.coords);
-            form.append('name', e.target.value);
-
-            axios.post('/api/location', form)
-                .catch(error => {
-                    // TODO: show the error
-                    console.log(error);
-                });
+              axios.post('/api/location', form)
+                  .catch(error => {
+                      // TODO: show the error
+                      console.log(error);
+                  });
+          });
         });
     </script>
   </div>

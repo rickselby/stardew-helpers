@@ -67,5 +67,6 @@ if development?
 
   post '/api/location' do
     Stardew::Locations.set params[:person], params[:map], params[:coords], params[:name]
+    halt 200
   end
 end
