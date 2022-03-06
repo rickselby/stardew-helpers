@@ -58,3 +58,14 @@ get '/map/:name/:x/:y' do
 
   send_file Stardew::Map.map_with_marker(params[:name], x, y)
 end
+
+if development?
+  get '/locations' do
+    @locations = Stardew::Locations.locations
+    erb :locations
+  end
+
+  post '/api/location' do
+    Stardew::Locations.set params[:person], params[:map], params[:coords], params[:name]
+  end
+end

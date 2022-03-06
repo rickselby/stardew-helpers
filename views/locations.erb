@@ -1,0 +1,44 @@
+
+<div class="panel">
+  <div class="wood-border">
+    <table class="table">
+      <% @locations.each do |person, maps| %>
+        <tr class="table-info">
+          <th colspan="4"><%= person %></th>
+        </tr>
+        <% maps.each do |map, places| %>
+          <% places.each do |coords, name| %>
+            <tr>
+              <th><%= map %></th>
+              <td><%= coords %></td>
+              <td>
+                <input class="name" type="text" data-person="<%= person %>" data-map="<%= map %>" data-coords="<%= coords %>" value="<%= name %>" />
+              </td>
+              <td>
+                <img src="/map/<%= map %>/<%= coords.sub ' ', '/' %>" />
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    </table>
+
+    <script>
+        const nameElement = document.querySelector('.name');
+
+        nameElement.addEventListener('change', (e) => {
+            let form = new FormData();
+            form.append('person', e.target.dataset.person);
+            form.append('map', e.target.dataset.map);
+            form.append('coords', e.target.dataset.coords);
+            form.append('name', e.target.value);
+
+            axios.post('/api/location', form)
+                .catch(error => {
+                    // TODO: show the error
+                    console.log(error);
+                });
+        });
+    </script>
+  </div>
+</div>

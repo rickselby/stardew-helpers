@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'yaml'
+
 module Stardew
   # Information about locations in the game
   class Locations
@@ -25,7 +27,13 @@ module Stardew
     end
 
     def self.locations
+      return {} unless File.file? PATH
+
       YAML.load_file PATH
+    end
+
+    def self.set(person, map, coords, name)
+      # TODO: save this name!
     end
   end
 end
