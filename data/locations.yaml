@@ -1,105 +1,105 @@
 ---
 Abigail:
   ArchaeologyHouse:
-    11 9: ''
+    11 9: In the Museum
   Beach:
-    13 39: ''
-    30 34: ''
+    13 39: On the left pier at the Beach
+    30 34: Outside the Fish Shop
   BusStop:
-    "-1 23": ''
-    22 5: ''
+    "-1 23": In the Farmhouse
+    22 5: At the Bus Stop
   Forest:
-    14 40: ''
+    14 40: Near the Wizard's Tower
   Hospital:
-    4 6: ''
-    13 14: ''
+    4 6: In the Clinic
+    13 14: In the Clinic
   Mountain:
-    46 23: ''
-    49 31: ''
+    46 23: East of the Carpenter's Shop
+    49 31: East of the Carpenter's Shop
   Railroad:
-    30 45: ''
+    30 45: At the Railroad
   Saloon:
-    33 18: ''
-    42 17: ''
+    33 18: In the Saloon
+    42 17: In the Saloon
   ScienceHouse:
-    5 19: ''
+    5 19: In the Carpenter's Shop
   SebastianRoom:
-    5 4: ''
+    5 4: In Sebastian's Room
   SeedShop:
-    1 9: ''
-    2 20: ''
-    3 6: ''
-    4 5: ''
-    6 4: ''
-    6 19: ''
-    7 9: ''
-    9 5: ''
-    9 17: ''
-    10 5: ''
-    11 5: ''
-    13 20: ''
-    20 5: ''
-    34 5: ''
-    36 9: ''
-    39 5: ''
+    1 9: In her bed
+    2 20: In Pierre's General Store
+    3 6: In her room
+    4 5: In her room
+    6 4: In her room
+    6 19: In Pierre's General Store
+    7 9: In her room
+    9 5: In her room
+    9 17: In Pierre's General Store
+    10 5: In her room
+    11 5: In her room
+    13 20: In Pierre's General Store
+    20 5: In Caroline & Pierre's bedroom
+    34 5: In her kitchen
+    36 9: In her kitchen
+    39 5: In her kitchen
   Town:
-    47 87: ''
-    73 54: ''
+    47 87: In the graveyard
+    73 54: On the bridge west of JojaMart
 Alex:
   BathHouse_MensLocker:
-    3 5: ''
+    3 5: In the Men's Locker Room at the Spa
   Beach:
-    27 24: ''
-    30 13: ''
+    27 24: Near the Fish Shop
+    30 13: On the beach
   BusStop:
     "-1 23": ''
   HaleyHouse:
-    7 23: ''
+    7 23: In Emily & Haley's house
   Hospital:
-    4 6: ''
-    15 15: ''
+    4 6: In the Clinic
+    15 15: In the Clinic
   JoshHouse:
-    6 18: ''
-    8 19: ''
-    14 5: ''
-    15 4: ''
-    17 5: ''
-    21 4: ''
+    6 18: In his kitchen
+    8 19: In his house
+    14 5: In his room
+    15 4: In his room
+    17 5: In his room
+    21 4: In his bed
   Saloon:
-    32 7: ''
+    32 7: In the Saloon
   Town:
-    50 68: ''
-    64 64: ''
-    88 91: ''
+    50 68: East of the Saloon
+    64 64: Outside his house
+    88 91: At the Ice Cream stand
 Caroline:
   ArchaeologyHouse:
-    14 4: ''
+    14 4: In the Museum
   Beach:
-    24 32: ''
+    24 32: Near the Fish Shop
   CommunityCenter:
-    26 9: ''
+    26 9: In the Community Center
   Hospital:
-    4 6: ''
-    13 14: ''
+    4 6: In the Clinic
+    13 14: In the Clinic
   SeedShop:
-    15 23: ''
-    21 5: ''
-    22 14: ''
-    22 5: ''
-    23 15: ''
-    24 17: ''
-    24 21: ''
-    25 18: ''
-    25 4: ''
-    27 7: ''
-    34 5: ''
-    37 6: ''
+    15 23: In Pierre's General Store
+    21 5: In her room
+    22 14: In Pierre's General Store
+    22 5: In her room
+    23 15: In Pierre's General Store
+    24 17: In Pierre's General Store
+    24 21: In Pierre's General Store
+    25 18: In Pierre's General Store
+    25 4: In her bed
+    27 7: In her room
+    34 5: In her kitchen
+    37 6: In her kitchen
   Sunroom:
-    5 7: ''
+    5 7: In her Sunroom
   Town:
-    23 71: ''
-    23 27: ''
-    48 33: ''
+    23 71: In the town square
+    23 27: Near the fountain
+    48 33: North of her house
 Clint:
   Beach:
     37 33: ''
@@ -830,16 +830,16 @@ Vincent:
     83 100: ''
 Willy:
   Beach:
-    25 36: ''
-    38 36: ''
+    25 36: Outside the Fish Shop
+    38 36: Outside the Fish Shop
   FishShop:
-    5 4: ''
+    5 4: Tending the Fish Shop
   Forest:
-    91 40: ''
+    91 40: Near Leah's House
   Hospital:
-    4 6: ''
-    12 14: ''
+    4 6: In the Clinic
+    12 14: In the Clinic
   Saloon:
-    17 22: ''
+    17 22: In the Saloon
   Town:
-    59 100: ''
+    59 100: Near the bridge to the beach
