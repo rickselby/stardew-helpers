@@ -150,7 +150,7 @@ Elliott:
     46 11: ''
     49 19: ''
   BusStop:
-    "-1 23": ''
+    "-1 23": In the Farmhouse
   ElliottHouse:
     1 5: In his house
     6 4: In his house
@@ -174,7 +174,7 @@ Emily:
     10 37: On the left pier at the beach
     25 36: Near the Fish Shop
   BusStop:
-    "-1 23": ''
+    "-1 23": In the Farmhouse
   CommunityCenter:
     10 25: In the Community Center
   Desert:
@@ -259,7 +259,7 @@ Haley:
     19 7: ''
     27 34: ''
   BusStop:
-    "-1 23": ''
+    "-1 23": In the Farmhouse
   Forest:
     77 44: ''
   HaleyHouse:
@@ -285,7 +285,7 @@ Harvey:
   Beach:
     37 31: ''
   BusStop:
-    "-1 23": ''
+    "-1 23": In the Farmhouse
   HarveyRoom:
     3 4: ''
     4 5: ''
@@ -403,7 +403,7 @@ Leah:
     41 35: ''
     72 18: ''
   BusStop:
-    "-1 23": ''
+    "-1 23": In the Farmhouse
   Forest:
     21 29: ''
     33 25: ''
@@ -575,7 +575,7 @@ Maru:
   Beach:
     11 33: ''
   BusStop:
-    "-1 23": ''
+    "-1 23": In the Farmhouse
   CommunityCenter:
     15 27: In the Community Center
   Hospital:
@@ -624,7 +624,7 @@ Penny:
   Beach:
     35 36: ''
   BusStop:
-    "-1 23": ''
+    "-1 23": In the Farmhouse
   CommunityCenter:
     23 17: In the Community Center
     46 13: In the Community Center
@@ -694,12 +694,12 @@ Robin:
     27 22: ''
 Sam:
   ArchaeologyHouse:
-    40 4: ''
+    40 4: In the Museum
   Beach:
-    11 34: ''
-    46 24: ''
+    11 34: On the left pier at the beach
+    46 24: At the beach
   BusStop:
-    "-1 23": ''
+    "-1 23": In the Farmhouse
   Forest:
     66 50: ''
   Hospital:
@@ -734,23 +734,23 @@ Sam:
     79 95: ''
 Sandy:
   '37':
-    25 1: ''
+    25 1: "???"
   Desert:
-    2 51: ''
-    7 33: ''
-    7 55: ''
-    11 18: ''
-    25 30: ''
-    29 24: ''
+    2 51: Outside the Oasis
+    7 33: North of the Oasis
+    7 55: Outside the Oasis
+    11 18: By the lake in the desert
+    25 30: Near the bus stop in the desert
+    29 24: Near the bus stop in the desert
   SandyHouse:
-    2 5: ''
-    3 5: ''
+    2 5: In the Oasis
+    3 5: In the Oasis
 Sebastian:
   Beach:
-    10 39: ''
-    12 39: ''
+    10 39: On the left pier at the beach
+    12 39: On the left pier at the beach
   BusStop:
-    "-1 23": ''
+    "-1 23": In the Farmhouse
   Hospital:
     4 6: In the Clinic
     15 16: In the Clinic
@@ -760,18 +760,18 @@ Sebastian:
     58 35: ''
     64 14: ''
   Railroad:
-    5 45: ''
-    32 47: ''
-    64 45: ''
+    5 45: At the railroad
+    32 47: At the railroad
+    64 45: At the railroad
   Saloon:
     42 21: In the Saloon
     43 20: In the Saloon
   SamHouse:
-    17 14: ''
-    19 18: ''
+    17 14: In Sam's bedroom
+    19 18: In Sam's bedroom
   ScienceHouse:
     6 20: ''
-    27 9: ''
+    27 9: In his kitchen
   SebastianRoom:
     6 5: In his room
     9 4: In his room
@@ -782,16 +782,16 @@ Sebastian:
     18 95: ''
 Shane:
   AnimalShop:
-    5 14: ''
-    16 13: ''
-    24 15: ''
-    24 5: ''
-    24 17: ''
-    27 4: ''
+    5 14: In Marnie's Ranch
+    16 13: In Marnie's Ranch
+    24 15: In his kitchen
+    24 5: In his bedroom
+    24 17: In his kitchen
+    27 4: In his bed
   Beach:
     20 24: ''
   BusStop:
-    "-1 23": ''
+    "-1 23": In the Farmhouse
   Forest:
     37 10: ''
   JojaMart:
@@ -813,13 +813,13 @@ Shane:
     2 26: ''
     16 29: ''
   Town:
-    33 101: ''
+    33 101: Near the sewer
 Vincent:
   ArchaeologyHouse:
     16 10: In the Museum
   Beach:
     19 24: ''
-    43 24: ''
+    43 24: On the beach
   Hospital:
     4 6: In the Clinic
     12 14: In the Clinic
