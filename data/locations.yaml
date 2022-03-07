@@ -52,7 +52,7 @@ Alex:
     27 24: Near the Fish Shop
     30 13: On the beach
   BusStop:
-    "-1 23": ''
+    "-1 23": In the Farmhouse
   HaleyHouse:
     7 23: In Emily & Haley's house
   Hospital:
@@ -102,46 +102,46 @@ Caroline:
     48 33: North of her house
 Clint:
   Beach:
-    37 33: ''
+    37 33: East of the Fish Shop
   Blacksmith:
-    3 13: ''
-    8 12: ''
-    10 4: ''
+    3 13: Tending the Blacksmith Shop
+    8 12: In the Blacksmith Shop
+    10 4: In his bed
   CommunityCenter:
-    62 14: ''
+    62 14: In the Community Center
   Hospital:
-    4 6: ''
-    12 14: ''
+    4 6: In the Clinic
+    12 14: In the Clinic
   Saloon:
-    19 23: ''
+    19 23: In the Saloon
 Demetrius:
   Beach:
-    11 32: ''
+    11 32: On the left pier at the beach
   Hospital:
-    4 6: ''
-    12 14: ''
+    4 6: In the Clinic
+    12 14: In the Clinic
   Mountain:
-    15 26: ''
-    30 36: ''
-    45 8: ''
+    15 26: Outside his house
+    30 36: Outside his house
+    45 8: Near the mines entrance
   Saloon:
-    23 22: ''
-    24 22: ''
+    23 22: In the Saloon
+    24 22: In the Saloon
   ScienceHouse:
-    7 18: ''
-    15 4: ''
-    16 19: ''
-    19 4: ''
-    20 4: ''
-    22 20: ''
-    27 9: ''
-    28 9: ''
-    29 9: ''
+    7 18: In the Carpenter's Shop
+    15 4: In his bedroom
+    16 19: In the lab
+    19 4: In his bed
+    20 4: In his bed
+    22 20: In the lab
+    27 9: In his kitchen
+    28 9: In his kitchen
+    29 9: In his kitchen
   Town:
-    31 23: ''
+    31 23: Near the fountain
 Elliott:
   ArchaeologyHouse:
-    21 11: ''
+    21 11: In the Museum
   Beach:
     24 32: ''
     38 36: ''
@@ -150,31 +150,31 @@ Elliott:
   BusStop:
     "-1 23": ''
   ElliottHouse:
-    1 5: ''
-    6 4: ''
-    7 7: ''
-    13 4: ''
+    1 5: In his house
+    6 4: In his house
+    7 7: In his house
+    13 4: In his bed
   Forest:
-    96 39: ''
+    96 39: Near Leah's house
   Hospital:
-    4 6: ''
-    12 14: ''
+    4 6: In the Clinic
+    12 14: In the Clinic
   Saloon:
-    4 19: ''
+    4 19: In the Saloon
   SeedShop:
     10 20: ''
   Town:
-    55 104: ''
+    55 104: On the bridge north of the beach
 Emily:
   '35':
-    25 0: ''
+    25 0: "???"
   Beach:
-    10 37: ''
-    25 36: ''
+    10 37: On the left pier at the beach
+    25 36: Near the Fish Shop
   BusStop:
     "-1 23": ''
   CommunityCenter:
-    10 25: ''
+    10 25: In the Community Center
   Desert:
     1 51: ''
     5 33: ''
@@ -188,10 +188,10 @@ Emily:
     16 5: ''
     21 4: ''
   Hospital:
-    4 6: ''
-    12 14: ''
+    4 6: In the Clinic
+    12 14: In the Clinic
   Saloon:
-    15 17: ''
+    15 17: In the Saloon
   SandyHouse:
     4 5: ''
   SeedShop:
@@ -204,12 +204,12 @@ Evelyn:
   Beach:
     12 39: ''
   CommunityCenter:
-    18 25: ''
+    18 25: In the Community Center
   Hospital:
-    4 6: ''
-    4 7: ''
-    10 16: ''
-    15 15: ''
+    4 6: In the Clinic
+    4 7: In the Clinic
+    10 16: In the Clinic
+    15 15: In the Clinic
   JoshHouse:
     2 5: ''
     3 17: ''
@@ -225,31 +225,31 @@ George:
   Beach:
     11 39: ''
   Hospital:
-    4 6: ''
-    10 15: ''
+    4 6: In the Clinic
+    10 15: In the Clinic
   JoshHouse:
     3 5: ''
     5 21: ''
     16 22: ''
   Saloon:
-    36 7: ''
+    36 7: In the Saloon
   SeedShop:
     36 22: ''
   Town:
     52 61: ''
 Gus:
   CommunityCenter:
-    5 5: ''
+    5 5: In the Community Center
   Hospital:
-    4 6: ''
-    12 14: ''
+    4 6: In the Clinic
+    12 14: In the Clinic
   Saloon:
-    10 18: ''
-    12 18: ''
-    14 18: ''
-    16 4: ''
-    23 4: ''
-    34 8: ''
+    10 18: In the Saloon
+    12 18: In the Saloon
+    14 18: In the Saloon
+    16 4: In his bedroom
+    23 4: In his bed
+    34 8: In the Saloon
   SeedShop:
     13 23: ''
 Haley:
@@ -272,14 +272,14 @@ Haley:
     8 7: ''
     19 16: ''
   Hospital:
-    4 6: ''
-    12 14: ''
+    4 6: In the Clinic
+    12 14: In the Clinic
   Town:
     23 22: ''
     90 91: ''
 Harvey:
   ArchaeologyHouse:
-    16 9: ''
+    16 9: In the Museum
   Beach:
     37 31: ''
   BusStop:
@@ -295,16 +295,16 @@ Harvey:
     19 7: ''
     21 7: ''
   Hospital:
-    1 5: ''
-    3 15: ''
-    4 5: ''
-    5 5: ''
-    5 6: ''
-    6 15: ''
-    9 15: ''
-    10 14: ''
+    1 5: In the Clinic
+    3 15: In the Clinic
+    4 5: In the Clinic
+    5 5: In the Clinic
+    5 6: In the Clinic
+    6 15: In the Clinic
+    9 15: In the Clinic
+    10 14: In the Clinic
   Saloon:
-    18 20: ''
+    18 20: In the Saloon
   SeedShop:
     2 26: ''
     2 23: ''
@@ -323,7 +323,7 @@ Jas:
     17 15: ''
     17 5: ''
   ArchaeologyHouse:
-    19 10: ''
+    19 10: In the Museum
   Beach:
     19 24: ''
     40 23: ''
@@ -331,8 +331,8 @@ Jas:
     38 10: ''
     92 20: ''
   Hospital:
-    4 6: ''
-    12 14: ''
+    4 6: In the Clinic
+    12 14: In the Clinic
   Town:
     16 91: ''
     24 12: ''
@@ -343,19 +343,19 @@ Jodi:
   Beach:
     20 24: ''
   CommunityCenter:
-    24 8: ''
+    24 8: In the Community Center
   Hospital:
-    2 7: ''
-    4 6: ''
-    12 14: ''
-    13 14: ''
+    2 7: In the Clinic
+    4 6: In the Clinic
+    12 14: In the Clinic
+    13 14: In the Clinic
   JojaMart:
-    5 7: ''
-    9 14: ''
-    11 25: ''
-    14 21: ''
-    20 5: ''
-    27 13: ''
+    5 7: In JojaMart
+    9 14: In JojaMart
+    11 25: In JojaMart
+    14 21: In JojaMart
+    20 5: In JojaMart
+    27 13: In JojaMart
   SamHouse:
     2 17: ''
     3 5: ''
@@ -380,8 +380,8 @@ Jodi:
     22 72: ''
 Kent:
   Saloon:
-    3 23: ''
-    35 8: ''
+    3 23: In the Saloon
+    35 8: In the Saloon
   SamHouse:
     2 21: ''
     8 12: ''
@@ -408,17 +408,17 @@ Leah:
     68 50: ''
     106 34: ''
   Hospital:
-    4 6: ''
-    12 14: ''
+    4 6: In the Clinic
+    12 14: In the Clinic
   LeahHouse:
-    2 4: ''
-    3 7: ''
-    6 5: ''
-    8 5: ''
-    9 5: ''
-    13 10: ''
+    2 4: In her bed
+    3 7: In her house
+    6 5: In her house
+    8 5: In her house
+    9 5: In her house
+    13 10: In her house
   Saloon:
-    2 20: ''
+    2 20: In the Saloon
   SeedShop:
     11 23: ''
   Town:
@@ -443,8 +443,8 @@ Leo:
     38 31: ''
 LeoMainland:
   ArchaeologyHouse:
-    12 9: ''
-    18 12: ''
+    12 9: In the Museum
+    18 12: In the Museum
   Beach:
     21 4: ''
   IslandEast:
@@ -486,25 +486,25 @@ Lewis:
     17 5: ''
     24 15: ''
   ArchaeologyHouse:
-    2 10: ''
+    2 10: In the Museum
   Beach:
     19 24: ''
     40 34: ''
   Blacksmith:
     4 15: ''
   CommunityCenter:
-    33 9: ''
-    47 5: ''
-    47 13: ''
-    51 4: ''
-    55 6: ''
+    33 9: In the Community Center
+    47 5: In the Community Center
+    47 13: In the Community Center
+    51 4: In the Community Center
+    55 6: In the Community Center
   FishShop:
     4 6: ''
   Forest:
     84 40: ''
   Hospital:
-    4 6: ''
-    12 14: ''
+    4 6: In the Clinic
+    12 14: In the Clinic
   Library:
     22 9: ''
   ManorHouse:
@@ -513,7 +513,7 @@ Lewis:
     8 5: ''
     22 4: ''
   Saloon:
-    9 22: ''
+    9 22: In the Saloon
     12 20: ''
   ScienceHouse:
     7 20: ''
@@ -527,7 +527,7 @@ Lewis:
     65 86: ''
 Linus:
   BathHouse_Entry:
-    8 6: ''
+    8 6: In the spa entrance
   Beach:
     19 4: ''
   Mountain:
@@ -556,13 +556,13 @@ Marnie:
   Beach:
     37 31: ''
   Hospital:
-    2 7: ''
-    4 6: ''
-    12 14: ''
-    13 14: ''
+    2 7: In the Clinic
+    4 6: In the Clinic
+    12 14: In the Clinic
+    13 14: In the Clinic
   Saloon:
-    8 22: ''
-    9 22: ''
+    8 22: In the Saloon
+    9 22: In the Saloon
   SeedShop:
     11 20: ''
     23 16: ''
@@ -574,11 +574,11 @@ Maru:
   BusStop:
     "-1 23": ''
   CommunityCenter:
-    15 27: ''
+    15 27: In the Community Center
   Hospital:
-    6 15: ''
-    8 17: ''
-    9 15: ''
+    6 15: In the Clinic
+    8 17: In the Clinic
+    9 15: In the Clinic
   Mountain:
     8 23: ''
     55 31: ''
@@ -602,30 +602,30 @@ Pam:
   BusStop:
     11 10: ''
   Hospital:
-    4 17: ''
-    4 6: ''
+    4 17: In the Clinic
+    4 6: In the Clinic
   JojaMart:
-    6 19: ''
+    6 19: In JojaMart
   Saloon:
-    7 18: ''
+    7 18: In the Saloon
   Trailer:
-    15 4: ''
+    15 4: In her Trailer
 Penny:
   ArchaeologyHouse:
-    17 9: ''
-    20 5: ''
+    17 9: In the Museum
+    20 5: In the Museum
   Beach:
     35 36: ''
   BusStop:
     "-1 23": ''
   CommunityCenter:
-    23 17: ''
-    46 13: ''
+    23 17: In the Community Center
+    46 13: In the Community Center
   Forest:
     92 20: ''
   Hospital:
-    4 17: ''
-    4 6: ''
+    4 17: In the Clinic
+    4 6: In the Clinic
   ScienceHouse:
     8 5: ''
   SeedShop:
@@ -645,17 +645,17 @@ Penny:
     96 18: ''
     104 89: ''
   Trailer:
-    1 8: ''
-    4 4: ''
-    4 9: ''
-    5 5: ''
-    6 5: ''
-    9 7: ''
-    12 6: ''
-    14 4: ''
+    1 8: In her room
+    4 4: In her room
+    4 9: In her bed
+    5 5: In her room
+    6 5: In her room
+    9 7: In her Trailer
+    12 6: In her Trailer
+    14 4: In her Trailer
 Pierre:
   Saloon:
-    16 20: ''
+    16 20: In the Saloon
   SeedShop:
     4 17: ''
     10 20: ''
@@ -667,15 +667,15 @@ Robin:
   Beach:
     13 31: ''
   CommunityCenter:
-    9 19: ''
+    9 19: In the Community Center
   Hospital:
-    4 6: ''
-    12 14: ''
+    4 6: In the Clinic
+    12 14: In the Clinic
   Mountain:
     29 36: ''
   Saloon:
-    22 22: ''
-    23 22: ''
+    22 22: In the Saloon
+    23 22: In the Saloon
   ScienceHouse:
     8 18: ''
     16 5: ''
@@ -694,14 +694,14 @@ Sam:
   Forest:
     66 50: ''
   Hospital:
-    4 6: ''
-    14 15: ''
+    4 6: In the Clinic
+    14 15: In the Clinic
   JojaMart:
-    16 5: ''
+    16 5: In JojaMart
   Saloon:
-    20 19: ''
-    36 21: ''
-    38 18: ''
+    20 19: In the Saloon
+    36 21: In the Saloon
+    38 18: In the Saloon
   SamHouse:
     3 13: ''
     6 13: ''
@@ -743,8 +743,8 @@ Sebastian:
   BusStop:
     "-1 23": ''
   Hospital:
-    4 6: ''
-    15 16: ''
+    4 6: In the Clinic
+    15 16: In the Clinic
   Mountain:
     42 13: ''
     57 33: ''
@@ -755,8 +755,8 @@ Sebastian:
     32 47: ''
     64 45: ''
   Saloon:
-    42 21: ''
-    43 20: ''
+    42 21: In the Saloon
+    43 20: In the Saloon
   SamHouse:
     17 14: ''
     19 18: ''
@@ -764,10 +764,10 @@ Sebastian:
     6 20: ''
     27 9: ''
   SebastianRoom:
-    6 5: ''
-    9 4: ''
-    10 7: ''
-    11 9: ''
+    6 5: In his room
+    9 4: In his room
+    10 7: In his room
+    11 9: In his bed
   Town:
     10 94: ''
     18 95: ''
@@ -786,20 +786,20 @@ Shane:
   Forest:
     37 10: ''
   JojaMart:
-    5 13: ''
-    7 25: ''
-    9 17: ''
-    17 12: ''
-    21 16: ''
-    25 12: ''
+    5 13: In JojaMart
+    7 25: In JojaMart
+    9 17: In JojaMart
+    17 12: In JojaMart
+    21 16: In JojaMart
+    25 12: In JojaMart
   Saloon:
-    11 20: ''
-    21 17: ''
-    24 17: ''
-    27 23: ''
-    33 8: ''
-    33 18: ''
-    38 18: ''
+    11 20: In the Saloon
+    21 17: In the Saloon
+    24 17: In the Saloon
+    27 23: In the Saloon
+    33 8: In the Saloon
+    33 18: In the Saloon
+    38 18: In the Saloon
   SeedShop:
     2 26: ''
     16 29: ''
@@ -807,13 +807,13 @@ Shane:
     33 101: ''
 Vincent:
   ArchaeologyHouse:
-    16 10: ''
+    16 10: In the Museum
   Beach:
     19 24: ''
     43 24: ''
   Hospital:
-    4 6: ''
-    12 14: ''
+    4 6: In the Clinic
+    12 14: In the Clinic
   SamHouse:
     2 15: ''
     4 8: ''
