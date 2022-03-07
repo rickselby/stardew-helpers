@@ -7,19 +7,25 @@ module Stardew
 
     VALID_TIME = /^a?\d+$/.freeze
 
-    def initialize(definition)
+    def initialize(definition, replacement: false)
       @definition = definition.split
+      @replacement = replacement
     end
 
     def as_json(_options = {})
-      { time: time, map: map, x: x, y: y }
+      { time: replacement? ? nil : time, map: map, x: x, y: y }
     end
 
     def map
-      @definition[1]
+      replacement? ? @definition[0] : @definition[1]
+    end
+
+    def replacement?
+      @replacement
     end
 
     def time
+      raise 'No time for a replacement' if replacement?
       @definition[0]
     end
 
@@ -32,11 +38,11 @@ module Stardew
     end
 
     def valid?
-      VALID_TIME.match? @definition[0]
+      replacement? || VALID_TIME.match?(@definition[0])
     end
 
     def x
-      @definition[2].to_i
+      (replacement? ? @definition[1] : @definition[2]).to_i
     end
 
     def x_y
@@ -44,7 +50,7 @@ module Stardew
     end
 
     def y
-      definition[3].to_i
+      (replacement? ? @definition[2] : @definition[3]).to_i
     end
   end
 end
