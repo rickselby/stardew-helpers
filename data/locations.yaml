@@ -112,6 +112,8 @@ Clint:
   Hospital:
     4 6: In the Clinic
     12 14: In the Clinic
+  JojaMart:
+    27 5: ''
   Saloon:
     19 23: In the Saloon
 Demetrius:
@@ -372,6 +374,7 @@ Jodi:
     22 5: ''
   SeedShop:
     2 20: ''
+    2 22: ''
     21 17: ''
     22 17: ''
     24 14: ''
@@ -587,6 +590,7 @@ Maru:
     2 6: ''
     2 4: ''
     5 6: ''
+    5 19: ''
     6 4: ''
     6 20: ''
     7 6: ''
@@ -608,10 +612,13 @@ Pam:
     6 19: In JojaMart
   Saloon:
     7 18: In the Saloon
+  SeedShop:
+    2 24: ''
   Trailer:
     15 4: In her Trailer
 Penny:
   ArchaeologyHouse:
+    16 10: ''
     17 9: In the Museum
     20 5: In the Museum
   Beach:
@@ -686,6 +693,8 @@ Robin:
     27 18: ''
     27 22: ''
 Sam:
+  ArchaeologyHouse:
+    40 4: ''
   Beach:
     11 34: ''
     46 24: ''
