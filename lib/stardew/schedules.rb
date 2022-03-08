@@ -11,8 +11,8 @@ module Stardew
       'shanePK' => 'After Shane\'s 14 heart event'
     }.freeze
 
-    def self.each_person
-      valid_people.sort.each { |person| yield person }
+    def self.each_person(&block)
+      valid_people.sort.each(&block)
     end
 
     def self.valid_people
@@ -130,7 +130,7 @@ module Stardew
     def find_schedules(season, day)
       return add_regular "#{season}_#{day}" if @schedules.key? "#{season}_#{day}"
 
-      (1..13).to_a.reverse.each do |hearts|
+      (1..13).to_a.reverse_each do |hearts|
         if @schedules.key? "#{day}_#{hearts}"
           add_possibility "#{day}_#{hearts}", "At least #{hearts} hearts with #{@person}"
         end

@@ -10,34 +10,42 @@ module Stardew
     MAP_GRID = 16
     MAP_SIZE = 400
 
-    def self.map_with_marker(map, x, y)
-      new(map).with_marker(x, y)
+    class << self
+      def map_with_marker(map, x, y) # rubocop:disable Naming/MethodParameterName
+        new(map).with_marker(x, y)
+      end
+
+      private
+
+      def marker
+        @marker ||= MiniMagick::Image.open('./images/marker.png')
+      end
     end
 
     def initialize(map)
       @map = map
     end
 
-    def with_marker(x, y)
+    def with_marker(x, y) # rubocop:disable Naming/MethodParameterName
       generate_marker_map x, y unless File.file? marker_map_path(x, y)
       marker_map_path x, y
     end
 
     private
 
-    def add_marker(x, y)
+    def add_marker(x, y) # rubocop:disable Naming/MethodParameterName
       map_image.composite(self.class.marker) do |c|
         c.compose 'Over'
         c.geometry "+#{x * MAP_GRID}+#{y * MAP_GRID}"
       end
     end
 
-    def crop_marker_map(image, x, y)
+    def crop_marker_map(image, x, y) # rubocop:disable Naming/MethodParameterName
       image.crop "#{MAP_SIZE}x#{MAP_SIZE}+#{crop_offset(x)}+#{crop_offset(y)}"
     end
 
-    def crop_offset(v)
-      ((v + 0.5) * MAP_GRID)
+    def crop_offset(value)
+      ((value + 0.5) * MAP_GRID)
     end
 
     # Add extra transparency to the map to ensure we end up with an image the right size with the marker in the middle
@@ -49,7 +57,7 @@ module Stardew
       end
     end
 
-    def generate_marker_map(x, y)
+    def generate_marker_map(x, y) # rubocop:disable Naming/MethodParameterName
       image = add_marker x, y
       expand_marker_map image
       crop_marker_map image, x, y
@@ -60,11 +68,7 @@ module Stardew
       @map_image ||= MiniMagick::Image.open("./data/maps/#{@map}.png")
     end
 
-    def self.marker
-      @marker ||= MiniMagick::Image.open('./images/marker.png')
-    end
-
-    def marker_map_path(x, y)
+    def marker_map_path(x, y) # rubocop:disable Naming/MethodParameterName
       "./data/maps/generated/#{@map}-#{x}-#{y}.png"
     end
   end

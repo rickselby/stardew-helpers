@@ -31,6 +31,7 @@ module Stardew
 
     def time
       raise 'No time for a replacement' if replacement?
+
       @definition[0]
     end
 
