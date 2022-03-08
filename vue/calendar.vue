@@ -43,43 +43,34 @@
           <h4 class="col-12 text-center" v-if="schedules.length !== 0">
             {{ selected }}
           </h4>
-          <div class="panel route-panel" v-bind:class="rainPanelClasses" v-if="rainPossibilities.length > 0">
-            <div class="bulletin">
-              <div class="panel-heading">
-                <h4>
-                  {{ rainPossibilities[0].notes }}
-                  <span v-if="rainPossibilities.length === 2">
-                    (equal chance of either)
-                  </span>
-                </h4>
-              </div>
-              <div class="row">
-              <template v-for="schedule in rainPossibilities">
-                <div class="list-group list-group-flush" v-bind:class="rainScheduleClasses">
-                  <template v-for="route in schedule.routes">
-                    <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#mapModal" v-on:click="setRoute(route)">
-                      {{ formatTime(route.time) }}:
-                      {{ route.name }}
-                    </button>
-                  </template>
-                </div>
-              </template>
-              </div>
-            </div>
-          </div>
           <template v-for="schedule in possibilities">
-            <div class="panel col-12 col-md-6 col-lg-4 col-xl-3 route-panel">
+            <div class="panel route-panel" v-bind:class="schedulePanelClasses(schedule)">
               <div class="bulletin">
                 <div class="panel-heading">
-                  <h4>{{ schedule.notes }}</h4>
+                  <h4>
+                    {{ schedule.notes }}
+                    <span v-if="schedule.doubleRain">
+                      (equal chance of either)
+                    </span>
+                  </h4>
                 </div>
-                <div class="list-group list-group-flush">
-                  <template v-for="route in schedule.routes">
+                <div class="row">
+                  <div class="list-group list-group-flush" v-bind:class="scheduleClasses(schedule)">
+                    <template v-for="route in schedule.routes">
+                        <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#mapModal" v-on:click="setRoute(route)">
+                          {{ formatTime(route.time) }}:
+                          {{ route.name }}
+                        </button>
+                    </template>
+                  </div>
+                  <div class="list-group list-group-flush" v-bind:class="scheduleClasses(schedule)" v-if="schedule.doubleRain">
+                    <template v-for="route in schedule.doubleRainRoutes">
                       <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#mapModal" v-on:click="setRoute(route)">
                         {{ formatTime(route.time) }}:
                         {{ route.name }}
                       </button>
-                  </template>
+                    </template>
+                  </div>
                 </div>
               </div>
             </div>
@@ -133,24 +124,20 @@ export default {
       return '/' + [ 'map', this.route.map, this.route.x, this.route.y ].join('/')
     },
     possibilities() {
-      return this.schedules.filter((schedule) => !schedule.rain);
-    },
-    rainPanelClasses() {
-      if (this.rainPossibilities.length === 2) {
-        return [ 'col-12', 'col-md-12', 'col-lg-8', 'col-xl-6']
-      } else {
-        return [ 'col-12', 'col-md-6', 'col-lg-4', 'col-xl-3']
+      let possibilities = [];
+      for (const poss of this.schedules) {
+        if (possibilities.length === 0) {
+          possibilities.push(poss);
+        } else {
+          if (poss.rain && possibilities[possibilities.length - 1].rain) {
+            possibilities[possibilities.length - 1].doubleRain = true;
+            possibilities[possibilities.length - 1].doubleRainRoutes = poss.routes;
+          } else {
+            possibilities.push(poss);
+          }
+        }
       }
-    },
-    rainPossibilities() {
-      return this.schedules.filter((schedule) => schedule.rain);
-    },
-    rainScheduleClasses() {
-      if (this.rainPossibilities.length === 2) {
-        return ['col-6', 'two-rains']
-      } else {
-        return []
-      }
+      return possibilities;
     },
     selected() {
       return this.person + ': '
@@ -216,6 +203,20 @@ export default {
         return val + "rd";
       }
       return val + "th";
+    },
+    scheduleClasses(schedule) {
+      if (schedule.doubleRain) {
+        return ['col-6', 'two-rains']
+      } else {
+        return []
+      }
+    },
+    schedulePanelClasses(schedule) {
+      if (schedule.doubleRain) {
+        return [ 'col-12', 'col-md-12', 'col-lg-8', 'col-xl-6']
+      } else {
+        return [ 'col-12', 'col-md-6', 'col-lg-4', 'col-xl-3']
+      }
     },
     setDay: function (day, season) {
       this.season = season;
