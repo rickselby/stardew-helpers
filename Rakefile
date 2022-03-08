@@ -36,7 +36,7 @@ desc 'Build all maps'
 task :build_maps do
   Stardew::Schedules.each_person do |person|
     JSON.parse(File.read("data/schedules/#{person}.json")).each do |name, definition|
-      Stardew::Schedule.new(name, definition).routes.each do |r|
+      Stardew::Schedule.new(person, name, definition).routes.each do |r|
         next unless r.valid?
 
         p r.to_json

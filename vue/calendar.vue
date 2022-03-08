@@ -53,7 +53,7 @@
                   <template v-for="route in schedule.routes">
                       <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#mapModal" v-on:click="setRoute(route)">
                         {{ formatTime(route.time) }}:
-                        {{ route.map }} ({{ route.x }}, {{ route.y }})
+                        {{ route.name }}
                       </button>
                   </template>
                 </div>

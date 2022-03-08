@@ -12,7 +12,7 @@ module Stardew
         Stardew::Schedules.each_person do |person|
           person_locations = locations.key?(person) ? locations[person] : {}
           JSON.parse(File.read("data/schedules/#{person}.json")).each do |name, definition|
-            Schedule.new(name, definition).routes.each do |r|
+            Schedule.new(person, name, definition).routes.each do |r|
               next unless r.valid?
 
               person_locations[r.map] = {} unless person_locations.key? r.map
@@ -25,6 +25,10 @@ module Stardew
         write
       end
 
+      def get(person, map, coords)
+        locations[person][map][coords.join ' ']
+      end
+
       def locations
         @locations ||= File.file?(PATH) ? YAML.load_file(PATH) : {}
       end
@@ -33,6 +37,8 @@ module Stardew
         @locations[person][map][coords] = name
         write
       end
+
+      private
 
       def write
         File.write PATH, locations.to_yaml
