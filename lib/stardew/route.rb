@@ -7,17 +7,22 @@ module Stardew
 
     VALID_TIME = /^a?\d+$/.freeze
 
-    def initialize(definition, replacement: false)
+    def initialize(person, definition, replacement: false)
       @definition = definition.split
+      @person = person
       @replacement = replacement
     end
 
     def as_json(_options = {})
-      { time: replacement? ? nil : time, map: map, x: x, y: y }
+      { time: replacement? ? nil : time, map: map, x: x, y: y, name: name }
     end
 
     def map
       replacement? ? @definition[0] : @definition[1]
+    end
+
+    def name
+      Locations.get(@person, map, [x, y])
     end
 
     def replacement?

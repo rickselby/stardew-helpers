@@ -5,9 +5,9 @@ module Stardew
   class Schedule
     attr_reader :routes
 
-    def initialize(name, routes)
+    def initialize(person, name, routes)
       @name = name
-      @routes = routes.split('/').map { |r| Route.new(r, replacement: replacement?) }
+      @routes = routes.split('/').map { |r| Route.new(person, r, replacement: replacement?) }
     end
 
     def replacement?

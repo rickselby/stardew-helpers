@@ -21,7 +21,7 @@ module Stardew
 
     def initialize(person)
       @schedules = JSON.parse(File.read("data/schedules/#{person}.json"))
-                       .to_h { |k, v| [k.to_s, Schedule.new(k, v)] }
+                       .to_h { |k, v| [k.to_s, Schedule.new(person, k, v)] }
       @person = person
     end
 
@@ -71,7 +71,7 @@ module Stardew
               alt_routes = possibility.routes.map do |r2|
                 next r2 unless r2.map == r.map
 
-                Route.new "#{r2.time} #{alt_definition}"
+                Route.new @person, "#{r2.time} #{alt_definition}"
               end
               @possibilities.push SchedulePossibility.new("#{possibility.name}_alt", alt_routes,
                                                           "If #{r.map} is not available",
