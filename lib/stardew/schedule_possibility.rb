@@ -33,8 +33,8 @@ module Stardew
       @routes[1].definition[1]
     end
 
-    def remove_routes(n)
-      @routes.shift(n)
+    def remove_routes(amount)
+      @routes.shift(amount)
     end
 
     def skip_nots
