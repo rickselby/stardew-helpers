@@ -98,7 +98,7 @@ export default {
   data() {
     return {
       day: null,
-      days: [...Array(27).keys()].map(i => i + 1),
+      days: [...Array(28).keys()].map(i => i + 1),
       loading: false,
       person: null,
       people: [],
