@@ -43,7 +43,31 @@
           <h4 class="col-12 text-center" v-if="schedules.length !== 0">
             {{ selected }}
           </h4>
-          <template v-for="schedule in schedules">
+          <div class="panel route-panel" v-bind:class="rainPanelClasses" v-if="rainPossibilities.length > 0">
+            <div class="bulletin">
+              <div class="panel-heading">
+                <h4>
+                  {{ rainPossibilities[0].notes }}
+                  <span v-if="rainPossibilities.length === 2">
+                    (equal chance of either)
+                  </span>
+                </h4>
+              </div>
+              <div class="row">
+              <template v-for="schedule in rainPossibilities">
+                <div class="list-group list-group-flush" v-bind:class="rainScheduleClasses">
+                  <template v-for="route in schedule.routes">
+                    <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#mapModal" v-on:click="setRoute(route)">
+                      {{ formatTime(route.time) }}:
+                      {{ route.name }}
+                    </button>
+                  </template>
+                </div>
+              </template>
+              </div>
+            </div>
+          </div>
+          <template v-for="schedule in possibilities">
             <div class="panel col-12 col-md-6 col-lg-4 col-xl-3 route-panel">
               <div class="bulletin">
                 <div class="panel-heading">
@@ -108,11 +132,31 @@ export default {
 
       return '/' + [ 'map', this.route.map, this.route.x, this.route.y ].join('/')
     },
+    possibilities() {
+      return this.schedules.filter((schedule) => !schedule.rain);
+    },
+    rainPanelClasses() {
+      if (this.rainPossibilities.length === 2) {
+        return [ 'col-12', 'col-md-12', 'col-lg-8', 'col-xl-6']
+      } else {
+        return [ 'col-12', 'col-md-6', 'col-lg-4', 'col-xl-3']
+      }
+    },
+    rainPossibilities() {
+      return this.schedules.filter((schedule) => schedule.rain);
+    },
+    rainScheduleClasses() {
+      if (this.rainPossibilities.length === 2) {
+        return ['col-6', 'two-rains']
+      } else {
+        return []
+      }
+    },
     selected() {
       return this.person + ': '
           + this.ordinalSuffix(this.day) + ' of '
           + this.capitalizeFirstLetter(this.season);
-    }
+    },
   },
   created() {
     this.loadPeople();
