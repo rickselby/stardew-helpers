@@ -3,9 +3,13 @@
     <div class="row panel">
       <div class="wood-border">
         <div class="text-center mb-3">
-          <img v-for="(data, name) in people" class="portrait" :src="'/portrait/'+name" :alt="name" :title="name"
-               v-on:click="person=name"
-               v-bind:class="person===name ? 'portrait-active' : ''" />
+          <div v-for="(data, name) in people" class="position-relative d-inline-block">
+            <img class="portrait" :src="'/portrait/'+name" :alt="name" :title="name"
+                 v-on:click="person=name"
+                 v-bind:class="person===name ? 'portrait-active' : ''" />
+            <span class="position-absolute translate-middle badge bg-info rounded-pill"
+                  style="top: 20%; left: 80%">{{ missing(name) }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -46,5 +50,18 @@ export default {
       return this.people[this.person];
     }
   },
+  methods: {
+    missing(person) {
+      let missing = 0;
+      for (let map of Object.keys(this.people[person])) {
+        for (let coords of Object.keys(this.people[person][map])) {
+          if (this.people[person][map][coords] === "") {
+            missing++;
+          }
+        }
+      }
+      return missing;
+    },
+  }
 }
 </script>
