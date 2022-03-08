@@ -130,7 +130,7 @@ module Stardew
     def find_schedules(season, day)
       return add_regular "#{season}_#{day}" if @schedules.key? "#{season}_#{day}"
 
-      (13..1).each do |hearts|
+      (1..13).to_a.reverse.each do |hearts|
         if @schedules.key? "#{day}_#{hearts}"
           add_possibility "#{day}_#{hearts}", "At least #{hearts} hearts with #{@person}"
         end
