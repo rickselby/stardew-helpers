@@ -9,3 +9,6 @@ window.Vue = Vue;
 
 Vue.component('calendar', require('./calendar.vue').default);
 Vue.component('forage', require('./forage.vue').default);
+if (process.env["NODE_ENV"] === 'development') {
+    Vue.component('locations', require('./locations.vue').default);
+}
