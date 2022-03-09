@@ -7,6 +7,7 @@ GEM
       thor (~> 1.0)
     diff-lcs (1.5.0)
     erubi (1.10.0)
+    fastimage (2.2.6)
     ffi (1.15.5)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -79,6 +80,7 @@ PLATFORMS
 DEPENDENCIES
   bundler-audit
   erubi
+  fastimage
   mini_magick
   rack
   rack-test
