@@ -14,9 +14,9 @@
               </li>
             </ul>
             <div class="fullMap">
-              <img class="base" v-bind:src="'/map/' + map.map" />
+              <img class="base" v-bind:src="'/map/' + mapReference(map.map)" />
               <img v-for="spot in map.spots" src="/img/marker.png" data-bs-toggle="tooltip" v-bind:title="spot.name"
-                   style="" />
+                   v-bind:style="markerStyle(map.map, spot.x, spot.y)" />
             </div>
           </div>
         </div>
@@ -69,6 +69,7 @@ export default {
     return {
       farmType: null,
       maps: [],
+      mapSizes: {},
       lookFor: [
         16, // Wild Horseradish
         18, // Daffodil
@@ -105,6 +106,9 @@ export default {
     fileSupport() {
       return window.File && window.FileReader;
     },
+  },
+  created() {
+    this.loadMapSizes();
   },
   methods: {
     findForage(xml) {
@@ -146,6 +150,44 @@ export default {
       }
       console.log(this.maps);
     },
+    loadMapSizes() {
+      axios.get('/api/map-sizes')
+          .then(response => {
+            this.mapSizes = response.data;
+          })
+          .catch(() => {
+            console.log('Failed to load map sizes?')
+          });
+    },
+    mapReference(map) {
+      if (map === 'Farm') {
+        switch (this.farmType) {
+          case '1':
+            return 'Farm_Fishing';
+          case '2':
+            return 'Farm_Forage';
+          case '3':
+            return 'Farm_Mining';
+          case '4':
+            return 'Farm_Combat';
+          case '5':
+            return 'Farm_FourCorners';
+          case '6':
+            return 'Farm_Island';
+          default:
+            return 'Farm';
+        }
+      } else {
+        return map;
+      }
+    },
+    markerStyle(map, x, y) {
+      let mapCoords = this.mapSizes[map];
+
+      return 'left: ' + (x / mapCoords.x * 100) + '%; ' +
+          'top: ' + (y / mapCoords.y * 100) + '%; ' +
+          'width: ' + (1 / mapCoords.x * 100) + '%; ';
+    },
     readFile(file) {
       let reader = new FileReader();
 
@@ -162,6 +204,7 @@ export default {
       if (!files.length) {
         return;
       }
+      this.farmType = null;
       this.forage = {};
       this.readFile(files[0]);
     }
