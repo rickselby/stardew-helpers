@@ -22,9 +22,10 @@ get '/' do
 end
 
 get '/api/map-sizes' do
-  Dir['data/maps/*.png'].map { |file_path| [File.basename(file_path, '.png'), FastImage.size(file_path)] }
-                        .to_h
-                        .to_json
+  Dir['data/maps/*.png'].map do |file_path|
+    size = FastImage.size(file_path)
+    [File.basename(file_path, '.png'), { x: size[0] / Stardew::Map::MAP_GRID, y: size[1] / Stardew::Map::MAP_GRID }]
+  end.to_h.to_json
 end
 
 get '/api/people' do
@@ -59,6 +60,11 @@ get '/map/:name/:x/:y' do
   y = Integer(params[:y], 10)
 
   send_file Stardew::Map.map_with_marker(params[:name], x, y)
+end
+
+get '/map/:name' do
+  halt 404 unless valid_maps.include? params[:name]
+  send_file File.expand_path("data/maps/#{params[:name]}.png")
 end
 
 if development?

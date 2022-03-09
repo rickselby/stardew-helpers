@@ -10,12 +10,13 @@
             <h3>{{ map.map }}</h3>
             <ul>
               <li v-for="spot in map.spots">
-                ({{ spot.x }}, {{ spot.y }}): {{ spot.name }}
+                {{ spotName(spot) }}
               </li>
             </ul>
             <div class="fullMap">
               <img class="base" v-bind:src="'/map/' + mapReference(map.map)" />
-              <img v-for="spot in map.spots" src="/img/marker.png" data-bs-toggle="tooltip" v-bind:title="spot.name"
+              <img v-for="spot in map.spots" src="/img/marker.png"
+                   v-bind:title="spotName(spot)" data-bs-toggle="tooltip"
                    v-bind:style="markerStyle(map.map, spot.x, spot.y)" />
             </div>
           </div>
@@ -148,7 +149,6 @@ export default {
           });
         }
       }
-      console.log(this.maps);
     },
     loadMapSizes() {
       axios.get('/api/map-sizes')
@@ -198,6 +198,9 @@ export default {
       }
 
       reader.readAsText(file);
+    },
+    spotName(spot) {
+      return '(' + spot.x + ', ' + spot.y + '): ' + spot.name;
     },
     onFileChange(e) {
       let files = e.target.files;
