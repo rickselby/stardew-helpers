@@ -13,16 +13,18 @@ configure do
   disable :dump_errors unless development?
 end
 
-before do
-  cache_control :no_cache
-end
-
 before '/api/*' do
   content_type :json
 end
 
 get '/' do
   erb :index
+end
+
+get '/api/map-sizes' do
+  Dir['data/maps/*.png'].map { |file_path| [File.basename(file_path, '.png'), FastImage.size(file_path)] }
+                        .to_h
+                        .to_json
 end
 
 get '/api/people' do
@@ -39,7 +41,7 @@ post '/api/schedules' do
 end
 
 def valid_portraits
-  Dir['data/portraits/*'].map { |f| File.basename(f, '.png') }
+  Dir['data/portraits/*.png'].map { |f| File.basename(f, '.png') }
 end
 
 get '/portrait/:name' do
@@ -48,7 +50,7 @@ get '/portrait/:name' do
 end
 
 def valid_maps
-  Dir['data/maps/*'].map { |f| File.basename(f, '.png') }
+  Dir['data/maps/*.png'].map { |f| File.basename(f, '.png') }
 end
 
 get '/map/:name/:x/:y' do
