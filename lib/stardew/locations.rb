@@ -10,8 +10,7 @@ module Stardew
       # Build the locations.yaml file
       def build
         Stardew::Schedules.each_person do |person|
-          locations[person] = parse_file(person).transform_values! { |v| v.sort_by { |k, _| k.split.first.to_i }.to_h }
-                                                .sort_by { |k, _| k }.to_h
+          locations[person] = sort_locations locations_from_schedule(person).merge(locations[person])
         end
         write
       end
@@ -31,17 +30,32 @@ module Stardew
 
       private
 
-      def parse_file(person)
-        person_locations = locations.key?(person) ? locations[person] : {}
-        JSON.parse(File.read("data/schedules/#{person}.json")).each do |name, definition|
-          Schedule.new(person, name, definition).routes.each do |r|
-            next unless r.valid?
+      def locations_from_schedule(person)
+        target = Hash.new { |hash, key| hash[key] = {} }
+        each_location_for(person) do |r|
+          next unless r.valid?
 
-            person_locations[r.map] = {} unless person_locations.key? r.map
-            person_locations[r.map][r.x_y] = '' unless person_locations[r.map].key? r.x_y
-          end
+          target[r.map][r.x_y] = ''
         end
-        person_locations
+        target
+      end
+
+      def each_location_for(person, &block)
+        JSON.parse(File.read("data/schedules/#{person}.json")).each do |name, definition|
+          Schedule.new(person, name, definition).routes.each(&block)
+        end
+      end
+
+      def sort_locations(list)
+        list.transform_values { |v| v.sort { |a, b| sort_coords(a, b) }.to_h }.sort_by { |k, _| k }.to_h
+      end
+
+      def sort_coords(first, second)
+        first = first[0].split.map(&:to_i)
+        second = second[0].split.map(&:to_i)
+        return first[1] <=> second[1] if first[0] == second[0]
+
+        first[0] <=> second[0]
       end
 
       def write

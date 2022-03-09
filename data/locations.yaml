@@ -84,21 +84,21 @@ Caroline:
   SeedShop:
     15 23: In Pierre's General Store
     21 5: In her room
-    22 14: In Pierre's General Store
     22 5: In her room
+    22 14: In Pierre's General Store
     23 15: In Pierre's General Store
     24 17: In Pierre's General Store
     24 21: In Pierre's General Store
-    25 18: In Pierre's General Store
     25 4: In her bed
+    25 18: In Pierre's General Store
     27 7: In her room
     34 5: In her kitchen
     37 6: In her kitchen
   Sunroom:
     5 7: In her Sunroom
   Town:
-    23 71: In the town square
     23 27: Near the fountain
+    23 71: In the town square
     48 33: North of her house
 Clint:
   Beach:
@@ -217,8 +217,8 @@ Evelyn:
     3 17: In her kitchen
     3 19: In her kitchen
     4 17: In her kitchen
-    17 22: In her living room
     17 17: In her living room
+    17 22: In her living room
     20 20: In her living room
   Town:
     20 62: In the town square
@@ -308,8 +308,8 @@ Harvey:
   Saloon:
     18 20: In the Saloon
   SeedShop:
-    2 26: In Pierre's General Store
     2 23: In Pierre's General Store
+    2 26: In Pierre's General Store
   Town:
     10 64: West of the town square
     23 27: Near the fountain
@@ -322,8 +322,8 @@ Jas:
     7 5: In her room
     8 17: In her house
     16 16: In her house
-    17 15: In her house
     17 5: In Marnie's room
+    17 15: In her house
   ArchaeologyHouse:
     19 10: In the Museum
   Beach:
@@ -387,8 +387,8 @@ Kent:
     35 8: In the Saloon
   SamHouse:
     2 21: In his house
-    8 12: In his house
     8 5: In his kitchen
+    8 12: In his house
     21 5: In his bed
   SeedShop:
     5 19: In Pierre's General Store
@@ -538,8 +538,8 @@ Linus:
     25 5: West of his tent
     28 9: Outside his tent
     39 5: West of his tent
-    44 27: South-West of his tent
     44 18: West of his tent
+    44 27: South-West of his tent
     45 19: West of his tent
     48 35: South-West of his tent
   Railroad:
@@ -586,9 +586,9 @@ Maru:
     8 23: Outside her house
     55 31: East of her house
   ScienceHouse:
-    2 21: In her house
-    2 6: In her room
     2 4: In her bed
+    2 6: In her room
+    2 21: In her house
     5 6: In her room
     5 19: In her house
     6 4: In her room
@@ -606,8 +606,8 @@ Pam:
   BusStop:
     11 10: At the Bus Stop
   Hospital:
-    4 17: In the Clinic
     4 6: In the Clinic
+    4 17: In the Clinic
   JojaMart:
     6 19: In JojaMart
   Saloon:
@@ -631,8 +631,8 @@ Penny:
   Forest:
     92 20: Outside Marnie's Ranch
   Hospital:
-    4 17: In the Clinic
     4 6: In the Clinic
+    4 17: In the Clinic
   ScienceHouse:
     8 5: In Maru's room
   SeedShop:
@@ -714,14 +714,14 @@ Sam:
   SamHouse:
     3 13: In his house
     6 13: In his house
-    8 6: In his kitchen
     8 5: In his kitchen
+    8 6: In his kitchen
     15 13: In his room
-    17 15: In his room
     17 13: In his room
+    17 15: In his room
     19 13: In his room
-    22 16: In his room
     22 13: In his bed
+    22 16: In his room
   Town:
     11 94: Outside his house
     12 94: Outside his house
@@ -784,8 +784,8 @@ Shane:
   AnimalShop:
     5 14: In Marnie's Ranch
     16 13: In Marnie's Ranch
-    24 15: In his kitchen
     24 5: In his bedroom
+    24 15: In his kitchen
     24 17: In his kitchen
     27 4: In his bed
   Beach:
