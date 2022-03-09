@@ -22,10 +22,10 @@ get '/' do
 end
 
 get '/api/map-sizes' do
-  Dir['data/maps/*.png'].map do |file_path|
+  Dir['data/maps/*.png'].to_h do |file_path|
     size = FastImage.size(file_path)
     [File.basename(file_path, '.png'), { x: size[0] / Stardew::Map::MAP_GRID, y: size[1] / Stardew::Map::MAP_GRID }]
-  end.to_h.to_json
+  end.to_json
 end
 
 get '/api/people' do
