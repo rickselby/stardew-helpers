@@ -39,11 +39,15 @@ jobs:
   rspec:
     name: RSpec tests
     runs-on: ubuntu-latest
-    needs: [ vue-build ]
+    needs: [ webpack ]
     steps:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - uses: actions/download-artifact@v3
+        with:
+          name: webpack-components
+          path: public
       - run: rake spec
 
   rubocop:
