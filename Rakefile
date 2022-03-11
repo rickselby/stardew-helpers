@@ -72,28 +72,28 @@ end
 namespace :npm do
   desc 'Run npm install'
   task :install do
-    system node_command 'npm install'
+    sh node_command 'npm install'
   end
 
   desc 'Run npm update'
   task :update do
-    system node_command 'npm update'
+    sh node_command 'npm update'
   end
 end
 
 desc 'Run webpack for dev'
 task :webpack do
-  system node_command 'npx webpack --config webpack.dev.js'
+  sh node_command 'npx webpack --config webpack.dev.js'
 end
 
 namespace :webpack do
   desc 'Run webpack watch'
   task :watch do
-    system node_command 'npx webpack watch --config webpack.dev.js'
+    sh node_command 'npx webpack watch --config webpack.dev.js'
   end
 
   desc 'Run webpack production'
   task :prod do
-    system node_command 'npx webpack --config webpack.prod.js'
+    sh node_command 'npx webpack --config webpack.prod.js'
   end
 end
