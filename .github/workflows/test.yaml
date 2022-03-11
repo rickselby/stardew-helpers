@@ -24,7 +24,7 @@ jobs:
           path: |
             public/css/**
             public/js/**
-            public/mainfest.json
+            public/manifest.json
 
   bundler-audit:
     name: Bundler Audit
