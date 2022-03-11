@@ -59,3 +59,34 @@ namespace :check do
     end
   end
 end
+
+def node_command(command, name: nil)
+  flags = [
+    '--rm',
+    '-i',
+    "-v #{Dir.pwd}:/app",
+    '-w /app',
+    '--env HOME=./.node',
+    "--user #{Process.uid}:#{Process.gid}"
+  ]
+  flags.push "--name #{name}" unless name.nil?
+
+  "docker run #{flags.join ' '} node:16-alpine #{command}"
+end
+
+desc 'Run webpack for dev'
+task :webpack do
+  system node_command 'npx webpack --config webpack.dev.js'
+end
+
+namespace :webpack do
+  desc 'Run webpack watch'
+  task :watch do
+    system node_command 'npx webpack watch --config webpack.dev.js'
+  end
+
+  desc 'Run webpack production'
+  task :prod do
+    system node_command 'npx webpack --config webpack.prod.js'
+  end
+end

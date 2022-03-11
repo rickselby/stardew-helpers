@@ -11,6 +11,8 @@ configure do
   set :erb, escape_html: true
   set :show_exceptions, :after_handler if development?
   disable :dump_errors unless development?
+
+  ASSETS = JSON.parse(File.read('public/manifest.json'), symbolize_names: true)
 end
 
 before '/api/*' do
