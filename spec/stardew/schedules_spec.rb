@@ -5,9 +5,8 @@ RSpec.describe Stardew::Schedules do
 
   before do
     pending 'Write some schedule best tests'
+    allow(File).to receive(:read).and_return({ foo: :bar }.to_json)
   end
-
-  before { allow(File).to receive(:read).and_return({ foo: :bar }.to_json) }
 
   let(:day) { 1 }
   let(:person) { 'Person' }
