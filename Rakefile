@@ -74,6 +74,11 @@ namespace :npm do
   task :install do
     system node_command 'npm install'
   end
+
+  desc 'Run npm update'
+  task :update do
+    system node_command 'npm update'
+  end
 end
 
 desc 'Run webpack for dev'
