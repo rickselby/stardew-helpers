@@ -17,11 +17,6 @@ RuboCop::RakeTask.new
 require 'bundler/audit/task'
 Bundler::Audit::Task.new
 
-desc 'Run audit check'
-task :audit do
-  system 'bundle exec bundler-audit check --update'
-end
-
 desc 'Bring up app'
 task :up do
   system 'rerun --background --no-notify -- ruby app.rb -p 8080'
