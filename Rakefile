@@ -74,6 +74,13 @@ def node_command(command, name: nil)
   "docker run #{flags.join ' '} node:16-alpine #{command}"
 end
 
+namespace :npm do
+  desc 'Run npm install'
+  task :install do
+    system node_command 'npm install'
+  end
+end
+
 desc 'Run webpack for dev'
 task :webpack do
   system node_command 'npx webpack --config webpack.dev.js'
