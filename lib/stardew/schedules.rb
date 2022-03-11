@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Although I'd *love* to refactor this, it should match the source code as closely as possible, so let's keep rubocop
+# quiet...
+# rubocop:disable Metrics/ClassLength, Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 module Stardew
   # Manage the retrieval of schedules
   class Schedules
@@ -197,3 +200,4 @@ module Stardew
     end
   end
 end
+# rubocop:enable Metrics/ClassLength, Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity

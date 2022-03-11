@@ -17,3 +17,8 @@ Metrics/BlockLength:
 # Don't enforce a module / class name as the first argument to the top-level describe
 RSpec/DescribeClass:
   Enabled: false
+
+# Allow constant definitions in the 'configure' block
+Lint/ConstantDefinitionInBlock:
+  AllowedMethods:
+    - configure
