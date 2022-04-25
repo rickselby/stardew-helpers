@@ -3,7 +3,7 @@
     "assets-webpack-plugin": "^7.1.0",
     "babel-loader": "^8.2.4",
     "mini-css-extract-plugin": "^2.5.3",
-    "sass": "^1.50.0",
+    "sass": "^1.50.1",
     "sass-loader": "^12.1.0",
     "trim-newlines": "^4.0.2",
     "vue-loader": "^15.9.7",
