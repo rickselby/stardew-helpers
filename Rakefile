@@ -55,6 +55,9 @@ namespace :check do
   end
 end
 
+desc 'Initalize app'
+task init: ['npm:install', 'webpack', :up]
+
 def node_command(command, name: nil)
   flags = [
     '--rm',
