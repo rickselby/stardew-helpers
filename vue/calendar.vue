@@ -47,12 +47,7 @@
 
     <div class="row panel">
       <div class="wood-border">
-        <div class="d-flex justify-content-center" v-if="loading">
-          <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-        </div>
-        <div class="row" v-if="!loading">
+        <div class="row">
           <div class="col-12" v-if="schedules.length === 0">
             Select a villager and a date, and their possible schedules will appear here.
           </div>
@@ -115,9 +110,9 @@ export default {
     return {
       day: null,
       days: [...Array(28).keys()].map(i => i + 1),
-      loading: false,
       person: null,
       people: [],
+      readingQuery: false,
       route: null,
       schedules: [],
       season: null,
@@ -132,7 +127,6 @@ export default {
       }
     },
     mapPath() {
-      console.log(this.route);
       if (this.route === null) {
         return '';
       }
@@ -184,6 +178,7 @@ export default {
       axios.get('/api/people')
           .then(response => {
             this.people = response.data;
+            this.setFromQuery();
           })
           .catch(() => {
             console.log('Failed to load people?')
@@ -238,19 +233,67 @@ export default {
       this.season = season;
       this.day = day;
     },
+    setFromQuery() {
+      let uri = window.location.search.substring(1),
+          params = new URLSearchParams(uri);
+      this.readingQuery = true;
+
+      if (params.has('v') && this.people.includes(params.get('v'))) {
+        this.person = params.get('v');
+      }
+
+      if (params.has('s') && this.seasons.includes(params.get('s'))) {
+        if (params.has('d') && this.days.includes(parseInt(params.get('d')))) {
+          this.setDay(params.get('d'), params.get('s'));
+        }
+      }
+
+      Vue.nextTick(() => {
+        this.readingQuery = false;
+      });
+    },
     setRoute: function (route) {
       this.route = route;
+    },
+    updateSearchParams() {
+      if (this.readingQuery) {
+        return;
+      }
+
+      let params = new URLSearchParams();
+      if (this.person) {
+        params.set('v', this.person);
+      }
+      if (this.season) {
+        params.set('s', this.season);
+      }
+      if (this.day) {
+        params.set('d', this.day);
+      }
+
+      if (params.toString() !== window.location.search.substring(1)) {
+        let newRelativePathQuery = window.location.pathname + '?' + params.toString();
+        history.pushState(null, '', newRelativePathQuery);
+      }
     }
+  },
+  mounted() {
+    window.addEventListener(
+        'popstate', this.setFromQuery
+    )
   },
   watch: {
     person: function () {
       this.loadSchedules();
+      this.updateSearchParams();
     },
     season: function () {
       this.loadSchedules();
+      this.updateSearchParams();
     },
     day: function () {
       this.loadSchedules();
+      this.updateSearchParams();
     }
   },
 }
