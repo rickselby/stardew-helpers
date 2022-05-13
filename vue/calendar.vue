@@ -174,9 +174,6 @@ export default {
           ((dayOfWeek * 32) + 41) + ',' +
           ((row * 32) + 71);
     },
-    handleHistoryChange() {
-      this.setFromQuery();
-    },
     loadPeople() {
       axios.get('/api/people')
           .then(response => {
@@ -282,7 +279,7 @@ export default {
   },
   mounted() {
     window.addEventListener(
-        'popstate', this.handleHistoryChange
+        'popstate', this.setFromQuery
     )
   },
   watch: {
