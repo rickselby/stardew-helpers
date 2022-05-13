@@ -15,8 +15,6 @@ module Stardew
         new(map).with_marker(x, y)
       end
 
-      private
-
       def marker
         @marker ||= MiniMagick::Image.open('./images/marker.png')
       end
