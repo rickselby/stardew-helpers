@@ -29,6 +29,22 @@
       </div>
     </div>
 
+    <div class="row panel" v-if="schedules.length !== 0">
+      <div class="wood-border">
+        <h3>How to read the schedules</h3>
+        <p>
+          Read the panels from left to right. The first panel that applies should be the
+          villager's schedule for the day. There many be alternatives for rain, for buildings
+          being unavailable, or based on friendship that will override the regular schedule for
+          a day.
+        </p>
+        <p>
+          The times shown are when the villager will leave their previous location and head
+          to the listed location.
+        </p>
+      </div>
+    </div>
+
     <div class="row panel">
       <div class="wood-border">
         <div class="d-flex justify-content-center" v-if="loading">
