@@ -34,7 +34,6 @@ task :build_maps do
       Stardew::Schedule.new(person, name, definition).routes.each do |r|
         next unless r.valid?
 
-        p r.to_json
         Stardew::Map.map_with_marker r.map, r.x, r.y
       rescue Errno::ENOENT
         # continue...
