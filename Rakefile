@@ -3,7 +3,7 @@
 require 'rubygems'
 require 'bundler/setup'
 
-Dir['./lib/**/*.rb'].sort.each { |file| require file }
+Dir['./lib/**/*.rb'].each { |file| require file }
 
 Bundler.setup
 Bundler.require(:development, :test)

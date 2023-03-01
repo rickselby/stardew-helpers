@@ -14,8 +14,8 @@ module Stardew
       'shanePK' => 'After Shane\'s 14 heart event'
     }.freeze
 
-    def self.each_person(&block)
-      valid_people.sort.each(&block)
+    def self.each_person(&)
+      valid_people.sort.each(&)
     end
 
     def self.valid_people
@@ -56,11 +56,11 @@ module Stardew
     def add_possibility(schedule, notes, rain: false, increment: true, priority: nil)
       @priority += 1 if increment && priority.nil?
       @possibilities.push SchedulePossibility.new(schedule, @schedules[schedule].routes, notes,
-                                                  priority: priority || @priority, rain: rain)
+                                                  priority: priority || @priority, rain:)
     end
 
     def add_regular(schedule, priority: nil)
-      add_possibility schedule, 'Regular Schedule', priority: priority
+      add_possibility schedule, 'Regular Schedule', priority:
     end
 
     def check_for_inaccessible_locations

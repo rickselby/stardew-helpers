@@ -5,7 +5,7 @@ module Stardew
   class Route
     attr_reader :definition
 
-    VALID_TIME = /^a?\d+$/.freeze
+    VALID_TIME = /^a?\d+$/
 
     def initialize(person, definition, replacement: false)
       @definition = definition.split
@@ -14,7 +14,7 @@ module Stardew
     end
 
     def as_json(_options = {})
-      { time: replacement? ? nil : time, map: map, x: x, y: y, name: name }
+      { time: replacement? ? nil : time, map:, x:, y:, name: }
     end
 
     def map

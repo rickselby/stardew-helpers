@@ -2,7 +2,7 @@
 
 # Game-wide helpers for Stardew Valley
 module Stardew
-  DAYS = (1..28).freeze
+  DAYS = (1..28)
   SEASONS = %w[spring summer fall winter].freeze
 
   def self.each_day

@@ -40,9 +40,9 @@ module Stardew
         target
       end
 
-      def each_location_for(person, &block)
+      def each_location_for(person, &)
         JSON.parse(File.read("data/schedules/#{person}.json")).each do |name, definition|
-          Schedule.new(person, name, definition).routes.each(&block)
+          Schedule.new(person, name, definition).routes.each(&)
         end
       end
 

@@ -5,7 +5,7 @@ require 'bundler'
 
 Bundler.require
 
-Dir['./lib/**/*.rb'].sort.each { |file| require file }
+Dir['./lib/**/*.rb'].each { |file| require file }
 
 configure do
   set :erb, escape_html: true
