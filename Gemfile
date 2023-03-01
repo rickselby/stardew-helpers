@@ -23,5 +23,6 @@ end
 gem 'erubi'
 gem 'fastimage'
 gem 'mini_magick'
+gem 'puma'
 gem 'rack'
 gem 'sinatra'
