@@ -5,61 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4c99c61-af77-4c81-92a2-471cf0966372" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/dependabot.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/test.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.rerun" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.rspec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.rubocop.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ruby-version" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rakefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/locations.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/maps/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/maps/generated/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/portraits/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/schedules/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/marker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/paper.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/textBox.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/stardew.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/stardew/locations.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/stardew/map.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/stardew/route.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/stardew/schedule.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/stardew/schedule_possibility.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/stardew/schedules.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/calendar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/marker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/_calendar.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/_layout.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/_maps.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/_variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/app.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/people_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/portrait_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/samples/file.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/spec_helper.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/stardew/schedules_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layout.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/locations.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/calendar.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/forage.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/location.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/locations.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.common.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.dev.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.prod.js" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/application/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +50,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views" />
+    </key>
+  </component>
   <component name="RunManager" selected="Rails.stardew-helpers">
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file enabled="true" id="RUBY_CUCUMBER" />
@@ -339,6 +294,7 @@
       <workItem from="1678130883461" duration="176000" />
       <workItem from="1678216025275" duration="3000" />
       <workItem from="1679076397483" duration="559000" />
+      <workItem from="1679076959444" duration="704000" />
     </task>
     <task id="LOCAL-00001" summary="Add npm:ci command">
       <created>1677700244008</created>
@@ -368,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677701253939</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add new rails setup">
+      <created>1679077153035</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679077153035</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,6 +353,7 @@
     <MESSAGE value="Update to ruby 3.2" />
     <MESSAGE value="Update README.md" />
     <MESSAGE value="Add puma server" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add puma server" />
+    <MESSAGE value="Add new rails setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new rails setup" />
   </component>
 </project>
