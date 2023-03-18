@@ -1,0 +1,59 @@
+
+#possibilities .list-group-item {
+  padding: 5px 10px;
+  border:none;
+}
+
+.portrait {
+  border: 3px solid transparent;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+
+  &.portrait-active {
+    border: 3px solid red;
+  }
+}
+
+#calendars {
+  @extend .row;
+
+  h4 {
+    margin-bottom: 0;
+  }
+
+  .calendar-container {
+    margin-bottom: 0.5em;
+    @extend .col-12;
+    @extend .col-sm-6;
+    @extend .col-xl-3;
+  }
+
+  .calendar {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    height: auto;
+  }
+
+  .calendar-marker {
+    position: absolute;
+    border: 3px solid red;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.route-panel {
+  .list-group {
+    border-top: 1px solid rgba(0, 0, 0, 0.125)
+  }
+  .list-group-item {
+    background-color: transparent;
+    text-align: left;
+  }
+}
+
+.two-rains:first-child {
+  border-right: 1px solid black;
+}
