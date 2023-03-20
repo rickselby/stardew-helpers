@@ -4,7 +4,7 @@
     "babel-loader": "^9.1.2",
     "mini-css-extract-plugin": "^2.7.5",
     "sass": "^1.59.2",
-    "sass-loader": "^13.2.0",
+    "sass-loader": "^13.2.1",
     "trim-newlines": "^4.0.2",
     "vue-loader": "^15.9.7",
     "vue-template-compiler": "^2.7.14",
