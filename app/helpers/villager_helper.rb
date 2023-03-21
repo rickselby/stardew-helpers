@@ -1,0 +1,2 @@
+module VillagerHelper
+end
