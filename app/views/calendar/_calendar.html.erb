@@ -5,18 +5,16 @@
       <h4><%= season_name.capitalize %></h4>
       <div id="<%= season_name %>" class="calendar">
         <img src="<%= asset_path 'calendar.png' %>" usemap="#<%= season_name %>Map" alt="Calendar" />
-        <div class="calendar-marker d-none">
-<!--             style="calendarMarkerPosition"-->
-<!--             class="season===season_name ? 'd-block' : 'd-none'"-->
+        <div class="calendar-marker <%= @season == season_name ? 'd-block' : 'd-none' %>"
+             style="<%= calendar_marker_position(@day) %>">
         </div>
       </div>
       <map name="<%= season_name %>Map">
         <% @days.each do |day| %>
-        <area shape="rect" alt="<%= day %>" title="<%= day %>"
+        <area shape="rect" alt="<%= "#{season_name} #{day}" %>" title="<%= "#{season_name} #{day}" %>"
               coords="<%= get_coords day %>"
               href="<%= calendar_index_url(season: season_name, day: day, person: @person) %>"
         >
-          <!--              @click="setDay(day, season_name)" />-->
         <% end %>
       </map>
     </div>
