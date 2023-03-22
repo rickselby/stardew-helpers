@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "/", to: "main#index", as: :root
+  root to: redirect("/calendar")
   resources :calendar, only: [:index]
   resources :villager, only: [:show]
 end

@@ -84,11 +84,12 @@ code {
 
 #navigation {
   border-bottom: none;
+  padding-right: 0;
 
   li {
     @include borderOuter;
 
-    button {
+    button, a {
       @include woodBorderInterior;
       @extend h3;
 
