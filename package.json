@@ -5,7 +5,7 @@
     "mini-css-extract-plugin": "^2.7.5",
     "sass": "^1.59.3",
     "sass-loader": "^13.2.1",
-    "trim-newlines": "^4.0.2",
+    "trim-newlines": "^5.0.0",
     "vue-loader": "^15.9.7",
     "vue-template-compiler": "^2.7.14",
     "webpack": "^5.76.3",
