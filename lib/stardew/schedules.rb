@@ -165,8 +165,8 @@ module Stardew
       @possibilities.map do |possibility|
         next unless possibility.first_route_word? 'GOTO'
 
-        season = possibility.second_route_word == 'season' ? season : possibility.second_route_word
-        schedule = @schedules.key?(season) ? season : 'spring'
+        target_season = possibility.second_route_word == 'season' ? season : possibility.second_route_word
+        schedule = @schedules.key?(target_season) ? target_season : 'spring'
         possibility.routes = @schedules[schedule].routes
         possibility.name = schedule
       end
