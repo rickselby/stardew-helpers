@@ -49,8 +49,8 @@ module Stardew
       }
     end
 
-    def to_json(*options)
-      as_json(*options).to_json(*options)
+    def to_json(*)
+      as_json(*).to_json(*)
     end
   end
 end
