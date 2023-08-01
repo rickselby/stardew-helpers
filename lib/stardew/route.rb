@@ -35,8 +35,8 @@ module Stardew
       @definition[0]
     end
 
-    def to_json(*options)
-      as_json(*options).to_json(*options)
+    def to_json(*)
+      as_json(*).to_json(*)
     end
 
     def to_s
