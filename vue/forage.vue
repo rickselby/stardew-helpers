@@ -208,14 +208,13 @@ export default {
         return;
       }
       this.farmType = null;
-      this.forage = {};
+      this.maps = [];
       this.readFile(files[0]);
     }
   },
   updated: function () {
     this.$nextTick(() => {
       var tooltipTriggerList = [].slice.call(this.$el.querySelectorAll('[data-bs-toggle="tooltip"]'))
-      console.log(tooltipTriggerList);
       var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new global.bootstrap.Tooltip(tooltipTriggerEl)
       });
