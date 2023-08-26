@@ -9,6 +9,9 @@ updates:
       day: saturday
       time: "08:00"
       timezone: "Europe/London"
+    groups:
+      dev-dependencies:
+        dependency-type: "development"
 
   - package-ecosystem: npm
     directory: /
