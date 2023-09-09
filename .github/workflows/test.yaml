@@ -12,7 +12,7 @@ jobs:
     name: Build Vue components
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
@@ -30,7 +30,7 @@ jobs:
     name: Bundler Audit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ webpack ]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
@@ -56,7 +56,7 @@ jobs:
     name: Rubocop
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
