@@ -2,7 +2,7 @@
 
 module Stardew
   # A single step in a schedule
-  class Route
+  class Step
     attr_reader :definition
 
     VALID_TIME = /^a?\d+$/

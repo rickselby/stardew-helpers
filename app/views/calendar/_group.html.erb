@@ -11,7 +11,7 @@
     <div class="row">
       <% group.possibilities.each do |schedule| %>
         <div class="list-group list-group-flush <%= schedule_classes(group) %>">
-          <% schedule.routes.each do |route| %>
+          <% schedule.steps.each do |route| %>
             <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#map-modal"
                     data-bs-map="<%= path_for_route route %>">
               <%= format_time route.time %>:

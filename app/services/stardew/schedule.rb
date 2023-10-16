@@ -3,11 +3,11 @@
 module Stardew
   # A single schedule
   class Schedule
-    attr_reader :routes
+    attr_reader :steps
 
-    def initialize(person, name, routes)
+    def initialize(person, name, definition)
       @name = name
-      @routes = routes.split('/').map { |r| Route.new(person, r, replacement: replacement?) }
+      @steps = definition.split('/').map { |r| Step.new(person, r, replacement: replacement?) }
     end
 
     def replacement?

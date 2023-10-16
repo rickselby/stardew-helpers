@@ -3,38 +3,38 @@
 module Stardew
   # A single schedule
   class SchedulePossibility
-    attr_accessor :name, :notes, :priority, :routes
+    attr_accessor :name, :notes, :priority, :steps
 
-    def initialize(name, routes, notes, priority:, rain: false)
+    def initialize(name, steps, notes, priority:, rain: false)
       @name = name.dup
       @notes = notes.dup
       @priority = priority.dup
       @rain = rain.dup
-      @routes = routes.dup
+      @steps = steps.dup
     end
 
     def first_route_word?(test)
-      @routes.first.definition[0] == test
+      @steps.first.definition[0] == test
     end
 
     def second_route_word
-      @routes.first.definition[1]
+      @steps.first.definition[1]
     end
 
     def friendship_notes
-      notes = "Not at #{@routes.first.definition[3]} hearts with #{@routes.first.definition[2]}"
-      if @routes.first.definition.length == 6
-        notes = "#{notes} or #{@routes.first.definition[5]} hearts with #{@routes.first.definition[4]}"
+      notes = "Not at #{@steps.first.definition[3]} hearts with #{@steps.first.definition[2]}"
+      if @steps.first.definition.length == 6
+        notes = "#{notes} or #{@steps.first.definition[5]} hearts with #{@steps.first.definition[4]}"
       end
       notes
     end
 
     def mail_alt_schedule
-      @routes[1].definition[1]
+      @steps[1].definition[1]
     end
 
     def remove_routes(amount)
-      @routes.shift(amount)
+      @steps.shift(amount)
     end
 
     def skip_nots

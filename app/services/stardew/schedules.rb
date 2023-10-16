@@ -56,7 +56,7 @@ module Stardew
 
     def add_possibility(schedule, notes, rain: false, increment: true, priority: nil)
       @priority += 1 if increment && priority.nil?
-      @possibilities.push SchedulePossibility.new(schedule, @schedules[schedule].routes, notes,
+      @possibilities.push SchedulePossibility.new(schedule, @schedules[schedule].steps, notes,
                                                   priority: priority || @priority, rain:)
     end
 
@@ -66,16 +66,16 @@ module Stardew
 
     def check_for_inaccessible_locations
       @possibilities.map do |possibility|
-        possibility.routes.each do |r|
+        possibility.steps.each do |r|
           case r.map
           when 'JojaMart', 'Railroad'
             increment_priorities possibility.priority
             if @schedules.key? "#{r.map}_Replacement"
-              alt_definition = @schedules["#{r.map}_Replacement"].routes.first.definition.join ' '
-              alt_routes = possibility.routes.map do |r2|
+              alt_definition = @schedules["#{r.map}_Replacement"].steps.first.definition.join ' '
+              alt_routes = possibility.steps.map do |r2|
                 next r2 unless r2.map == r.map
 
-                Route.new @person, "#{r2.time} #{alt_definition}"
+                Step.new @person, "#{r2.time} #{alt_definition}"
               end
               @possibilities.push SchedulePossibility.new("#{possibility.name}_alt", alt_routes,
                                                           "If #{r.map} is not available",
@@ -120,7 +120,7 @@ module Stardew
 
     def check_for_unknowns
       @possibilities.each do |possibility|
-        possibility.routes.each do |r|
+        possibility.steps.each do |r|
           raise "Unknown route: #{r}" unless r.valid?
         end
       end
@@ -134,7 +134,7 @@ module Stardew
     def find_schedules(season, day)
       return add_regular "#{season}_#{day}" if @schedules.key? "#{season}_#{day}"
 
-      (1..13).to_a.reverse_each do |hearts|
+      (1..13).reverse_each do |hearts|
         if @schedules.key? "#{day}_#{hearts}"
           add_possibility "#{day}_#{hearts}", "At least #{hearts} hearts with #{@person}"
         end
@@ -168,7 +168,7 @@ module Stardew
 
         season = possibility.second_route_word == 'season' ? season : possibility.second_route_word
         schedule = @schedules.key?(season) ? season : 'spring'
-        possibility.routes = @schedules[schedule].routes
+        possibility.routes = @schedules[schedule].steps
         possibility.name = schedule
       end
     end
