@@ -1,0 +1,854 @@
+---
+Abigail:
+  ArchaeologyHouse:
+    11 9: In the Museum
+  Beach:
+    13 39: On the left pier at the Beach
+    30 34: Outside the Fish Shop
+  BusStop:
+    "-1 23": In the Farmhouse
+    22 5: At the Bus Stop
+  Forest:
+    14 40: Near the Wizard's Tower
+  Hospital:
+    4 6: In the Clinic
+    13 14: In the Clinic
+  Mountain:
+    46 23: East of the Carpenter's Shop
+    49 31: East of the Carpenter's Shop
+  Railroad:
+    30 45: At the Railroad
+  Saloon:
+    33 18: In the Saloon
+    42 17: In the Saloon
+  ScienceHouse:
+    5 19: In the Carpenter's Shop
+  SebastianRoom:
+    5 4: In Sebastian's Room
+  SeedShop:
+    1 9: In her bed
+    2 20: In Pierre's General Store
+    3 6: In her room
+    4 5: In her room
+    6 4: In her room
+    6 19: In Pierre's General Store
+    7 9: In her room
+    9 5: In her room
+    9 17: In Pierre's General Store
+    10 5: In her room
+    11 5: In her room
+    13 20: In Pierre's General Store
+    20 5: In Caroline & Pierre's bedroom
+    34 5: In her kitchen
+    36 9: In her kitchen
+    39 5: In her kitchen
+  Town:
+    47 87: In the graveyard
+    73 54: On the bridge west of JojaMart
+Alex:
+  BathHouse_MensLocker:
+    3 5: In the Men's Locker Room at the Spa
+  Beach:
+    27 24: Near the Fish Shop
+    30 13: On the beach
+  BusStop:
+    "-1 23": In the Farmhouse
+  HaleyHouse:
+    7 23: In Emily & Haley's house
+  Hospital:
+    4 6: In the Clinic
+    15 15: In the Clinic
+  JoshHouse:
+    6 18: In his kitchen
+    8 19: In his house
+    14 5: In his room
+    15 4: In his room
+    17 5: In his room
+    21 4: In his bed
+  Saloon:
+    32 7: In the Saloon
+  Town:
+    50 68: East of the Saloon
+    64 64: Outside his house
+    88 91: At the Ice Cream stand
+Caroline:
+  ArchaeologyHouse:
+    14 4: In the Museum
+  Beach:
+    24 32: Near the Fish Shop
+  CommunityCenter:
+    26 9: In the Community Center
+  Hospital:
+    4 6: In the Clinic
+    13 14: In the Clinic
+  SeedShop:
+    15 23: In Pierre's General Store
+    21 5: In her room
+    22 5: In her room
+    22 14: In Pierre's General Store
+    23 15: In Pierre's General Store
+    24 17: In Pierre's General Store
+    24 21: In Pierre's General Store
+    25 4: In her bed
+    25 18: In Pierre's General Store
+    27 7: In her room
+    34 5: In her kitchen
+    37 6: In her kitchen
+  Sunroom:
+    5 7: In her Sunroom
+  Town:
+    23 27: Near the fountain
+    23 71: In the town square
+    48 33: North of her house
+Clint:
+  Beach:
+    37 33: East of the Fish Shop
+  Blacksmith:
+    3 13: Tending the Blacksmith Shop
+    8 12: In the Blacksmith Shop
+    10 4: In his bed
+  CommunityCenter:
+    62 14: In the Community Center
+  Hospital:
+    4 6: In the Clinic
+    12 14: In the Clinic
+  JojaMart:
+    27 5: In JojaMart
+  Saloon:
+    19 23: In the Saloon
+Demetrius:
+  Beach:
+    11 32: On the left pier at the beach
+  Hospital:
+    4 6: In the Clinic
+    12 14: In the Clinic
+  Mountain:
+    15 26: Outside his house
+    30 36: Outside his house
+    45 8: Near the mines entrance
+  Saloon:
+    23 22: In the Saloon
+    24 22: In the Saloon
+  ScienceHouse:
+    7 18: In the Carpenter's Shop
+    15 4: In his bedroom
+    16 19: In the lab
+    19 4: In his bed
+    20 4: In his bed
+    22 20: In the lab
+    27 9: In his kitchen
+    28 9: In his kitchen
+    29 9: In his kitchen
+  Town:
+    31 23: Near the fountain
+Elliott:
+  ArchaeologyHouse:
+    21 11: In the Museum
+  Beach:
+    24 32: West of the Fish Shop
+    38 36: Outside the Fish Shop
+    46 11: Outside his house
+    49 19: Outside his house
+  BusStop:
+    "-1 23": In the Farmhouse
+  ElliottHouse:
+    1 5: In his house
+    6 4: In his house
+    7 7: In his house
+    13 4: In his bed
+  Forest:
+    96 39: Near Leah's house
+  Hospital:
+    4 6: In the Clinic
+    12 14: In the Clinic
+  Saloon:
+    4 19: In the Saloon
+  SeedShop:
+    10 20: In Pierre's General Store
+  Town:
+    55 104: On the bridge north of the beach
+Emily:
+  '35':
+    25 0: "???"
+  Beach:
+    10 37: On the left pier at the beach
+    25 36: Near the Fish Shop
+  BusStop:
+    "-1 23": In the Farmhouse
+  CommunityCenter:
+    10 25: In the Community Center
+  Desert:
+    1 51: Outside the Oasis
+    5 33: North of the Oasis
+    6 55: Outside the Oasis
+    10 18: By the lake in the desert
+    25 32: Near the bus stop in the desert
+    28 24: Near the bus stop in the desert
+  HaleyHouse:
+    3 16: In her house
+    12 17: In her house
+    16 5: In her room
+    21 4: In her bed
+  Hospital:
+    4 6: In the Clinic
+    12 14: In the Clinic
+  Saloon:
+    15 17: In the Saloon
+  SandyHouse:
+    4 5: In the Oasis
+  SeedShop:
+    2 26: In Pierre's General Store
+    26 19: In the large room at Pierre's General Store
+    27 16: In the large room at Pierre's General Store
+  Town:
+    82 15: East of the Community Center
+Evelyn:
+  Beach:
+    12 39: On the left pier at the beach
+  CommunityCenter:
+    18 25: In the Community Center
+  Hospital:
+    4 6: In the Clinic
+    4 7: In the Clinic
+    10 16: In the Clinic
+    15 15: In the Clinic
+  JoshHouse:
+    2 5: In her bedroom
+    3 17: In her kitchen
+    3 19: In her kitchen
+    4 17: In her kitchen
+    17 17: In her living room
+    17 22: In her living room
+    20 20: In her living room
+  Town:
+    20 62: In the town square
+    36 78: In the town square
+George:
+  Beach:
+    11 39: On the left pier at the beach
+  Hospital:
+    4 6: In the Clinic
+    10 15: In the Clinic
+  JoshHouse:
+    3 5: In his bedroom
+    5 21: In his kitchen
+    16 22: In his living room
+  Saloon:
+    36 7: In the Saloon
+  SeedShop:
+    36 22: At the shrine of Yoba at Pierre's General Store
+  Town:
+    52 61: West of his house
+Gus:
+  CommunityCenter:
+    5 5: In the Community Center
+  Hospital:
+    4 6: In the Clinic
+    12 14: In the Clinic
+  Saloon:
+    10 18: In the Saloon
+    12 18: In the Saloon
+    14 18: In the Saloon
+    16 4: In his bedroom
+    23 4: In his bed
+    34 8: In the Saloon
+  SeedShop:
+    13 23: In Pierre's General Store
+Haley:
+  Beach:
+    19 7: On the beach
+    27 34: Outside the Fish Shop
+  BusStop:
+    "-1 23": In the Farmhouse
+  Forest:
+    77 44: Near Leah's house
+  HaleyHouse:
+    1 5: In her bed
+    1 8: In her room
+    2 5: In her bed
+    4 15: In her living room
+    5 7: In her room
+    5 20: In her living room
+    6 5: In her room
+    7 16: In her living room
+    8 7: In her room
+    19 16: In her kitchen
+  Hospital:
+    4 6: In the Clinic
+    12 14: In the Clinic
+  Town:
+    23 22: Near the fountain
+    90 91: At the Ice-Cream stand
+Harvey:
+  ArchaeologyHouse:
+    16 9: In the Museum
+  Beach:
+    37 31: East of the Fish Shop
+  BusStop:
+    "-1 23": In the Farmhouse
+  HarveyRoom:
+    3 4: In his room
+    4 5: In his room
+    6 4: In his room
+    8 5: In his room
+    9 5: In his room
+    11 5: In his room
+    13 4: In his bed
+    19 7: In his room
+    21 7: In his room
+  Hospital:
+    1 5: In the Clinic
+    3 15: In the Clinic
+    4 5: In the Clinic
+    5 5: In the Clinic
+    5 6: In the Clinic
+    6 15: In the Clinic
+    9 15: In the Clinic
+    10 14: In the Clinic
+  Saloon:
+    18 20: In the Saloon
+  SeedShop:
+    2 23: In Pierre's General Store
+    2 26: In Pierre's General Store
+  Town:
+    10 64: West of the town square
+    23 27: Near the fountain
+    23 36: Near the fountain
+    46 102: South of the graveyard
+Jas:
+  AnimalShop:
+    1 7: In her bed
+    4 7: In her room
+    7 5: In her room
+    8 17: In her house
+    16 16: In her house
+    17 5: In Marnie's room
+    17 15: In her house
+  ArchaeologyHouse:
+    19 10: In the Museum
+  Beach:
+    19 24: On the pier at the beach
+    40 23: On the beach
+  Forest:
+    38 10: By the large tree north of the lake in the forest
+    92 20: Outside her house
+  Hospital:
+    4 6: In the Clinic
+    12 14: In the Clinic
+  Town:
+    16 91: Outside Jodi's house
+    24 12: In the playpark
+    28 90: Outside Haley's house
+    31 89: Outside Haley's house
+    85 103: South of the Ice Cream stand
+Jodi:
+  Beach:
+    20 24: On the pier at the beach
+  CommunityCenter:
+    24 8: In the Community Center
+  Hospital:
+    2 7: In the Clinic
+    4 6: In the Clinic
+    12 14: In the Clinic
+    13 14: In the Clinic
+  JojaMart:
+    5 7: In JojaMart
+    9 14: In JojaMart
+    11 25: In JojaMart
+    14 21: In JojaMart
+    20 5: In JojaMart
+    27 13: In JojaMart
+  SamHouse:
+    2 17: In her house
+    3 5: In her kitchen
+    4 5: In her kitchen
+    4 12: In her house
+    5 5: In her kitchen
+    5 7: In her kitchen
+    6 5: In her kitchen
+    6 13: In her house
+    7 5: In her kitchen
+    8 13: In her house
+    10 22: In Vincent's room
+    12 22: In Vincent's room
+    22 5: In her bed
+  SeedShop:
+    2 20: In Pierre's General Store
+    2 22: In Pierre's General Store
+    21 17: In the large room at Pierre's General Store
+    22 17: In the large room at Pierre's General Store
+    24 14: In the large room at Pierre's General Store
+    38 20: At the shrine of Yoba at Pierre's General Store
+  Town:
+    22 72: In the town square
+Kent:
+  Saloon:
+    3 23: In the Saloon
+    35 8: In the Saloon
+  SamHouse:
+    2 21: In his house
+    8 5: In his kitchen
+    8 12: In his house
+    21 5: In his bed
+  SeedShop:
+    5 19: In Pierre's General Store
+    36 20: At the shrine of Yoba at Pierre's General Store
+  Town:
+    6 72: North of his house
+    6 89: Outside his house
+    42 102: South of the graveyard
+Leah:
+  Beach:
+    38 24: On the beach
+    41 35: Near the Fish Shop
+    72 18: At the tide pools on the beach
+  BusStop:
+    "-1 23": In the Farmhouse
+  Forest:
+    21 29: West of the lake in the forest
+    33 25: On the pier in the lake in the forest
+    63 50: By the river, west of her house
+    68 50: By the river, west of her house
+    106 34: Outside her house
+  Hospital:
+    4 6: In the Clinic
+    12 14: In the Clinic
+  LeahHouse:
+    2 4: In her bed
+    3 7: In her house
+    6 5: In her house
+    8 5: In her house
+    9 5: In her house
+    13 10: In her house
+  Saloon:
+    2 20: In the Saloon
+  SeedShop:
+    11 23: In Pierre's General Store
+  Town:
+    86 66: North of the Blacksmith
+Leo:
+  IslandEast:
+    7 44: On the east side of the island
+    21 11: Outside the treehouse
+  IslandHut:
+    4 8: In the treehouse
+    6 6: In the treehouse
+    7 7: In the treehouse
+    7 9: In the treehouse
+    11 10: In the treehouse
+  IslandNorth:
+    14 15: West of the Volcano
+    53 71: In the north of the island
+  IslandShrine:
+    21 23: In the shrine on the island
+  IslandSouth:
+    7 9: On the beach on the island
+    38 31: On the beach on the island
+LeoMainland:
+  ArchaeologyHouse:
+    12 9: In the Museum
+    18 12: In the Museum
+  Beach:
+    21 4: On the beach
+  IslandEast:
+    7 44: On the east side of the island
+    21 11: Outside his treehouse on the island
+  IslandHut:
+    6 6: In his treehouse on the island
+    7 7: In his treehouse on the island
+    11 10: In his treehouse on the island
+  IslandNorth:
+    53 71: In the north of the island
+  IslandSouth:
+    7 9: On the beach on the island
+    38 31: On the beach on the island
+  LeoTreeHouse:
+    2 2: In his treehouse in the village
+    2 5: In his treehouse in the village
+    4 2: In his treehouse in the village
+    5 4: In his treehouse in the village
+  Mountain:
+    18 7: Outside his treehouse in the village
+    30 9: Outside Linus's tent
+    35 15: Outside Linus's tent
+    43 17: East of Linus's tent
+    44 18: East of Linus's tent
+    48 24: East of Linus's tent
+    49 31: South-East of Linus's tent
+  Tent:
+    1 3: In Linus's tent
+  Town:
+    19 14: At the playpark
+    34 90: North of the sewer
+    65 48: South-East of the Community Center
+    91 104: South of the Ice Cream stand
+Lewis:
+  AnimalShop:
+    11 16: In Marnie's Ranch
+    12 5: In Marnie's bed
+    17 5: In Marnie's room
+    24 15: In Marnie's kitchen
+  ArchaeologyHouse:
+    2 10: In the Museum
+  Beach:
+    19 24: On the pier at the beach
+    40 34: East of the Fish Shop
+  Blacksmith:
+    4 15: In the Blacksmith
+  CommunityCenter:
+    33 9: In the Community Center
+    47 5: In the Community Center
+    47 13: In the Community Center
+    51 4: In the Community Center
+    55 6: In the Community Center
+  FishShop:
+    4 6: In the Fish Shop
+  Forest:
+    84 40: West of Leah's house
+  Hospital:
+    4 6: In the Clinic
+    12 14: In the Clinic
+  Library:
+    22 9: "???"
+  ManorHouse:
+    3 6: In his house
+    7 5: In his house
+    8 5: In his house
+    22 4: In his bed
+  Saloon:
+    9 22: In the Saloon
+    12 20: In the Saloon
+  ScienceHouse:
+    7 20: In the Carpenter's Shop
+  SeedShop:
+    6 19: In Pierre's General Store
+  Town:
+    29 27: By the foutain
+    30 56: Outside the Clinic
+    41 57: Outside Pierre's General Store
+    62 88: Outside his house
+    65 86: Outside his house
+Linus:
+  BathHouse_Entry:
+    8 6: In the spa entrance
+  Beach:
+    19 4: On the beach
+  Mountain:
+    17 8: West of his tent
+    25 5: West of his tent
+    28 9: Outside his tent
+    39 5: West of his tent
+    44 18: West of his tent
+    44 27: South-West of his tent
+    45 19: West of his tent
+    48 35: South-West of his tent
+  Railroad:
+    20 57: Outside the Spa
+  Tent:
+    1 3: In his tent
+    2 2: In his tent
+    3 2: In his tent
+    4 4: In his bed
+Marnie:
+  AnimalShop:
+    12 5: In her bed
+    12 14: Tending the Ranch Shop
+    17 5: In her room
+    17 8: In her room
+    24 15: In her kitchen
+  Beach:
+    37 31: East of the Fish Shop
+  Hospital:
+    2 7: In the Clinic
+    4 6: In the Clinic
+    12 14: In the Clinic
+    13 14: In the Clinic
+  Saloon:
+    8 22: In the Saloon
+    9 22: In the Saloon
+  SeedShop:
+    11 20: In Pierre's General Store
+    23 16: In the large room at Pierre's General Store
+    25 15: In the large room at Pierre's General Store
+    28 17: In the large room at Pierre's General Store
+Maru:
+  Beach:
+    11 33: On the left pier at the beach
+  BusStop:
+    "-1 23": In the Farmhouse
+  CommunityCenter:
+    15 27: In the Community Center
+  Hospital:
+    6 15: In the Clinic
+    8 17: In the Clinic
+    9 15: In the Clinic
+  Mountain:
+    8 23: Outside her house
+    55 31: East of her house
+  ScienceHouse:
+    2 4: In her bed
+    2 6: In her room
+    2 21: In her house
+    5 6: In her room
+    5 19: In her house
+    6 4: In her room
+    6 20: In her house
+    7 6: In her room
+    9 6: In her room
+    16 18: In the lab
+    19 18: In the lab
+    26 13: In her kitchen
+  Town:
+    43 77: Outside the Saloon
+    63 15: East of the Community Center
+    64 16: East of the Community Center
+Pam:
+  BusStop:
+    11 10: At the Bus Stop
+  Hospital:
+    4 6: In the Clinic
+    4 17: In the Clinic
+  JojaMart:
+    6 19: In JojaMart
+  Saloon:
+    7 18: In the Saloon
+  SeedShop:
+    2 24: In Pierre's General Store
+  Trailer:
+    15 4: In her Trailer
+Penny:
+  ArchaeologyHouse:
+    16 10: In the Museum
+    17 9: In the Museum
+    20 5: In the Museum
+  Beach:
+    35 36: Outside the Fish Shop
+  BusStop:
+    "-1 23": In the Farmhouse
+  CommunityCenter:
+    23 17: In the Community Center
+    46 13: In the Community Center
+  Forest:
+    92 20: Outside Marnie's Ranch
+  Hospital:
+    4 6: In the Clinic
+    4 17: In the Clinic
+  ScienceHouse:
+    8 5: In Maru's room
+  SeedShop:
+    2 26: In Pierre's General Store
+    5 19: In Pierre's General Store
+  Town:
+    12 13: At the playpark
+    17 90: Outside Jodi's house
+    29 91: Outside Haley's house
+    32 89: East of Haley's house
+    35 89: East of Haley's house
+    44 77: Outside the Saloon
+    63 15: East of the Community Center
+    75 52: On the bridge west of JojaMart
+    78 93: On the bridge west of the Museum
+    88 100: South of the Ice Cream stand
+    96 18: North of JojaMart
+    104 89: Outside the Museum
+  Trailer:
+    1 8: In her room
+    4 4: In her room
+    4 9: In her bed
+    5 5: In her room
+    6 5: In her room
+    9 7: In her Trailer
+    12 6: In her Trailer
+    14 4: In her Trailer
+Pierre:
+  Saloon:
+    16 20: In the Saloon
+  SeedShop:
+    4 17: Tending the General Store
+    10 20: In Pierre's General Store
+    11 20: In Pierre's General Store
+    20 5: In his room
+    24 4: In his bed
+    37 5: In his kitchen
+Robin:
+  Beach:
+    13 31: On the left pier at the beach
+  CommunityCenter:
+    9 19: In the Community Center
+  Hospital:
+    4 6: In the Clinic
+    12 14: In the Clinic
+  Mountain:
+    29 36: Outside her house
+  Saloon:
+    22 22: In the Saloon
+    23 22: In the Saloon
+  ScienceHouse:
+    8 18: Tending the Carpenter's Shop
+    16 5: In her room
+    21 4: In her bed
+    29 9: In her kitchen
+  SeedShop:
+    24 16: In the large room at Pierre's General Store
+    27 18: In the large room at Pierre's General Store
+    27 22: In the large room at Pierre's General Store
+Sam:
+  ArchaeologyHouse:
+    40 4: In the Museum
+  Beach:
+    11 34: On the left pier at the beach
+    46 24: At the beach
+  BusStop:
+    "-1 23": In the Farmhouse
+  Forest:
+    66 50: East of Leah's house, by the river
+  Hospital:
+    4 6: In the Clinic
+    14 15: In the Clinic
+  JojaMart:
+    16 5: In JojaMart
+  Saloon:
+    20 19: In the Saloon
+    36 21: In the Saloon
+    38 18: In the Saloon
+  SamHouse:
+    3 13: In his house
+    6 13: In his house
+    8 5: In his kitchen
+    8 6: In his kitchen
+    15 13: In his room
+    17 13: In his room
+    17 15: In his room
+    19 13: In his room
+    22 13: In his bed
+    22 16: In his room
+  Town:
+    11 94: Outside his house
+    12 94: Outside his house
+    14 90: Outside his house
+    18 94: Outside his house
+    24 97: Outside his house
+    25 98: Outside his house
+    43 79: Outside the Saloon
+    71 99: South of the Mayor's house
+    79 95: On the bridge east of the Museum
+Sandy:
+  '37':
+    25 1: "???"
+  Desert:
+    2 51: Outside the Oasis
+    7 33: North of the Oasis
+    7 55: Outside the Oasis
+    11 18: By the lake in the desert
+    25 30: Near the bus stop in the desert
+    29 24: Near the bus stop in the desert
+  SandyHouse:
+    2 5: In the Oasis
+    3 5: In the Oasis
+Sebastian:
+  Beach:
+    10 39: On the left pier at the beach
+    12 39: On the left pier at the beach
+  BusStop:
+    "-1 23": In the Farmhouse
+  Hospital:
+    4 6: In the Clinic
+    15 16: In the Clinic
+  Mountain:
+    42 13: East of his house, by the lake
+    57 33: East of his house, by the lake
+    58 35: East of his house, by the lake
+    64 14: Near the Adventurer's Guild
+  Railroad:
+    5 45: At the railroad
+    32 47: At the railroad
+    64 45: At the railroad
+  Saloon:
+    42 21: In the Saloon
+    43 20: In the Saloon
+  SamHouse:
+    17 14: In Sam's bedroom
+    19 18: In Sam's bedroom
+  ScienceHouse:
+    6 20: In his house
+    27 9: In his kitchen
+  SebastianRoom:
+    6 5: In his room
+    9 4: In his room
+    10 7: In his room
+    11 9: In his bed
+  Town:
+    10 94: Outside Jodi's house
+    18 95: Outside Jodi's house
+Shane:
+  AnimalShop:
+    5 14: In Marnie's Ranch
+    16 13: In Marnie's Ranch
+    24 5: In his bedroom
+    24 15: In his kitchen
+    24 17: In his kitchen
+    27 4: In his bed
+  Beach:
+    20 24: On the pier at the beach
+  BusStop:
+    "-1 23": In the Farmhouse
+  Forest:
+    37 10: North of the lake in the forest
+  JojaMart:
+    5 13: In JojaMart
+    7 25: In JojaMart
+    9 17: In JojaMart
+    17 12: In JojaMart
+    21 16: In JojaMart
+    25 12: In JojaMart
+  Saloon:
+    11 20: In the Saloon
+    21 17: In the Saloon
+    24 17: In the Saloon
+    27 23: In the Saloon
+    33 8: In the Saloon
+    33 18: In the Saloon
+    38 18: In the Saloon
+  SeedShop:
+    2 26: In Pierre's General Store
+    16 29: In Pierre's General Store
+  Town:
+    33 101: Near the sewer
+Vincent:
+  ArchaeologyHouse:
+    16 10: In the Museum
+  Beach:
+    19 24: On the pier at the beach
+    43 24: On the beach
+  Hospital:
+    4 6: In the Clinic
+    12 14: In the Clinic
+  SamHouse:
+    2 15: In his house
+    4 8: In his kitchen
+    4 14: In his house
+    5 7: In his kitchen
+    8 22: In his bed
+    11 22: In his room
+  Town:
+    12 72: North of his house
+    15 90: Outside his house
+    16 11: At the playpark
+    28 91: Outside Haley's house
+    31 90: Outside Haley's house
+    83 100: South of the Ice Cream stand
+Willy:
+  Beach:
+    25 36: Outside the Fish Shop
+    38 36: Outside the Fish Shop
+  FishShop:
+    5 4: Tending the Fish Shop
+  Forest:
+    91 40: Near Leah's House
+  Hospital:
+    4 6: In the Clinic
+    12 14: In the Clinic
+  Saloon:
+    17 22: In the Saloon
+  Town:
+    59 100: Near the bridge to the beach

@@ -19,4 +19,26 @@ module CalendarHelper
   def coords_for(day)
     (day.to_i - 1).divmod(7).map { |e| e * 32 }
   end
+
+  def schedule_panel_classes(schedule_possibility)
+    base = %w[col-12]
+    # if schedule_possibility.doubleRain
+    #   base + %w[col-md-12 col-lg-8 col-xl-6]
+    # else
+    (base + %w[col-md-6 col-lg-4 col-xl-3]).join " "
+    # end
+  end
+
+  def schedule_classes(schedule)
+    # %w[col-6 two-rains] if doubleRain
+    [].join " "
+  end
+
+  def format_time(time)
+    time.rjust(4, '0').chars.each_slice(2).map(&:join).join(":")
+  end
+
+  def path_for_route(route)
+    [ route.map, route.x, route.y ].join('/')
+  end
 end

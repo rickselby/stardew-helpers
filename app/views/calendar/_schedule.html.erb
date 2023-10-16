@@ -1,0 +1,31 @@
+<div class="panel route-panel <%= schedule_panel_classes(schedule) %>" >
+  <div class="bulletin">
+    <div class="panel-heading">
+      <h4>
+        <%= schedule.notes %>
+<!--        <span v-if="schedule.doubleRain">-->
+<!--                      (equal chance of either)-->
+<!--                    </span>-->
+      </h4>
+    </div>
+    <div class="row">
+      <div class="list-group list-group-flush <%= schedule_classes(schedule) %>">
+        <% schedule.routes.each do |route| %>
+        <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#map-modal"
+        data-bs-map="<%= path_for_route route %>">
+          <%= format_time route.time %>:
+          <%= route.name %>
+        </button>
+        <% end %>
+      </div>
+<!--      <div class="list-group list-group-flush" v-bind:class="scheduleClasses(schedule)" v-if="schedule.doubleRain">-->
+<!--        <template v-for="route in schedule.doubleRainRoutes">-->
+<!--          <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#mapModal" v-on:click="setRoute(route)">-->
+<!--            {{ formatTime(route.time) }}:-->
+<!--            {{ route.name }}-->
+<!--          </button>-->
+<!--        </template>-->
+<!--      </div>-->
+    </div>
+  </div>
+</div>

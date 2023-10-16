@@ -25,55 +25,40 @@
   <div class="row panel">
     <div class="wood-border">
       <div class="row">
-        <div class="col-12" v-if="schedules.length === 0">
-          Select a villager and a date, and their possible schedules will appear here.
-        </div>
-        <h4 class="col-12 text-center" v-if="schedules.length !== 0">
-          {{ selected }}
-        </h4>
-        <template v-for="schedule in possibilities">
-          <div class="panel route-panel" v-bind:class="schedulePanelClasses(schedule)">
-            <div class="bulletin">
-              <div class="panel-heading">
-                <h4>
-                  {{ schedule.notes }}
-                  <span v-if="schedule.doubleRain">
-                      (equal chance of either)
-                    </span>
-                </h4>
-              </div>
-              <div class="row">
-                <div class="list-group list-group-flush" v-bind:class="scheduleClasses(schedule)">
-                  <template v-for="route in schedule.routes">
-                    <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#mapModal" v-on:click="setRoute(route)">
-                      {{ formatTime(route.time) }}:
-                      {{ route.name }}
-                    </button>
-                  </template>
-                </div>
-                <div class="list-group list-group-flush" v-bind:class="scheduleClasses(schedule)" v-if="schedule.doubleRain">
-                  <template v-for="route in schedule.doubleRainRoutes">
-                    <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#mapModal" v-on:click="setRoute(route)">
-                      {{ formatTime(route.time) }}:
-                      {{ route.name }}
-                    </button>
-                  </template>
-                </div>
-              </div>
-            </div>
+        <% if @schedules.nil? %>
+          <div class="col-12" v-if="schedules.length === 0">
+            Select a villager and a date, and their possible schedules will appear here.
           </div>
-        </template>
+        <% else %>
+          <h4 class="col-12 text-center" v-if="schedules.length !== 0">
+            <%= @person %>: <%= @day.ordinalize %> of <%= @season.capitalize %>
+          </h4>
+          <%= render @schedules %>
+        <% end %>
       </div>
     </div>
   </div>
 
-  <div class="modal" tabindex="-1" id="mapModal">
+  <div class="modal" tabindex="-1" id="map-modal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
-          <img v-bind:src="mapPath" />
+          <img id="map-modal-map" />
         </div>
       </div>
     </div>
   </div>
 </turbo-frame>
+
+<script type="text/javascript">
+    const mapModal = document.getElementById('map-modal')
+    if (mapModal) {
+        mapModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget
+            const mapPath = button.getAttribute('data-bs-map')
+            const modalMap = mapModal.querySelector('img')
+            modalMap.src = "/map/" + mapPath
+        })
+    }
+</script>
