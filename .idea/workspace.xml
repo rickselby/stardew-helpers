@@ -4,22 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cc3c475-00ad-47e9-afb5-e9ea9c24afa9" name="Changes" comment="Switch away from imagemap to use turbo frames properly">
-      <change afterPath="$PROJECT_DIR$/app/services/stardew/locations.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/stardew/route.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/stardew/schedule.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/stardew/schedule_possibility.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/calendar/_schedule.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/locations.yaml" afterDir="false" />
+    <list default="true" id="9cc3c475-00ad-47e9-afb5-e9ea9c24afa9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/services/stardew/group_schedules.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/stardew/schedule_possibility_group.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/calendar_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/calendar_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/helpers/calendar_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/calendar_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/stardew/locations.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/locations.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/stardew/schedule_possibility.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/schedule_possibility.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/stardew/schedules.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/schedules.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/calendar/_schedule.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/calendar/_group.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/calendar/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/calendar/index.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Ruby Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -160,7 +167,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684262543306</updated>
       <workItem from="1684262545340" duration="36000" />
-      <workItem from="1697473062865" duration="7032000" />
+      <workItem from="1697473062865" duration="8716000" />
     </task>
     <task id="LOCAL-00001" summary="Switch away from imagemap to use turbo frames properly">
       <option name="closed" value="true" />
@@ -170,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697474395087</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="First pass at setting up schedules">
+      <option name="closed" value="true" />
+      <created>1697486786734</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697486786734</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +205,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="intellij stuff" />
     <MESSAGE value="Switch away from imagemap to use turbo frames properly" />
-    <option name="LAST_COMMIT_MESSAGE" value="Switch away from imagemap to use turbo frames properly" />
+    <MESSAGE value="First pass at setting up schedules" />
+    <option name="LAST_COMMIT_MESSAGE" value="First pass at setting up schedules" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/stardew_helpers_rails@stardew_helpers.rcov" NAME="stardew-helpers Coverage Results" MODIFIED="1697473135239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="stardew-helpers" />

@@ -3,7 +3,7 @@
 module Stardew
   # A single schedule
   class SchedulePossibility
-    attr_accessor :name, :notes, :priority, :routes, :rain
+    attr_accessor :name, :notes, :priority, :routes
 
     def initialize(name, routes, notes, priority:, rain: false)
       @name = name.dup
@@ -11,10 +11,6 @@ module Stardew
       @priority = priority.dup
       @rain = rain.dup
       @routes = routes.dup
-    end
-
-    def to_partial_path
-      'schedule'
     end
 
     def first_route_word?(test)
@@ -43,6 +39,10 @@ module Stardew
 
     def skip_nots
       remove_routes(1) if first_route_word? 'NOT'
+    end
+
+    def rain?
+      @rain
     end
   end
 end

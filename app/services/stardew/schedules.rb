@@ -2,6 +2,7 @@
 module Stardew
   # Manage the retrieval of schedules
   class Schedules
+    DIR = Rails.root.join 'data', 'schedules'
     DAYS_OF_WEEK = %w[Sun Mon Tue Wed Thu Fri Sat].freeze
     MAIL = {
       'beachBridgeFixed' => 'Beach bridge fixed',
@@ -15,11 +16,15 @@ module Stardew
     end
 
     def self.valid_people
-      Dir['data/schedules/*'].map { |f| File.basename(f, '.json') }
+      Dir[DIR.join("*")].map { |f| File.basename(f, '.json') }
+    end
+
+    def self.file_path_for(person)
+      DIR.join("#{person}.json")
     end
 
     def initialize(person)
-      @schedules = JSON.parse(File.read("data/schedules/#{person}.json"))
+      @schedules = JSON.parse(File.read(self.class.file_path_for(person)))
                        .to_h { |k, v| [k.to_s, Schedule.new(person, k, v)] }
       @person = person
     end

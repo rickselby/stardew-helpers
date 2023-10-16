@@ -20,18 +20,15 @@ module CalendarHelper
     (day.to_i - 1).divmod(7).map { |e| e * 32 }
   end
 
-  def schedule_panel_classes(schedule_possibility)
-    base = %w[col-12]
-    # if schedule_possibility.doubleRain
-    #   base + %w[col-md-12 col-lg-8 col-xl-6]
-    # else
-    (base + %w[col-md-6 col-lg-4 col-xl-3]).join " "
-    # end
+  def schedule_panel_classes(group)
+    extra = group.two_possibilities? ? %w[col-md-12 col-lg-8 col-xl-6] : %w[col-md-6 col-lg-4 col-xl-3]
+    (%w[col-12] + extra).join " "
   end
 
-  def schedule_classes(schedule)
-    # %w[col-6 two-rains] if doubleRain
-    [].join " "
+  def schedule_classes(group)
+    return "" unless group.two_possibilities?
+
+    %w[col-6 two-rains].join " "
   end
 
   def format_time(time)

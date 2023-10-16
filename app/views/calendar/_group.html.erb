@@ -1,0 +1,25 @@
+<div class="panel route-panel <%= schedule_panel_classes(group) %>">
+  <div class="bulletin">
+    <div class="panel-heading">
+      <h4>
+        <%= group.notes %>
+        <% if group.two_possibilities? %>
+          (equal chance of either)
+        <% end %>
+      </h4>
+    </div>
+    <div class="row">
+      <% group.possibilities.each do |schedule| %>
+        <div class="list-group list-group-flush <%= schedule_classes(group) %>">
+          <% schedule.routes.each do |route| %>
+            <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#map-modal"
+                    data-bs-map="<%= path_for_route route %>">
+              <%= format_time route.time %>:
+              <%= route.name %>
+            </button>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

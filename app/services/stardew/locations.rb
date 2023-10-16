@@ -42,7 +42,7 @@ module Stardew
       end
 
       def each_location_for(person, &)
-        JSON.parse(File.read("data/schedules/#{person}.json")).each do |name, definition|
+        JSON.parse(File.read(Stardew::Schedules.file_path_for(person))).each do |name, definition|
           Schedule.new(person, name, definition).routes.each(&)
         end
       end
