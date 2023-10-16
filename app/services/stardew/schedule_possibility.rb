@@ -13,11 +13,11 @@ module Stardew
       @steps = steps.dup
     end
 
-    def first_route_word?(test)
+    def first_step_word?(test)
       @steps.first.definition[0] == test
     end
 
-    def second_route_word
+    def second_step_word
       @steps.first.definition[1]
     end
 
@@ -33,12 +33,12 @@ module Stardew
       @steps[1].definition[1]
     end
 
-    def remove_routes(amount)
+    def remove_steps(amount)
       @steps.shift(amount)
     end
 
     def skip_nots
-      remove_routes(1) if first_route_word? 'NOT'
+      remove_steps(1) if first_step_word? 'NOT'
     end
 
     def rain?

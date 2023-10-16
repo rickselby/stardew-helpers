@@ -25,7 +25,7 @@ module Stardew
 
     def initialize(person)
       @schedules = JSON.parse(File.read(self.class.file_path_for(person)))
-                       .to_h { |k, v| [k.to_s, Schedule.new(person, k, v)] }
+                       .to_h { |k, v| [k.to_s, BareSchedule.new(person, k, v)] }
       @person = person
     end
 
@@ -72,12 +72,12 @@ module Stardew
             increment_priorities possibility.priority
             if @schedules.key? "#{r.map}_Replacement"
               alt_definition = @schedules["#{r.map}_Replacement"].steps.first.definition.join ' '
-              alt_routes = possibility.steps.map do |r2|
+              alt_steps = possibility.steps.map do |r2|
                 next r2 unless r2.map == r.map
 
                 Step.new @person, "#{r2.time} #{alt_definition}"
               end
-              @possibilities.push SchedulePossibility.new("#{possibility.name}_alt", alt_routes,
+              @possibilities.push SchedulePossibility.new("#{possibility.name}_alt", alt_steps,
                                                           "If #{r.map} is not available",
                                                           priority: possibility.priority - 1)
             else
@@ -97,31 +97,31 @@ module Stardew
 
     def check_for_mail
       @possibilities.map do |possibility|
-        next unless possibility.first_route_word? 'MAIL'
+        next unless possibility.first_step_word? 'MAIL'
 
         increment_priorities possibility.priority
         add_regular possibility.mail_alt_schedule, priority: possibility.priority
-        possibility.notes = MAIL[possibility.second_route_word]
-        possibility.remove_routes(2)
+        possibility.notes = MAIL[possibility.second_step_word]
+        possibility.remove_steps(2)
       end
     end
 
     def check_for_not
       @possibilities.map do |possibility|
-        next unless possibility.first_route_word? 'NOT'
-        raise 'Unknown NOT syntax' unless possibility.second_route_word == 'friendship'
+        next unless possibility.first_step_word? 'NOT'
+        raise 'Unknown NOT syntax' unless possibility.second_step_word == 'friendship'
 
         increment_priorities possibility.priority + 1
         add_regular 'spring', priority: possibility.priority + 1
         possibility.notes = possibility.friendship_notes
-        possibility.remove_routes(1)
+        possibility.remove_steps(1)
       end
     end
 
     def check_for_unknowns
       @possibilities.each do |possibility|
-        possibility.steps.each do |r|
-          raise "Unknown route: #{r}" unless r.valid?
+        possibility.steps.each do |step|
+          raise "Unknown step: #{step}" unless step.valid?
         end
       end
     end
@@ -164,11 +164,11 @@ module Stardew
 
     def fix_goto(season)
       @possibilities.map do |possibility|
-        next unless possibility.first_route_word? 'GOTO'
+        next unless possibility.first_step_word? 'GOTO'
 
-        season = possibility.second_route_word == 'season' ? season : possibility.second_route_word
+        season = possibility.second_step_word == 'season' ? season : possibility.second_step_word
         schedule = @schedules.key?(season) ? season : 'spring'
-        possibility.routes = @schedules[schedule].steps
+        possibility.steps = @schedules[schedule].steps
         possibility.name = schedule
       end
     end

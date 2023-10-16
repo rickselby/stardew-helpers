@@ -2,7 +2,7 @@
 
 module Stardew
   # A single schedule
-  class Schedule
+  class BareSchedule
     attr_reader :steps
 
     def initialize(person, name, definition)
