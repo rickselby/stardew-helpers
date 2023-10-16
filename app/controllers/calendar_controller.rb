@@ -16,7 +16,7 @@ class CalendarController < ApplicationController
 
     unless [@person, @season, @day].any?(&:nil?)
       schedules = Stardew::Schedules.new(@person).schedule(@season, @day)
-      @groups = Stardew::GroupSchedules.group schedules
+      @groups = Stardew::ScheduleGroup.group schedules
     end
   end
 end

@@ -2,7 +2,7 @@
 
 module Stardew
   # A single schedule
-  class SchedulePossibility
+  class Schedule
     attr_accessor :name, :notes, :priority, :steps
 
     def initialize(name, steps, notes, priority:, rain: false)

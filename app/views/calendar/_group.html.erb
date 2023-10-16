@@ -9,7 +9,7 @@
       </h4>
     </div>
     <div class="row">
-      <% group.possibilities.each do |schedule| %>
+      <% group.schedules.each do |schedule| %>
         <div class="list-group list-group-flush <%= schedule_classes(group) %>">
           <% schedule.steps.each do |route| %>
             <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#map-modal"

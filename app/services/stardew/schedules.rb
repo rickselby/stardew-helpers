@@ -56,8 +56,8 @@ module Stardew
 
     def add_possibility(schedule, notes, rain: false, increment: true, priority: nil)
       @priority += 1 if increment && priority.nil?
-      @possibilities.push SchedulePossibility.new(schedule, @schedules[schedule].steps, notes,
-                                                  priority: priority || @priority, rain:)
+      @possibilities.push Schedule.new(schedule, @schedules[schedule].steps, notes,
+                                       priority: priority || @priority, rain:)
     end
 
     def add_regular(schedule, priority: nil)
@@ -77,9 +77,9 @@ module Stardew
 
                 Step.new @person, "#{r2.time} #{alt_definition}"
               end
-              @possibilities.push SchedulePossibility.new("#{possibility.name}_alt", alt_steps,
-                                                          "If #{r.map} is not available",
-                                                          priority: possibility.priority - 1)
+              @possibilities.push Schedule.new("#{possibility.name}_alt", alt_steps,
+                                               "If #{r.map} is not available",
+                                               priority: possibility.priority - 1)
             else
               new_schedule = @schedules.key?('default') ? 'default' : 'spring'
               add_possibility new_schedule, "If #{r.map} is not available", priority: possibility.priority - 1
