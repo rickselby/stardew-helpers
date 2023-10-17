@@ -34,11 +34,11 @@ module Stardew
     end
 
     def remove_steps(amount)
-      @steps.shift(amount)
+      @steps.shift amount
     end
 
     def skip_nots
-      remove_steps(1) if first_step_word? 'NOT'
+      remove_steps 1 if first_step_word? 'NOT'
     end
 
     def rain?

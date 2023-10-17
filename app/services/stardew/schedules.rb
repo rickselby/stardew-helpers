@@ -16,11 +16,11 @@ module Stardew
     end
 
     def self.valid_people
-      Dir[DIR.join("*")].map { |f| File.basename(f, '.json') }
+      @valid_people ||= Dir[DIR.join("*")].map { |f| File.basename f, '.json' }
     end
 
     def self.file_path_for(person)
-      DIR.join("#{person}.json")
+      DIR.join "#{person}.json"
     end
 
     def initialize(person)
@@ -30,24 +30,24 @@ module Stardew
     end
 
     def check(season, day)
-      schedule(season, day)
+      schedule season, day
       check_for_unknowns
     end
 
     def schedule(season, day)
       @possibilities = []
       @priority = 0
-      find_schedules(season, day)
-      fix_goto(season)
+      find_schedules season, day
+      fix_goto season
       check_for_not
       check_for_mail
-      fix_goto(season)
+      fix_goto season
       skip_nots_after_goto
 
       remove_duplicates
 
       check_for_inaccessible_locations
-      fix_goto(season)
+      fix_goto season
 
       @possibilities.sort_by(&:priority)
     end
@@ -56,8 +56,8 @@ module Stardew
 
     def add_possibility(schedule, notes, rain: false, increment: true, priority: nil)
       @priority += 1 if increment && priority.nil?
-      @possibilities.push Schedule.new(schedule, @schedules[schedule].steps, notes,
-                                       priority: priority || @priority, rain:)
+      @possibilities.push Schedule.new schedule, @schedules[schedule].steps, notes,
+                                       priority: priority || @priority, rain:
     end
 
     def add_regular(schedule, priority: nil)
@@ -77,9 +77,9 @@ module Stardew
 
                 Step.new @person, "#{r2.time} #{alt_definition}"
               end
-              @possibilities.push Schedule.new("#{possibility.name}_alt", alt_steps,
+              @possibilities.push Schedule.new "#{possibility.name}_alt", alt_steps,
                                                "If #{r.map} is not available",
-                                               priority: possibility.priority - 1)
+                                               priority: possibility.priority - 1
             else
               new_schedule = @schedules.key?('default') ? 'default' : 'spring'
               add_possibility new_schedule, "If #{r.map} is not available", priority: possibility.priority - 1
@@ -102,7 +102,7 @@ module Stardew
         increment_priorities possibility.priority
         add_regular possibility.mail_alt_schedule, priority: possibility.priority
         possibility.notes = MAIL[possibility.second_step_word]
-        possibility.remove_steps(2)
+        possibility.remove_steps 2
       end
     end
 
@@ -114,7 +114,7 @@ module Stardew
         increment_priorities possibility.priority + 1
         add_regular 'spring', priority: possibility.priority + 1
         possibility.notes = possibility.friendship_notes
-        possibility.remove_steps(1)
+        possibility.remove_steps 1
       end
     end
 

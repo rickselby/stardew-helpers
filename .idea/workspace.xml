@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cc3c475-00ad-47e9-afb5-e9ea9c24afa9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/javascript/map_modal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/stardew/portraits.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/controllers/application.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/controllers/hello_controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/controllers/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/stardew/group_schedules.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/calendar/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/calendar/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/importmap.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/importmap.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/villager_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/villager_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/calendar_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/calendar_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/main_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/villager_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/stardew/schedule.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/schedule.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/stardew/schedule_group.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/schedule_group.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/stardew/schedules.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/schedules.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/stardew/step.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/step.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,32 +41,32 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2Pt3RU1s9AAgg2iqZNR8A8WqLEA" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "rails",
-    "last_opened_file_path": "/home/rick/projects/rickselby/stardew-helpers-rails/data",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ruby.rails.projectView.checked": "true",
-    "ruby.structure.view.model.defaults.configured": "true",
-    "settings.editor.selected.configurable": "preferences.sourceCode.ERB",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;rails&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/rick/projects/rickselby/stardew-helpers-rails/data&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ruby.rails.projectView.checked&quot;: &quot;true&quot;,
+    &quot;ruby.structure.view.model.defaults.configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.ERB&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data" />
@@ -167,6 +168,7 @@
       <updated>1684262543306</updated>
       <workItem from="1684262545340" duration="36000" />
       <workItem from="1697473062865" duration="11221000" />
+      <workItem from="1697524407102" duration="913000" />
     </task>
     <task id="LOCAL-00001" summary="Switch away from imagemap to use turbo frames properly">
       <option name="closed" value="true" />
@@ -243,6 +245,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="More refactoring" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/stardew_helpers_rails@stardew_helpers.rcov" NAME="stardew-helpers Coverage Results" MODIFIED="1697473135239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="stardew-helpers" />
+    <SUITE FILE_PATH="coverage/stardew_helpers_rails@stardew_helpers.rcov" NAME="stardew-helpers Coverage Results" MODIFIED="1697524601541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="stardew-helpers" />
   </component>
 </project>

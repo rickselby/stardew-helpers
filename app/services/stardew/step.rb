@@ -22,7 +22,7 @@ module Stardew
     end
 
     def name
-      Locations.get(@person, map, [x, y])
+      Locations.get @person, map, [x, y]
     end
 
     def replacement?
