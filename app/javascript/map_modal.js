@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const button = event.relatedTarget
             const mapPath = button.getAttribute('data-bs-map')
             const modalMap = mapModal.querySelector('img')
+            modalMap.src = ""
             modalMap.src = "/map/" + mapPath
         })
     }

@@ -14,6 +14,7 @@ module Stardew
     end
 
     def map_path
+      "#{map}?x=#{x}&y=#{y}"
       [map, x, y].join "/"
     end
 
