@@ -1,5 +1,33 @@
 <turbo-frame id="forage">
 
+  <% if @data %>
+    <div id="forage-maps" class="row center-block panel maps">
+      <div class="wood-border">
+        <h2>Results</h2>
+        <div id="forage-out">
+          <% @data[:maps].each do |map| %>
+            <h3><%= map[:map] %></h3>
+            <ul>
+              <% map[:spots].each do |spot| %>
+                <li><%= spot_name(spot) %></li>
+              <% end %>
+            </ul>
+
+            <div class="fullMap">
+              <img class="base" src="/map/<%= map[:map] %>" alt="<%= map[:map] %> map" />
+              <% map[:spots].each do |spot| %>
+                # TODO - markers
+                <!--              <img v-for="spot in map.spots" src="/img/marker.png"-->
+                <!--                   v-bind:title="spotName(spot)" data-bs-toggle="tooltip"-->
+                <!--                   v-bind:style="markerStyle(map.map, spot.x, spot.y)" />-->
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <div id="forage-input-container" class="row panel">
     <div class="wood-border">
       <h2>Save File</h2>
