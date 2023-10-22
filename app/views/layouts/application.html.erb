@@ -36,7 +36,12 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" type="button" role="tab" aria-selected="false">
+        <a class="nav-link <%= current_page?(forage_index_path) ? "active" : '' %>"
+           type="button" role="tab" aria-selected="<%= current_page?(forage_index_path) ? "true" : '' %>"
+           <% unless current_page?(forage_index_path) %>
+           href="<%= forage_index_path %>"
+           <% end %>
+           >
           Forage Finder
         </a>
       </li>

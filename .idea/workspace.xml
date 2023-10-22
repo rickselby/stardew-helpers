@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cc3c475-00ad-47e9-afb5-e9ea9c24afa9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/map_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/stardew/map.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/maps/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/maps/generated/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/stardew-helpers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stardew-helpers.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/forage_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/forage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/forage/index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/map_modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/map_modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/stardew/step.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/step.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/calendar/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/calendar/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,24 +46,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "rails",
-    "last_opened_file_path": "/home/rick/projects/rickselby/stardew-helpers-rails/data/maps",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ruby.rails.projectView.checked": "true",
-    "ruby.structure.view.model.defaults.configured": "true",
-    "settings.editor.selected.configurable": "preferences.sourceCode.ERB",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Ruby.ViewRefParam.DefaultExtension&quot;: &quot;html.erb&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;rails&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/rick/projects/rickselby/stardew-helpers-rails/data/maps&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ruby.rails.projectView.checked&quot;: &quot;true&quot;,
+    &quot;ruby.structure.view.model.defaults.configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.ERB&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data/maps" />
@@ -171,7 +167,9 @@
       <updated>1684262543306</updated>
       <workItem from="1684262545340" duration="36000" />
       <workItem from="1697473062865" duration="11221000" />
-      <workItem from="1697524407102" duration="1991000" />
+      <workItem from="1697524407102" duration="2052000" />
+      <workItem from="1697987242589" duration="657000" />
+      <workItem from="1697988111863" duration="3585000" />
     </task>
     <task id="LOCAL-00001" summary="Switch away from imagemap to use turbo frames properly">
       <option name="closed" value="true" />
@@ -229,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697525332790</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add maps">
+      <option name="closed" value="true" />
+      <created>1697526438841</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1697526438841</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,9 +259,10 @@
     <MESSAGE value="Group possibilities together to show together when required" />
     <MESSAGE value="Rename routes to steps" />
     <MESSAGE value="More refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="More refactoring" />
+    <MESSAGE value="Add maps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add maps" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/stardew_helpers_rails@stardew_helpers.rcov" NAME="stardew-helpers Coverage Results" MODIFIED="1697526230096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="stardew-helpers" />
+    <SUITE FILE_PATH="coverage/stardew_helpers_rails@stardew_helpers.rcov" NAME="stardew-helpers Coverage Results" MODIFIED="1697988232336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="stardew-helpers" />
   </component>
 </project>

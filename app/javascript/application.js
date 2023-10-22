@@ -3,4 +3,5 @@ import "@hotwired/turbo-rails"
 import "@popperjs/core"
 import "bootstrap"
 
+import "forage"
 import "map_modal"
