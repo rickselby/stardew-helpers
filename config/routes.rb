@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :calendar, only: [:index]
   resources :forage, only: [:index]
-  get "map/:name/:x/:y", to: "map#show"
+  get "map/:name", to: "map#map"
+  get "map/:name/:x/:y", to: "map#marker"
   resources :villager, only: [:show]
 end

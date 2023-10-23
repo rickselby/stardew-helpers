@@ -12,10 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const finder = new ForageFinder(e.target.result);
 
             const data = encodeURIComponent(JSON.stringify(finder.postData()));
-            const u = new URLSearchParams(finder.postData()).toString();
-            console.log(u);
-            console.log(encodeURIComponent(JSON.stringify(finder.postData())))
-            window.location = `/forage?data=${data}`
+            Turbo.visit(`/forage?data=${data}`, { frame: "forage" })
         };
 
         reader.readAsText(this.files[0]);
@@ -23,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 class ForageFinder {
-    #file;
     #farmType;
     #maps;
 

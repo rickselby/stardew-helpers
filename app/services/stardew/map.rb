@@ -10,10 +10,6 @@ module Stardew
     MAP_SIZE = 400
 
     class << self
-      def map_with_marker(map, x, y)
-        new(map).with_marker(x, y)
-      end
-
       def marker
         @marker ||= MiniMagick::Image.open Rails.root.join "app", "assets", "images", "marker.png"
       end
@@ -30,7 +26,13 @@ module Stardew
     end
 
     def initialize(map)
+      raise "Invalid map" unless self.class.valid? map
+
       @map = map
+    end
+
+    def file_path
+      PATH.join "#{@map}.png"
     end
 
     def with_marker(x, y)
@@ -72,7 +74,7 @@ module Stardew
     end
 
     def map_image
-      @map_image ||= MiniMagick::Image.open PATH.join "#{@map}.png"
+      @map_image ||= MiniMagick::Image.open file_path
     end
 
     def marker_map_path(x, y)
