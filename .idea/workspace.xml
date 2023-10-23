@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cc3c475-00ad-47e9-afb5-e9ea9c24afa9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/stardew-helpers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stardew-helpers.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/map_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/map_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/forage.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/forage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/forage_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/forage_helper.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services/stardew/map.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/map.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/forage/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/forage/index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
@@ -76,6 +79,7 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="rubocop" />
+      <command value="bundle install" />
     </option>
   </component>
   <component name="RunManager" selected="Rails.stardew-helpers">
@@ -169,7 +173,7 @@
       <workItem from="1697524407102" duration="2052000" />
       <workItem from="1697987242589" duration="657000" />
       <workItem from="1697988111863" duration="4076000" />
-      <workItem from="1698043635491" duration="897000" />
+      <workItem from="1698043635491" duration="1833000" />
     </task>
     <task id="LOCAL-00001" summary="Switch away from imagemap to use turbo frames properly">
       <option name="closed" value="true" />
@@ -251,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697992171601</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Use turbo and show the maps">
+      <option name="closed" value="true" />
+      <created>1698044558368</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1698044558368</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,9 +290,10 @@
     <MESSAGE value="Add maps" />
     <MESSAGE value="Add forage finder page that parses the save file and sends data back to rails" />
     <MESSAGE value="Start work on showing maps from posted data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start work on showing maps from posted data" />
+    <MESSAGE value="Use turbo and show the maps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Use turbo and show the maps" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/stardew_helpers_rails@stardew_helpers.rcov" NAME="stardew-helpers Coverage Results" MODIFIED="1698043899820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="stardew-helpers" />
+    <SUITE FILE_PATH="coverage/stardew_helpers_rails@stardew_helpers.rcov" NAME="stardew-helpers Coverage Results" MODIFIED="1698044944672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="stardew-helpers" />
   </component>
 </project>

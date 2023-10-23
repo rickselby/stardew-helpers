@@ -93,6 +93,7 @@ GEM
     debug (1.7.1)
     erubi (1.12.0)
     execjs (2.8.1)
+    fastimage (2.2.7)
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -225,6 +226,7 @@ DEPENDENCIES
   bootstrap
   capybara
   debug
+  fastimage
   importmap-rails
   jbuilder
   mini_magick

@@ -51,6 +51,7 @@ gem "sassc-rails"
 # Bootstrap
 gem "bootstrap"
 
+gem "fastimage"
 gem "mini_magick"
 
 group :development, :test do

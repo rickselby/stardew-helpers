@@ -6,6 +6,10 @@ class MapController < ApplicationController
   end
 
   def marker
+    send_file Stardew::Map.marker_path
+  end
+
+  def map_with_marker
     raise ActionController::RoutingError.new('Not Found') unless Stardew::Map.valid? params[:name]
 
     x = Integer(params[:x], 10)

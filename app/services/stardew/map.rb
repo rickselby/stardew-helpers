@@ -11,7 +11,11 @@ module Stardew
 
     class << self
       def marker
-        @marker ||= MiniMagick::Image.open Rails.root.join "app", "assets", "images", "marker.png"
+        @marker ||= MiniMagick::Image.open marker_path
+      end
+
+      def marker_path
+        Rails.root.join "app", "assets", "images", "marker.png"
       end
 
       def valid?(map)
