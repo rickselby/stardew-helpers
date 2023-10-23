@@ -34,6 +34,14 @@ module Stardew
       check_for_unknowns
     end
 
+    def group_schedules(season, day)
+      Rails.cache.fetch "#{@person}-#{season}-#{day}" do
+        Stardew::ScheduleGroup.group schedule season, day
+      end
+    end
+
+    private
+
     def schedule(season, day)
       @possibilities = []
       @priority = 0
@@ -51,8 +59,6 @@ module Stardew
 
       @possibilities.sort_by(&:priority)
     end
-
-    private
 
     def add_possibility(schedule, notes, rain: false, increment: true, priority: nil)
       @priority += 1 if increment && priority.nil?
