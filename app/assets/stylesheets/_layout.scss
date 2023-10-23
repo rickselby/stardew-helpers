@@ -92,6 +92,7 @@ code {
     button, a {
       @include woodBorderInterior;
       @extend h3;
+      color: inherit;
 
       &.active {
         font-weight: 800;

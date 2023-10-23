@@ -1,5 +1,4 @@
 class MapController < ApplicationController
-
   def map
     raise ActionController::RoutingError.new('Not Found') unless Stardew::Map.valid? params[:name]
 

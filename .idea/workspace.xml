@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cc3c475-00ad-47e9-afb5-e9ea9c24afa9" name="Changes" comment="">
+    <list default="true" id="9cc3c475-00ad-47e9-afb5-e9ea9c24afa9" name="Changes" comment="Add caching on calendar results">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/calendar_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/calendar_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/stardew/map.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/map.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/stardew/schedules.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/schedules.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/_layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_layout.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/forage_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/forage_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/map_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/map_controller.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698083119182</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add caching on calendar results">
+      <option name="closed" value="true" />
+      <created>1698084648858</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1698084648858</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,7 +303,8 @@
     <MESSAGE value="Start work on showing maps from posted data" />
     <MESSAGE value="Use turbo and show the maps" />
     <MESSAGE value="Tidy up code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tidy up code" />
+    <MESSAGE value="Add caching on calendar results" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add caching on calendar results" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/stardew_helpers_rails@stardew_helpers.rcov" NAME="stardew-helpers Coverage Results" MODIFIED="1698084251638" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="stardew-helpers" />
