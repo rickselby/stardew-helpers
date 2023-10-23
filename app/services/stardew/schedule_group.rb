@@ -11,7 +11,7 @@ module Stardew
             next
           end
 
-          groups.push self.new possibility
+          groups.push new possibility
         end
 
         groups

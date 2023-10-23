@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cc3c475-00ad-47e9-afb5-e9ea9c24afa9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/stardew-helpers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stardew-helpers.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/map_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/map_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/calendar_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/calendar_helper.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/helpers/forage_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/forage_helper.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services/stardew/map.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/map.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/forage/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/forage/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/stardew/schedule_group.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/schedule_group.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/stardew/step.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/stardew/step.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,8 +76,8 @@
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="rubocop" />
       <command value="bundle install" />
+      <command value="rubocop" />
     </option>
   </component>
   <component name="RunManager" selected="Rails.stardew-helpers">
@@ -169,7 +167,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684262543306</updated>
       <workItem from="1684262545340" duration="36000" />
-      <workItem from="1697473062865" duration="11221000" />
+      <workItem from="1697473062865" duration="11284000" />
       <workItem from="1697524407102" duration="2052000" />
       <workItem from="1697987242589" duration="657000" />
       <workItem from="1697988111863" duration="4076000" />
@@ -294,6 +292,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Use turbo and show the maps" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/stardew_helpers_rails@stardew_helpers.rcov" NAME="stardew-helpers Coverage Results" MODIFIED="1698044944672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="stardew-helpers" />
+    <SUITE FILE_PATH="coverage/stardew_helpers_rails@stardew_helpers.rcov" NAME="stardew-helpers Coverage Results" MODIFIED="1697473135239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="stardew-helpers" />
   </component>
 </project>

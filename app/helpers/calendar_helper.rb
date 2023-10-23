@@ -36,6 +36,6 @@ module CalendarHelper
   end
 
   def path_for_route(route)
-    [ route.map, route.x, route.y ].join '/'
+    [route.map, route.x, route.y].join '/'
   end
 end
