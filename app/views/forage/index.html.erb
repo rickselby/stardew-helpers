@@ -60,6 +60,15 @@
   </div>
 </div>
 
+<script>
+    document.addEventListener("turbo:load", function () {
+        const forageFile = document.getElementById("forage-file-select");
+        if(forageFile != null) {
+            forageFile.addEventListener("change", handleForageFiles, false);
+        }
+    });
+</script>
+
 <div class="row center-block panel">
   <div class="wood-border">
     <h3>About this app</h3>

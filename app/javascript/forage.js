@@ -1,23 +1,18 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const forageFile = document.getElementById("forage-file-select");
-    forageFile.addEventListener("change", handleFiles, false);
-
-    function handleFiles() {
-        if (!this.files.length) {
-            return;
-        }
-        let reader = new FileReader();
-
-        reader.onload = (e) => {
-            const finder = new ForageFinder(e.target.result);
-
-            const data = encodeURIComponent(JSON.stringify(finder.postData()));
-            Turbo.visit(`/forage?data=${data}`, { frame: "forage" })
-        };
-
-        reader.readAsText(this.files[0]);
+window.handleForageFiles = function() {
+    if (!this.files.length) {
+        return;
     }
-});
+    let reader = new FileReader();
+
+    reader.onload = (e) => {
+        const finder = new ForageFinder(e.target.result);
+
+        const data = encodeURIComponent(JSON.stringify(finder.postData()));
+        Turbo.visit(`/forage?data=${data}`, { frame: "forage" })
+    };
+
+    reader.readAsText(this.files[0]);
+}
 
 class ForageFinder {
     #farmType;
