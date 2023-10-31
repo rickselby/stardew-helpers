@@ -1,0 +1,40 @@
+name: Test
+
+on:
+  push:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bundler-audit:
+    name: Bundler Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec rake bundle:audit:update
+      - run: bundle exec rake bundle:audit:check
+
+  rspec:
+    name: RSpec tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec rake test
+
+#  rubocop:
+#    name: Rubocop
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: ruby/setup-ruby@v1
+#        with:
+#          bundler-cache: true
+#      - run: bundle exec rake rubocop
