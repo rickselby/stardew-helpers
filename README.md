@@ -1,24 +1,14 @@
-# README
+# Stardew Helpers
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[https://stardew.selbysaurus.me](https://stardew.selbysaurus.me)
 
-Things you may want to cover:
+## Running locally
 
-* Ruby version
+You will need:
 
-* System dependencies
+* Ruby
 
-* Configuration
+Instructions
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Checkout the repository
+* ... (to be completed)
