@@ -13,14 +13,6 @@ updates:
       dev-dependencies:
         dependency-type: "development"
 
-  - package-ecosystem: npm
-    directory: /
-    schedule:
-      interval: weekly
-      day: saturday
-      time: "08:00"
-      timezone: "Europe/London"
-
   - package-ecosystem: github-actions
     directory: /
     schedule:
