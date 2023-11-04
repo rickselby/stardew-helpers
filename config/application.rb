@@ -8,7 +8,6 @@ require "rails"
 %w(
   action_controller/railtie
   action_view/railtie
-  rails/test_unit/railtie
 ).each do |railtie|
   begin
     require railtie
