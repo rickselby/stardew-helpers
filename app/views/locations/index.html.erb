@@ -1,0 +1,41 @@
+<div class="row panel">
+    <div class="wood-border">
+        <div class="text-center mb-3">
+            <% @people.each do |person| %>
+                <div class="position-relative d-inline-block">
+                    <%= link_to image_tag("/villager/#{person}", class: [:portrait, @person == person ? :'portrait-active' : nil], alt: person, title: person),
+                                locations_path(person: person)
+                    %>
+                    <span class="position-absolute translate-middle badge bg-danger rounded-pill"
+                          style="top: 20%; left: 80%">10</span>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<% if @locations %>
+<div class="panel">
+    <div class="wood-border">
+        <table class="table">
+            <% @locations.each do |map, locations| %>
+                <tr>
+                    <th colspan="3">
+                        <%= map %>
+                    </th>
+                </tr>
+                <% locations.each do |coords, description| %>
+                <tr>
+                    <td><%= coords %></td>
+                    <td>
+                        <input type="text" value="<%= description %>">
+                    </td>
+                    <td>
+                        <img class="base" src="/map/<%= map %>/<%= coords.sub ' ', '/' %>" alt="<%= map %> map" />
+                    </td>
+                </tr>
+                <% end %>
+            <% end %>
+        </table>
+    </div>
+</div>
+<% end %>
