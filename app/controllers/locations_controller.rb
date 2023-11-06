@@ -16,5 +16,7 @@ class LocationsController < ApplicationController
       @person = params[:person]
       @locations = locations[@person]
     end
+
+    @empty = locations.map { |p, m| [p, m.values.count { |l| l.values.any? { |d| d.blank? } }] }.to_h
   end
 end
