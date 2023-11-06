@@ -30,7 +30,11 @@
                         <tr>
                             <td><%= coords %></td>
                             <td>
-                                <input type="text" value="<%= description %>">
+                                <input type="text" value="<%= description %>"
+                                       data-sh-person="<%= @person %>"
+                                       data-sh-map="<%= map %>"
+                                       data-sh-coords="<%= coords %>"
+                                >
                             </td>
                             <td>
                                 <img class="base" src="/map/<%= map %>/<%= coords.sub ' ', '/' %>" alt="<%= map %> map"/>
@@ -43,3 +47,25 @@
         </div>
     </div>
 <% end %>
+
+<script type="text/javascript">
+    document.addEventListener("change", (event) => {
+        let element = event.target;
+        if (element.tagName === 'INPUT') {
+            let form = new FormData();
+            form.append('authenticity_token', document.getElementsByName('csrf-token')[0].content);
+            form.append('person', element.dataset.shPerson);
+            form.append('map', element.dataset.shMap);
+            form.append('coords', element.dataset.shCoords);
+            form.append('name', element.value);
+
+            let request = new XMLHttpRequest();
+            request.addEventListener("error", () => {
+                alert("Oops! Something went wrong.");
+            });
+
+            request.open("POST", "/locations");
+            request.send(form);
+        }
+    })
+</script>

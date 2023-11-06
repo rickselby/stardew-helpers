@@ -19,4 +19,9 @@ class LocationsController < ApplicationController
 
     @empty = locations.map { |p, m| [p, m.values.count { |l| l.values.any? { |d| d.blank? } }] }.to_h
   end
+
+  def create
+    Stardew::Locations.set params[:person], params[:map], params[:coords], params[:name]
+    head :ok
+  end
 end

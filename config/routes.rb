@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   get "map/:name", to: "map#map"
   get "map/:name/:x/:y", to: "map#map_with_marker"
   resources :villager, only: [:show]
-  resources :locations, only: [:index, :update] unless Rails.env.production?
+  resources :locations, only: [:index, :create] unless Rails.env.production?
 end
