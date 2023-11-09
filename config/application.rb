@@ -7,6 +7,7 @@ require "rails"
 
 %w(
   action_controller/railtie
+  active_job/railtie
   action_view/railtie
   rails/test_unit/railtie
 ).each do |railtie|
@@ -23,7 +24,7 @@ Bundler.require(*Rails.groups)
 module StardewHelpers
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 7.1
 
     # Configuration for the application, engines, and railties goes here.
     #
