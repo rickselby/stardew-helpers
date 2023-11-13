@@ -8,7 +8,7 @@ require "rails"
 %w(
   action_controller/railtie
   active_job/railtie
-  action_view/railtie
+  action_cable/engine
   rails/test_unit/railtie
 ).each do |railtie|
   begin
