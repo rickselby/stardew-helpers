@@ -65,7 +65,7 @@
     <orderEntry type="library" scope="PROVIDED" name="importmap-rails (v1.2.3, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="io-console (v0.6.0, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="irb (v1.9.0, RVM: ruby-3.2.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="loofah (v2.21.4, RVM: ruby-3.2.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="loofah (v2.22.0, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.8.1, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="marcel (v1.0.2, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="matrix (v0.4.2, RVM: ruby-3.2.2) [gem]" level="application" />
@@ -74,15 +74,15 @@
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.20.0, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.7.2, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mutex_m (v0.2.0, RVM: ruby-3.2.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.4.4, RVM: ruby-3.2.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.4.5, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-protocol (v0.2.2, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-smtp (v0.4.0, RVM: ruby-3.2.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.9, RVM: ruby-3.2.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.15.4, RVM: ruby-3.2.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.6.0, RVM: ruby-3.2.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.15.5, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="popper_js (v2.11.8, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="psych (v5.1.1.1, RVM: ruby-3.2.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="public_suffix (v5.0.3, RVM: ruby-3.2.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="public_suffix (v5.0.4, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="puma (v6.4.0, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.7.3, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v3.0.8, RVM: ruby-3.2.2) [gem]" level="application" />
@@ -104,6 +104,7 @@
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.10.0, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.2.1, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.4.2, RVM: ruby-3.2.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.6.8, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stringio (v3.0.9, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.3.0, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v2.3.0, RVM: ruby-3.2.2) [gem]" level="application" />
@@ -127,8 +128,6 @@
     <option name="generators">
       <list>
         <option value="active_record:application_record" />
-        <option value="active_record:migration" />
-        <option value="active_record:model" />
         <option value="active_record:multi_db" />
         <option value="application_record" />
         <option value="benchmark" />
@@ -159,8 +158,6 @@
     <option name="myGenerators">
       <list>
         <option value="active_record:application_record" />
-        <option value="active_record:migration" />
-        <option value="active_record:model" />
         <option value="active_record:multi_db" />
         <option value="application_record" />
         <option value="benchmark" />
@@ -241,6 +238,103 @@
             <subtasks>
               <RakeTaskImpl description="Lookup first-level dependencies for TEMPLATE (like messages/show or comments/_comment.html)" fullCommand="cache_digests:dependencies" id="dependencies" />
               <RakeTaskImpl description="Lookup nested dependencies for TEMPLATE (like messages/show or comments/_comment.html)" fullCommand="cache_digests:nested_dependencies" id="nested_dependencies" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="db">
+            <subtasks>
+              <RakeTaskImpl description="Create the database from DATABASE_URL or config/database.yml for the current RAILS_ENV (use db:create:all to create all databases in the config). Without RAILS_ENV or when RAILS_ENV is development, it defaults to creating the development and test databases, except when DATABASE_URL is present" fullCommand="db:create" id="create" />
+              <RakeTaskImpl description="Drop the database from DATABASE_URL or config/database.yml for the current RAILS_ENV (use db:drop:all to drop all databases in the config). Without RAILS_ENV or when RAILS_ENV is development, it defaults to dropping the development and test databases, except when DATABASE_URL is present" fullCommand="db:drop" id="drop" />
+              <RakeTaskImpl id="encryption">
+                <subtasks>
+                  <RakeTaskImpl description="Generate a set of keys for configuring Active Record encryption in a given environment" fullCommand="db:encryption:init" id="init" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl id="environment">
+                <subtasks>
+                  <RakeTaskImpl description="Set the environment value for the database" fullCommand="db:environment:set" id="set" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl id="fixtures">
+                <subtasks>
+                  <RakeTaskImpl description="Load fixtures into the current environment's database" fullCommand="db:fixtures:load" id="load" />
+                  <RakeTaskImpl description="" fullCommand="db:fixtures:identify" id="identify" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="Migrate the database (options: VERSION=x, VERBOSE=false, SCOPE=blog)" fullCommand="db:migrate" id="migrate" />
+              <RakeTaskImpl id="migrate">
+                <subtasks>
+                  <RakeTaskImpl description="Run the &quot;down&quot; for a given migration VERSION" fullCommand="db:migrate:down" id="down" />
+                  <RakeTaskImpl description="Roll back the database one migration and re-migrate up (options: STEP=x, VERSION=x)" fullCommand="db:migrate:redo" id="redo" />
+                  <RakeTaskImpl description="Display status of migrations" fullCommand="db:migrate:status" id="status" />
+                  <RakeTaskImpl description="Run the &quot;up&quot; for a given migration VERSION" fullCommand="db:migrate:up" id="up" />
+                  <RakeTaskImpl description="" fullCommand="db:migrate:reset" id="reset" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="Run setup if database does not exist, or run migrations if it does" fullCommand="db:prepare" id="prepare" />
+              <RakeTaskImpl description="Drop and recreate all databases from their schema for the current environment and load the seeds" fullCommand="db:reset" id="reset" />
+              <RakeTaskImpl description="Roll the schema back to the previous version (specify steps w/ STEP=n)" fullCommand="db:rollback" id="rollback" />
+              <RakeTaskImpl id="schema">
+                <subtasks>
+                  <RakeTaskImpl id="cache">
+                    <subtasks>
+                      <RakeTaskImpl description="Clear a db/schema_cache.yml file" fullCommand="db:schema:cache:clear" id="clear" />
+                      <RakeTaskImpl description="Create a db/schema_cache.yml file" fullCommand="db:schema:cache:dump" id="dump" />
+                    </subtasks>
+                  </RakeTaskImpl>
+                  <RakeTaskImpl description="Create a database schema file (either db/schema.rb or db/structure.sql, depending on `ENV['SCHEMA_FORMAT']` or `config.active_record.schema_format`)" fullCommand="db:schema:dump" id="dump" />
+                  <RakeTaskImpl description="Load a database schema file (either db/schema.rb or db/structure.sql, depending on `ENV['SCHEMA_FORMAT']` or `config.active_record.schema_format`) into the database" fullCommand="db:schema:load" id="load" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="Load the seed data from db/seeds.rb" fullCommand="db:seed" id="seed" />
+              <RakeTaskImpl id="seed">
+                <subtasks>
+                  <RakeTaskImpl description="Truncate tables of each database for current environment and load the seeds" fullCommand="db:seed:replant" id="replant" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="Create all databases, load all schemas, and initialize with the seed data (use db:reset to also drop all databases first)" fullCommand="db:setup" id="setup" />
+              <RakeTaskImpl description="Retrieve the current schema version number" fullCommand="db:version" id="version" />
+              <RakeTaskImpl description="" fullCommand="db:_dump" id="_dump" />
+              <RakeTaskImpl description="" fullCommand="db:abort_if_pending_migrations" id="abort_if_pending_migrations" />
+              <RakeTaskImpl description="" fullCommand="db:charset" id="charset" />
+              <RakeTaskImpl description="" fullCommand="db:check_protected_environments" id="check_protected_environments" />
+              <RakeTaskImpl description="" fullCommand="db:collation" id="collation" />
+              <RakeTaskImpl id="create">
+                <subtasks>
+                  <RakeTaskImpl description="" fullCommand="db:create:all" id="all" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl id="drop">
+                <subtasks>
+                  <RakeTaskImpl description="" fullCommand="db:drop:_unsafe" id="_unsafe" />
+                  <RakeTaskImpl description="" fullCommand="db:drop:all" id="all" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="" fullCommand="db:forward" id="forward" />
+              <RakeTaskImpl description="" fullCommand="db:load_config" id="load_config" />
+              <RakeTaskImpl description="" fullCommand="db:purge" id="purge" />
+              <RakeTaskImpl id="purge">
+                <subtasks>
+                  <RakeTaskImpl description="" fullCommand="db:purge:all" id="all" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl id="reset">
+                <subtasks>
+                  <RakeTaskImpl description="" fullCommand="db:reset:all" id="all" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl id="setup">
+                <subtasks>
+                  <RakeTaskImpl description="" fullCommand="db:setup:all" id="all" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl id="test">
+                <subtasks>
+                  <RakeTaskImpl description="" fullCommand="db:test:load_schema" id="load_schema" />
+                  <RakeTaskImpl description="" fullCommand="db:test:prepare" id="prepare" />
+                  <RakeTaskImpl description="" fullCommand="db:test:purge" id="purge" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="" fullCommand="db:truncate_all" id="truncate_all" />
             </subtasks>
           </RakeTaskImpl>
           <RakeTaskImpl id="importmap">
@@ -355,6 +449,15 @@
           </RakeTaskImpl>
           <RakeTaskImpl description="" fullCommand="default" id="default" />
           <RakeTaskImpl description="" fullCommand="environment" id="environment" />
+          <RakeTaskImpl id="railties">
+            <subtasks>
+              <RakeTaskImpl id="install">
+                <subtasks>
+                  <RakeTaskImpl description="" fullCommand="railties:install:migrations" id="migrations" />
+                </subtasks>
+              </RakeTaskImpl>
+            </subtasks>
+          </RakeTaskImpl>
           <RakeTaskImpl description="" fullCommand="tmp" id="tmp" />
           <RakeTaskImpl description="" fullCommand="tmp/cache" id="tmp/cache" />
           <RakeTaskImpl description="" fullCommand="tmp/cache/assets" id="tmp/cache/assets" />

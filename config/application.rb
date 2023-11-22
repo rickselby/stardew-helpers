@@ -6,7 +6,7 @@ require_relative "boot"
 require "rails"
 
 %w(
-  action_controller/railtie
+  active_record/railtie
   active_job/railtie
   action_cable/engine
   rails/test_unit/railtie
