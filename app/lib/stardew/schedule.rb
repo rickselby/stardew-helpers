@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
-module Stardew
-  # A single schedule
+class Stardew
+  # A single parsed schedule
   class Schedule
     attr_accessor :name, :notes, :priority, :steps
 

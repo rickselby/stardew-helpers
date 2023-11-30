@@ -1,9 +1,6 @@
-# Although I'd *love* to refactor this, it should match the source code as closely as possible
-module Stardew
-  # Manage the retrieval of schedules
+class Stardew
   class Schedules
-    DIR = Rails.root.join 'data', 'schedules'
-    DAYS_OF_WEEK = %w[Sun Mon Tue Wed Thu Fri Sat].freeze
+    PATH = Rails.root.join 'data', 'schedules'
     MAIL = {
       'beachBridgeFixed' => 'Beach bridge fixed',
       'ccVault' => 'Community Centre vault completed',
@@ -11,22 +8,24 @@ module Stardew
       'shanePK' => 'After Shane\'s 14 heart event'
     }.freeze
 
-    def self.each_person(&)
-      valid_people.sort.each(&)
+    class << self
+      def path(name)
+        PATH.join "#{name}.json"
+      end
+
+      def valid?(name)
+        valid_schedules.include? name
+      end
+
+      def valid_schedules
+        @valid_schedules ||= Dir[PATH.join "*.json"].map { |f| File.basename f, ".json" }
+      end
     end
 
-    def self.valid_people
-      @valid_people ||= Dir[DIR.join("*")].map { |f| File.basename f, '.json' }
-    end
-
-    def self.file_path_for(person)
-      DIR.join "#{person}.json"
-    end
-
-    def initialize(person)
-      @schedules = JSON.parse(File.read(self.class.file_path_for(person)))
-                       .to_h { |k, v| [k.to_s, BareSchedule.new(person, k, v)] }
-      @person = person
+    def initialize(name)
+      @schedules = JSON.parse(File.read(self.class.path(name)))
+                       .to_h { |k, v| [k.to_s, BareSchedule.new(name, k, v)] }
+      @person = name
     end
 
     def check(season, day)
@@ -34,13 +33,11 @@ module Stardew
       check_for_unknowns
     end
 
-    def group_schedules(season, day)
-      Rails.cache.fetch "#{@person}-#{season}-#{day}" do
-        Stardew::ScheduleGroup.group schedule season, day
-      end
-    end
-
-    private
+    # def group_schedules(season, day)
+    #   Rails.cache.fetch "#{@person}-#{season}-#{day}" do
+    #     Stardew::ScheduleGroup.group schedule season, day
+    #   end
+    # end
 
     def schedule(season, day)
       @possibilities = []
@@ -59,6 +56,8 @@ module Stardew
 
       @possibilities.sort_by(&:priority)
     end
+
+    private
 
     def add_possibility(schedule, notes, rain: false, increment: true, priority: nil)
       @priority += 1 if increment && priority.nil?
