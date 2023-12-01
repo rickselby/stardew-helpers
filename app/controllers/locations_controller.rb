@@ -1,27 +1,17 @@
 class LocationsController < ApplicationController
-  #     get '/locations' do
-  #       @locations = Stardew::Locations.locations
-  #       erb :locations
-  #     end
-  #
-  #     post '/api/location' do
-  #       Stardew::Locations.set params[:person], params[:map], params[:coords], params[:name]
-  #       halt 200
-  #     end
-
   def index
-    locations = Stardew::Locations.locations
-    @people = locations.keys
-    if @people.include? params[:person]
-      @person = params[:person]
-      @locations = locations[@person]
+    locations = Location.all
+    @maps = locations.map(&:map).uniq.sort
+    if @maps.include? params[:map]
+      @map = params[:map]
+      @locations = Location.includes(schedules: :people).where(map: @map)
     end
 
-    @empty = locations.map { |p, m| [p, m.values.count { |l| l.values.any? { |d| d.blank? } }] }.to_h
+    @empty = locations.group_by(&:map).transform_values { |locs| locs.count { |l| l.description.blank? } }
   end
 
   def create
-    Stardew::Locations.set params[:person], params[:map], params[:coords], params[:name]
+    Location.where(map: params[:map], x: params[:x], y: params[:y]).update(description: params[:description])
     head :ok
   end
 end
