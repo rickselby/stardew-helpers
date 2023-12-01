@@ -1,6 +1,6 @@
 require 'mini_magick'
 
-module Stardew
+class Stardew
   class Map
     attr_reader :definition
 

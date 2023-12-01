@@ -35,7 +35,7 @@ module CalendarHelper
     time.rjust(4, '0').chars.each_slice(2).map(&:join).join(":")
   end
 
-  def path_for_route(route)
-    [route.map, route.x, route.y].join '/'
+  def path_for_location(location)
+    [location.map, location.x, location.y].join '/'
   end
 end

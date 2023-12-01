@@ -25,7 +25,7 @@ class BuildDatabase
   def load_schedule(person, season, day)
     Stardew::Schedules.new(person.name).schedule(season, day).each do |possibility|
       # TODO later: deduplicate the schedules
-      schedule = Schedule.create(reference: possibility.notes)
+      schedule = Schedule.create(reference: possibility.notes, rain: possibility.rain?)
       load_locations schedule, possibility.steps
       person.person_schedules.create(schedule:, season:, day:, order: possibility.priority)
     end
@@ -34,7 +34,7 @@ class BuildDatabase
   def load_locations(schedule, steps)
     steps.each_with_index do |step, order|
       location = load_location step.map, step.x, step.y
-      schedule.schedule_locations.create(location:, order: order + 1)
+      schedule.schedule_locations.create(location:, order: order + 1, time: step.time)
     end
   end
 

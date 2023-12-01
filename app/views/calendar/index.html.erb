@@ -31,7 +31,7 @@
           </div>
         <% else %>
           <h4 class="col-12 text-center" v-if="schedules.length !== 0">
-            <%= @person %>: <%= @day.ordinalize %> of <%= @season.capitalize %>
+            <%= @person.name %>: <%= @day.ordinalize %> of <%= @season.capitalize %>
           </h4>
           <%= render @groups %>
         <% end %>

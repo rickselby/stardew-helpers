@@ -1,21 +1,19 @@
 class CalendarController < ApplicationController
   def index
-    @people = Stardew::Schedules.valid_people
-    @seasons = %w[spring summer fall winter]
-    @days = 1..28
+    @people = Person.order(:name)
+    @seasons = Stardew::SEASONS
+    @days = Stardew::DAYS
 
-    @person = params[:person]
-    @season = params[:season]
-    @day = params[:day].to_i
-
-    @person = nil unless @people.include? @person
-    unless @seasons.include?(@season) && @days.include?(@day)
-      @season = nil
-      @day = nil
+    @person = Person.find_by(name: params[:person])
+    if @seasons.include?(params[:season]) && @days.include?(params[:day].to_i)
+      @season = params[:season]
+      @day = params[:day].to_i
     end
 
     unless [@person, @season, @day].any?(&:nil?)
-      @groups = Stardew::Schedules.new(@person).group_schedules(@season, @day)
+      schedules = @person.person_schedules.where(season: @season, day: @day).order(:order)
+      schedules = schedules.map(&:schedule)
+      @groups = Stardew::ScheduleGroup.group schedules
     end
   end
 end

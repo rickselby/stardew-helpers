@@ -1,6 +1,6 @@
 <div class="text-center mb-3">
-  <% @people.each do |name| %>
-    <%= link_to image_tag("/villager/#{name}", class: [:portrait, @person == name ? :'portrait-active' : nil ], alt: name, title: name),
-                calendar_index_url(person: name, season: @season, day: @day) %>
+  <% @people.each do |person| %>
+    <%= link_to image_tag("/villager/#{person.name}", class: [:portrait, @person == person ? :'portrait-active' : nil ], alt: person.name, title: person.name),
+                calendar_index_url(person: person.name, season: @season, day: @day) %>
   <% end %>
 </div>

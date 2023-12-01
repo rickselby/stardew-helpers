@@ -7,7 +7,7 @@
         <img src="<%= asset_path 'calendar.png' %>" alt="Calendar" />
 
         <% @days.each do |day| %>
-          <a href="<%= calendar_index_url season: season_name, day: day, person: @person %>">
+          <a href="<%= calendar_index_url season: season_name, day: day, person: @person&.name %>">
             <div style="<%= day_link_position day %>"></div>
           </a>
         <% end %>
