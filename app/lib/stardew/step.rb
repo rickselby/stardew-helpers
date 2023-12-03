@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Stardew
   # A single step in a schedule
   class Step

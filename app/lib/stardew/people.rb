@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 class Stardew
+  # Get list of people
   class People
     class << self
       def valid?(name)

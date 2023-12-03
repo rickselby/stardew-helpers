@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Location < ApplicationRecord
   has_many :schedule_locations, dependent: :destroy
   has_many :schedules, through: :schedule_locations

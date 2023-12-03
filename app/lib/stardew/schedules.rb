@@ -6,7 +6,7 @@
 class Stardew
   # Manage the retrieval of schedules
   class Schedules
-    PATH = Rails.root.join 'data', 'schedules'
+    PATH = Rails.root.join "data/schedules"
     MAIL = {
       "beachBridgeFixed" => "Beach bridge fixed",
       "ccVault" => "Community Centre vault completed",

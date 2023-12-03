@@ -1,13 +1,16 @@
+# frozen_string_literal: true
+
+# Build the database from the game files
 class BuildDatabase
   def initialize
     @locations = Hash.new { |hash, key| hash[key] = Hash.new(&hash.default_proc) }
-    Location.all.each do |l|
+    Location.find_each do |l|
       @locations[l.map][l.x][l.y] = l
     end
   end
 
   def load_people
-    [Location, Schedule, Person].each { |m| m.destroy_all }
+    [Location, Schedule, Person].each(&:destroy_all)
     Stardew::People.each do |person_name|
       person = Person.create name: person_name
       load_schedules person
@@ -24,7 +27,7 @@ class BuildDatabase
 
   def load_schedule(person, season, day)
     Stardew::Schedules.new(person.name).schedule(season, day).each do |possibility|
-      # TODO later: deduplicate the schedules
+      # TODO: later: deduplicate the schedules
       schedule = Schedule.create(reference: possibility.notes, rain: possibility.rain?)
       load_locations schedule, possibility.steps
       person.person_schedules.create(schedule:, season:, day:, order: possibility.priority)
