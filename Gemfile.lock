@@ -224,10 +224,6 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.30.0)
       parser (>= 3.2.1.0)
-    rubocop-capybara (2.19.0)
-      rubocop (~> 1.41)
-    rubocop-factory_bot (2.24.0)
-      rubocop (~> 1.33)
     rubocop-performance (1.19.1)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
@@ -240,18 +236,10 @@ GEM
       rubocop (>= 1.0.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-rickselby (0.1.0)
+    rubocop-rickselby (0.2.0)
       rubocop (~> 1.58.0)
-      rubocop-capybara (~> 2.19.0)
       rubocop-performance (~> 1.19.0)
-      rubocop-rails (~> 2.22.0)
-      rubocop-rails-accessibility (~> 0.2.0)
       rubocop-rake (~> 0.6.0)
-      rubocop-rspec (~> 2.25.0)
-    rubocop-rspec (2.25.0)
-      rubocop (~> 1.40)
-      rubocop-capybara (~> 2.17)
-      rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
@@ -317,7 +305,9 @@ DEPENDENCIES
   mini_magick (~> 4.12)
   puma (~> 6.4)
   rails (~> 7.1.2)
-  rubocop-rickselby (~> 0.1.0)
+  rubocop-rails (~> 2.22.0)
+  rubocop-rails-accessibility (~> 0.2.0)
+  rubocop-rickselby (~> 0.2.0)
   sassc-rails (~> 2.1)
   selenium-webdriver (~> 4.10)
   turbo-rails (~> 1.5)
@@ -329,4 +319,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.7
+   2.4.22
