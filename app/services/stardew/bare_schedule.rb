@@ -7,11 +7,11 @@ module Stardew
 
     def initialize(person, name, definition)
       @name = name
-      @steps = definition.split('/').map { |r| Step.new(person, r, replacement: replacement?) }
+      @steps = definition.split("/").map { |r| Step.new(person, r, replacement: replacement?) }
     end
 
     def replacement?
-      @name.end_with? '_Replacement'
+      @name.end_with? "_Replacement"
     end
   end
 end

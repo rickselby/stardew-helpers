@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'yaml'
+require "yaml"
 
 module Stardew
   # Information about locations in the game
   class Locations
-    PATH = Rails.root.join "data", "locations.yaml"
+    PATH = Rails.root.join "data/locations.yaml"
 
     class << self
       # Build the locations.yaml file
@@ -17,7 +17,7 @@ module Stardew
       end
 
       def get(person, map, coords)
-        locations[person][map][coords.join ' ']
+        locations[person][map][coords.join " "]
       end
 
       def locations
@@ -36,7 +36,7 @@ module Stardew
         each_location_for(person) do |r|
           next unless r.valid?
 
-          target[r.map][r.x_y] = ''
+          target[r.map][r.x_y] = ""
         end
         target
       end

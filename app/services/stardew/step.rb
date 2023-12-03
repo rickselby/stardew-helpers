@@ -30,13 +30,13 @@ module Stardew
     end
 
     def time
-      raise 'No time for a replacement' if replacement?
+      raise "No time for a replacement" if replacement?
 
       @definition[0]
     end
 
     def to_s
-      @definition.join ' '
+      @definition.join " "
     end
 
     def valid?
@@ -48,7 +48,7 @@ module Stardew
     end
 
     def x_y
-      [x, y].join ' '
+      [x, y].join " "
     end
 
     def y

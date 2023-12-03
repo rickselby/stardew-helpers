@@ -1,9 +1,9 @@
-class CalendarController < ApplicationController
-  def index
-    @people = Stardew::Schedules.valid_people
-    @seasons = %w[spring summer fall winter]
-    @days = 1..28
+# frozen_string_literal: true
 
+class CalendarController < ApplicationController
+  before_action load_data
+
+  def index
     @person = params[:person]
     @season = params[:season]
     @day = params[:day].to_i
@@ -14,8 +14,16 @@ class CalendarController < ApplicationController
       @day = nil
     end
 
-    unless [@person, @season, @day].any?(&:nil?)
-      @groups = Stardew::Schedules.new(@person).group_schedules(@season, @day)
-    end
+    return if [@person, @season, @day].any?(&:nil?)
+
+    @groups = Stardew::Schedules.new(@person).group_schedules(@season, @day)
+  end
+
+  private
+
+  def load_data
+    @people = Stardew::Schedules.valid_people
+    @seasons = %w[spring summer fall winter]
+    @days = 1..28
   end
 end

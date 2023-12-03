@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "boot"
 
 # require "rails/all"
@@ -5,16 +7,13 @@ require_relative "boot"
 
 require "rails"
 
-%w(
+%w[
   action_controller/railtie
   active_job/railtie
   action_cable/engine
   rails/test_unit/railtie
-).each do |railtie|
-  begin
-    require railtie
-  rescue LoadError
-  end
+].each do |railtie|
+  require railtie
 end
 
 # Require the gems listed in Gemfile, including any gems
@@ -22,6 +21,7 @@ end
 Bundler.require(*Rails.groups)
 
 module StardewHelpers
+  # Main application
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1

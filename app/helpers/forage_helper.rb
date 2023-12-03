@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Helpers for the forage page
 module ForageHelper
   def marker_style(map_name, spot)
     map_size = Stardew::Map.map_size map_name

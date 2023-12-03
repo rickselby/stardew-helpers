@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LocationsController < ApplicationController
   #     get '/locations' do
   #       @locations = Stardew::Locations.locations
@@ -17,7 +19,7 @@ class LocationsController < ApplicationController
       @locations = locations[@person]
     end
 
-    @empty = locations.map { |p, m| [p, m.values.count { |l| l.values.any? { |d| d.blank? } }] }.to_h
+    @empty = locations.transform_values { |m| m.values.count { |l| l.values.any?(&:blank?) } }
   end
 
   def create
