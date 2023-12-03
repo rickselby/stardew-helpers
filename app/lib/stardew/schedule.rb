@@ -36,7 +36,7 @@ class Stardew
     end
 
     def skip_nots
-      remove_steps 1 if first_step_word? 'NOT'
+      remove_steps 1 if first_step_word? "NOT"
     end
 
     def rain?

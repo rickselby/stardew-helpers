@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Helpers for the calendar page
 module CalendarHelper
   def calendar_marker_position(day)
     row, day_of_week = coords_for day
@@ -32,10 +35,10 @@ module CalendarHelper
   end
 
   def format_time(time)
-    time.rjust(4, '0').chars.each_slice(2).map(&:join).join(":")
+    time.rjust(4, "0").chars.each_slice(2).map(&:join).join(":")
   end
 
   def path_for_location(location)
-    [location.map, location.x, location.y].join '/'
+    [location.map, location.x, location.y].join "/"
   end
 end

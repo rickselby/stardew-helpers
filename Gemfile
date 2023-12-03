@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
 ruby "3.2.2"
@@ -12,36 +14,39 @@ gem "sqlite3", "~> 1.6"
 gem "puma", "~> 6.4"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+gem "importmap-rails", "~> 1.2"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem "turbo-rails", "~> 1.5"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", "~> 2.0", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+gem "bootsnap", "~> 1.17", require: false
 
 # Use Sass to process CSS
-gem "sassc-rails"
+gem "sassc-rails", "~> 2.1"
 
 # Bootstrap
-gem "bootstrap"
+gem "bootstrap", "~> 5.3"
 
-gem "fastimage"
-gem "mini_magick"
+gem "fastimage", "~> 2.2"
+gem "mini_magick", "~> 4.12"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", "~> 1.8", platforms: %i[mri mingw x64_mingw]
+  gem "rubocop-rails", "~> 2.22.0", require: false
+  gem "rubocop-rails-accessibility", "~> 0.2.0", require: false
+  gem "rubocop-rickselby", "~> 0.2.0", require: false
 end
 
 group :development do
-  gem "bundler-audit"
+  gem "bundler-audit", "~> 0.9"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
+  gem "web-console", "~> 4.2"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -52,7 +57,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "webdrivers"
+  gem "capybara", "~> 3.39"
+  gem "selenium-webdriver", "~> 4.10"
+  gem "webdrivers", "~> 5.3"
 end

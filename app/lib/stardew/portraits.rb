@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 class Stardew
+  # Read portrait files
   class Portraits
-    PATH = Rails.root.join "data", "portraits"
+    PATH = Rails.root.join "data/portraits"
 
     class << self
       def path(name)
