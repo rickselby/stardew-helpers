@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CalendarController < ApplicationController
-  before_action load_data
+  before_action :load_data
 
   def index
     @person = params[:person]

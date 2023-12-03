@@ -10,4 +10,7 @@ Rails.application.load_tasks
 unless Rails.env.production?
   require "bundler/audit/task"
   Bundler::Audit::Task.new
+
+  require "rubocop/rake_task"
+  RuboCop::RakeTask.new
 end
