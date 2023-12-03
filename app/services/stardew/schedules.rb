@@ -1,14 +1,18 @@
+# frozen_string_literal: true
+
+# rubocop:disable Metrics/*
+
 # Although I'd *love* to refactor this, it should match the source code as closely as possible
 module Stardew
   # Manage the retrieval of schedules
   class Schedules
-    DIR = Rails.root.join 'data', 'schedules'
+    DIR = Rails.root.join "data/schedules"
     DAYS_OF_WEEK = %w[Sun Mon Tue Wed Thu Fri Sat].freeze
     MAIL = {
-      'beachBridgeFixed' => 'Beach bridge fixed',
-      'ccVault' => 'Community Centre vault completed',
-      'saloonSportsRoom' => 'After Alex\'s 14 heart event',
-      'shanePK' => 'After Shane\'s 14 heart event'
+      "beachBridgeFixed" => "Beach bridge fixed",
+      "ccVault" => "Community Centre vault completed",
+      "saloonSportsRoom" => "After Alex's 14 heart event",
+      "shanePK" => "After Shane's 14 heart event"
     }.freeze
 
     def self.each_person(&)
@@ -16,7 +20,7 @@ module Stardew
     end
 
     def self.valid_people
-      @valid_people ||= Dir[DIR.join("*")].map { |f| File.basename f, '.json' }
+      @valid_people ||= Dir[DIR.join("*")].map { |f| File.basename f, ".json" }
     end
 
     def self.file_path_for(person)
@@ -67,17 +71,17 @@ module Stardew
     end
 
     def add_regular(schedule, priority: nil)
-      add_possibility schedule, 'Regular Schedule', priority:
+      add_possibility schedule, "Regular Schedule", priority:
     end
 
     def check_for_inaccessible_locations
       @possibilities.map do |possibility|
         possibility.steps.each do |r|
           case r.map
-          when 'JojaMart', 'Railroad'
+          when "JojaMart", "Railroad"
             increment_priorities possibility.priority
             if @schedules.key? "#{r.map}_Replacement"
-              alt_definition = @schedules["#{r.map}_Replacement"].steps.first.definition.join ' '
+              alt_definition = @schedules["#{r.map}_Replacement"].steps.first.definition.join " "
               alt_steps = possibility.steps.map do |r2|
                 next r2 unless r2.map == r.map
 
@@ -87,14 +91,14 @@ module Stardew
                                                "If #{r.map} is not available",
                                                priority: possibility.priority - 1
             else
-              new_schedule = @schedules.key?('default') ? 'default' : 'spring'
+              new_schedule = @schedules.key?("default") ? "default" : "spring"
               add_possibility new_schedule, "If #{r.map} is not available", priority: possibility.priority - 1
             end
             break
-          when 'CommunityCenter'
-            new_schedule = @schedules.key?('default') ? 'default' : 'spring'
+          when "CommunityCenter"
+            new_schedule = @schedules.key?("default") ? "default" : "spring"
             increment_priorities possibility.priority
-            add_possibility new_schedule, 'If Community Center is not available', priority: possibility.priority - 1
+            add_possibility new_schedule, "If Community Center is not available", priority: possibility.priority - 1
             break
           end
         end
@@ -103,7 +107,7 @@ module Stardew
 
     def check_for_mail
       @possibilities.map do |possibility|
-        next unless possibility.first_step_word? 'MAIL'
+        next unless possibility.first_step_word? "MAIL"
 
         increment_priorities possibility.priority
         add_regular possibility.mail_alt_schedule, priority: possibility.priority
@@ -114,11 +118,11 @@ module Stardew
 
     def check_for_not
       @possibilities.map do |possibility|
-        next unless possibility.first_step_word? 'NOT'
-        raise 'Unknown NOT syntax' unless possibility.second_step_word == 'friendship'
+        next unless possibility.first_step_word? "NOT"
+        raise "Unknown NOT syntax" unless possibility.second_step_word == "friendship"
 
         increment_priorities possibility.priority + 1
-        add_regular 'spring', priority: possibility.priority + 1
+        add_regular "spring", priority: possibility.priority + 1
         possibility.notes = possibility.friendship_notes
         possibility.remove_steps 1
       end
@@ -148,10 +152,10 @@ module Stardew
 
       return add_regular day.to_s if @schedules.key? day.to_s
 
-      add_possibility 'bus', MAIL['ccVault'] if @person == 'Pam'
+      add_possibility "bus", MAIL["ccVault"] if @person == "Pam"
 
-      add_possibility 'rain', 'If raining', rain: true if @schedules.key? 'rain'
-      add_possibility 'rain2', 'If raining', rain: true, increment: false if @schedules.key? 'rain2'
+      add_possibility "rain", "If raining", rain: true if @schedules.key? "rain"
+      add_possibility "rain2", "If raining", rain: true, increment: false if @schedules.key? "rain2"
 
       (13..1).each do |hearts|
         if @schedules.key? "#{season}_#{day_of_week(day)}_#{hearts}"
@@ -163,17 +167,17 @@ module Stardew
       return add_regular day_of_week(day) if @schedules.key? day_of_week(day)
       return add_regular season.to_s if @schedules.key? season.to_s
       return add_regular "spring_#{day_of_week(day)}".to_s if @schedules.key? "spring_#{day_of_week(day)}"
-      return add_regular 'spring' if @schedules.key? 'spring'
+      return add_regular "spring" if @schedules.key? "spring"
 
-      add_regular 'noschedule'
+      add_regular "noschedule"
     end
 
     def fix_goto(season)
       @possibilities.map do |possibility|
-        next unless possibility.first_step_word? 'GOTO'
+        next unless possibility.first_step_word? "GOTO"
 
-        season = possibility.second_step_word == 'season' ? season : possibility.second_step_word
-        schedule = @schedules.key?(season) ? season : 'spring'
+        season = possibility.second_step_word unless possibility.second_step_word == "season"
+        schedule = @schedules.key?(season) ? season : "spring"
         possibility.steps = @schedules[schedule].steps
         possibility.name = schedule
       end
@@ -184,7 +188,7 @@ module Stardew
     end
 
     def parse_schedule(schedule)
-      schedule.split('/').map(&:split)
+      schedule.split("/").map(&:split)
     end
 
     def remove_duplicates
@@ -193,7 +197,7 @@ module Stardew
         update_previous = true
 
         if previous && (previous.name == p.name)
-          previous.notes = [previous.notes, p.notes].join ' / '
+          previous.notes = [previous.notes, p.notes].join " / "
           @possibilities.delete_at i
           update_previous = false
         end
@@ -207,3 +211,5 @@ module Stardew
     end
   end
 end
+
+# rubocop:enable Metrics/*

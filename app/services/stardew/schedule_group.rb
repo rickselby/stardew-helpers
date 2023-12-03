@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module Stardew
+  # Group schedules for a day
   class ScheduleGroup
     attr_accessor :schedules
 
@@ -35,7 +38,7 @@ module Stardew
     end
 
     def to_partial_path
-      'group'
+      "group"
     end
   end
 end

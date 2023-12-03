@@ -1,10 +1,13 @@
-require 'mini_magick'
+# frozen_string_literal: true
+
+require "mini_magick"
 
 module Stardew
+  # Read and parse maps from the data
   class Map
     attr_reader :definition
 
-    PATH = Rails.root.join "data", "maps"
+    PATH = Rails.root.join "data/maps"
 
     MAP_GRID = 16
     MAP_SIZE = 400
@@ -19,7 +22,7 @@ module Stardew
       end
 
       def marker_path
-        Rails.root.join "app", "assets", "images", "marker.png"
+        Rails.root.join "app/assets/images/marker.png"
       end
 
       def valid?(map)
@@ -29,13 +32,14 @@ module Stardew
       private
 
       def valid_maps
-        @valid_maps ||= Dir[PATH.join('*.png')].map { |f| File.basename f, '.png' }
+        @valid_maps ||= Dir[PATH.join("*.png")].map { |f| File.basename f, ".png" }
       end
 
       def map_sizes
-        @map_sizes ||= Dir[PATH.join('*.png')].to_h do |file_path|
+        @map_sizes ||= Dir[PATH.join("*.png")].to_h do |file_path|
           size = FastImage.size(file_path)
-          [File.basename(file_path, '.png'), { x: size[0] / Stardew::Map::MAP_GRID, y: size[1] / Stardew::Map::MAP_GRID }]
+          [File.basename(file_path, ".png"),
+           { x: size[0] / Stardew::Map::MAP_GRID, y: size[1] / Stardew::Map::MAP_GRID }]
         end
       end
     end
@@ -59,7 +63,7 @@ module Stardew
 
     def add_marker(x, y)
       map_image.composite(self.class.marker) do |c|
-        c.compose 'Over'
+        c.compose "Over"
         c.geometry "+#{x * MAP_GRID}+#{y * MAP_GRID}"
       end
     end
@@ -75,8 +79,8 @@ module Stardew
     # Add extra transparency to the map to ensure we end up with an image the right size with the marker in the middle
     def expand_marker_map(image)
       image.combine_options do |i|
-        i.gravity 'center'
-        i.background 'transparent'
+        i.gravity "center"
+        i.background "transparent"
         i.extent "#{image.width + MAP_SIZE}x#{image.height + MAP_SIZE}"
       end
     end
