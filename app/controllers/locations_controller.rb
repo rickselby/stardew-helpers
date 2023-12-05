@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
     return unless @maps.include? params[:map]
 
     @map = params[:map]
-    @locations = Location.includes(schedules: :people).where(map: @map)
+    @locations_to_show = Location.includes(schedules: :people).where(map: @map)
   end
 
   def create

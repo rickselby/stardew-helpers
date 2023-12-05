@@ -14,7 +14,7 @@
         </div>
     </div>
 </div>
-<% if @locations %>
+<% if @locations_to_show %>
     <div class="row panel">
         <div class="wood-border">
             <h2><%= @map %></h2>
@@ -24,7 +24,7 @@
         <div class="wood-border">
             <table class="table locations">
                 <tbody>
-                <% @locations.each do |location| %>
+                <% @locations_to_show.each do |location| %>
                       <tr>
                           <td><%= location.coords %></td>
                           <td>
