@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Stardew
+module StardewLoader
   # Get list of people
   class People
     class << self
@@ -15,7 +15,7 @@ class Stardew
       private
 
       def valid_people
-        @valid_people ||= Stardew::Portraits.valid_portraits.intersection Stardew::Schedules.valid_schedules
+        @valid_people ||= Stardew::Portraits.valid_portraits.intersection Schedules.valid_schedules
       end
     end
   end

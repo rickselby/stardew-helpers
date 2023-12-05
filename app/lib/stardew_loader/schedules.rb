@@ -3,7 +3,7 @@
 # rubocop:disable Metrics/*
 
 # Although I'd *love* to refactor this, it should match the source code as closely as possible
-class Stardew
+module StardewLoader
   # Manage the retrieval of schedules
   class Schedules
     PATH = Rails.root.join "data/schedules"

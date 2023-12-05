@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Stardew
+module StardewLoader
   # A single step in a schedule
   class Step
     attr_reader :definition

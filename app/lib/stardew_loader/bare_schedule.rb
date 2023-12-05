@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Stardew
+module StardewLoader
   # A single schedule line read from the json file
   class BareSchedule
     attr_reader :steps

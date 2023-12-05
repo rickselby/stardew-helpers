@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Stardew
+module StardewLoader
   # A single parsed schedule
   class Schedule
     attr_accessor :name, :notes, :priority, :steps
