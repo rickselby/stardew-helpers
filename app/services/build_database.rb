@@ -36,7 +36,7 @@ class BuildDatabase
   def load_locations(schedule, steps)
     steps.each_with_index do |step, order|
       location = load_location step.map, step.x, step.y
-      schedule.schedule_locations.create(location:, order: order + 1, time: step.time)
+      schedule.schedule_locations.create location:, order: order + 1, time: step.time, arrival_time: step.arrival_time?
     end
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_01_185015) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_06_143218) do
   create_table "locations", force: :cascade do |t|
     t.string "map"
     t.integer "x"
@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_185015) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "time"
+    t.boolean "arrival_time", default: false, null: false
     t.index ["location_id"], name: "index_schedule_locations_on_location_id"
     t.index ["schedule_id"], name: "index_schedule_locations_on_schedule_id"
   end

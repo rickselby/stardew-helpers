@@ -5,7 +5,7 @@ module StardewLoader
   class Step
     attr_reader :definition
 
-    VALID_TIME = /^a?\d+$/
+    VALID_TIME = /^a?(?<time>\d+)$/
 
     def initialize(person, definition, replacement: false)
       @definition = definition.split
@@ -29,10 +29,14 @@ module StardewLoader
       @replacement
     end
 
+    def arrival_time?
+      @definition[0].starts_with? "a"
+    end
+
     def time
       raise "No time for a replacement" if replacement?
 
-      @definition[0]
+      @definition[0].match(VALID_TIME)[:time]
     end
 
     def to_s
