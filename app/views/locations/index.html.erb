@@ -3,11 +3,14 @@
         <div class="text-center mb-3">
             <% @maps.each do |map| %>
                 <div class="position-relative d-inline-block">
-                    <%= link_to map, locations_path(map: map)
-                    %>
-                    <% unless @empty[map].blank? || @empty[map].zero? %>
-                        <span class="badge bg-danger rounded-pill"
-                              style="top: 20%; left: 80%"><%= @empty[map] %></span>
+                    <% if map == @map %>
+                        <strong><%= @map %></strong>
+                    <% else %>
+                        <%= link_to map, locations_path(map: map) %>
+                        <% unless @empty[map].blank? || @empty[map].zero? %>
+                            <span class="badge bg-danger rounded-pill"
+                                  style="top: 20%; left: 80%"><%= @empty[map] %></span>
+                        <% end %>
                     <% end %>
                 </div>
             <% end %>
