@@ -2,7 +2,7 @@
   <div class="bulletin">
     <div class="panel-heading">
       <h4>
-        <%= group.notes %>
+        <%= group.reference %>
         <% if group.two_possibilities? %>
           (equal chance of either)
         <% end %>
@@ -11,11 +11,15 @@
     <div class="row">
       <% group.schedules.each do |schedule| %>
         <div class="list-group list-group-flush <%= schedule_classes(group) %>">
-          <% schedule.steps.each do |route| %>
+          <% schedule.schedule_locations.each do |schedule_location| %>
             <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#map-modal"
-                    data-bs-map="<%= path_for_route route %>">
-              <%= format_time route.time %>:
-              <%= route.name %>
+                    data-bs-map="<%= path_for_location schedule_location.location %>">
+              <% if schedule_location.arrival_time %>
+                <span class="badge text-bg-info">Arrival time</span>
+                <br>
+              <% end %>
+              <%= format_time schedule_location.time %>:
+              <%= schedule_location.location.description %>
             </button>
           <% end %>
         </div>

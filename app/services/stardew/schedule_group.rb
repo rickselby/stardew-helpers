@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Stardew
+class Stardew
   # Group schedules for a day
   class ScheduleGroup
     attr_accessor :schedules
@@ -29,8 +29,8 @@ module Stardew
       @schedules.length == 2
     end
 
-    def notes
-      @schedules.first.notes
+    def reference
+      @schedules.first.reference
     end
 
     def rain?

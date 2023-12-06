@@ -1,29 +1,28 @@
 # frozen_string_literal: true
 
 class LocationsController < ApplicationController
-  #     get '/locations' do
-  #       @locations = Stardew::Locations.locations
-  #       erb :locations
-  #     end
-  #
-  #     post '/api/location' do
-  #       Stardew::Locations.set params[:person], params[:map], params[:coords], params[:name]
-  #       halt 200
-  #     end
+  before_action :load_maps
 
   def index
-    locations = Stardew::Locations.locations
-    @people = locations.keys
-    if @people.include? params[:person]
-      @person = params[:person]
-      @locations = locations[@person]
-    end
+    return unless @maps.include? params[:map]
 
-    @empty = locations.transform_values { |m| m.values.count { |l| l.values.any?(&:blank?) } }
+    @map = params[:map]
+    @locations_to_show = Location.includes(schedules: :people).where(map: @map)
   end
 
   def create
-    Stardew::Locations.set params[:person], params[:map], params[:coords], params[:name]
+    Location.where(map: params[:map], x: params[:x], y: params[:y]).update(description: params[:description])
     head :ok
+  end
+
+  private
+
+  def load_maps
+    @maps = locations.map(&:map).uniq.sort
+    @empty = locations.group_by(&:map).transform_values { |locs| locs.count { |l| l.description.blank? } }
+  end
+
+  def locations
+    @locations ||= Location.all
   end
 end

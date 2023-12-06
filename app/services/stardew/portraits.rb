@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Stardew
+class Stardew
   # Read portrait files
   class Portraits
-    PATH = Rails.root.join("data/portraits")
+    PATH = Rails.root.join "data/portraits"
 
     class << self
       def path(name)
@@ -14,10 +14,8 @@ module Stardew
         valid_portraits.include? name
       end
 
-      private
-
       def valid_portraits
-        @valid_portraits ||= Dir[PATH.join "*.png"].map { |f| File.basename(f, ".png") }
+        @valid_portraits ||= Dir[PATH.join "*.png"].map { |f| File.basename f, ".png" }
       end
     end
   end

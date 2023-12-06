@@ -2,7 +2,7 @@
 
 require "mini_magick"
 
-module Stardew
+class Stardew
   # Read and parse maps from the data
   class Map
     attr_reader :definition

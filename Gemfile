@@ -7,6 +7,9 @@ ruby "3.2.2"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
 
+# Use sqlite3 as the database for Active Record
+gem "sqlite3", "~> 1.6"
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.4"
 
@@ -36,7 +39,7 @@ group :development, :test do
   gem "debug", "~> 1.8", platforms: %i[mri mingw x64_mingw]
   gem "rubocop-rails", "~> 2.22.0", require: false
   gem "rubocop-rails-accessibility", "~> 0.2.0", require: false
-  gem "rubocop-rickselby", "~> 0.2.0", require: false
+  gem "rubocop-rickselby", "~> 0.3.0", require: false
 end
 
 group :development do

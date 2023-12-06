@@ -1,29 +1,31 @@
 # frozen_string_literal: true
 
 class CalendarController < ApplicationController
-  before_action :load_data
+  before_action :load_data, :load_params
 
   def index
-    @person = params[:person]
-    @season = params[:season]
-    @day = params[:day].to_i
-
-    @person = nil unless @people.include? @person
-    unless @seasons.include?(@season) && @days.include?(@day)
-      @season = nil
-      @day = nil
-    end
-
-    return if [@person, @season, @day].any?(&:nil?)
-
-    @groups = Stardew::Schedules.new(@person).group_schedules(@season, @day)
+    load_groups unless [@person, @season, @day].any?(&:nil?)
   end
 
   private
 
   def load_data
-    @people = Stardew::Schedules.valid_people
-    @seasons = %w[spring summer fall winter]
-    @days = 1..28
+    @people = Person.order(:name)
+    @seasons = Stardew::SEASONS
+    @days = Stardew::DAYS
+  end
+
+  def load_params
+    @person = Person.find_by(name: params[:person])
+    return unless @seasons.include?(params[:season]) && @days.include?(params[:day].to_i)
+
+    @season = params[:season]
+    @day = params[:day].to_i
+  end
+
+  def load_groups
+    schedules = @person.person_schedules.where(season: @season, day: @day).order(:order)
+    schedules = schedules.map(&:schedule)
+    @groups = Stardew::ScheduleGroup.group schedules
   end
 end
