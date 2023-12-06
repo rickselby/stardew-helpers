@@ -138,7 +138,7 @@ module StardewLoader
     end
 
     def day_of_week(day)
-      DAYS_OF_WEEK[day.to_i % 7]
+      Stardew::DAYS_OF_WEEK[day.to_i % 7]
     end
 
     # NPC.cs getSchedule, ~line 5189
