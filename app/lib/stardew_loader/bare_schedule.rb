@@ -7,7 +7,10 @@ module StardewLoader
 
     def initialize(person, name, definition)
       @name = name
-      @steps = definition.split("/").map { |r| Step.new(person, r, replacement: replacement?) }
+      last = nil
+      @steps = definition.split("/").map do |r|
+        last = Step.new(person, r, replacement: replacement?, previous_map: last&.map)
+      end
     end
 
     def replacement?

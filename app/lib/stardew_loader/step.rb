@@ -7,10 +7,11 @@ module StardewLoader
 
     VALID_TIME = /^a?(?<time>\d+)$/
 
-    def initialize(person, definition, replacement: false)
+    def initialize(person, definition, previous_map: nil, replacement: false)
       @definition = definition.split
       @person = person
       @replacement = replacement
+      @previous_map = previous_map
     end
 
     def map_path
@@ -18,7 +19,17 @@ module StardewLoader
     end
 
     def map
-      replacement? ? @definition[0] : @definition[1]
+      return @previous_map unless has_map?
+
+      @definition[index(1)]
+    end
+
+    def index(i, check_has_map: true)
+      i -= 1 if replacement?
+      if check_has_map
+        i -= 1 unless has_map?
+      end
+      i
     end
 
     def name
@@ -27,6 +38,10 @@ module StardewLoader
 
     def replacement?
       @replacement
+    end
+
+    def has_map?
+      @definition[index(1, check_has_map: false)].to_i.zero?
     end
 
     def arrival_time?
@@ -48,7 +63,7 @@ module StardewLoader
     end
 
     def x
-      (replacement? ? @definition[1] : @definition[2]).to_i
+      @definition[index(2)].to_i
     end
 
     def x_y
@@ -56,7 +71,7 @@ module StardewLoader
     end
 
     def y
-      (replacement? ? @definition[2] : @definition[3]).to_i
+      @definition[index(3)].to_i
     end
   end
 end
