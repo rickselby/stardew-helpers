@@ -14,34 +14,14 @@ module StardewLoader
       @previous_map = previous_map
     end
 
-    def map_path
-      [map, x, y].join "/"
-    end
-
     def map
-      return @previous_map unless has_map?
+      return @previous_map unless map?
 
       @definition[index(1)]
     end
 
-    def index(i, check_has_map: true)
-      i -= 1 if replacement?
-      if check_has_map
-        i -= 1 unless has_map?
-      end
-      i
-    end
-
     def name
       Locations.get @person, map, [x, y]
-    end
-
-    def replacement?
-      @replacement
-    end
-
-    def has_map?
-      @definition[index(1, check_has_map: false)].to_i.zero?
     end
 
     def arrival_time?
@@ -66,12 +46,24 @@ module StardewLoader
       @definition[index(2)].to_i
     end
 
-    def x_y
-      [x, y].join " "
-    end
-
     def y
       @definition[index(3)].to_i
+    end
+
+    private
+
+    def index(i, check_has_map: true)
+      i -= 1 if replacement?
+      i -= 1 if check_has_map && !map?
+      i
+    end
+
+    def map?
+      @definition[index(1, check_has_map: false)].to_i.zero?
+    end
+
+    def replacement?
+      @replacement
     end
   end
 end
