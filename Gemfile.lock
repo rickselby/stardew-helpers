@@ -160,7 +160,7 @@ GEM
       ast (~> 2.4.1)
       racc
     popper_js (2.11.8)
-    psych (5.1.1.1)
+    psych (5.1.2)
       stringio
     public_suffix (5.0.4)
     puma (6.4.0)
