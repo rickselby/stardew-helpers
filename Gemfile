@@ -31,7 +31,7 @@ gem "sassc-rails", "~> 2.1"
 # Bootstrap
 gem "bootstrap", "~> 5.3"
 
-gem "fastimage", "~> 2.2"
+gem "fastimage", "~> 2.3"
 gem "mini_magick", "~> 4.12"
 
 group :development, :test do
