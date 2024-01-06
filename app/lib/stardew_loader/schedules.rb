@@ -9,9 +9,9 @@ module StardewLoader
     PATH = Rails.root.join "data/schedules"
     MAIL = {
       "beachBridgeFixed" => "Beach bridge fixed",
-      "ccVault" => "Community Centre vault completed",
+      "ccVault"          => "Community Centre vault completed",
       "saloonSportsRoom" => "After Alex's 14 heart event",
-      "shanePK" => "After Shane's 14 heart event"
+      "shanePK"          => "After Shane's 14 heart event",
     }.freeze
 
     class << self
@@ -159,15 +159,15 @@ module StardewLoader
       add_possibility "rain2", "If raining", rain: true, increment: false if @schedules.key? "rain2"
 
       (13..1).each do |hearts|
-        if @schedules.key? "#{season}_#{day_of_week(day)}_#{hearts}"
-          add_possibility "#{season}_#{day_of_week(day)}_#{hearts}", "At least #{hearts} hearts with #{@person}"
+        if @schedules.key? "#{season}_#{day_of_week day}_#{hearts}"
+          add_possibility "#{season}_#{day_of_week day}_#{hearts}", "At least #{hearts} hearts with #{@person}"
         end
       end
 
-      return add_regular "#{season}_#{day_of_week(day)}" if @schedules.key? "#{season}_#{day_of_week(day)}"
+      return add_regular "#{season}_#{day_of_week day}" if @schedules.key? "#{season}_#{day_of_week day}"
       return add_regular day_of_week(day) if @schedules.key? day_of_week(day)
       return add_regular season.to_s if @schedules.key? season.to_s
-      return add_regular "spring_#{day_of_week(day)}".to_s if @schedules.key? "spring_#{day_of_week(day)}"
+      return add_regular "spring_#{day_of_week day}".to_s if @schedules.key? "spring_#{day_of_week day}"
       return add_regular "spring" if @schedules.key? "spring"
 
       add_regular "noschedule"

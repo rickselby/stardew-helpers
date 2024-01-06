@@ -15,7 +15,7 @@ module CalendarHelper
       "top: #{row + 39}px",
       "width: 32px",
       "height: 32px",
-      "background-color: transparent"
+      "background-color: transparent",
     ].join ";"
   end
 

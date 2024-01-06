@@ -52,10 +52,10 @@ module StardewLoader
 
     private
 
-    def index(i, check_has_map: true)
-      i -= 1 if replacement?
-      i -= 1 if check_has_map && !map?
-      i
+    def index(index, check_has_map: true)
+      index -= 1 if replacement?
+      index -= 1 if check_has_map && !map?
+      index
     end
 
     def map?

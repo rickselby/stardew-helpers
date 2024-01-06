@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Stardew
+module Stardew
   # Group schedules for a day
   class ScheduleGroup
     attr_accessor :schedules
