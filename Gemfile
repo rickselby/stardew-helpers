@@ -39,7 +39,7 @@ group :development, :test do
   gem "debug", "~> 1.9", platforms: %i[mri mingw x64_mingw]
   gem "rubocop-rails", "~> 2.23.1", require: false
   gem "rubocop-rails-accessibility", "~> 0.2.0", require: false
-  gem "rubocop-rickselby", "~> 0.8.0", require: false
+  gem "rubocop-rickselby", "~> 0.9.0", require: false
 end
 
 group :development do
