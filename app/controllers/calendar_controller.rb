@@ -10,13 +10,13 @@ class CalendarController < ApplicationController
   private
 
   def load_data
-    @people = Person.order :name
+    @people = Person.order(:name)
     @seasons = Stardew::SEASONS
     @days = Stardew::DAYS
   end
 
   def load_params
-    @person = Person.find_by name: params[:person]
+    @person = Person.find_by(name: params[:person])
     return unless @seasons.include?(params[:season]) && @days.include?(params[:day].to_i)
 
     @season = params[:season]
