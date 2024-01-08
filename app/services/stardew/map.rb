@@ -37,7 +37,7 @@ module Stardew
 
       def map_sizes
         @map_sizes ||= Dir[PATH.join("*.png")].to_h do |file_path|
-          size = FastImage.size file_path
+          size = FastImage.size(file_path)
           [
             File.basename(file_path, ".png"),
             { x: size[0] / Stardew::Map::MAP_GRID, y: size[1] / Stardew::Map::MAP_GRID },
@@ -64,14 +64,14 @@ module Stardew
     private
 
     def add_marker(x, y)
-      map_image.composite self.class.marker do |c|
+      map_image.composite(self.class.marker) do |c|
         c.compose "Over"
         c.geometry "+#{x * MAP_GRID}+#{y * MAP_GRID}"
       end
     end
 
     def crop_marker_map(image, x, y)
-      image.crop "#{MAP_SIZE}x#{MAP_SIZE}+#{crop_offset x}+#{crop_offset y}"
+      image.crop "#{MAP_SIZE}x#{MAP_SIZE}+#{crop_offset(x)}+#{crop_offset(y)}"
     end
 
     def crop_offset(value)
