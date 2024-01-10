@@ -86,7 +86,7 @@
     <orderEntry type="library" scope="PROVIDED" name="popper_js (v2.11.8, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="psych (v5.1.2, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v5.0.4, RVM: ruby-3.3.0) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="puma (v6.4.1, RVM: ruby-3.3.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="puma (v6.4.2, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.7.3, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v3.0.8, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-session (v2.0.0, RVM: ruby-3.3.0) [gem]" level="application" />
@@ -99,7 +99,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rainbow (v3.1.1, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.1.0, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v6.6.2, RVM: ruby-3.3.0) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.8.3, RVM: ruby-3.3.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.9.0, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="reline (v0.4.2, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rexml (v3.2.6, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.59.0, RVM: ruby-3.3.0) [gem]" level="application" />
@@ -110,7 +110,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rails (v2.23.1, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rails-accessibility (v0.2.0, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rake (v0.6.0, RVM: ruby-3.3.0) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rubocop-rickselby (v0.14.0.pre.4, RVM: ruby-3.3.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop-rickselby (v0.14.0, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rspec (v2.26.1, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-sequel (v0.3.4, RVM: ruby-3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.13.0, RVM: ruby-3.3.0) [gem]" level="application" />
