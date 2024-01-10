@@ -26,33 +26,30 @@
     <div class="row">
         <ul class="nav nav-tabs nav-fill" role="tablist" id="navigation">
             <li class="nav-item">
-                <a class="nav-link <%= current_page?(calendar_index_path) ? "active" : '' %>"
-                   type="button" role="tab" aria-selected="<%= current_page?(calendar_index_path) ? "true" : '' %>"
+                <a class="nav-link <%= current_page?(calendar_index_path) ? "active" : "" %>"
+                   type="button" role="tab" aria-selected="<%= current_page?(calendar_index_path) ? "true" : "" %>"
                    <% unless current_page?(calendar_index_path) %>
                    href="<%= calendar_index_path %>"
-                   <% end %>
-                   >
+                   <% end %>>
                     Villager Calendar
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <%= current_page?(forage_index_path) ? "active" : '' %>"
-                   type="button" role="tab" aria-selected="<%= current_page?(forage_index_path) ? "true" : '' %>"
+                <a class="nav-link <%= current_page?(forage_index_path) ? "active" : "" %>"
+                   type="button" role="tab" aria-selected="<%= current_page?(forage_index_path) ? "true" : "" %>"
                    <% unless current_page?(forage_index_path) %>
                    href="<%= forage_index_path %>"
-                   <% end %>
-                   >
+                   <% end %>>
                     Forage Finder
                 </a>
             </li>
             <% unless Rails.env.production? %>
                 <li class="nav-item">
-                    <a class="nav-link <%= current_page?(locations_path) ? "active" : '' %>"
-                       type="button" role="tab" aria-selected="<%= current_page?(locations_path) ? "true" : '' %>"
+                    <a class="nav-link <%= current_page?(locations_path) ? "active" : "" %>"
+                       type="button" role="tab" aria-selected="<%= current_page?(locations_path) ? "true" : "" %>"
                        <% unless current_page?(locations_path) %>
                        href="<%= locations_path %>"
-                       <% end %>
-                       >
+                       <% end %>>
                         Locations
                     </a>
                 </li>
@@ -62,15 +59,14 @@
 
     <%= yield %>
 
-
     <div class="row center-block panel text-center">
         <div class="wood-border text-muted">
             Currently working for Stardew Valley v1.5
-            <br/>
+            <br>
             Huge thanks to <a href="http://upload.farm">upload.farm</a> for allowing me to use their bootstrap theme
-            <br/>
+            <br>
             All Stardew Valley assets copyright <a href="http://twitter.com/concernedape">Concerned Ape</a>
-            <br/>
+            <br>
             Source code is <a href="https://github.com/rickselby/stardew-helpers">in GitHub</a>; please raise any issues
             there.
         </div>
