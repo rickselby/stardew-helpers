@@ -1,0 +1,7 @@
+---
+exclude:
+  - 'node_modules/**/*'
+  - 'vendor/**/*'
+inherit_gem:
+  rubocop-rickselby:
+    - config/erb-lint.yml

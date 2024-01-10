@@ -6,7 +6,7 @@
                     <% if map == @map %>
                         <strong><%= @map %></strong>
                     <% else %>
-                        <%= link_to map, locations_path(map: map) %>
+                        <%= link_to map, locations_path(map:) %>
                         <% unless @empty[map].blank? || @empty[map].zero? %>
                             <span class="badge bg-danger rounded-pill"
                                   style="top: 20%; left: 80%"><%= @empty[map] %></span>
@@ -31,14 +31,13 @@
                       <tr>
                           <td><%= location.coords %></td>
                           <td>
-                              <input type="text" value="<%= location.description %>"
+                              <input type="text" value="<%= location.description %>" autocomplete="off"
                                      data-sh-map="<%= @map %>"
                                      data-sh-x="<%= location.x %>"
-                                     data-sh-y="<%= location.y %>"
-                              >
+                                     data-sh-y="<%= location.y %>">
                           </td>
                           <td>
-                              <img class="base" src="/map/<%= path_for_location location %>" alt="<%= @map %> map"/>
+                              <img class="base" src="/map/<%= path_for_location location %>" alt="<%= @map %> map">
                           </td>
                           <td>
                               <ul>

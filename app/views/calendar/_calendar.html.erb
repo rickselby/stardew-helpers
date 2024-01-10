@@ -4,15 +4,15 @@
     <div class="calendar-container">
       <h4><%= season_name.capitalize %></h4>
       <div id="<%= season_name %>" class="calendar" style="position: relative">
-        <img src="<%= asset_path 'calendar.png' %>" alt="Calendar" />
+        <img src="<%= asset_path "calendar.png" %>" alt="Calendar">
 
         <% @days.each do |day| %>
-          <a href="<%= calendar_index_url season: season_name, day: day, person: @person&.name %>">
+          <a href="<%= calendar_index_url season: season_name, day:, person: @person&.name %>">
             <div style="<%= day_link_position day %>"></div>
           </a>
         <% end %>
 
-        <div class="calendar-marker <%= @season == season_name ? 'd-block' : 'd-none' %>"
+        <div class="calendar-marker <%= (@season == season_name) ? "d-block" : "d-none" %>"
              style="<%= calendar_marker_position @day %>">
         </div>
       </div>
