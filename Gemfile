@@ -23,7 +23,7 @@ gem "turbo-rails", "~> 1.5"
 gem "tzinfo-data", "~> 2.0", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.17", require: false
+gem "bootsnap", "~> 1.18", require: false
 
 # Use Sass to process CSS
 gem "sassc-rails", "~> 2.1"
