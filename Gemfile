@@ -17,7 +17,7 @@ gem "puma", "~> 6.4"
 gem "importmap-rails", "~> 2.0"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails", "~> 1.5"
+gem "turbo-rails", "~> 2.0"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", "~> 2.0", platforms: %i[mingw mswin x64_mingw jruby]
