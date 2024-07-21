@@ -32,7 +32,7 @@ gem "sassc-rails", "~> 2.1"
 gem "bootstrap", "~> 5.3"
 
 gem "fastimage", "~> 2.3"
-gem "mini_magick", "~> 4.13"
+gem "mini_magick", "~> 5.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
