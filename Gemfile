@@ -32,12 +32,12 @@ gem "sassc-rails", "~> 2.1"
 gem "bootstrap", "~> 5.3"
 
 gem "fastimage", "~> 2.3"
-gem "mini_magick", "~> 4.13"
+gem "mini_magick", "~> 5.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", "~> 1.9", platforms: %i[mri mingw x64_mingw]
-  gem "rubocop-rickselby", "~> 0.33", require: false
+  gem "rubocop-rickselby", "~> 0.34", require: false
 end
 
 group :development do
