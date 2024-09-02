@@ -35,7 +35,7 @@ module CalendarHelper
   end
 
   def format_time(time)
-    Time.zone.parse(time.rjust(4, "0").chars.each_slice(2).map(&:join).join(":")).strftime("%l:%M %P")
+    Time.zone.parse(time.rjust(4, "0").chars.each_slice(2).map(&:join).join(":")).strftime("%-l:%M %P")
   end
 
   def path_for_location(location)
