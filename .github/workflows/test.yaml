@@ -30,14 +30,14 @@ jobs:
       - run: bundle exec erblint --lint-all
 
   rspec:
-    name: Minitest
+    name: RSpec
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - run: bundle exec rake test
+      - run: bundle exec rake spec
 
   rubocop:
     name: Rubocop

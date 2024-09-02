@@ -2,4 +2,7 @@
 inherit_gem:
   rubocop-rickselby:
     - config/default.yml
+    - config/capybara.yml
     - config/rails.yml
+    - config/rspec.yml
+    - config/rspec_rails.yml
