@@ -1,10 +1,15 @@
 <div class="text-center mb-3">
   <% @people.each do |person| %>
-    <%= link_to image_tag(
-          "/villager/#{person.name}",
-          class: [:portrait, (@person == person) ? :"portrait-active" : nil],
-          alt: person.name, title: person.name,
-        ),
-                calendar_index_url(person: person.name, season: @season, day: @day) %>
+    <div style="display: inline-block; text-align: center;">
+      <%= link_to image_tag(
+            "/villager/#{person.name}",
+            class: [:portrait, (@person == person) ? :"portrait-active" : nil],
+            alt: person.name, title: person.name,
+          ),
+                  calendar_index_url(person: person.name, season: @season, day: @day) %>
+      <div style="font-size: 0.85em; line-height: 1; color: black; margin: 0; padding: 0;">
+        <%= person.name %>
+      </div>
+    </div>
   <% end %>
 </div>
