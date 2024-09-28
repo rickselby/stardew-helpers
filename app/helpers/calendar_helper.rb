@@ -2,11 +2,6 @@
 
 # Helpers for the calendar page
 module CalendarHelper
-  def calendar_marker_position(day)
-    row, day_of_week = coords_for day
-    "left: #{day_of_week + 7}px; top: #{row + 37}px;"
-  end
-
   def day_link_position(day)
     row, day_of_week = coords_for day
     [

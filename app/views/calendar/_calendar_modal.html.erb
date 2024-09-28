@@ -1,0 +1,32 @@
+
+<div class="modal" id="calendarModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Select Date</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center" id="calendars">
+                    <% @seasons.each do |season_name| %>
+                        <div class="calendar-container">
+                            <h4><%= season_name.capitalize %></h4>
+                            <div id="<%= season_name %>" class="calendar" style="position: relative">
+                                <img src="<%= asset_path "calendar.png" %>" alt="Calendar">
+
+                                <% @days.each do |day| %>
+                                    <a href="<%= calendar_index_url season: season_name, day:, person: @person&.name %>">
+                                        <div style="<%= day_link_position day %>"></div>
+                                    </a>
+                                <% end %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
