@@ -11,13 +11,13 @@
                     <div class="panel d-inline-block person-picker">
                         <div class="bulletin">
                             <%= link_to image_tag(
-                                            "/villager/#{person.name}",
-                                            class: :portrait,
-                                            alt: person.name, title: person.name,
-                                            ),
-                                        calendar_index_url(person: person.name, season: @season, day: @day)
-                            %>
-                            <br/>
+                                  "/villager/#{person.name}",
+                                  class: :portrait,
+                                  alt: person.name,
+                                  title: person.name,
+                                ),
+                                        calendar_index_url(person: person.name, season: @season, day: @day) %>
+                            <br>
                             <%= person.name %>
                         </div>
                     </div>
