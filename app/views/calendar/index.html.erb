@@ -1,7 +1,7 @@
 <turbo-frame id="calendar" data-turbo-action="advance">
   <div class="row panel">
     <div class="wood-border">
-      <%= render "villagers" %>
+      <%= render "villager_select" %>
       <%= render "calendar" %>
     </div>
   </div>
@@ -39,6 +39,8 @@
     </div>
   </div>
 </turbo-frame>
+
+<%= render "villagers_modal" %>
 
 <div class="modal" tabindex="-1" id="map-modal">
   <div class="modal-dialog modal-dialog-centered">

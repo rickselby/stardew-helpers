@@ -57,6 +57,10 @@ h1, h2, h3, h4 {
   > div.bulletin {
     @include bulletinInterior;
   }
+
+  &.person-picker .bulletin {
+    border-width: 10px;
+  }
 }
 
 code {
