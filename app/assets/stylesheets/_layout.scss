@@ -86,16 +86,20 @@ code {
   border-bottom: none;
   padding-right: 0;
 
-  li {
+  > div {
     @include borderOuter;
 
     button, a {
       @include woodBorderInterior;
       @extend h3;
       color: inherit;
+      text-align: center;
 
       &.active {
         font-weight: 800;
+      }
+      @include media-breakpoint-down(sm) {
+        font-size: 1.25rem;
       }
     }
   }

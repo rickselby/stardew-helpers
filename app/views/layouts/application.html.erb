@@ -16,7 +16,7 @@
 
 <body>
 <main class="container" role="main">
-    <div class="row">
+    <div class="row d-none d-md-block">
         <div class="col-12 panel">
             <div class="wood-border">
                 <h1 class="text-center">Stardew Valley Helpers</h1>
@@ -24,39 +24,37 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <ul class="nav nav-tabs nav-fill" role="tablist" id="navigation">
-            <li class="nav-item">
-                <a class="nav-link <%= current_page?(calendar_index_path) ? "active" : "" %>"
-                   type="button" role="tab" aria-selected="<%= current_page?(calendar_index_path) ? "true" : "" %>"
-                   <% unless current_page?(calendar_index_path) %>
-                   href="<%= calendar_index_path %>"
-                   <% end %>>
-                    Villager Calendar
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <%= current_page?(forage_index_path) ? "active" : "" %>"
-                   type="button" role="tab" aria-selected="<%= current_page?(forage_index_path) ? "true" : "" %>"
-                   <% unless current_page?(forage_index_path) %>
-                   href="<%= forage_index_path %>"
-                   <% end %>>
-                    Forage Finder
-                </a>
-            </li>
-            <% unless Rails.env.production? %>
-                <li class="nav-item">
-                    <a class="nav-link <%= current_page?(locations_path) ? "active" : "" %>"
-                       type="button" role="tab" aria-selected="<%= current_page?(locations_path) ? "true" : "" %>"
-                       <% unless current_page?(locations_path) %>
-                       href="<%= locations_path %>"
-                       <% end %>>
-                        Locations
-                    </a>
-                </li>
-            <% end %>
-        </ul>
+    <div class="row" id="navigation">
+        <div class="col">
+            <a class="nav-link <%= current_page?(calendar_index_path) ? "active" : "" %>"
+               type="button" role="tab" aria-selected="<%= current_page?(calendar_index_path) ? "true" : "" %>"
+               <% unless current_page?(calendar_index_path) %>
+               href="<%= calendar_index_path %>"
+               <% end %>>
+                Villager Calendar
+            </a>
+        </div>
+        <div class="col">
+            <a class="nav-link <%= current_page?(forage_index_path) ? "active" : "" %>"
+               type="button" role="tab" aria-selected="<%= current_page?(forage_index_path) ? "true" : "" %>"
+               <% unless current_page?(forage_index_path) %>
+               href="<%= forage_index_path %>"
+               <% end %>>
+                Forage Finder
+            </a>
+        </div>
     </div>
+    <% unless Rails.env.production? %>
+        <div class="alert alert-info">
+            <a class="nav-link <%= current_page?(locations_path) ? "active" : "" %>"
+               type="button" role="tab" aria-selected="<%= current_page?(locations_path) ? "true" : "" %>"
+               <% unless current_page?(locations_path) %>
+               href="<%= locations_path %>"
+               <% end %>>
+                Locations
+            </a>
+        </div>
+    <% end %>
 
     <%= yield %>
 

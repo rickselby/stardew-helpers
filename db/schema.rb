@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_06_143218) do
+ActiveRecord::Schema[7.2].define(version: 2023_12_06_143218) do
   create_table "locations", force: :cascade do |t|
     t.string "map"
     t.integer "x"
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_143218) do
     t.string "reference"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "rain"
+    t.boolean "rain", default: false, null: false
   end
 
   add_foreign_key "person_schedules", "people"
