@@ -2,11 +2,6 @@
 
 # Helpers for the calendar page
 module CalendarHelper
-  def calendar_marker_position(day)
-    row, day_of_week = coords_for day
-    "left: #{day_of_week + 7}px; top: #{row + 37}px;"
-  end
-
   def day_link_position(day)
     row, day_of_week = coords_for day
     [
@@ -43,5 +38,9 @@ module CalendarHelper
 
   def path_for_location(location)
     [location.map, location.x, location.y].join "/"
+  end
+
+  def time_and_location(schedule_location)
+    "#{format_time schedule_location.time}: #{schedule_location.location.description}"
   end
 end

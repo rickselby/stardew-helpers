@@ -1,53 +1,64 @@
 <turbo-frame id="calendar" data-turbo-action="advance">
-  <div class="row panel">
-    <div class="wood-border">
-      <%= render "villagers" %>
-      <%= render "calendar" %>
+    <div class="panel">
+        <div class="wood-border row align-items-center">
+            <div class="col ">
+                <%= render "villager_select" %>
+            </div>
+            <div class="col">
+                <%= render "date_select" %>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="row panel" v-if="schedules.length !== 0">
-    <div class="wood-border">
-      <h3>How to read the schedules</h3>
-      <p>
-        Read the panels from left to right. The first panel that applies should be the
-        villager's schedule for the day. There many be alternatives for rain, for buildings
-        being unavailable, or based on friendship that will override the regular schedule for
-        a day.
-      </p>
-      <p>
-        The times shown are when the villager will leave their previous location and head
-        to the listed location, unless otherwise specified
-      </p>
+    <div class="row panel">
+        <div class="wood-border">
+            <div class="row">
+                <% if @groups.nil? %>
+                    <div class="col-12" v-if="schedules.length === 0">
+                        Select a villager and a date, and their possible schedules will appear here.
+                    </div>
+                <% else %>
+                    <div>
+                        Click on a location to view a map.
+                    </div>
+                    <%= render @groups %>
+                <% end %>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="row panel">
-    <div class="wood-border">
-      <div class="row">
-        <% if @groups.nil? %>
-          <div class="col-12" v-if="schedules.length === 0">
-            Select a villager and a date, and their possible schedules will appear here.
-          </div>
-        <% else %>
-          <h4 class="col-12 text-center" v-if="schedules.length !== 0">
-            <%= @person.name %>: <%= @day.ordinalize %> of <%= @season.capitalize %>
-          </h4>
-          <%= render @groups %>
-        <% end %>
-      </div>
+    <div class="row panel" v-if="schedules.length !== 0">
+        <div class="wood-border">
+            <h3>How to read the schedules</h3>
+            <p>
+                Read the panels from left to right, top to bottom.
+                The first panel that applies should be the villager's schedule for the day.
+                There many be alternatives for rain, for buildings being unavailable,
+                or based on friendship that will override the regular schedule for a day.
+            </p>
+            <p>
+                The times shown are when the villager will leave their previous location and head
+                to the listed location, unless otherwise specified.
+            </p>
+        </div>
     </div>
-  </div>
 </turbo-frame>
 
+<%= render "calendar_modal" %>
+<%= render "villagers_modal" %>
+
 <div class="modal" tabindex="-1" id="map-modal">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body">
-        <img id="map-modal-map">
-      </div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <script>

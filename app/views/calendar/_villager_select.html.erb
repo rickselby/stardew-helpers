@@ -1,0 +1,13 @@
+<% if @person.present? %>
+    <div class="text-center" data-bs-toggle="modal" data-bs-target="#villagerModal">
+        <%= image_tag("/villager/#{@person.name}", class: %i[portrait], alt: @person.name, title: @person.name) %>
+        <br>
+        <%= @person.name %>
+    </div>
+<% else %>
+    <div class="text-center">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#villagerModal">
+            Select Villager
+        </button>
+    </div>
+<% end %>

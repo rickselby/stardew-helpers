@@ -13,13 +13,13 @@
         <div class="list-group list-group-flush <%= schedule_classes(group) %>">
           <% schedule.schedule_locations.each do |schedule_location| %>
             <button type="button" class="list-group-item" data-bs-toggle="modal" data-bs-target="#map-modal"
-                    data-bs-map="<%= path_for_location schedule_location.location %>">
+                    data-bs-map="<%= path_for_location schedule_location.location %>"
+                    data-bs-title="<%= time_and_location schedule_location %>">
               <% if schedule_location.arrival_time %>
                 <span class="badge text-bg-info">Arrival time</span>
                 <br>
               <% end %>
-              <%= format_time schedule_location.time %>:
-              <%= schedule_location.location.description %>
+              <%= time_and_location schedule_location %>
             </button>
           <% end %>
         </div>
