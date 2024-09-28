@@ -24,10 +24,8 @@
   }
 
   .calendar-container {
+    margin-top: 0.5em;
     margin-bottom: 0.5em;
-    @extend .col-12;
-    @extend .col-sm-6;
-    @extend .col-xl-3;
   }
 
   .calendar {

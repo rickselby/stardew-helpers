@@ -1,7 +1,7 @@
 <turbo-frame id="calendar" data-turbo-action="advance">
     <div class="panel">
-        <div class="wood-border row">
-            <div class="col">
+        <div class="wood-border row align-items-center">
+            <div class="col ">
                 <%= render "villager_select" %>
             </div>
             <div class="col">
@@ -18,6 +18,9 @@
                         Select a villager and a date, and their possible schedules will appear here.
                     </div>
                 <% else %>
+                    <div>
+                        Click on a location to view a map.
+                    </div>
                     <%= render @groups %>
                 <% end %>
             </div>
@@ -47,8 +50,12 @@
 <div class="modal" tabindex="-1" id="map-modal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
             <div class="modal-body">
-                <img id="map-modal-map">
+                <img>
             </div>
         </div>
     </div>
