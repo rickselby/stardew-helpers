@@ -4,10 +4,11 @@
 class BuildDatabase
   def initialize
     @locations = Hash.new { |hash, key| hash[key] = Hash.new(&hash.default_proc) }
+    Location.all.each { |location| @locations[location.map][location.x][location.y] = location }
   end
 
   def load_people
-    [Location, Schedule, Person].each(&:destroy_all)
+    [Schedule, Person].each(&:destroy_all)
     StardewLoader::People.each do |person_name|
       person = Person.create name: person_name
       load_schedules person
