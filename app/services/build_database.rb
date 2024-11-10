@@ -4,7 +4,7 @@
 class BuildDatabase
   def initialize
     @locations = Hash.new { |hash, key| hash[key] = Hash.new(&hash.default_proc) }
-    Location.all.each { |location| @locations[location.map][location.x][location.y] = location }
+    Location.find_each { |location| @locations[location.map][location.x][location.y] = location }
   end
 
   def load_people
