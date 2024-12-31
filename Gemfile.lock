@@ -125,16 +125,7 @@ GEM
     erubi (1.13.1)
     execjs (2.9.1)
     fastimage (2.3.1)
-    ffi (1.17.0-aarch64-linux-gnu)
-    ffi (1.17.0-aarch64-linux-musl)
-    ffi (1.17.0-arm-linux-gnu)
-    ffi (1.17.0-arm-linux-musl)
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86-linux-gnu)
-    ffi (1.17.0-x86-linux-musl)
-    ffi (1.17.0-x86_64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
-    ffi (1.17.0-x86_64-linux-musl)
+    ffi (1.17.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
@@ -162,6 +153,7 @@ GEM
     matrix (0.4.2)
     mini_magick (5.0.1)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.8)
     minitest (5.25.4)
     msgpack (1.7.2)
     net-imap (0.5.1)
@@ -174,17 +166,8 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.17.2-aarch64-linux)
-      racc (~> 1.4)
-    nokogiri (1.17.2-arm-linux)
-      racc (~> 1.4)
-    nokogiri (1.17.2-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.17.2-x86-linux)
-      racc (~> 1.4)
-    nokogiri (1.17.2-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.17.2-x86_64-linux)
+    nokogiri (1.17.2)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     parallel (1.26.3)
     parser (3.3.6.0)
@@ -408,7 +391,7 @@ DEPENDENCIES
   webdrivers (~> 5.3)
 
 RUBY VERSION
-   ruby 3.3.6p108
+   ruby 3.4.1p0
 
 BUNDLED WITH
-   2.5.23
+   2.6.2
