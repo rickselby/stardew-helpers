@@ -151,7 +151,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
-    mini_magick (5.0.1)
+    mini_magick (5.1.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
     minitest (5.25.4)
@@ -393,7 +393,7 @@ DEPENDENCIES
   debug (~> 1.10)
   fastimage (~> 2.4)
   importmap-rails (~> 2.1)
-  mini_magick (~> 5.0)
+  mini_magick (~> 5.1)
   puma (~> 6.5)
   rails (~> 8.0.1)
   rspec-rails (~> 7.1)
