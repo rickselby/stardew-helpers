@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/*
+# rubocop:disable Metrics/AbcSize,Metrics/ClassLength,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
 
 # Although I'd *love* to refactor this, it should match the source code as closely as possible
 module StardewLoader
@@ -167,7 +167,7 @@ module StardewLoader
       return add_regular "#{season}_#{day_of_week(day)}" if @schedules.key? "#{season}_#{day_of_week(day)}"
       return add_regular day_of_week(day) if @schedules.key? day_of_week(day)
       return add_regular season.to_s if @schedules.key? season.to_s
-      return add_regular "spring_#{day_of_week(day)}".to_s if @schedules.key? "spring_#{day_of_week(day)}"
+      return add_regular "spring_#{day_of_week(day)}" if @schedules.key? "spring_#{day_of_week(day)}"
       return add_regular "spring" if @schedules.key? "spring"
 
       add_regular "noschedule"
@@ -213,4 +213,4 @@ module StardewLoader
   end
 end
 
-# rubocop:enable Metrics/*
+# rubocop:enable Metrics/AbcSize,Metrics/ClassLength,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
