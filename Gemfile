@@ -38,7 +38,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", "~> 1.10", platforms: %i[mri mingw x64_mingw]
   gem "rspec-rails", "~> 7.1"
-  gem "rubocop-rickselby", "~> 0.50", require: false
+  gem "rubocop-rickselby", "~> 0.51", require: false
 end
 
 group :development do
