@@ -37,7 +37,7 @@ gem "mini_magick", "~> 5.1"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", "~> 1.10", platforms: %i[mri mingw x64_mingw]
-  gem "rspec-rails", "~> 7.1"
+  gem "rspec-rails", "~> 8.0"
   gem "rubocop-rickselby", "~> 0.56", require: false
 end
 
