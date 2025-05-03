@@ -33,6 +33,7 @@ gem "bootstrap", "~> 5.3"
 
 gem "fastimage", "~> 2.4"
 gem "mini_magick", "~> 5.1"
+gem "thruster", "~> 0.1.13"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
