@@ -32,7 +32,7 @@ gem "sassc-rails", "~> 2.1"
 gem "bootstrap", "~> 5.3"
 
 gem "fastimage", "~> 2.4"
-gem "mini_magick", "~> 5.1"
+gem "mini_magick", "~> 5.3"
 gem "thruster", "~> 0.1.14"
 
 group :development, :test do
