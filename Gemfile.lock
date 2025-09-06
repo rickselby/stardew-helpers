@@ -207,7 +207,7 @@ GEM
       date
       stringio
     public_suffix (6.0.1)
-    puma (6.6.1)
+    puma (7.0.1)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.0)
@@ -425,7 +425,7 @@ DEPENDENCIES
   fastimage (~> 2.4)
   importmap-rails (~> 2.2)
   mini_magick (~> 5.3)
-  puma (~> 6.6)
+  puma (~> 7.0)
   rails (~> 8.0.2)
   rspec-rails (~> 8.0)
   rubocop-rickselby (~> 0.60)
