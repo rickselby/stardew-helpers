@@ -11,7 +11,7 @@ class LocationsController < ApplicationController
   end
 
   def create
-    Location.where(map: params[:map], x: params[:x], y: params[:y]).update(description: params[:description])
+    Location.where(map: params[:map], x: params[:x], y: params[:y]).update!(description: params[:description])
     head :ok
   end
 
@@ -19,7 +19,7 @@ class LocationsController < ApplicationController
 
   def load_maps
     @maps = locations.map(&:map).uniq.sort
-    @empty = locations.group_by(&:map).transform_values { |locs| locs.count { |l| l.description.blank? } }
+    @empty = locations.group_by(&:map).transform_values { it.count { it.description.blank? } }
   end
 
   def locations

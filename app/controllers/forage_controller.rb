@@ -6,6 +6,6 @@ class ForageController < ApplicationController
 
     data_params = ActionController::Parameters.new JSON.parse params[:data]
     @data = data_params.permit(:farmType, maps: [:map, { spots: %i[x y name] }]).to_h.with_indifferent_access
-    @data[:maps].select! { |m| Stardew::Map.valid? m[:map] }
+    @data[:maps].select! { Stardew::Map.valid? it[:map] }
   end
 end

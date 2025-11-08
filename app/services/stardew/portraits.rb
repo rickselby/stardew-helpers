@@ -16,7 +16,7 @@ module Stardew
     end
 
     def valid_portraits
-      @valid_portraits ||= Dir[PATH.join "*.png"].map { |f| File.basename f, ".png" }
+      @valid_portraits ||= Dir[PATH.join "*.png"].map { File.basename it, ".png" }
     end
   end
 end

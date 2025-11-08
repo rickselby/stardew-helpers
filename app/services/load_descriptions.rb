@@ -29,6 +29,6 @@ class LoadDescriptions
     end
 
     Rails.logger.info { "description already set! #{location.description} => #{description}" } if location.description
-    location.update description:
+    location.update! description:
   end
 end
