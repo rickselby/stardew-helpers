@@ -11,7 +11,7 @@ class LocationsController < ApplicationController
   end
 
   def create
-    Location.where(map: params[:map], x: params[:x], y: params[:y]).update(description: params[:description])
+    Location.where(map: params[:map], x: params[:x], y: params[:y]).update!(description: params[:description])
     head :ok
   end
 
