@@ -44,19 +44,11 @@ end
 
 group :development do
   gem "bundler-audit", "~> 0.9"
-
-  # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "lefthook", "~> 2.0"
   gem "web-console", "~> 4.2"
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara", "~> 3.40"
   gem "selenium-webdriver", "~> 4.10"
   gem "webdrivers", "~> 5.3"
