@@ -15,7 +15,7 @@ module CalendarHelper
   end
 
   def coords_for(day)
-    (day.to_i - 1).divmod(7).map { |e| e * 32 }
+    (day.to_i - 1).divmod(7).map { it * 32 }
   end
 
   def schedule_panel_classes(group)

@@ -24,7 +24,7 @@ module StardewLoader
       end
 
       def valid_schedules
-        @valid_schedules ||= Dir[PATH.join "*.json"].map { |f| File.basename f, ".json" }
+        @valid_schedules ||= Dir[PATH.join "*.json"].map { File.basename it, ".json" }
       end
     end
 
@@ -185,7 +185,7 @@ module StardewLoader
     end
 
     def increment_priorities(priority)
-      @possibilities.map { |p| p.priority += 1 if p.priority >= priority }
+      @possibilities.map { it.priority += 1 if it.priority >= priority }
     end
 
     def parse_schedule(schedule)

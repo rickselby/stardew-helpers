@@ -32,7 +32,7 @@ module Stardew
       private
 
       def valid_maps
-        @valid_maps ||= Dir[PATH.join("*.png")].map { |f| File.basename f, ".png" }
+        @valid_maps ||= Dir[PATH.join("*.png")].map { File.basename it, ".png" }
       end
 
       def map_sizes

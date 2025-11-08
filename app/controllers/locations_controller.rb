@@ -19,7 +19,7 @@ class LocationsController < ApplicationController
 
   def load_maps
     @maps = locations.map(&:map).uniq.sort
-    @empty = locations.group_by(&:map).transform_values { |locs| locs.count { |l| l.description.blank? } }
+    @empty = locations.group_by(&:map).transform_values { it.count { it.description.blank? } }
   end
 
   def locations
