@@ -20,7 +20,7 @@ gem "importmap-rails", "~> 2.2"
 gem "turbo-rails", "~> 2.0"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", "~> 2.0", platforms: %i[mingw mswin x64_mingw jruby]
+gem "tzinfo-data", "~> 2.0", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", "~> 1.19", require: false
@@ -37,7 +37,7 @@ gem "thruster", "~> 0.1.17"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", "~> 1.11", platforms: %i[mri mingw x64_mingw]
+  gem "debug", "~> 1.11", platforms: %i[mri windows]
   gem "rspec-rails", "~> 8.0"
   gem "rubocop-rickselby", "~> 0.66", require: false
 end
