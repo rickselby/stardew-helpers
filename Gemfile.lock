@@ -90,7 +90,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.21.1)
       msgpack (~> 1.2)
-    bootstrap (5.3.5)
+    bootstrap (5.3.8)
       popper_js (>= 2.11.8, < 3)
     builder (3.3.0)
     bundler-audit (0.9.3)
