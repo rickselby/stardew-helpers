@@ -88,7 +88,7 @@ GEM
       smart_properties
     bigdecimal (4.0.1)
     bindex (0.8.1)
-    bootsnap (1.22.0)
+    bootsnap (1.23.0)
       msgpack (~> 1.2)
     bootstrap (5.3.8)
       popper_js (>= 2.11.8, < 3)
@@ -427,7 +427,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  bootsnap (~> 1.22)
+  bootsnap (~> 1.23)
   bootstrap (~> 5.3)
   bundler-audit (~> 0.9)
   capybara (~> 3.40)
