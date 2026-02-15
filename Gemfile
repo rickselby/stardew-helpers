@@ -23,7 +23,7 @@ gem "turbo-rails", "~> 2.0"
 gem "tzinfo-data", "~> 2.0", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.21", require: false
+gem "bootsnap", "~> 1.23", require: false
 
 # Use Sass to process CSS
 gem "sassc-rails", "~> 2.1"
@@ -33,18 +33,18 @@ gem "bootstrap", "~> 5.3"
 
 gem "fastimage", "~> 2.4"
 gem "mini_magick", "~> 5.3"
-gem "thruster", "~> 0.1.17"
+gem "thruster", "~> 0.1.18"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", "~> 1.11", platforms: %i[mri windows]
   gem "rspec-rails", "~> 8.0"
-  gem "rubocop-rickselby", "~> 0.67", require: false
+  gem "rubocop-rickselby", "~> 0.68", require: false
 end
 
 group :development do
   gem "bundler-audit", "~> 0.9"
-  gem "lefthook", "~> 2.0"
+  gem "lefthook", "~> 2.1"
   gem "web-console", "~> 4.2"
 end
 
