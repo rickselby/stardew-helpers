@@ -46,10 +46,9 @@
     <orderEntry type="library" scope="PROVIDED" name="better_html (v2.2.0, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bigdecimal (v4.0.1, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bindex (v0.8.1, RVM: ruby-4.0.1) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bootsnap (v1.21.1, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootstrap (v5.3.8, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.3.0, RVM: ruby-4.0.1) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bundler (v4.0.3, RVM: ruby-4.0.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v4.0.5, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler-audit (v0.9.3, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="TEST" name="capybara (v3.40.0, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.3.6, RVM: ruby-4.0.1) [gem]" level="application" />
@@ -69,9 +68,7 @@
     <orderEntry type="library" scope="PROVIDED" name="importmap-rails (v2.2.3, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="io-console (v0.8.2, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="irb (v1.16.0, RVM: ruby-4.0.1) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="json (v2.18.0, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="language_server-protocol (v3.17.0.5, RVM: ruby-4.0.1) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="lefthook (v2.0.16, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="lint_roller (v1.1.0, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="logger (v1.7.0, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.25.0, RVM: ruby-4.0.1) [gem]" level="application" />
@@ -80,6 +77,7 @@
     <orderEntry type="library" scope="PROVIDED" name="matrix (v0.4.3, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_magick (v5.3.1, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.5, RVM: ruby-4.0.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mini_portile2 (v2.8.9, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v6.0.1, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.8.0, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.5.12, RVM: ruby-4.0.1) [gem]" level="application" />
@@ -117,7 +115,6 @@
     <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.13.5, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="TEST" name="rspec-rails (v8.0.2, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.13.6, RVM: ruby-4.0.1) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.82.1, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.49.0, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-capybara (v2.22.1, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-factory_bot (v2.28.0, RVM: ruby-4.0.1) [gem]" level="application" />
@@ -125,7 +122,6 @@
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rails (v2.34.3, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rails-accessibility (v1.0.1, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rake (v0.7.1, RVM: ruby-4.0.1) [gem]" level="application" />
-    <orderEntry type="library" scope="TEST" name="rubocop-rickselby (v0.67.0, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rspec (v3.9.0, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rspec_rails (v2.32.0, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-sequel (v0.4.1, RVM: ruby-4.0.1) [gem]" level="application" />
@@ -141,7 +137,6 @@
     <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v2.9.0, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stringio (v3.2.0, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.5.0, RVM: ruby-4.0.1) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="thruster (v0.1.17, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v2.6.1, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="timeout (v0.4.4, RVM: ruby-4.0.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tsort (v0.2.0, RVM: ruby-4.0.1) [gem]" level="application" />
