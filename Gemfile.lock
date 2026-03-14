@@ -123,7 +123,7 @@ GEM
       rubocop (>= 1)
       smart_properties
     erubi (1.13.1)
-    fastimage (2.4.0)
+    fastimage (2.4.1)
     ffi (1.17.2)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
