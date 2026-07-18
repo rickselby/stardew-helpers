@@ -25,8 +25,11 @@ gem "tzinfo-data", "~> 2.0", platforms: %i[windows jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", "~> 1.24", require: false
 
-# Use Sass to process CSS
-gem "sassc-rails", "~> 2.1"
+# The modern asset pipeline for Rails [https://github.com/rails/propshaft]
+gem "propshaft", "~> 1.2"
+
+# Use Dart Sass to process CSS [https://github.com/rails/dartsass-rails]
+gem "dartsass-rails", "~> 0.5"
 
 # Bootstrap
 gem "bootstrap", "~> 5.3"

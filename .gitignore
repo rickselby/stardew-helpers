@@ -32,5 +32,9 @@
 
 /public/assets
 
+# Ignore compiled Sass output; dartsass-rails rebuilds it.
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key

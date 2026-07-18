@@ -1,2 +1,14 @@
 #!/usr/bin/env ruby
-exec "./bin/rails", "server", *ARGV
+# frozen_string_literal: true
+
+exec "./bin/rails", "server", *ARGV if ARGV.include?("--skip-css")
+
+# Boot the Rails server and the Dart Sass watcher together via foreman.
+unless system("which foreman > /dev/null 2>&1")
+  warn "Installing foreman..."
+  unless system("gem install foreman")
+    abort "Could not install foreman. Install it manually with: gem install foreman"
+  end
+end
+
+exec "foreman start -f Procfile.dev #{ARGV.join(' ')}"

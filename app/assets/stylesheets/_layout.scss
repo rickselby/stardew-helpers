@@ -1,6 +1,6 @@
 
 body {
-  background: #84a4f0 asset-url("bg.png") no-repeat fixed center;
+  background: #84a4f0 url("bg.png") no-repeat fixed center;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -36,13 +36,13 @@ h1, h2, h3, h4 {
   @include borderInner;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
-  border-image: asset-url("textBox.png") 33 fill stretch;
+  border-image: url("textBox.png") 33 fill stretch;
   box-shadow: -5px 5px 10px 5px rgba(0,0,0,0.2);
 }
 
 @mixin bulletinInterior {
   @include borderInner;
-  border-image: asset-url("paper.png") 16 fill stretch;
+  border-image: url("paper.png") 16 fill stretch;
   padding: 0;
 }
 
