@@ -23,7 +23,7 @@ gem "turbo-rails", "~> 2.0"
 gem "tzinfo-data", "~> 2.0", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.24", require: false
+gem "bootsnap", "~> 1.25", require: false
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft", "~> 1.2"
