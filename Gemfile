@@ -35,7 +35,7 @@ gem "dartsass-rails", "~> 0.5"
 gem "bootstrap", "~> 5.3"
 
 gem "fastimage", "~> 2.4"
-gem "mini_magick", "~> 5.3"
+gem "mini_magick", "~> 5.4"
 gem "thruster", "~> 0.1.26"
 
 group :development, :test do
