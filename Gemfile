@@ -47,7 +47,7 @@ end
 
 group :development do
   gem "bundler-audit", "~> 0.9"
-  gem "lefthook", "~> 2.1"
+  gem "lefthook", "~> 2.2"
   gem "web-console", "~> 4.3"
 end
 
