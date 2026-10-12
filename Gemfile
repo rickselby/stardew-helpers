@@ -47,11 +47,11 @@ end
 
 group :development do
   gem "bundler-audit", "~> 0.9"
-  gem "lefthook", "~> 2.1"
+  gem "lefthook", "~> 2.2"
   gem "web-console", "~> 4.3"
 end
 
 group :test do
   gem "capybara", "~> 3.40"
-  gem "selenium-webdriver", "~> 4.50"
+  gem "selenium-webdriver", "~> 4.51"
 end
