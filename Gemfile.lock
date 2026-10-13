@@ -170,7 +170,7 @@ GEM
       reline (>= 0.4.2)
     json (3.0.2)
     language_server-protocol (3.17.0.6)
-    lefthook (2.1.17)
+    lefthook (2.2.1)
     lint_roller (1.1.0)
     logger (1.7.0)
     loofah (2.25.2)
@@ -389,7 +389,7 @@ GEM
     sass-embedded (1.101.0-x86_64-linux-musl)
       google-protobuf (~> 4.31)
     securerandom (0.4.1)
-    selenium-webdriver (4.50.0)
+    selenium-webdriver (4.51.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rubyzip (>= 1.2.2, < 4.0)
@@ -462,14 +462,14 @@ DEPENDENCIES
   debug (~> 1.11)
   fastimage (~> 2.4)
   importmap-rails (~> 2.2)
-  lefthook (~> 2.1)
+  lefthook (~> 2.2)
   mini_magick (~> 5.4)
   propshaft (~> 1.2)
   puma (~> 8.0)
   rails (~> 8.1.4)
   rspec-rails (~> 8.0)
   rubocop-rickselby (~> 0.78)
-  selenium-webdriver (~> 4.50)
+  selenium-webdriver (~> 4.51)
   sqlite3 (~> 2.9)
   thruster (~> 0.1.27)
   turbo-rails (~> 2.0)
@@ -529,7 +529,7 @@ CHECKSUMS
   irb (1.18.0) sha256=de9454a0703a54704b9811a5ef31a60c86949fbf4013fcf244fabc7c775248e3
   json (3.0.2) sha256=8e6d7e7b11384c21230430cef90b71f14849a34a1f4452796670f7c981bd19df
   language_server-protocol (3.17.0.6) sha256=5ef2c0c138f8267e1bc631d3328347d354f96724b0af22f2c79516120443b7f0
-  lefthook (2.1.17) sha256=4f23882f2511b3c01c3ba054c298795c9b1d014e6d8d54027af57b599d890287
+  lefthook (2.2.1) sha256=ed97ccff9b5f055e10481e736c80fee7195aaf8754db8cff7b4b051379f551fb
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   loofah (2.25.2) sha256=2007f746959ac65552456e04b433e83deb22759ab38c838b4445c70e43425918
@@ -609,7 +609,7 @@ CHECKSUMS
   sass-embedded (1.101.0-x86_64-linux-gnu) sha256=ff48452b2351eaaf4e6e02f59de0e9e35f6f163e8456d520db49b4d87cf73c27
   sass-embedded (1.101.0-x86_64-linux-musl) sha256=2286feef3c7a8d9bbb075aa1651e1a81942aca1213f7c2d30cc1d6f4eb5b4104
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
-  selenium-webdriver (4.50.0) sha256=d12f94025bc33af44428ed6b8def4896a7bb9c4521212579241650d6cb060fcb
+  selenium-webdriver (4.51.0) sha256=09edf1b7fc360e0570bac609676f804ed527fe0b2f285e03233561e29b0ec105
   smart_properties (1.17.0) sha256=f9323f8122e932341756ddec8e0ac9ec6e238408a7661508be99439ca6d6384b
   sqlite3 (2.9.6) sha256=956fe606956420d04ac7157d3ace620c8caba2135b2e05c76e483493da24d08e
   sqlite3 (2.9.6-aarch64-linux-gnu) sha256=d8b1f7d23efd7abac285775a9566562fc7debfef79d594e3a20354406fb7907c
