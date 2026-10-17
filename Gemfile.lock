@@ -170,7 +170,7 @@ GEM
       reline (>= 0.4.2)
     json (3.0.2)
     language_server-protocol (3.17.0.6)
-    lefthook (2.2.1)
+    lefthook (2.2.2)
     lint_roller (1.1.0)
     logger (1.7.0)
     loofah (2.25.2)
@@ -529,7 +529,7 @@ CHECKSUMS
   irb (1.18.0) sha256=de9454a0703a54704b9811a5ef31a60c86949fbf4013fcf244fabc7c775248e3
   json (3.0.2) sha256=8e6d7e7b11384c21230430cef90b71f14849a34a1f4452796670f7c981bd19df
   language_server-protocol (3.17.0.6) sha256=5ef2c0c138f8267e1bc631d3328347d354f96724b0af22f2c79516120443b7f0
-  lefthook (2.2.1) sha256=ed97ccff9b5f055e10481e736c80fee7195aaf8754db8cff7b4b051379f551fb
+  lefthook (2.2.2) sha256=c43405b5fd14cd6de0dad8bfb76895767e8f21bb342460f6434191b32c5be333
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   loofah (2.25.2) sha256=2007f746959ac65552456e04b433e83deb22759ab38c838b4445c70e43425918
