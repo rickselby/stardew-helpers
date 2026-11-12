@@ -41,7 +41,7 @@ gem "thruster", "~> 0.1.27"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", "~> 1.11", platforms: %i[mri windows]
-  gem "rspec-rails", "~> 8.0"
+  gem "rspec-rails", "~> 8.1"
   gem "rubocop-rickselby", "~> 0.79", require: false
 end
 
